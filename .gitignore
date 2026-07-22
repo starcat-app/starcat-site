@@ -1,0 +1,28 @@
+# macOS / editor-local files
+.DS_Store
+._*
+*.swp
+*.swo
+*~
+
+# Local admin credentials. Keep the example config in Git.
+_local-admin/config.js
+
+# Local environment and deployment credentials
+.env
+.env.*
+!.env.example
+.dev.vars
+*.pem
+*.key
+
+# Runtime and tool caches
+node_modules/
+.wrangler/
+__pycache__/
+*.py[cod]
+*.log
+
+# Direct-distribution artifacts are published separately from the site source.
+direct/downloads/
+direct-test/downloads/
