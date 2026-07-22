@@ -9,8 +9,8 @@
 // 添加首页卡片: 在 LINKS 数组里加一项
 // 添加本域反代应用: 在 APPS 对象里加一行（并可选同步到 LINKS）
 //
-// 部署: 走 pages/appstore/deploy.sh（末尾 wrangler deploy）
-// 单独部署: cd pages/appstore/worker && wrangler deploy
+// 部署: 走 starcat-site/appstore/deploy.sh（末尾 wrangler deploy）
+// 单独部署: cd supports/starcat-site/appstore/worker && wrangler deploy
 // ============================================================================
 
 // --- 首页导航卡片 ------------------------------------------------------------

@@ -106,7 +106,7 @@ echo "================================"
 # 检查源目录是否存在 index.html (确保部署的是正确目录)
 if [ ! -f "$SCRIPT_DIR/index.html" ]; then
     echo "❌ 错误: 在 $SCRIPT_DIR 未找到 index.html"
-    echo "   请确保从 pages/appstore/ 目录运行此脚本"
+    echo "   请确保从 starcat-site/appstore/ 目录运行此脚本"
     exit 1
 fi
 

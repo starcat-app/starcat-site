@@ -3,7 +3,7 @@
  *
  * Copy this file to `config.js` in the same directory and fill in your local
  * or private Fly.io endpoints. The real `config.js` is ignored by git and
- * excluded from `pages/deploy.sh` so API keys do not ship with the public site.
+ * kept outside the public Direct/App Store deployment roots so API keys do not ship with the site.
  */
 window.STARCAT_ADMIN_CONFIG = {
   fly: {
