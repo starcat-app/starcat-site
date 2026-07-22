@@ -39,6 +39,8 @@ brew install --cask starcat
 - CLI / MCP: [starcat-cli](https://github.com/starcat-app/starcat-cli) / [Homebrew tap](https://github.com/starcat-app/homebrew-starcat-cli)
 - AI Agent Skill: https://github.com/starcat-app/starcat-skill
 - Browser plugins: [Chrome](https://github.com/starcat-app/starcat-chrome-plugin) / [Safari](https://github.com/starcat-app/starcat-safari-plugin)
+- Documentation: https://github.com/starcat-app/starcat-docs
+- Website source: https://github.com/starcat-app/starcat-site
 - Localization: https://github.com/starcat-app/starcat-localization
 
 **Self-hostable support APIs:**
@@ -84,7 +86,7 @@ For blog authoring details, see [`direct/blog/README.md`](./direct/blog/README.m
 
 - Keep English and Simplified Chinese pages synchronized when public meaning changes.
 - Treat `direct/appcast.xml` as public release metadata; never add signing keys or release credentials.
-- `direct/generate-changelog.py` reads the paired public changelog files from `starcat-pro` when the expected Starcat workspace layout is available.
+- `direct/generate-changelog.py` reads the paired public changelog files from the sibling `starcat-pro` checkout; standalone layouts can set `STARCAT_PRO_ROOT` explicitly.
 - Deployment scripts require maintainer-owned local credentials. Pull requests must not deploy production or test environments.
 - Nginx configuration remains local-only and is intentionally not tracked in this repository.
 

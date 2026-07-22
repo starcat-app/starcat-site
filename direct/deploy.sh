@@ -3,7 +3,7 @@
 # Starcat Direct 生产落地页部署脚本
 #
 # 用法:
-#   ./deploy.sh          上传生产 nginx 配置并重载，然后同步 pages/direct/ 静态资源
+#   ./deploy.sh          上传生产 nginx 配置并重载，然后同步 starcat-site/direct/ 静态资源
 #   DEPLOY_SSH_KEY=~/.ssh/server ./deploy.sh
 #                       使用指定私钥连接远程服务器，避免本机 ssh alias 绑定到错误 key
 #
@@ -70,7 +70,7 @@ echo "✓ 生产 Nginx 配置已部署并重载完成"
 # 确保远程目录存在
 "${SSH_CMD[@]}" "$REMOTE_HOST" "mkdir -p $REMOTE_WEB_DIR"
 
-# rsync 同步 pages/direct/ 目录下由官网部署维护的静态文件。
+# rsync 同步 starcat-site/direct/ 目录下由官网部署维护的静态文件。
 # downloads/ 与 appcast.xml 由 release-direct.sh 单独维护，必须排除，避免官网部署
 # 的 --delete 删除已发布 DMG，或用仓库里的旧 feed 覆盖线上 Sparkle 更新信息。
 # 部署脚本、生成器与 Python cache 只服务于本地发布流程，不能进入公开 Web 目录。

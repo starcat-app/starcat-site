@@ -5,15 +5,21 @@
 用法: python3 generate-changelog.py
 """
 
+import os
 import re
 import sys
 from pathlib import Path
 
-SCRIPT_DIR = Path(__file__).resolve().parent  # pages/direct/
-PROJECT_ROOT = SCRIPT_DIR.parent.parent       # 项目根目录
+SCRIPT_DIR = Path(__file__).resolve().parent
+SITE_ROOT = SCRIPT_DIR.parent
+SUPPORTS_ROOT = SITE_ROOT.parent
+# starcat-site 与 starcat-pro 在标准 Starcat 工作区中互为兄弟仓库；环境变量允许独立克隆时显式定位。
+STARCAT_PRO_ROOT = Path(
+    os.environ.get("STARCAT_PRO_ROOT", str(SUPPORTS_ROOT / "starcat-pro"))
+).expanduser()
 CHANGELOG_PAGES = [
     {
-        "source": PROJECT_ROOT / "supports" / "starcat-pro" / "CHANGELOG.md",
+        "source": STARCAT_PRO_ROOT / "CHANGELOG.md",
         "target": SCRIPT_DIR / "changelog.html",
         "lang": "en",
         "description": "Starcat Changelog — release notes and product updates",
@@ -33,7 +39,7 @@ CHANGELOG_PAGES = [
         "contact_label": "Contact",
     },
     {
-        "source": PROJECT_ROOT / "supports" / "starcat-pro" / "CHANGELOG-ZH.md",
+        "source": STARCAT_PRO_ROOT / "CHANGELOG-ZH.md",
         "target": SCRIPT_DIR / "changelog-zh.html",
         "lang": "zh-Hans",
         "description": "Starcat 更新日志 — 版本更新记录",

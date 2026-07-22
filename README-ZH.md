@@ -39,6 +39,8 @@ brew install --cask starcat
 - CLI / MCP: [starcat-cli](https://github.com/starcat-app/starcat-cli) / [Homebrew tap](https://github.com/starcat-app/homebrew-starcat-cli)
 - AI Agent Skill: https://github.com/starcat-app/starcat-skill
 - 浏览器插件: [Chrome](https://github.com/starcat-app/starcat-chrome-plugin) / [Safari](https://github.com/starcat-app/starcat-safari-plugin)
+- 官方文档: https://github.com/starcat-app/starcat-docs
+- 官网源码: https://github.com/starcat-app/starcat-site
 - 本地化: https://github.com/starcat-app/starcat-localization
 
 **可自部署支撑 API：**
@@ -84,7 +86,7 @@ python3 -m http.server 8767 --directory direct-test
 
 - 公开含义发生变化时，中英文页面必须同步修改。
 - `direct/appcast.xml` 是公开发布元数据，严禁加入签名私钥或发布凭据。
-- 当 Starcat 工作区目录结构满足要求时，`direct/generate-changelog.py` 从 `starcat-pro` 的双语公开 Changelog 生成页面。
+- `direct/generate-changelog.py` 默认从同级 `starcat-pro` 仓库读取双语公开 Changelog；独立目录布局可通过 `STARCAT_PRO_ROOT` 显式指定。
 - 部署脚本依赖维护者本地凭据；Pull Request 不得部署生产或测试环境。
 - Nginx 配置仅保留在本地，不进入本仓库版本控制。
 

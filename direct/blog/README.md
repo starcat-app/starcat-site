@@ -31,7 +31,7 @@ Markdown body starts here.
 }
 ```
 
-4. Deploy the `pages/` site as usual. No Markdown build step required.
+4. Deploy the `starcat-site/direct` site as usual. No Markdown build step required.
 
 ## URLs
 
@@ -42,10 +42,10 @@ Markdown body starts here.
 
 ## Local preview
 
-Serve the `pages/direct` directory over HTTP (file:// will block `fetch` of `.md` in most browsers):
+Serve the `starcat-site/direct` directory over HTTP (file:// will block `fetch` of `.md` in most browsers):
 
 ```bash
-cd pages/direct && python3 -m http.server 8765
+cd supports/starcat-site/direct && python3 -m http.server 8765
 ```
 
 Then open `http://127.0.0.1:8765/blog/`.

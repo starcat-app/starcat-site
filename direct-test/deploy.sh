@@ -3,7 +3,7 @@
 # Starcat Direct 测试落地页部署脚本
 #
 # 用法:
-#   ./deploy.sh          上传测试 nginx 配置并重载，然后同步 pages/direct-test/ 静态资源
+#   ./deploy.sh          上传测试 nginx 配置并重载，然后同步 starcat-site/direct-test/ 静态资源
 #   DEPLOY_SSH_KEY=~/.ssh/server ./deploy.sh
 #                       使用指定私钥连接远程服务器，避免本机 ssh alias 绑定到错误 key
 #
@@ -70,7 +70,7 @@ echo "✓ 测试 Nginx 配置已部署并重载完成"
 # 确保远程目录存在
 "${SSH_CMD[@]}" "$REMOTE_HOST" "mkdir -p $REMOTE_WEB_DIR"
 
-# rsync 同步 pages/direct-test/ 目录下的静态文件。
+# rsync 同步 starcat-site/direct-test/ 目录下的静态文件。
 # --delete: 删除远程多余文件，保持完全一致。
 # 部署脚本、生成器与 Python cache 只服务于本地发布流程，不能进入公开 Web 目录。
 echo "正在同步文件..."
