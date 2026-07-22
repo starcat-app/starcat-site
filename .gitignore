@@ -8,6 +8,10 @@
 # Local admin credentials. Keep the example config in Git.
 _local-admin/config.js
 
+# Local-only Nginx server configuration
+direct/starcat.ink.conf
+direct-test/starcat-test.ink.conf
+
 # Local environment and deployment credentials
 .env
 .env.*
