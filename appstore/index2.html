@@ -660,6 +660,194 @@
         }
 
         /* ==================================================================
+         * Product videos
+         * ================================================================== */
+        .video-section {
+            position: relative;
+            padding: var(--section-space) 0;
+            overflow: clip;
+        }
+
+        .video-section::before {
+            position: absolute;
+            top: 18%;
+            left: 50%;
+            width: min(980px, 86vw);
+            height: 520px;
+            content: "";
+            pointer-events: none;
+            background: radial-gradient(circle, rgba(0, 122, 255, 0.10), transparent 68%);
+            filter: blur(22px);
+            transform: translateX(-50%);
+        }
+
+        .video-header {
+            position: relative;
+            max-width: 820px;
+            margin: 0 auto 48px;
+            text-align: center;
+        }
+
+        .video-header .eyebrow {
+            justify-content: center;
+        }
+
+        .video-header .section-heading {
+            max-width: none;
+        }
+
+        .video-header .section-copy {
+            margin-inline: auto;
+        }
+
+        .video-shell {
+            position: relative;
+            display: grid;
+            grid-template-columns: minmax(248px, 0.46fr) minmax(0, 1.54fr);
+            gap: 18px;
+            padding: 18px;
+            border: 1px solid var(--line);
+            border-radius: var(--radius-lg);
+            background: rgba(255, 255, 255, 0.82);
+            box-shadow: var(--shadow-lg);
+            backdrop-filter: blur(22px);
+            -webkit-backdrop-filter: blur(22px);
+        }
+
+        .video-tablist {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .video-tab {
+            display: grid;
+            grid-template-columns: 34px minmax(0, 1fr);
+            gap: 13px;
+            min-height: 116px;
+            padding: 18px;
+            border: 1px solid transparent;
+            border-radius: 17px;
+            color: var(--ink-secondary);
+            background: transparent;
+            text-align: left;
+            cursor: pointer;
+            transition:
+                color 180ms ease,
+                border-color 180ms ease,
+                background-color 180ms ease,
+                transform 180ms var(--ease-out);
+        }
+
+        .video-tab:hover {
+            color: var(--ink);
+            border-color: var(--line);
+            background: rgba(245, 245, 247, 0.76);
+        }
+
+        .video-tab.is-active {
+            color: var(--ink);
+            border-color: rgba(0, 122, 255, 0.22);
+            background: linear-gradient(135deg, rgba(0, 122, 255, 0.10), rgba(255, 255, 255, 0.84));
+            transform: translateX(2px);
+        }
+
+        .video-tab-number {
+            display: inline-flex;
+            width: 34px;
+            height: 34px;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            color: var(--ink-muted);
+            background: #f0f0f2;
+            font-family: ui-monospace, "SFMono-Regular", Menlo, monospace;
+            font-size: 11px;
+            font-weight: 750;
+            letter-spacing: 0.08em;
+        }
+
+        .video-tab.is-active .video-tab-number {
+            color: #fff;
+            background: var(--blue);
+        }
+
+        .video-tab-title {
+            display: block;
+            margin-bottom: 5px;
+            color: inherit;
+            font-size: 15px;
+            font-weight: 720;
+            line-height: 1.35;
+        }
+
+        .video-tab-desc {
+            display: block;
+            color: var(--ink-muted);
+            font-size: 12px;
+            line-height: 1.55;
+        }
+
+        .video-stage {
+            min-width: 0;
+        }
+
+        .video-frame {
+            position: relative;
+            aspect-ratio: 16 / 9;
+            overflow: hidden;
+            border: 1px solid rgba(29, 29, 31, 0.14);
+            border-radius: 18px;
+            background: #08090b;
+            box-shadow: 0 24px 64px rgba(30, 36, 50, 0.18);
+        }
+
+        .product-video {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            background: #08090b;
+        }
+
+        .video-now-playing {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 18px;
+            padding: 14px 4px 2px;
+        }
+
+        .video-now-playing-label {
+            display: block;
+            margin-bottom: 2px;
+            color: var(--ink-muted);
+            font-family: ui-monospace, "SFMono-Regular", Menlo, monospace;
+            font-size: 9px;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+        }
+
+        .video-now-playing-title {
+            display: block;
+            color: var(--ink-secondary);
+            font-size: 13px;
+            font-weight: 650;
+        }
+
+        .video-duration {
+            flex-shrink: 0;
+            padding: 6px 10px;
+            border: 1px solid var(--line);
+            border-radius: 999px;
+            color: var(--ink-muted);
+            font-family: ui-monospace, "SFMono-Regular", Menlo, monospace;
+            font-size: 10px;
+            font-variant-numeric: tabular-nums;
+        }
+
+        /* ==================================================================
          * Product showcase
          * ================================================================== */
         .showcase {
@@ -1567,6 +1755,19 @@
                 min-height: 290px;
             }
 
+            .video-shell {
+                grid-template-columns: 1fr;
+            }
+
+            .video-tablist {
+                display: grid;
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+            }
+
+            .video-tab {
+                min-height: 0;
+            }
+
             .showcase {
                 height: auto;
                 padding: var(--section-space) 0;
@@ -1910,6 +2111,38 @@
                 margin-top: 28px;
             }
 
+            .video-header {
+                margin-bottom: 34px;
+            }
+
+            .video-shell {
+                margin-inline: -4px;
+                padding: 10px;
+                border-radius: 20px;
+            }
+
+            .video-tablist {
+                display: flex;
+                flex-direction: row;
+                overflow-x: auto;
+                scroll-snap-type: x proximity;
+                scrollbar-width: thin;
+            }
+
+            .video-tab {
+                flex: 0 0 250px;
+                min-height: 108px;
+                scroll-snap-align: start;
+            }
+
+            .video-tab.is-active {
+                transform: none;
+            }
+
+            .video-frame {
+                border-radius: 14px;
+            }
+
             .native-card {
                 gap: 32px;
                 padding: 34px 22px;
@@ -2150,6 +2383,7 @@
             </a>
             <div class="nav-links">
                 <a class="nav-link" href="#why">Why Starcat</a>
+                <a class="nav-link" href="#watch">Watch</a>
                 <a class="nav-link" href="#inside">Features</a>
                 <a class="nav-link" href="https://starcat.mintlify.app" target="_blank" rel="noopener noreferrer">Docs</a>
                 <a class="nav-link" href="./support.html">Support</a>
@@ -2267,6 +2501,60 @@
                         </p>
                         <span class="value-proof">Your model, your key</span>
                     </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- A single shared player keeps inactive CDN videos from downloading in parallel. -->
+        <section class="video-section" id="watch" aria-labelledby="video-section-title">
+            <div class="shell">
+                <header class="video-header" data-reveal>
+                    <p class="eyebrow">Product in motion</p>
+                    <h2 class="section-heading" id="video-section-title">See Starcat turn saved repos into working knowledge</h2>
+                    <p class="section-copy">
+                        Three short tours, from everyday organization to evidence-grounded AI workflows.
+                    </p>
+                </header>
+
+                <div class="video-shell" data-video-showcase data-reveal>
+                    <div class="video-tablist" role="tablist" aria-label="Starcat product videos">
+                        <button class="video-tab is-active" id="video-tab-organize" type="button" role="tab" aria-selected="true" aria-controls="video-player-panel" data-video-tab data-video-src="https://cdn.dong4j.site/source/image/Starcat1.mp4" data-video-poster="./index2-assets/video-organize.webp" data-video-title="Organize at a glance" data-video-duration="00:30">
+                            <span class="video-tab-number">01</span>
+                            <span>
+                                <span class="video-tab-title">Organize at a glance</span>
+                                <span class="video-tab-desc">Browse, filter, and move through thousands of stars without losing context.</span>
+                            </span>
+                        </button>
+                        <button class="video-tab" id="video-tab-understand" type="button" role="tab" aria-selected="false" aria-controls="video-player-panel" data-video-tab data-video-src="https://cdn.dong4j.site/source/image/Starcat2.mp4" data-video-poster="./index2-assets/video-understand.webp" data-video-title="Understand with evidence" data-video-duration="00:28">
+                            <span class="video-tab-number">02</span>
+                            <span>
+                                <span class="video-tab-title">Understand with evidence</span>
+                                <span class="video-tab-desc">Inspect citations, plans, index health, and local RAG traces in one workspace.</span>
+                            </span>
+                        </button>
+                        <button class="video-tab" id="video-tab-explore" type="button" role="tab" aria-selected="false" aria-controls="video-player-panel" data-video-tab data-video-src="https://cdn.dong4j.site/source/image/Starcat3.mp4" data-video-poster="./index2-assets/video-explore.webp" data-video-title="Search, ask, and explore" data-video-duration="00:29">
+                            <span class="video-tab-number">03</span>
+                            <span>
+                                <span class="video-tab-title">Search, ask, and explore</span>
+                                <span class="video-tab-desc">Move from global search to AI-assisted analysis without leaving the app.</span>
+                            </span>
+                        </button>
+                    </div>
+
+                    <div class="video-stage" id="video-player-panel" role="tabpanel" aria-labelledby="video-tab-organize">
+                        <div class="video-frame">
+                            <video class="product-video" controls playsinline preload="none" poster="./index2-assets/video-organize.webp" aria-label="Organize at a glance">
+                                <source src="https://cdn.dong4j.site/source/image/Starcat1.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                        <div class="video-now-playing" aria-live="polite">
+                            <div>
+                                <span class="video-now-playing-label">Now playing</span>
+                                <strong class="video-now-playing-title" data-video-current-title>Organize at a glance</strong>
+                            </div>
+                            <span class="video-duration" data-video-current-duration>00:30</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -3058,6 +3346,68 @@
                     window.lucide?.createIcons();
                 }, { once: true });
             }
+        })();
+
+        /**
+         * Reuses one player for all three tours. Changing tabs pauses the current
+         * stream before replacing its source, so hidden demos never download in
+         * parallel and the CDN remains the only video origin.
+         */
+        (function initializeProductVideos() {
+            document.querySelectorAll("[data-video-showcase]").forEach(function bindVideoShowcase(root) {
+                const tabs = Array.from(root.querySelectorAll("[data-video-tab]"));
+                const panel = root.querySelector('[role="tabpanel"]');
+                const video = root.querySelector("video");
+                const source = video?.querySelector("source");
+                const currentTitle = root.querySelector("[data-video-current-title]");
+                const currentDuration = root.querySelector("[data-video-current-duration]");
+                if (!tabs.length || !panel || !video || !source || !currentTitle || !currentDuration) return;
+
+                function activate(tab, shouldFocus) {
+                    if (!tab || tab.classList.contains("is-active")) {
+                        if (shouldFocus) tab?.focus({ preventScroll: true });
+                        return;
+                    }
+
+                    const shouldResume = !video.paused;
+                    video.pause();
+                    tabs.forEach(function updateTab(item) {
+                        const isActive = item === tab;
+                        item.classList.toggle("is-active", isActive);
+                        item.setAttribute("aria-selected", isActive ? "true" : "false");
+                        item.tabIndex = isActive ? 0 : -1;
+                    });
+
+                    source.src = tab.dataset.videoSrc;
+                    video.poster = tab.dataset.videoPoster;
+                    video.setAttribute("aria-label", tab.dataset.videoTitle);
+                    panel.setAttribute("aria-labelledby", tab.id);
+                    currentTitle.textContent = tab.dataset.videoTitle;
+                    currentDuration.textContent = tab.dataset.videoDuration;
+                    video.load();
+                    if (shouldResume) video.play().catch(function ignoreBlockedAutoplay() {});
+                    if (shouldFocus) tab.focus({ preventScroll: true });
+                }
+
+                tabs.forEach(function bindVideoTab(tab, index) {
+                    tab.tabIndex = tab.classList.contains("is-active") ? 0 : -1;
+                    tab.addEventListener("click", function chooseVideo() {
+                        activate(tab, false);
+                    });
+                    tab.addEventListener("keydown", function navigateVideos(event) {
+                        const supportedKeys = ["ArrowRight", "ArrowLeft", "ArrowDown", "ArrowUp", "Home", "End"];
+                        if (!supportedKeys.includes(event.key)) return;
+                        event.preventDefault();
+
+                        let nextIndex = index;
+                        if (event.key === "ArrowRight" || event.key === "ArrowDown") nextIndex = (index + 1) % tabs.length;
+                        if (event.key === "ArrowLeft" || event.key === "ArrowUp") nextIndex = (index - 1 + tabs.length) % tabs.length;
+                        if (event.key === "Home") nextIndex = 0;
+                        if (event.key === "End") nextIndex = tabs.length - 1;
+                        activate(tabs[nextIndex], true);
+                    });
+                });
+            });
         })();
 
         /**

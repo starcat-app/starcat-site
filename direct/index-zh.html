@@ -1928,6 +1928,193 @@
             opacity: 1;
             transform: translateY(0);
         }
+
+        /* ==================================================================
+         * 产品视频展示
+         * ================================================================== */
+        .demo-section::before {
+            content: '';
+            position: absolute;
+            top: 14%;
+            left: 50%;
+            width: min(920px, 82vw);
+            height: 520px;
+            transform: translateX(-50%);
+            background: radial-gradient(circle, rgba(125, 211, 252, 0.09), transparent 68%);
+            filter: blur(18px);
+            pointer-events: none;
+        }
+
+        .demo-shell {
+            position: relative;
+            display: grid;
+            grid-template-columns: minmax(250px, 0.48fr) minmax(0, 1.52fr);
+            gap: 18px;
+            padding: 18px;
+            border: 1px solid var(--color-border);
+            border-radius: 26px;
+            background: rgba(255, 255, 255, 0.03);
+            box-shadow: 0 38px 100px rgba(0, 0, 0, 0.28);
+        }
+
+        .demo-tablist {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .demo-tab {
+            display: grid;
+            grid-template-columns: 32px minmax(0, 1fr);
+            gap: 12px;
+            min-height: 112px;
+            padding: 18px;
+            border: 1px solid transparent;
+            border-radius: 17px;
+            color: var(--color-text-secondary);
+            background: transparent;
+            font: inherit;
+            text-align: left;
+            cursor: pointer;
+            transition: color var(--duration-fast) var(--ease-out),
+                        border-color var(--duration-fast) var(--ease-out),
+                        background var(--duration-fast) var(--ease-out),
+                        transform var(--duration-fast) var(--ease-out);
+        }
+
+        .demo-tab:hover {
+            color: var(--color-text);
+            border-color: var(--color-border);
+            background: rgba(255, 255, 255, 0.045);
+        }
+
+        .demo-tab.is-active {
+            color: var(--color-text);
+            border-color: rgba(125, 211, 252, 0.28);
+            background: linear-gradient(135deg, rgba(125, 211, 252, 0.12), rgba(255, 255, 255, 0.045));
+            transform: translateX(2px);
+        }
+
+        .demo-tab-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            border-radius: 10px;
+            color: var(--color-text-muted);
+            background: rgba(255, 255, 255, 0.055);
+            font-size: 11px;
+            font-weight: 750;
+            letter-spacing: 0.08em;
+        }
+
+        .demo-tab.is-active .demo-tab-number {
+            color: #071018;
+            background: var(--color-cta);
+        }
+
+        .demo-tab-title {
+            display: block;
+            margin-bottom: 5px;
+            color: inherit;
+            font-size: var(--fs-small);
+            font-weight: 750;
+            line-height: 1.35;
+        }
+
+        .demo-tab-desc {
+            display: block;
+            color: var(--color-text-muted);
+            font-size: var(--fs-caption);
+            line-height: 1.55;
+        }
+
+        .demo-stage { min-width: 0; }
+
+        .demo-frame {
+            position: relative;
+            aspect-ratio: 16 / 9;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 18px;
+            background: #050609;
+            box-shadow: 0 28px 72px rgba(0, 0, 0, 0.42);
+        }
+
+        .demo-video {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            background: #050609;
+        }
+
+        .demo-now-playing {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 18px;
+            padding: 14px 4px 2px;
+        }
+
+        .demo-now-playing-label {
+            display: block;
+            margin-bottom: 2px;
+            color: var(--color-text-muted);
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+        .demo-now-playing-title {
+            display: block;
+            color: var(--color-text-secondary);
+            font-size: var(--fs-caption);
+            font-weight: 650;
+        }
+
+        .demo-duration {
+            flex-shrink: 0;
+            padding: 6px 10px;
+            border: 1px solid var(--color-border);
+            border-radius: 999px;
+            color: var(--color-text-muted);
+            font-size: 11px;
+            font-variant-numeric: tabular-nums;
+        }
+
+        @media (max-width: 1023px) {
+            .demo-shell { grid-template-columns: 1fr; }
+            .demo-tablist {
+                display: grid;
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+            }
+            .demo-tab { min-height: 0; }
+        }
+
+        @media (max-width: 767px) {
+            .demo-shell {
+                margin-inline: -8px;
+                padding: 10px;
+                border-radius: 20px;
+            }
+            .demo-tablist {
+                display: flex;
+                flex-direction: row;
+                overflow-x: auto;
+                scroll-snap-type: x proximity;
+                scrollbar-width: thin;
+            }
+            .demo-tab {
+                flex: 0 0 260px;
+                min-height: 108px;
+                scroll-snap-align: start;
+            }
+            .demo-tab.is-active { transform: none; }
+            .demo-frame { border-radius: 14px; }
+        }
     </style>
 </head>
 <body class="is-loading">
@@ -2090,6 +2277,58 @@
                         订阅你关心的仓库，新版本发布时第一时间推送通知。
                         时间线视图统一展示，已读/未读一目了然。
                     </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 三段演示共用一个播放器，避免未播放的视频在后台同时占用带宽。 -->
+    <section class="section demo-section" id="demo" aria-labelledby="demo-title">
+        <div class="section-inner">
+            <div class="section-label fade-in">产品实录</div>
+            <h2 class="section-title fade-in" id="demo-title">看 Starcat 如何把 Stars 变成可用的知识</h2>
+            <p class="section-subtitle fade-in" style="margin-bottom:36px">
+                三段短视频，从日常整理到有证据支撑的 AI 工作流。
+            </p>
+
+            <div class="demo-shell fade-in" data-video-showcase>
+                <div class="demo-tablist" role="tablist" aria-label="Starcat 产品演示视频">
+                    <button class="demo-tab is-active" id="demo-tab-organize-zh" type="button" role="tab" aria-selected="true" aria-controls="demo-player-panel-zh" data-video-tab data-video-src="https://cdn.dong4j.site/source/image/Starcat1.mp4" data-video-poster="media/starcat-organize.webp" data-video-title="一眼完成整理" data-video-duration="00:30">
+                        <span class="demo-tab-number">01</span>
+                        <span>
+                            <span class="demo-tab-title">一眼完成整理</span>
+                            <span class="demo-tab-desc">浏览、筛选和管理上千个 Stars，同时始终保留仓库上下文。</span>
+                        </span>
+                    </button>
+                    <button class="demo-tab" id="demo-tab-understand-zh" type="button" role="tab" aria-selected="false" aria-controls="demo-player-panel-zh" data-video-tab data-video-src="https://cdn.dong4j.site/source/image/Starcat2.mp4" data-video-poster="media/starcat-understand.webp" data-video-title="带着证据理解仓库" data-video-duration="00:28">
+                        <span class="demo-tab-number">02</span>
+                        <span>
+                            <span class="demo-tab-title">带着证据理解仓库</span>
+                            <span class="demo-tab-desc">在一个工作台查看元数据、执行计划、引用证据和 RAG 健康状态。</span>
+                        </span>
+                    </button>
+                    <button class="demo-tab" id="demo-tab-explore-zh" type="button" role="tab" aria-selected="false" aria-controls="demo-player-panel-zh" data-video-tab data-video-src="https://cdn.dong4j.site/source/image/Starcat3.mp4" data-video-poster="media/starcat-explore.webp" data-video-title="搜索、提问、继续探索" data-video-duration="00:29">
+                        <span class="demo-tab-number">03</span>
+                        <span>
+                            <span class="demo-tab-title">搜索、提问、继续探索</span>
+                            <span class="demo-tab-desc">从全局搜索进入 AI 辅助分析，全程无需离开 Starcat。</span>
+                        </span>
+                    </button>
+                </div>
+
+                <div class="demo-stage" id="demo-player-panel-zh" role="tabpanel" aria-labelledby="demo-tab-organize-zh">
+                    <div class="demo-frame">
+                        <video class="demo-video" controls playsinline preload="none" poster="media/starcat-organize.webp" aria-label="一眼完成整理">
+                            <source src="https://cdn.dong4j.site/source/image/Starcat1.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                    <div class="demo-now-playing" aria-live="polite">
+                        <div>
+                            <span class="demo-now-playing-label">正在播放</span>
+                            <strong class="demo-now-playing-title" data-video-current-title>一眼完成整理</strong>
+                        </div>
+                        <span class="demo-duration" data-video-current-duration>00:30</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -3022,6 +3261,60 @@
 
                 const initialTab = tabs.find(tab => tab.classList.contains('is-active')) || tabs[0];
                 activate(initialTab.dataset.featureTab);
+            });
+        })();
+
+        // 三段演示复用一个播放器，确保隐藏的视频不会在后台并行下载。
+        (function() {
+            document.querySelectorAll('[data-video-showcase]').forEach(root => {
+                const tabs = Array.from(root.querySelectorAll('[data-video-tab]'));
+                const panel = root.querySelector('[role="tabpanel"]');
+                const video = root.querySelector('video');
+                const source = video?.querySelector('source');
+                const currentTitle = root.querySelector('[data-video-current-title]');
+                const currentDuration = root.querySelector('[data-video-current-duration]');
+                if (!tabs.length || !panel || !video || !source) return;
+
+                const activate = (tab, shouldFocus = false) => {
+                    if (!tab || tab.classList.contains('is-active')) {
+                        if (shouldFocus) tab?.focus({ preventScroll: true });
+                        return;
+                    }
+
+                    const shouldResume = !video.paused;
+                    video.pause();
+                    tabs.forEach(item => {
+                        const isActive = item === tab;
+                        item.classList.toggle('is-active', isActive);
+                        item.setAttribute('aria-selected', isActive ? 'true' : 'false');
+                        item.tabIndex = isActive ? 0 : -1;
+                    });
+
+                    source.src = tab.dataset.videoSrc;
+                    video.poster = tab.dataset.videoPoster;
+                    video.setAttribute('aria-label', tab.dataset.videoTitle);
+                    panel.setAttribute('aria-labelledby', tab.id);
+                    currentTitle.textContent = tab.dataset.videoTitle;
+                    currentDuration.textContent = tab.dataset.videoDuration;
+                    video.load();
+                    if (shouldResume) video.play().catch(() => {});
+                    if (shouldFocus) tab.focus({ preventScroll: true });
+                };
+
+                tabs.forEach((tab, index) => {
+                    tab.tabIndex = tab.classList.contains('is-active') ? 0 : -1;
+                    tab.addEventListener('click', () => activate(tab));
+                    tab.addEventListener('keydown', event => {
+                        if (!['ArrowRight', 'ArrowLeft', 'ArrowDown', 'ArrowUp', 'Home', 'End'].includes(event.key)) return;
+                        event.preventDefault();
+                        let nextIndex = index;
+                        if (event.key === 'ArrowRight' || event.key === 'ArrowDown') nextIndex = (index + 1) % tabs.length;
+                        if (event.key === 'ArrowLeft' || event.key === 'ArrowUp') nextIndex = (index - 1 + tabs.length) % tabs.length;
+                        if (event.key === 'Home') nextIndex = 0;
+                        if (event.key === 'End') nextIndex = tabs.length - 1;
+                        activate(tabs[nextIndex], true);
+                    });
+                });
             });
         })();
 
