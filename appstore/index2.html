@@ -2,23 +2,25 @@
 <html lang="en">
 <head>
     <!--
-      Starcat App Store landing-page concept.
+      Starcat App Store landing page.
 
-      This page intentionally lives beside index.html so the current production
-      landing page can remain untouched while the new visual direction is reviewed.
-      All product media uses relative paths so the same file works both on the
-      Cloudflare Pages preview domain and behind dong4j.app/starcat/.
+      The Worker serves this file at dong4j.app/starcat/ while index.html remains
+      available as the rollback entry. Relative media paths must therefore keep
+      working from the public /starcat/ URL.
     -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Starcat for GitHub turns GitHub Stars into a searchable, local-first AI knowledge base for macOS.">
-    <meta name="robots" content="noindex, nofollow">
+    <meta name="robots" content="index, follow">
     <meta name="theme-color" content="#f5f5f7">
+    <link rel="canonical" href="https://dong4j.app/starcat/">
     <meta property="og:title" content="Starcat for GitHub — Your Stars, finally useful">
     <meta property="og:description" content="Organize, search, and understand every GitHub repo you starred — in one native macOS app.">
-    <meta property="og:image" content="./sc-banner.webp">
+    <meta property="og:url" content="https://dong4j.app/starcat/">
+    <meta property="og:image" content="https://dong4j.app/starcat/sc-banner.webp">
     <meta property="og:type" content="website">
     <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://dong4j.app/starcat/sc-banner.webp">
     <title>Starcat for GitHub — Your Stars, finally useful</title>
     <link rel="icon" type="image/png" href="./starcat-logo.png">
     <link rel="preload" as="image" href="./index2-assets/library.webp">

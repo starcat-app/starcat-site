@@ -60,11 +60,14 @@ const LINKS = [
 
 // --- 本域应用反代表 ------------------------------------------------------------
 // key: URL 子路径前缀 (如 "/starcat")
-// val: { host: Cloudflare Pages .dev 域名 }
+// val: { host: Cloudflare Pages .dev 域名, entryPath: 根路径使用的页面 }
 // 首页卡片与反代解耦：外链只进 LINKS，不进这里。
 const APPS = {
     "/starcat": {
         host: "starcat-appstore.pages.dev",
+        // Pages 会将 .html 规范化为无扩展路径；直接使用 /index2 可避免
+        // 公开的 /starcat/ 被 308 跳转成 /starcat/index2。
+        entryPath: "/index2",
     },
     // 未来应用示例:
     // "/another-app": {
@@ -214,13 +217,14 @@ function serveRobots() {
  * 子应用代理 — 将 /app-path/* 转发到对应 Pages 项目
  * 自动剥离子路径前缀、修正 Location 头和 HTML 中的域名
  */
-async function proxyToPages(request, pathPrefix, pagesHost) {
+async function proxyToPages(request, pathPrefix, pagesHost, entryPath = "/") {
     const url = new URL(request.url);
 
     // 剥离路径前缀
-    //  /starcat           → /
+    //  /starcat/          → entryPath
     //  /starcat/support   → /support
-    const targetPath = url.pathname.slice(pathPrefix.length) || "/";
+    const strippedPath = url.pathname.slice(pathPrefix.length) || "/";
+    const targetPath = strippedPath === "/" ? entryPath : strippedPath;
     const targetUrl = `https://${pagesHost}${targetPath}${url.search}`;
 
     const modifiedRequest = new Request(targetUrl, {
@@ -300,7 +304,7 @@ export default {
             }
             // /app-name/xxx → 代理到 Pages 项目
             if (pathname.startsWith(prefix + "/")) {
-                return proxyToPages(request, prefix, app.host);
+                return proxyToPages(request, prefix, app.host, app.entryPath);
             }
         }
 
