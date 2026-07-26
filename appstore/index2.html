@@ -1,0 +1,2911 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--
+      Starcat App Store landing-page concept.
+
+      This page intentionally lives beside index.html so the current production
+      landing page can remain untouched while the new visual direction is reviewed.
+      All product media uses relative paths so the same file works both on the
+      Cloudflare Pages preview domain and behind dong4j.app/starcat/.
+    -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Starcat for GitHub turns GitHub Stars into a searchable, local-first AI knowledge base for macOS.">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="theme-color" content="#f5f5f7">
+    <meta property="og:title" content="Starcat for GitHub — Your Stars, finally useful">
+    <meta property="og:description" content="Organize, search, and understand every GitHub repo you starred — in one native macOS app.">
+    <meta property="og:image" content="./sc-banner.webp">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <title>Starcat for GitHub — Your Stars, finally useful</title>
+    <link rel="icon" type="image/png" href="./starcat-logo.png">
+    <link rel="preload" as="image" href="./index2-assets/library.webp">
+
+    <!-- Lucide is already used by the current App Store landing page. Icons are
+         decorative only; the page remains understandable if the CDN is unavailable. -->
+    <script defer src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        /* ==================================================================
+         * Design tokens
+         * ================================================================== */
+        :root {
+            color-scheme: light;
+            --bg: #f5f5f7;
+            --panel: #ffffff;
+            --panel-soft: rgba(255, 255, 255, 0.76);
+            --ink: #1d1d1f;
+            --ink-secondary: #6e6e73;
+            --ink-muted: #8a8a8e;
+            --line: rgba(29, 29, 31, 0.10);
+            --line-strong: rgba(29, 29, 31, 0.16);
+            --blue: #007aff;
+            --blue-strong: #0066cc;
+            --blue-soft: #eaf3ff;
+            --gold: #f5b82e;
+            --shadow-sm: 0 12px 34px rgba(30, 36, 50, 0.06);
+            --shadow-lg: 0 34px 90px rgba(30, 36, 50, 0.14);
+            --radius-sm: 12px;
+            --radius-md: 20px;
+            --radius-lg: 28px;
+            --shell: min(1120px, calc(100vw - 48px));
+            --section-space: clamp(88px, 10vw, 144px);
+            --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 96px;
+        }
+
+        html.is-lightbox-open,
+        html.is-lightbox-open body {
+            overflow: hidden;
+        }
+
+        body {
+            margin: 0;
+            overflow-x: hidden;
+            color: var(--ink);
+            background:
+                radial-gradient(circle at 78% 7%, rgba(0, 122, 255, 0.055), transparent 24%),
+                radial-gradient(circle at 14% 42%, rgba(125, 211, 252, 0.045), transparent 22%),
+                var(--bg);
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", "PingFang SC", sans-serif;
+            font-size: 16px;
+            line-height: 1.55;
+            -webkit-font-smoothing: antialiased;
+            text-rendering: optimizeLegibility;
+        }
+
+        body::before {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            pointer-events: none;
+            content: "";
+            opacity: 0.34;
+            background-image:
+                linear-gradient(rgba(255, 255, 255, 0.25) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.25) 1px, transparent 1px);
+            background-size: 28px 28px;
+            mask-image: linear-gradient(to bottom, black, transparent 45%);
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        button {
+            color: inherit;
+            font: inherit;
+        }
+
+        img {
+            display: block;
+            max-width: 100%;
+        }
+
+        :focus-visible {
+            outline: 3px solid rgba(0, 122, 255, 0.38);
+            outline-offset: 4px;
+        }
+
+        .shell {
+            width: var(--shell);
+            margin-inline: auto;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin: 0 0 22px;
+            color: var(--blue-strong);
+            font-family: ui-monospace, "SFMono-Regular", Menlo, monospace;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+        }
+
+        .eyebrow::before {
+            width: 14px;
+            height: 1px;
+            content: "";
+            background: currentColor;
+        }
+
+        .section-heading {
+            max-width: 760px;
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", sans-serif;
+            font-size: clamp(38px, 5vw, 62px);
+            font-weight: 650;
+            letter-spacing: -0.045em;
+            line-height: 1.04;
+        }
+
+        .section-copy {
+            max-width: 650px;
+            margin: 24px 0 0;
+            color: var(--ink-secondary);
+            font-size: clamp(17px, 2vw, 20px);
+            line-height: 1.65;
+        }
+
+        /* ==================================================================
+         * Navigation
+         * ================================================================== */
+        .site-header {
+            position: sticky;
+            top: 0;
+            z-index: 40;
+            border-bottom: 1px solid transparent;
+            transition:
+                border-color 180ms ease,
+                background-color 180ms ease,
+                box-shadow 180ms ease;
+        }
+
+        .site-header.is-scrolled {
+            border-color: var(--line);
+            background: rgba(245, 245, 247, 0.82);
+            box-shadow: 0 8px 30px rgba(30, 36, 50, 0.04);
+            backdrop-filter: saturate(160%) blur(20px);
+            -webkit-backdrop-filter: saturate(160%) blur(20px);
+        }
+
+        .nav {
+            display: flex;
+            min-height: 80px;
+            align-items: center;
+            justify-content: space-between;
+            gap: 28px;
+        }
+
+        .brand {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            min-width: max-content;
+            font-size: 22px;
+            font-weight: 750;
+            letter-spacing: -0.03em;
+        }
+
+        .brand img {
+            width: 42px;
+            height: 42px;
+            border-radius: 11px;
+            box-shadow: 0 5px 16px rgba(14, 22, 38, 0.18);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            color: var(--ink-secondary);
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .nav-link {
+            transition: color 150ms ease;
+        }
+
+        .nav-link:hover {
+            color: var(--ink);
+        }
+
+        .nav-store {
+            display: inline-flex;
+            min-height: 40px;
+            align-items: center;
+            justify-content: center;
+            padding: 0 18px;
+            border-radius: 999px;
+            color: #fff;
+            background: var(--ink);
+            font-size: 13px;
+            font-weight: 700;
+            transition: transform 150ms ease, background-color 150ms ease;
+        }
+
+        .nav-store:hover {
+            background: #000;
+            transform: translateY(-1px);
+        }
+
+        /* ==================================================================
+         * Hero
+         * ================================================================== */
+        .hero {
+            position: relative;
+            min-height: 690px;
+            padding: clamp(70px, 9vw, 116px) 0 clamp(88px, 10vw, 132px);
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 0.9fr) minmax(520px, 1.1fr);
+            align-items: center;
+            gap: clamp(42px, 6vw, 84px);
+        }
+
+        .hero h1 {
+            max-width: 620px;
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", sans-serif;
+            font-size: clamp(54px, 6.2vw, 80px);
+            font-weight: 650;
+            letter-spacing: -0.055em;
+            line-height: 0.98;
+        }
+
+        .hero h1 .accent {
+            color: var(--blue-strong);
+        }
+
+        .hero-title-line {
+            display: block;
+        }
+
+        .hero-copy {
+            max-width: 580px;
+            margin: 30px 0 0;
+            color: var(--ink-secondary);
+            font-size: clamp(18px, 2vw, 21px);
+            line-height: 1.65;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 22px;
+            margin-top: 34px;
+        }
+
+        .app-store-badge {
+            display: inline-flex;
+            height: 54px;
+            overflow: hidden;
+            align-items: center;
+            border-radius: 9px;
+            transition: opacity 150ms ease, transform 150ms ease;
+        }
+
+        .app-store-badge img {
+            width: auto;
+            height: 54px;
+        }
+
+        .app-store-badge:hover {
+            opacity: 0.82;
+            transform: translateY(-1px);
+        }
+
+        .hero-note {
+            color: var(--ink-muted);
+            font-size: 13px;
+            line-height: 1.45;
+        }
+
+        .hero-note strong {
+            display: block;
+            color: var(--ink);
+            font-size: 14px;
+            font-weight: 650;
+        }
+
+        .hero-facts {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 28px 0 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .hero-facts li {
+            padding: 7px 11px;
+            border: 1px solid var(--line);
+            border-radius: 999px;
+            color: var(--ink-secondary);
+            background: rgba(255, 255, 255, 0.62);
+            font-size: 12px;
+            font-weight: 650;
+        }
+
+        .hero-visual {
+            position: relative;
+            min-height: 510px;
+            perspective: 1800px;
+        }
+
+        .hero-halo {
+            position: absolute;
+            top: 18%;
+            left: 18%;
+            width: 72%;
+            aspect-ratio: 1;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(0, 122, 255, 0.18), rgba(0, 122, 255, 0.04) 45%, transparent 70%);
+            filter: blur(14px);
+        }
+
+        .window-card {
+            --hero-window-transform: translateZ(0);
+            position: absolute;
+            overflow: hidden;
+            border: 1px solid rgba(29, 29, 31, 0.14);
+            border-radius: 18px;
+            background: #10141c;
+            box-shadow: var(--shadow-lg);
+            transform: var(--hero-window-transform);
+            transform-origin: center bottom;
+        }
+
+        .window-card::before {
+            position: absolute;
+            inset: 0;
+            z-index: 2;
+            pointer-events: none;
+            content: "";
+            box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.09);
+            border-radius: inherit;
+        }
+
+        .window-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .window-card--left {
+            --hero-window-transform: rotateY(13deg) rotateZ(-4deg) translateZ(-45px);
+            top: 103px;
+            left: -4%;
+            width: 68%;
+        }
+
+        .window-card--center {
+            --hero-window-transform: translateZ(42px);
+            top: 55px;
+            left: 16%;
+            z-index: 3;
+            width: 74%;
+        }
+
+        .window-card--right {
+            --hero-window-transform: rotateY(-14deg) rotateZ(4deg) translateZ(-60px);
+            top: 120px;
+            right: -10%;
+            width: 65%;
+        }
+
+        .visual-caption {
+            position: absolute;
+            bottom: 3px;
+            left: 50%;
+            z-index: 5;
+            min-width: max-content;
+            padding: 9px 14px;
+            border: 1px solid rgba(255, 255, 255, 0.78);
+            border-radius: 999px;
+            color: var(--ink-secondary);
+            background: rgba(255, 255, 255, 0.76);
+            box-shadow: var(--shadow-sm);
+            font-size: 12px;
+            font-weight: 650;
+            transform: translateX(-50%);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+        }
+
+        /*
+         * The first view enters as one coordinated scene. Pure CSS keeps the
+         * complete hero visible when JavaScript or third-party assets fail, while
+         * transform/opacity-only motion avoids layout shifts during first paint.
+         */
+        .hero-content > .eyebrow {
+            animation: hero-rise 520ms var(--ease-out) 40ms both;
+        }
+
+        .hero-title-line:first-child {
+            animation: hero-rise 620ms var(--ease-out) 100ms both;
+        }
+
+        .hero-title-line:last-child {
+            animation: hero-rise 620ms var(--ease-out) 170ms both;
+        }
+
+        .hero-copy {
+            animation: hero-rise 600ms var(--ease-out) 270ms both;
+        }
+
+        .hero-actions {
+            animation: hero-rise 580ms var(--ease-out) 360ms both;
+        }
+
+        .hero-facts {
+            animation: hero-rise 560ms var(--ease-out) 450ms both;
+        }
+
+        .hero-visual {
+            animation: hero-visual-rise 760ms var(--ease-out) 110ms both;
+        }
+
+        .hero-halo {
+            animation: hero-halo-in 820ms var(--ease-out) 150ms both;
+        }
+
+        .hero .window-card {
+            animation: hero-window-rise 680ms var(--ease-out) both;
+        }
+
+        .hero .window-card--left {
+            animation-delay: 210ms;
+        }
+
+        .hero .window-card--right {
+            animation-delay: 280ms;
+        }
+
+        .hero .window-card--center {
+            animation-delay: 350ms;
+        }
+
+        .hero .visual-caption {
+            animation: hero-caption-rise 500ms var(--ease-out) 560ms both;
+        }
+
+        @keyframes hero-rise {
+            from {
+                opacity: 0;
+                transform: translate3d(0, 30px, 0);
+            }
+
+            to {
+                opacity: 1;
+                transform: translate3d(0, 0, 0);
+            }
+        }
+
+        @keyframes hero-visual-rise {
+            from {
+                opacity: 0;
+                transform: translate3d(0, 56px, 0) scale(0.965);
+            }
+
+            to {
+                opacity: 1;
+                transform: translate3d(0, 0, 0) scale(1);
+            }
+        }
+
+        @keyframes hero-halo-in {
+            from {
+                opacity: 0;
+                transform: scale(0.78);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes hero-window-rise {
+            from {
+                opacity: 0;
+                transform: translate3d(0, 46px, 0) var(--hero-window-transform) scale(0.97);
+            }
+
+            to {
+                opacity: 1;
+                transform: translate3d(0, 0, 0) var(--hero-window-transform) scale(1);
+            }
+        }
+
+        @keyframes hero-caption-rise {
+            from {
+                opacity: 0;
+                transform: translate(-50%, 20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translate(-50%, 0);
+            }
+        }
+
+        /* ==================================================================
+         * Value proposition
+         * ================================================================== */
+        .value-section {
+            padding: var(--section-space) 0;
+        }
+
+        .value-header {
+            max-width: 880px;
+            margin: 0 auto 54px;
+            text-align: center;
+        }
+
+        .value-header .eyebrow {
+            justify-content: center;
+        }
+
+        .value-header .section-heading {
+            max-width: none;
+            font-size: clamp(38px, 4.7vw, 58px);
+        }
+
+        .value-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 18px;
+        }
+
+        .value-card {
+            display: flex;
+            min-height: 346px;
+            flex-direction: column;
+            padding: 28px;
+            border: 1px solid var(--line);
+            border-radius: var(--radius-sm);
+            background: var(--panel-soft);
+            box-shadow: var(--shadow-sm);
+            transition: transform 220ms var(--ease-out), border-color 220ms ease, box-shadow 220ms ease;
+        }
+
+        .value-card:hover {
+            border-color: rgba(0, 122, 255, 0.22);
+            box-shadow: 0 20px 52px rgba(30, 36, 50, 0.09);
+            transform: translateY(-4px);
+        }
+
+        .value-topline {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .value-icon {
+            display: inline-flex;
+            width: 44px;
+            height: 44px;
+            align-items: center;
+            justify-content: center;
+            border-radius: 11px;
+            color: var(--blue-strong);
+            background: var(--blue-soft);
+        }
+
+        .value-icon svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .value-kicker {
+            padding-top: 8px;
+            color: var(--ink-muted);
+            font-family: ui-monospace, "SFMono-Regular", Menlo, monospace;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.17em;
+            text-transform: uppercase;
+        }
+
+        .value-card h3 {
+            margin: 34px 0 14px;
+            font-size: 24px;
+            font-weight: 680;
+            letter-spacing: -0.035em;
+            line-height: 1.12;
+        }
+
+        .value-card p {
+            margin: 0;
+            color: var(--ink-secondary);
+            font-size: 15px;
+            line-height: 1.65;
+        }
+
+        .value-proof {
+            align-self: flex-start;
+            margin-top: auto;
+            padding: 7px 10px;
+            border: 1px solid var(--line);
+            border-radius: 999px;
+            color: var(--ink-muted);
+            background: #f7f7f8;
+            font-family: ui-monospace, "SFMono-Regular", Menlo, monospace;
+            font-size: 9px;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+        /* ==================================================================
+         * Product showcase
+         * ================================================================== */
+        .showcase {
+            --showcase-count: 8;
+            position: relative;
+            height: calc(100vh + (var(--showcase-count) - 1) * 72vh);
+        }
+
+        .showcase-sticky {
+            position: sticky;
+            top: 0;
+            display: flex;
+            height: 100vh;
+            min-height: 720px;
+            align-items: center;
+            overflow: clip;
+            padding: 88px 0 26px;
+            isolation: isolate;
+        }
+
+        .showcase-sticky::before {
+            position: absolute;
+            inset: 0;
+            z-index: -2;
+            content: "";
+            background:
+                radial-gradient(circle at 18% 28%, rgba(0, 122, 255, 0.09), transparent 30%),
+                radial-gradient(circle at 82% 74%, rgba(52, 199, 89, 0.06), transparent 28%),
+                linear-gradient(180deg, rgba(255, 255, 255, 0.7), rgba(245, 245, 247, 0.94));
+        }
+
+        .showcase-sticky::after {
+            position: absolute;
+            inset: 0;
+            z-index: -1;
+            pointer-events: none;
+            content: "";
+            opacity: 0.24;
+            background-image: radial-gradient(rgba(29, 29, 31, 0.18) 0.7px, transparent 0.7px);
+            background-size: 18px 18px;
+            mask-image: linear-gradient(to bottom, transparent, black 22%, black 78%, transparent);
+        }
+
+        .showcase-layout {
+            width: var(--shell);
+            margin-inline: auto;
+        }
+
+        .showcase-header {
+            position: relative;
+            min-height: 48px;
+            margin-bottom: 8px;
+            text-align: center;
+        }
+
+        .showcase-header .eyebrow {
+            justify-content: center;
+            margin-bottom: 0;
+        }
+
+        .showcase-section-title {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            overflow: hidden;
+            margin: -1px;
+            padding: 0;
+            border: 0;
+            clip: rect(0 0 0 0);
+            white-space: nowrap;
+        }
+
+        .showcase-progress-copy {
+            position: absolute;
+            top: 0;
+            right: 0;
+            display: flex;
+            min-width: 150px;
+            align-items: flex-end;
+            flex-direction: column;
+            gap: 7px;
+            padding-bottom: 4px;
+            color: var(--ink-muted);
+            font-family: ui-monospace, "SFMono-Regular", Menlo, monospace;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+        .showcase-progress-copy strong {
+            color: var(--ink);
+            font-size: 13px;
+            letter-spacing: 0.08em;
+        }
+
+        .showcase-controls {
+            position: absolute;
+            top: 42px;
+            right: 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .showcase-arrow {
+            display: inline-flex;
+            width: 44px;
+            height: 44px;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--line);
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.74);
+            cursor: pointer;
+            transition: border-color 150ms ease, background-color 150ms ease, transform 150ms ease;
+        }
+
+        .showcase-arrow:hover {
+            border-color: var(--line-strong);
+            background: #fff;
+            transform: translateY(-1px);
+        }
+
+        .showcase-arrow:disabled {
+            opacity: 0.34;
+            cursor: default;
+            transform: none;
+        }
+
+        .showcase-arrow svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        .showcase-stage {
+            position: relative;
+            left: 50%;
+            width: min(1600px, 100vw);
+            height: clamp(520px, 66vh, 720px);
+            overflow: visible;
+            isolation: isolate;
+            transform: translateX(-50%);
+        }
+
+        .showcase-slide {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            display: grid;
+            grid-template-rows: auto minmax(0, 1fr);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 320ms cubic-bezier(0.22, 1, 0.36, 1);
+            will-change: opacity;
+        }
+
+        .showcase-slide.is-active {
+            pointer-events: auto;
+        }
+
+        .showcase-media {
+            grid-row: 2;
+            position: relative;
+            min-height: 0;
+            overflow: visible;
+            padding: 0;
+            transform-origin: center;
+            transition: transform 380ms cubic-bezier(0.22, 1, 0.36, 1);
+            will-change: transform;
+        }
+
+        .showcase-shot {
+            --shot-rotate: 0deg !important;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            z-index: var(--shot-z, 1);
+            width: var(--shot-width, min(64vw, 980px));
+            height: auto;
+            max-height: 96%;
+            object-fit: contain;
+            filter: drop-shadow(0 24px 28px rgba(10, 14, 24, 0.19));
+            transform:
+                translate(-50%, -50%)
+                translate(var(--shot-x, 0), var(--shot-y, 0))
+                scale(var(--shot-scale, 1))
+                rotate(var(--shot-rotate, 0deg));
+            transform-origin: center;
+            cursor: zoom-in;
+            user-select: none;
+        }
+
+        .showcase-shot--panel {
+            width: var(--shot-width, min(24vw, 360px));
+            max-height: 98%;
+            filter: drop-shadow(0 20px 24px rgba(10, 14, 24, 0.16));
+        }
+
+        .showcase-caption {
+            grid-row: 1;
+            display: grid;
+            min-height: 102px;
+            grid-template-columns: 1fr;
+            align-items: center;
+            justify-items: center;
+            gap: 0;
+            /*
+             * Copy belongs to the open page canvas, never to a screenshot card.
+             * Keeping it above the media matches the visual reading order.
+             */
+            padding: 0 24px 24px;
+            color: var(--ink);
+            text-align: center;
+            transition: opacity 160ms ease, transform 160ms ease;
+        }
+
+        .showcase-caption h3 {
+            margin: 0 0 8px;
+            font-size: clamp(30px, 3.2vw, 44px);
+            font-weight: 650;
+            letter-spacing: -0.045em;
+            line-height: 1.06;
+        }
+
+        .showcase-caption p {
+            max-width: 720px;
+            margin: 0;
+            color: var(--ink-secondary);
+            font-size: 15px;
+            line-height: 1.55;
+        }
+
+        .showcase-index {
+            display: none;
+        }
+
+        .showcase-dots {
+            position: relative;
+            z-index: 30;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 8px;
+            /*
+             * Layered screenshots intentionally extend beyond their visual bounds.
+             * Keep navigation below that overhang so the hint stays unobstructed.
+             */
+            margin-top: clamp(44px, 5vh, 72px);
+        }
+
+        .showcase-dot-list {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .showcase-scroll-hint {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--ink-muted);
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .showcase-scroll-hint svg {
+            width: 15px;
+            height: 15px;
+        }
+
+        .showcase-dot {
+            width: 8px;
+            height: 8px;
+            padding: 0;
+            border: 0;
+            border-radius: 50%;
+            background: rgba(29, 29, 31, 0.18);
+            cursor: pointer;
+            transition: width 180ms ease, border-radius 180ms ease, background-color 180ms ease;
+        }
+
+        .showcase-dot[aria-current="true"] {
+            width: 26px;
+            border-radius: 999px;
+            background: var(--blue);
+        }
+
+        /* ==================================================================
+         * Screenshot lightbox
+         * ================================================================== */
+        .image-lightbox {
+            width: 100vw;
+            max-width: none;
+            height: 100dvh;
+            max-height: none;
+            margin: 0;
+            padding: clamp(18px, 4vw, 52px);
+            border: 0;
+            color: #fff;
+            background: transparent;
+            overflow: hidden;
+        }
+
+        .image-lightbox[open] {
+            display: grid;
+            place-items: center;
+        }
+
+        .image-lightbox::backdrop {
+            background: rgba(8, 11, 18, 0.82);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            animation: lightbox-backdrop-in 220ms ease-out both;
+        }
+
+        .image-lightbox-image {
+            display: block;
+            width: auto;
+            max-width: 94vw;
+            height: auto;
+            max-height: 90dvh;
+            object-fit: contain;
+            cursor: zoom-out;
+            filter: drop-shadow(0 30px 70px rgba(0, 0, 0, 0.42));
+            animation: lightbox-image-in 280ms var(--ease-out) both;
+            user-select: none;
+        }
+
+        .image-lightbox-close {
+            position: fixed;
+            top: max(18px, env(safe-area-inset-top));
+            right: max(18px, env(safe-area-inset-right));
+            z-index: 2;
+            display: inline-flex;
+            width: 44px;
+            height: 44px;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            border-radius: 50%;
+            color: #fff;
+            background: rgba(20, 24, 32, 0.72);
+            cursor: pointer;
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            animation: lightbox-close-in 220ms ease-out 80ms both;
+        }
+
+        .image-lightbox-close:hover {
+            background: rgba(36, 42, 54, 0.88);
+        }
+
+        .image-lightbox-close svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .image-lightbox.is-closing::backdrop {
+            animation: lightbox-backdrop-out 200ms ease-in both;
+        }
+
+        .image-lightbox.is-closing .image-lightbox-image {
+            animation: lightbox-image-out 200ms ease-in both;
+        }
+
+        .image-lightbox.is-closing .image-lightbox-close {
+            animation: lightbox-close-out 160ms ease-in both;
+        }
+
+        @keyframes lightbox-image-in {
+            from {
+                opacity: 0;
+                transform: translate3d(0, 28px, 0) scale(0.94);
+            }
+
+            to {
+                opacity: 1;
+                transform: translate3d(0, 0, 0) scale(1);
+            }
+        }
+
+        @keyframes lightbox-image-out {
+            from {
+                opacity: 1;
+                transform: translate3d(0, 0, 0) scale(1);
+            }
+
+            to {
+                opacity: 0;
+                transform: translate3d(0, 18px, 0) scale(0.965);
+            }
+        }
+
+        @keyframes lightbox-backdrop-in {
+            from {
+                background: rgba(8, 11, 18, 0);
+                backdrop-filter: blur(0);
+            }
+
+            to {
+                background: rgba(8, 11, 18, 0.82);
+                backdrop-filter: blur(18px);
+            }
+        }
+
+        @keyframes lightbox-backdrop-out {
+            from {
+                background: rgba(8, 11, 18, 0.82);
+                backdrop-filter: blur(18px);
+            }
+
+            to {
+                background: rgba(8, 11, 18, 0);
+                backdrop-filter: blur(0);
+            }
+        }
+
+        @keyframes lightbox-close-in {
+            from {
+                opacity: 0;
+                transform: scale(0.86);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes lightbox-close-out {
+            to {
+                opacity: 0;
+                transform: scale(0.86);
+            }
+        }
+
+        /* ==================================================================
+         * Outcome cards
+         * ================================================================== */
+        .outcomes {
+            padding: var(--section-space) 0;
+        }
+
+        .outcome-header {
+            margin-bottom: 50px;
+            text-align: center;
+        }
+
+        .outcome-header .eyebrow {
+            justify-content: center;
+        }
+
+        .outcome-header .section-heading {
+            max-width: none;
+            font-size: clamp(38px, 4.7vw, 58px);
+        }
+
+        .outcome-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 18px;
+        }
+
+        .outcome-card {
+            min-height: 250px;
+            padding: 30px;
+            border: 1px solid var(--line);
+            border-radius: var(--radius-sm);
+            background: rgba(255, 255, 255, 0.78);
+        }
+
+        .outcome-mark {
+            margin-bottom: 30px;
+            color: var(--blue);
+            font-size: 28px;
+            font-weight: 650;
+            line-height: 1;
+        }
+
+        .outcome-card h3 {
+            margin: 0 0 12px;
+            font-size: 22px;
+            font-weight: 680;
+            letter-spacing: -0.025em;
+        }
+
+        .outcome-card p {
+            margin: 0;
+            color: var(--ink-secondary);
+            font-size: 15px;
+            line-height: 1.7;
+        }
+
+        /* ==================================================================
+         * Native craftsmanship
+         * ================================================================== */
+        .native {
+            padding: var(--section-space) 0;
+            text-align: center;
+        }
+
+        .native-card {
+            position: relative;
+            overflow: hidden;
+            padding: clamp(62px, 8vw, 96px) 32px;
+            border: 1px solid var(--line);
+            border-radius: var(--radius-lg);
+            background:
+                radial-gradient(circle at 50% 0%, rgba(0, 122, 255, 0.12), transparent 42%),
+                rgba(255, 255, 255, 0.78);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .native-icon {
+            width: 104px;
+            height: 104px;
+            margin: 0 auto 34px;
+            border-radius: 24px;
+            box-shadow: 0 20px 50px rgba(22, 30, 46, 0.2);
+        }
+
+        .native .eyebrow {
+            justify-content: center;
+        }
+
+        .native h2 {
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", sans-serif;
+            font-size: clamp(48px, 6vw, 74px);
+            font-weight: 650;
+            letter-spacing: -0.055em;
+            line-height: 1;
+        }
+
+        .native p {
+            max-width: 650px;
+            margin: 22px auto 0;
+            color: var(--ink-secondary);
+            font-size: 18px;
+            line-height: 1.7;
+        }
+
+        /* ==================================================================
+         * FAQ and final CTA
+         * ================================================================== */
+        .faq {
+            padding: var(--section-space) 0;
+        }
+
+        .faq-layout {
+            display: grid;
+            grid-template-columns: minmax(250px, 0.75fr) minmax(0, 1.25fr);
+            gap: clamp(54px, 8vw, 110px);
+            align-items: start;
+        }
+
+        .faq .section-heading {
+            font-size: clamp(38px, 4.6vw, 56px);
+        }
+
+        .faq-list {
+            border-top: 1px solid var(--line);
+        }
+
+        .faq-item {
+            border-bottom: 1px solid var(--line);
+        }
+
+        .faq-item summary {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 22px;
+            padding: 24px 2px;
+            cursor: pointer;
+            font-size: 17px;
+            font-weight: 650;
+            list-style: none;
+        }
+
+        .faq-item summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .faq-item summary::after {
+            flex: 0 0 auto;
+            color: var(--ink-muted);
+            content: "+";
+            font-size: 22px;
+            font-weight: 400;
+            transition: transform 180ms ease;
+        }
+
+        .faq-item[open] summary::after {
+            transform: rotate(45deg);
+        }
+
+        .faq-item p {
+            margin: -4px 0 24px;
+            padding-right: 40px;
+            color: var(--ink-secondary);
+            font-size: 15px;
+            line-height: 1.7;
+        }
+
+        .final-cta {
+            padding: 30px 0 var(--section-space);
+        }
+
+        .final-panel {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            align-items: center;
+            gap: 44px;
+            padding: clamp(42px, 6vw, 72px);
+            border-radius: var(--radius-lg);
+            color: #fff;
+            background:
+                radial-gradient(circle at 78% 10%, rgba(0, 122, 255, 0.5), transparent 34%),
+                #11151d;
+            box-shadow: 0 34px 80px rgba(20, 25, 36, 0.22);
+        }
+
+        .final-panel h2 {
+            margin: 0;
+            font-size: clamp(38px, 4.3vw, 60px);
+            font-weight: 650;
+            letter-spacing: -0.05em;
+            line-height: 1.02;
+            white-space: nowrap;
+        }
+
+        .final-panel p {
+            max-width: 620px;
+            margin: 20px 0 0;
+            color: rgba(255, 255, 255, 0.68);
+            font-size: 17px;
+            line-height: 1.65;
+        }
+
+        .final-panel .app-store-badge {
+            flex: 0 0 auto;
+        }
+
+        /* ==================================================================
+         * Footer
+         * ================================================================== */
+        .footer {
+            padding: 0 0 34px;
+        }
+
+        .footer-main {
+            display: grid;
+            grid-template-columns: 1.5fr repeat(2, 0.7fr);
+            gap: 54px;
+            padding: 54px 0;
+            border-top: 1px solid var(--line);
+        }
+
+        .footer-brand {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 20px;
+            font-weight: 750;
+        }
+
+        .footer-brand img {
+            width: 38px;
+            height: 38px;
+            border-radius: 10px;
+        }
+
+        .footer-copy {
+            max-width: 430px;
+            margin: 18px 0 0;
+            color: var(--ink-secondary);
+            font-size: 14px;
+            line-height: 1.65;
+        }
+
+        .footer-heading {
+            margin-bottom: 16px;
+            color: var(--ink);
+            font-size: 12px;
+            font-weight: 750;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            color: var(--ink-secondary);
+            font-size: 14px;
+        }
+
+        .footer-links a:hover {
+            color: var(--ink);
+        }
+
+        .footer-bottom {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            padding-top: 24px;
+            border-top: 1px solid var(--line);
+            color: var(--ink-muted);
+            font-size: 12px;
+        }
+
+        .footer-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        /* Progressive enhancement: content is visible unless the observer is
+           successfully attached, preventing a blank first paint on slow loads. */
+        .is-reveal-pending {
+            opacity: 0;
+            transform: translateY(24px);
+        }
+
+        .is-reveal-pending.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 620ms var(--ease-out), transform 620ms var(--ease-out);
+        }
+
+        /* ==================================================================
+         * Responsive layout
+         * ================================================================== */
+        @media (max-width: 980px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero {
+                min-height: 0;
+                padding-bottom: 96px;
+            }
+
+            .hero-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .hero-copy {
+                max-width: 660px;
+            }
+
+            .hero-visual {
+                width: min(780px, 100%);
+                min-height: 500px;
+                overflow: clip;
+                margin: 4px auto 0;
+            }
+
+            .window-card--left {
+                left: 1%;
+                width: 64%;
+            }
+
+            .window-card--center {
+                left: 14%;
+                width: 72%;
+            }
+
+            .window-card--right {
+                right: 1%;
+                width: 60%;
+            }
+
+            .visual-caption {
+                width: max-content;
+                max-width: calc(100% - 24px);
+                min-width: 0;
+                text-align: center;
+            }
+
+            .value-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .value-card {
+                min-height: 290px;
+            }
+
+            .showcase {
+                height: auto;
+                padding: var(--section-space) 0;
+            }
+
+            .showcase-sticky {
+                position: relative;
+                top: auto;
+                display: block;
+                height: auto;
+                min-height: 0;
+                overflow: visible;
+                padding: 0;
+            }
+
+            .showcase-sticky::before,
+            .showcase-sticky::after {
+                display: none;
+            }
+
+            .showcase-progress-copy,
+            .showcase-controls,
+            .showcase-dots {
+                display: none;
+            }
+
+            .showcase-stage {
+                left: auto;
+                display: flex;
+                width: 100%;
+                height: 560px;
+                gap: 16px;
+                overflow-x: auto;
+                overflow-y: visible;
+                padding-bottom: 10px;
+                border: 0;
+                border-radius: 0;
+                background: transparent;
+                box-shadow: none;
+                scroll-padding-inline: 0;
+                scroll-snap-type: x mandatory;
+                scrollbar-width: none;
+                overscroll-behavior-inline: contain;
+                transform: none;
+            }
+
+            .showcase-stage::-webkit-scrollbar {
+                display: none;
+            }
+
+            .showcase-slide {
+                position: relative;
+                inset: auto;
+                flex: 0 0 min(780px, calc(100vw - 64px));
+                height: 100%;
+                overflow: visible;
+                opacity: 1 !important;
+                pointer-events: auto;
+                transform: none !important;
+                scroll-snap-align: center;
+                scroll-snap-stop: always;
+                will-change: auto;
+            }
+
+            .showcase-slide .showcase-caption {
+                opacity: 1 !important;
+                transform: none !important;
+            }
+
+            /*
+             * Tablet compositions use viewport-relative offsets because the
+             * desktop pixel caps would otherwise push layered shots off-canvas.
+             * Inline custom properties describe desktop art direction; these
+             * responsive values intentionally take precedence.
+             */
+            .showcase-slide[data-shot-layout="pair"] .showcase-shot:nth-child(1) {
+                --shot-width: min(44vw, 430px) !important;
+                --shot-x: -22vw !important;
+            }
+
+            .showcase-slide[data-shot-layout="pair"] .showcase-shot:nth-child(2) {
+                --shot-width: min(42vw, 410px) !important;
+                --shot-x: 22vw !important;
+            }
+
+            .showcase-slide[data-shot-layout="stack-3"] .showcase-shot:nth-child(1) {
+                --shot-width: min(29.5vw, 290px) !important;
+                --shot-x: -30.5vw !important;
+            }
+
+            .showcase-slide[data-shot-layout="stack-3"] .showcase-shot:nth-child(2) {
+                --shot-width: min(29.5vw, 290px) !important;
+                --shot-x: 0 !important;
+            }
+
+            .showcase-slide[data-shot-layout="stack-3"] .showcase-shot:nth-child(3) {
+                --shot-width: min(27.5vw, 270px) !important;
+                --shot-x: 30.5vw !important;
+            }
+
+            .showcase-slide[data-shot-layout="main-panels"] .showcase-shot:nth-child(1) {
+                --shot-width: min(44vw, 430px) !important;
+                --shot-x: -20vw !important;
+            }
+
+            .showcase-slide[data-shot-layout="main-panels"] .showcase-shot:nth-child(2) {
+                --shot-width: min(18vw, 175px) !important;
+                --shot-x: 14vw !important;
+            }
+
+            .showcase-slide[data-shot-layout="main-panels"] .showcase-shot:nth-child(3) {
+                --shot-width: min(18vw, 175px) !important;
+                --shot-x: 33vw !important;
+            }
+
+            .outcome-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .faq-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .final-panel {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 720px) {
+            :root {
+                --shell: min(100% - 36px, 1120px);
+                --section-space: 84px;
+            }
+
+            .nav {
+                min-height: 68px;
+            }
+
+            .brand {
+                font-size: 19px;
+            }
+
+            .brand img {
+                width: 36px;
+                height: 36px;
+                border-radius: 9px;
+            }
+
+            .nav-store {
+                min-height: 36px;
+                padding-inline: 13px;
+                font-size: 12px;
+            }
+
+            .hero {
+                padding: 48px 0 74px;
+            }
+
+            .hero-grid {
+                gap: 18px;
+            }
+
+            .hero h1 {
+                font-size: clamp(44px, 13vw, 58px);
+            }
+
+            .hero-copy {
+                margin-top: 22px;
+                font-size: 17px;
+                line-height: 1.58;
+            }
+
+            .hero-actions {
+                align-items: flex-start;
+                flex-direction: column;
+                gap: 14px;
+                margin-top: 26px;
+            }
+
+            .app-store-badge,
+            .app-store-badge img {
+                height: 48px;
+            }
+
+            .hero-facts {
+                gap: 8px;
+                margin-top: 22px;
+            }
+
+            .hero-facts li {
+                padding: 6px 9px;
+                font-size: 11px;
+            }
+
+            .hero-visual {
+                min-height: clamp(300px, 82vw, 360px);
+                margin-top: 14px;
+            }
+
+            .window-card {
+                border-radius: 11px;
+            }
+
+            .window-card--left {
+                top: 82px;
+                left: 2%;
+                width: 62%;
+            }
+
+            .window-card--center {
+                top: 42px;
+                left: 8%;
+                width: 84%;
+            }
+
+            .window-card--right {
+                top: 92px;
+                right: 2%;
+                width: 61%;
+            }
+
+            .visual-caption {
+                bottom: 4px;
+                padding: 7px 10px;
+                font-size: 10px;
+                line-height: 1.35;
+            }
+
+            .showcase-header {
+                min-height: 38px;
+                margin-bottom: 12px;
+            }
+
+            .showcase-stage {
+                height: 430px;
+                gap: 12px;
+            }
+
+            .showcase-slide {
+                flex-basis: calc(100vw - 36px);
+            }
+
+            .showcase-media {
+                padding: 0;
+            }
+
+            .showcase-shot {
+                max-height: 90%;
+            }
+
+            .showcase-shot--panel {
+                width: min(44vw, 260px);
+            }
+
+            .showcase-slide[data-shot-layout="pair"] .showcase-shot:nth-child(1) {
+                --shot-width: 44vw !important;
+                --shot-x: -22.75vw !important;
+            }
+
+            .showcase-slide[data-shot-layout="pair"] .showcase-shot:nth-child(2) {
+                --shot-width: 42vw !important;
+                --shot-x: 22.75vw !important;
+            }
+
+            .showcase-slide[data-shot-layout="stack-3"] .showcase-shot:nth-child(1) {
+                --shot-width: 28vw !important;
+                --shot-x: -30.5vw !important;
+            }
+
+            .showcase-slide[data-shot-layout="stack-3"] .showcase-shot:nth-child(2) {
+                --shot-width: 28vw !important;
+                --shot-x: 0 !important;
+            }
+
+            .showcase-slide[data-shot-layout="stack-3"] .showcase-shot:nth-child(3) {
+                --shot-width: 26vw !important;
+                --shot-x: 30.5vw !important;
+            }
+
+            .showcase-slide[data-shot-layout="main-panels"] .showcase-shot:nth-child(1) {
+                --shot-width: 41vw !important;
+                --shot-x: -23vw !important;
+            }
+
+            .showcase-slide[data-shot-layout="main-panels"] .showcase-shot:nth-child(2) {
+                --shot-width: 21vw !important;
+                --shot-x: 10vw !important;
+            }
+
+            .showcase-slide[data-shot-layout="main-panels"] .showcase-shot:nth-child(3) {
+                --shot-width: 21vw !important;
+                --shot-x: 33.5vw !important;
+            }
+
+            .showcase-caption {
+                min-height: 76px;
+                padding: 0 10px 16px;
+            }
+
+            .showcase-caption p {
+                display: none;
+            }
+
+            .showcase-caption h3 {
+                margin-bottom: 0;
+                font-size: 26px;
+            }
+
+            .section-heading,
+            .value-header .section-heading,
+            .outcome-header .section-heading,
+            .faq .section-heading {
+                font-size: clamp(34px, 10vw, 44px);
+            }
+
+            .value-header,
+            .outcome-header {
+                margin-bottom: 34px;
+            }
+
+            .value-card,
+            .outcome-card {
+                min-height: 0;
+                padding: 24px;
+            }
+
+            .value-card h3 {
+                margin-top: 26px;
+            }
+
+            .value-proof {
+                margin-top: 28px;
+            }
+
+            .native-card {
+                padding-inline: 22px;
+                border-radius: 20px;
+            }
+
+            .native-icon {
+                width: 82px;
+                height: 82px;
+                margin-bottom: 26px;
+                border-radius: 19px;
+            }
+
+            .native h2 {
+                font-size: clamp(40px, 12vw, 52px);
+            }
+
+            .native p {
+                font-size: 16px;
+            }
+
+            .faq-item p {
+                padding-right: 10px;
+            }
+
+            .final-panel {
+                padding: 40px 26px;
+                border-radius: 20px;
+            }
+
+            .final-panel h2 {
+                white-space: normal;
+            }
+
+            .footer-main {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .footer-main > :first-child {
+                grid-column: 1 / -1;
+            }
+
+            .footer-bottom {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 440px) {
+            :root {
+                --shell: min(100% - 28px, 1120px);
+            }
+
+            .nav-store {
+                width: 38px;
+                padding: 0;
+                overflow: hidden;
+                font-size: 0;
+            }
+
+            .nav-store::before {
+                content: "↗";
+                font-size: 15px;
+            }
+
+            .hero-facts {
+                gap: 7px;
+            }
+
+            .hero-visual {
+                min-height: 286px;
+            }
+
+            .window-card--left {
+                top: 76px;
+            }
+
+            .window-card--center {
+                top: 38px;
+            }
+
+            .window-card--right {
+                top: 84px;
+            }
+
+            .visual-caption {
+                max-width: calc(100% - 16px);
+                font-size: 9px;
+            }
+
+            .showcase-stage {
+                height: 400px;
+            }
+
+            .showcase-caption h3 {
+                font-size: 23px;
+            }
+
+            .value-card,
+            .outcome-card {
+                padding: 24px;
+            }
+
+            .footer-main {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-main > :first-child {
+                grid-column: auto;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+
+            .is-reveal-pending {
+                opacity: 1;
+                transform: none;
+            }
+
+            .hero-content > .eyebrow,
+            .hero-title-line,
+            .hero-copy,
+            .hero-actions,
+            .hero-facts,
+            .hero-visual,
+            .hero-halo,
+            .hero .window-card,
+            .hero .visual-caption {
+                animation: none !important;
+                opacity: 1;
+            }
+
+            .image-lightbox::backdrop,
+            .image-lightbox-image,
+            .image-lightbox-close,
+            .image-lightbox.is-closing::backdrop,
+            .image-lightbox.is-closing .image-lightbox-image,
+            .image-lightbox.is-closing .image-lightbox-close {
+                animation: none !important;
+            }
+
+            .showcase {
+                height: auto;
+                padding: var(--section-space) 0;
+            }
+
+            .showcase-sticky {
+                position: relative;
+                top: auto;
+                display: block;
+                height: auto;
+                min-height: 0;
+                overflow: visible;
+                padding: 0;
+            }
+
+            .showcase-sticky::before,
+            .showcase-sticky::after,
+            .showcase-progress-copy,
+            .showcase-controls,
+            .showcase-dots {
+                display: none;
+            }
+
+            .showcase-stage {
+                left: auto;
+                display: grid;
+                width: 100%;
+                height: auto;
+                gap: 20px;
+                overflow: visible;
+                border: 0;
+                border-radius: 0;
+                background: transparent;
+                box-shadow: none;
+                transform: none;
+            }
+
+            .showcase-slide {
+                position: relative;
+                inset: auto;
+                min-height: 560px;
+                overflow: visible;
+                opacity: 1 !important;
+                pointer-events: auto;
+                transform: none !important;
+                will-change: auto;
+            }
+
+            .showcase-slide .showcase-caption {
+                opacity: 1 !important;
+                transform: none !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-header" id="site-header">
+        <nav class="nav shell" aria-label="Primary navigation">
+            <a class="brand" href="#top" aria-label="Starcat home">
+                <img src="./starcat-logo.png" alt="" width="42" height="42">
+                <span>Starcat</span>
+            </a>
+            <div class="nav-links">
+                <a class="nav-link" href="#why">Why Starcat</a>
+                <a class="nav-link" href="#inside">Features</a>
+                <a class="nav-link" href="https://starcat.mintlify.app" target="_blank" rel="noopener noreferrer">Docs</a>
+                <a class="nav-link" href="./support.html">Support</a>
+            </div>
+            <a
+                class="nav-store"
+                href="https://apps.apple.com/cn/app/starcat-for-github/id6788809803?mt=12"
+                target="_blank"
+                rel="noopener noreferrer"
+            >Mac App Store</a>
+        </nav>
+    </header>
+
+    <main id="top">
+        <section class="hero">
+            <div class="hero-grid shell">
+                <div class="hero-content">
+                    <p class="eyebrow">GitHub stars, organized</p>
+                    <h1>
+                        <span class="hero-title-line">Your Stars,</span>
+                        <span class="accent hero-title-line">finally useful.</span>
+                    </h1>
+                    <p class="hero-copy">
+                        Turn every GitHub repo you save into a searchable knowledge base.
+                        Organize it, understand it with AI, and find it again in seconds.
+                    </p>
+                    <div class="hero-actions">
+                        <a
+                            class="app-store-badge"
+                            href="https://apps.apple.com/cn/app/starcat-for-github/id6788809803?mt=12"
+                            data-appstore-deeplink="macappstore://itunes.apple.com/app/id6788809803?mt=12"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label="Download Starcat for GitHub on the Mac App Store"
+                        >
+                            <img
+                                src="https://tools.applemediaservices.com/api/badges/download-on-the-mac-app-store/black/en-us?size=250x83"
+                                alt="Download on the Mac App Store"
+                                width="204"
+                                height="54"
+                            >
+                        </a>
+                        <div class="hero-note">
+                            <strong>Free to start</strong>
+                            Pro available through Apple In-App Purchase
+                        </div>
+                    </div>
+                    <ul class="hero-facts" aria-label="Product facts">
+                        <li>macOS 15+</li>
+                        <li>Local-first</li>
+                        <li>BYOK AI</li>
+                        <li>Native SwiftUI</li>
+                    </ul>
+                </div>
+
+                <div class="hero-visual" aria-label="Starcat app screens showing search, AI summaries, and AI chat">
+                    <div class="hero-halo" aria-hidden="true"></div>
+                    <figure class="window-card window-card--left">
+                        <img src="./index2-assets/smart-collections.webp" alt="Starcat smart collections" width="2880" height="1630">
+                    </figure>
+                    <figure class="window-card window-card--center">
+                        <img src="./index2-assets/library.webp" alt="Starcat main library window" width="2880" height="1630">
+                    </figure>
+                    <figure class="window-card window-card--right">
+                        <img src="./index2-assets/rag-workspace.webp" alt="Starcat knowledge base question and answer workspace" width="2880" height="1800">
+                    </figure>
+                    <div class="visual-caption">One native workspace for every repo you save</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="value-section" id="why">
+            <div class="shell">
+                <header class="value-header" data-reveal>
+                    <p class="eyebrow">Why Starcat</p>
+                    <h2 class="section-heading">It’s private. It’s fast. It understands.</h2>
+                </header>
+
+                <div class="value-grid">
+                    <article class="value-card" data-reveal>
+                        <div class="value-topline">
+                            <span class="value-icon" aria-hidden="true"><i data-lucide="lock-keyhole"></i></span>
+                            <span class="value-kicker">Privacy</span>
+                        </div>
+                        <h3>Your library stays on your Mac</h3>
+                        <p>
+                            Tags, notes, status, and repo cache live in local SQLite.
+                            GitHub tokens and AI keys stay protected by macOS Keychain.
+                        </p>
+                        <span class="value-proof">Local-first by design</span>
+                    </article>
+
+                    <article class="value-card" data-reveal>
+                        <div class="value-topline">
+                            <span class="value-icon" aria-hidden="true"><i data-lucide="search"></i></span>
+                            <span class="value-kicker">Recall</span>
+                        </div>
+                        <h3>Find the repo you almost forgot</h3>
+                        <p>
+                            Search names, descriptions, topics, tags, and private notes.
+                            Combine filters and smart collections without reopening GitHub tabs.
+                        </p>
+                        <span class="value-proof">FTS5 local search</span>
+                    </article>
+
+                    <article class="value-card" data-reveal>
+                        <div class="value-topline">
+                            <span class="value-icon" aria-hidden="true"><i data-lucide="sparkles"></i></span>
+                            <span class="value-kicker">Understanding</span>
+                        </div>
+                        <h3>Ask first. Read deeper when it matters.</h3>
+                        <p>
+                            Generate structured summaries, translate README files, chat with
+                            repository context, and explore code relationships with your AI provider.
+                        </p>
+                        <span class="value-proof">Your model, your key</span>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="showcase" id="inside" aria-labelledby="showcase-title">
+            <div class="showcase-sticky" id="showcase-sticky" tabindex="0">
+                <div class="showcase-layout">
+                    <header class="showcase-header" data-reveal>
+                        <div>
+                            <p class="eyebrow">What’s inside</p>
+                            <h2 class="showcase-section-title" id="showcase-title">Explore Starcat one workflow at a time</h2>
+                        </div>
+                        <div>
+                            <div class="showcase-progress-copy" aria-live="polite">
+                                <span>Product journey</span>
+                                <strong id="showcase-status">01 / 08</strong>
+                            </div>
+                            <div class="showcase-controls" aria-label="Screenshot controls">
+                                <button class="showcase-arrow" type="button" data-showcase-previous aria-label="Previous screenshot">
+                                    <i data-lucide="arrow-left" aria-hidden="true"></i>
+                                </button>
+                                <button class="showcase-arrow" type="button" data-showcase-next aria-label="Next screenshot">
+                                    <i data-lucide="arrow-right" aria-hidden="true"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </header>
+
+                    <div class="showcase-stage" id="showcase-stage" aria-label="Starcat product journey">
+                        <article class="showcase-slide is-active" data-shot-layout="stack-3" aria-hidden="false">
+                            <div class="showcase-media">
+                                <img class="showcase-shot" style="--shot-width: min(30vw, 440px); --shot-x: max(-460px, -32vw); --shot-y: 2%; --shot-z: 3;" src="./index2-assets/library.webp" alt="Starcat main library with repository list and detail view" width="2880" height="1630" draggable="false">
+                                <img class="showcase-shot" style="--shot-width: min(30vw, 440px); --shot-x: 0; --shot-y: -6%; --shot-rotate: 2deg; --shot-z: 2;" src="./index2-assets/smart-collections.webp" alt="Starcat smart collections organizing a large GitHub library" width="2880" height="1630" loading="lazy" decoding="async" draggable="false">
+                                <img class="showcase-shot" style="--shot-width: min(30vw, 440px); --shot-x: min(460px, 32vw); --shot-y: 22%; --shot-rotate: 1deg; --shot-z: 4;" src="./index2-assets/global-search.webp" alt="Starcat global search across repositories and metadata" width="2880" height="1630" loading="lazy" decoding="async" draggable="false">
+                            </div>
+                            <div class="showcase-caption">
+                                <div>
+                                    <h3>Your entire GitHub library</h3>
+                                    <p>Browse the full library, build reusable collections, and search every repository from one native workspace.</p>
+                                </div>
+                                <span class="showcase-index">01 / 08</span>
+                            </div>
+                        </article>
+
+                        <article class="showcase-slide" data-shot-layout="stack-3" aria-hidden="true">
+                            <div class="showcase-media">
+                                <img class="showcase-shot" style="--shot-width: min(30vw, 440px); --shot-x: max(-460px, -32vw); --shot-y: 3%; --shot-z: 3;" src="./index2-assets/personal-notes.webp" alt="Starcat private notes for a saved repository" width="2880" height="1630" loading="lazy" decoding="async" draggable="false">
+                                <img class="showcase-shot" style="--shot-width: min(30vw, 440px); --shot-x: 0; --shot-y: -10%; --shot-rotate: 2deg; --shot-z: 2;" src="./index2-assets/status-panel.webp" alt="Starcat repository status management panel" width="2880" height="1630" loading="lazy" decoding="async" draggable="false">
+                                <img class="showcase-shot" style="--shot-width: min(30vw, 440px); --shot-x: min(460px, 32vw); --shot-y: 21%; --shot-rotate: -2deg; --shot-z: 4;" src="./index2-assets/release.webp" alt="Starcat repository release timeline" width="2880" height="1630" loading="lazy" decoding="async" draggable="false">
+                            </div>
+                            <div class="showcase-caption">
+                                <div>
+                                    <h3>Remember why every Star mattered</h3>
+                                    <p>Private notes, workflow status, and release history preserve the context behind every saved repository.</p>
+                                </div>
+                                <span class="showcase-index">02 / 08</span>
+                            </div>
+                        </article>
+
+                        <article class="showcase-slide" data-shot-layout="pair" aria-hidden="true">
+                            <div class="showcase-media">
+                                <img class="showcase-shot" style="--shot-width: min(44vw, 680px); --shot-x: max(-340px, -22.3vw); --shot-y: 0%; --shot-rotate: -1deg; --shot-z: 2;" src="./index2-assets/explore.webp" alt="Starcat Explore view for discovering repositories" width="2880" height="1630" loading="lazy" decoding="async" draggable="false">
+                                <img class="showcase-shot" style="--shot-width: min(42vw, 650px); --shot-x: min(350px, 22.3vw); --shot-y: 6%; --shot-rotate: 1deg; --shot-z: 3;" src="./index2-assets/share-card.webp" alt="Starcat repository sharing card editor and preview" width="2880" height="1630" loading="lazy" decoding="async" draggable="false">
+                            </div>
+                            <div class="showcase-caption">
+                                <div>
+                                    <h3>Discover, evaluate, and share</h3>
+                                    <p>Explore useful projects, inspect them in context, and turn the best finds into polished share cards.</p>
+                                </div>
+                                <span class="showcase-index">03 / 08</span>
+                            </div>
+                        </article>
+
+                        <article class="showcase-slide" data-shot-layout="stack-3" aria-hidden="true">
+                            <div class="showcase-media">
+                                <img class="showcase-shot" style="--shot-width: min(30vw, 440px); --shot-x: max(-460px, -32vw); --shot-y: -4%; --shot-rotate: -1deg; --shot-z: 2;" src="./index2-assets/ai-summary.webp" alt="Starcat AI-generated repository summary" width="2880" height="1630" loading="lazy" decoding="async" draggable="false">
+                                <img class="showcase-shot" style="--shot-width: min(30vw, 440px); --shot-x: 0; --shot-y: -2%; --shot-rotate: 1deg; --shot-z: 3;" src="./index2-assets/ai-chat.webp" alt="Starcat repository-aware AI conversation" width="2880" height="1630" loading="lazy" decoding="async" draggable="false">
+                                <img class="showcase-shot" style="--shot-width: min(30vw, 440px); --shot-x: min(460px, 32vw); --shot-y: 22%; --shot-rotate: -1deg; --shot-z: 4;" src="./index2-assets/ai-usage.webp" alt="Starcat local AI usage dashboard" width="2880" height="1800" loading="lazy" decoding="async" draggable="false">
+                            </div>
+                            <div class="showcase-caption">
+                                <div>
+                                    <h3>Use AI without losing control</h3>
+                                    <p>Summarize repositories, continue with contextual chat, and understand local model usage and cost.</p>
+                                </div>
+                                <span class="showcase-index">04 / 08</span>
+                            </div>
+                        </article>
+
+                        <article class="showcase-slide" data-shot-layout="pair" aria-hidden="true">
+                            <div class="showcase-media">
+                                <img class="showcase-shot" style="--shot-width: min(44vw, 680px); --shot-x: max(-340px, -22.3vw); --shot-y: 0%; --shot-rotate: -1deg; --shot-z: 2;" src="./index2-assets/rag-workspace.webp" alt="Starcat Knowledge Q and A workspace with grounded answer and citations" width="2880" height="1800" loading="lazy" decoding="async" draggable="false">
+                                <img class="showcase-shot" style="--shot-width: min(42vw, 650px); --shot-x: min(350px, 22.3vw); --shot-y: 5%; --shot-rotate: 1deg; --shot-z: 3;" src="./index2-assets/rag-scope.webp" alt="Starcat repository selection for a scoped RAG question" width="2880" height="1800" loading="lazy" decoding="async" draggable="false">
+                            </div>
+                            <div class="showcase-caption">
+                                <div>
+                                    <h3>Ask with the right scope</h3>
+                                    <p>Turn saved repositories into grounded answers and decide exactly which sources may contribute evidence.</p>
+                                </div>
+                                <span class="showcase-index">05 / 08</span>
+                            </div>
+                        </article>
+
+                        <article class="showcase-slide" data-shot-layout="single" aria-hidden="true">
+                            <div class="showcase-media">
+                                <img class="showcase-shot" style="--shot-width: min(88vw, 1380px); --shot-y: 2%; --shot-z: 3;" src="./index2-assets/rag-inspector.webp" alt="Starcat RAG inspector showing citations, query plan, index health, and local debug traces" width="2880" height="1800" loading="lazy" decoding="async" draggable="false">
+                            </div>
+                            <div class="showcase-caption">
+                                <div>
+                                    <h3>Trace every answer to evidence</h3>
+                                    <p>Citations, knowledge metadata, and the query plan keep every response explainable and reviewable.</p>
+                                </div>
+                                <span class="showcase-index">06 / 08</span>
+                            </div>
+                        </article>
+
+                        <article class="showcase-slide" data-shot-layout="main-panels" aria-hidden="true">
+                            <div class="showcase-media">
+                                <img class="showcase-shot" style="--shot-width: min(44vw, 680px); --shot-x: max(-290px, -20vw); --shot-y: 0%; --shot-rotate: -1deg; --shot-z: 2;" src="./index2-assets/knowledge-base.webp" alt="Starcat knowledge base repository and chunk management window" width="2880" height="1800" loading="lazy" decoding="async" draggable="false">
+                                <img class="showcase-shot showcase-shot--panel" style="--shot-width: min(18vw, 270px); --shot-x: min(205px, 13vw); --shot-y: 3%; --shot-rotate: 1deg; --shot-z: 3;" src="./index2-assets/rag-index.webp" alt="Starcat RAG index inspector" width="654" height="1466" loading="lazy" decoding="async" draggable="false">
+                                <img class="showcase-shot showcase-shot--panel" style="--shot-width: min(18vw, 270px); --shot-x: min(495px, 33vw); --shot-y: 17%; --shot-rotate: -1deg; --shot-z: 4;" src="./index2-assets/rag-debug.webp" alt="Starcat local RAG debug trace inspector" width="654" height="1466" loading="lazy" decoding="async" draggable="false">
+                            </div>
+                            <div class="showcase-caption">
+                                <div>
+                                    <h3>Keep retrieval healthy</h3>
+                                    <p>Review repository coverage, index state, and local debug traces from one transparent control surface.</p>
+                                </div>
+                                <span class="showcase-index">07 / 08</span>
+                            </div>
+                        </article>
+
+                        <article class="showcase-slide" data-shot-layout="pair" aria-hidden="true">
+                            <div class="showcase-media">
+                                <img class="showcase-shot" style="--shot-width: min(44vw, 680px); --shot-x: max(-340px, -22.3vw); --shot-y: -2%; --shot-rotate: -1deg; --shot-z: 2;" src="./index2-assets/codebase.webp" alt="Codebase Memory dependency and architecture visualization opened from Starcat" width="2880" height="1800" loading="lazy" decoding="async" draggable="false">
+                                <img class="showcase-shot" style="--shot-width: min(42vw, 650px); --shot-x: min(350px, 22.3vw); --shot-y: 4%; --shot-rotate: 1deg; --shot-z: 3;" src="./index2-assets/codeflow.webp" alt="CodeFlow architecture visualization opened from Starcat" width="2880" height="1800" loading="lazy" decoding="async" draggable="false">
+                            </div>
+                            <div class="showcase-caption">
+                                <div>
+                                    <h3>Understand code as a system</h3>
+                                    <p>Move from saved repository to dependency graph, architecture signals, and code relationships.</p>
+                                </div>
+                                <span class="showcase-index">08 / 08</span>
+                            </div>
+                        </article>
+                    </div>
+
+                    <div class="showcase-dots">
+                        <div class="showcase-dot-list" aria-label="Choose screenshot">
+                            <button class="showcase-dot" type="button" aria-label="Show library, collections, and search" aria-current="true" data-showcase-index="0"></button>
+                            <button class="showcase-dot" type="button" aria-label="Show notes, status, and releases" aria-current="false" data-showcase-index="1"></button>
+                            <button class="showcase-dot" type="button" aria-label="Show discovery and sharing" aria-current="false" data-showcase-index="2"></button>
+                            <button class="showcase-dot" type="button" aria-label="Show AI summary, chat, and usage" aria-current="false" data-showcase-index="3"></button>
+                            <button class="showcase-dot" type="button" aria-label="Show RAG workspace and scope" aria-current="false" data-showcase-index="4"></button>
+                            <button class="showcase-dot" type="button" aria-label="Show RAG evidence inspectors" aria-current="false" data-showcase-index="5"></button>
+                            <button class="showcase-dot" type="button" aria-label="Show knowledge base, index, and debug" aria-current="false" data-showcase-index="6"></button>
+                            <button class="showcase-dot" type="button" aria-label="Show code intelligence windows" aria-current="false" data-showcase-index="7"></button>
+                        </div>
+                        <span class="showcase-scroll-hint">
+                            <i data-lucide="mouse" aria-hidden="true"></i>
+                            Keep scrolling
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="outcomes">
+            <div class="shell">
+                <header class="outcome-header" data-reveal>
+                    <p class="eyebrow">Built for real libraries</p>
+                    <h2 class="section-heading">Less collecting. More rediscovering.</h2>
+                </header>
+
+                <div class="outcome-grid">
+                    <article class="outcome-card" data-reveal>
+                        <div class="outcome-mark" aria-hidden="true">01</div>
+                        <h3>Remember why you starred it</h3>
+                        <p>Private notes, status, tags, and AI summaries preserve the reason a repository mattered in the first place.</p>
+                    </article>
+                    <article class="outcome-card" data-reveal>
+                        <div class="outcome-mark" aria-hidden="true">02</div>
+                        <h3>Follow changes without the noise</h3>
+                        <p>Subscribe to repositories that matter and review releases in one focused timeline instead of scattered notifications.</p>
+                    </article>
+                    <article class="outcome-card" data-reveal>
+                        <div class="outcome-mark" aria-hidden="true">03</div>
+                        <h3>Evaluate before you adopt</h3>
+                        <p>Repository health and OpenSSF signals help you understand maintenance and security posture before adding a dependency.</p>
+                    </article>
+                    <article class="outcome-card" data-reveal>
+                        <div class="outcome-mark" aria-hidden="true">04</div>
+                        <h3>Bring the model you trust</h3>
+                        <p>Use Gemini, DeepSeek, OpenAI-compatible providers, or Ollama while keeping provider choice and usage under your control.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="native">
+            <div class="native-card shell" data-reveal>
+                <img class="native-icon" src="./starcat-logo.png" alt="Starcat app icon" width="104" height="104">
+                <p class="eyebrow">Built for macOS</p>
+                <h2>Native. Local. Intelligent.</h2>
+                <p>
+                    Crafted as a focused macOS workspace with familiar windows, keyboard-friendly navigation,
+                    local storage, and the responsiveness a desktop library deserves.
+                </p>
+            </div>
+        </section>
+
+        <section class="faq" id="faq">
+            <div class="faq-layout shell">
+                <header data-reveal>
+                    <p class="eyebrow">Good to know</p>
+                    <h2 class="section-heading">Before you download.</h2>
+                    <p class="section-copy">The important platform, privacy, and subscription boundaries in one place.</p>
+                </header>
+
+                <div class="faq-list" data-reveal>
+                    <details class="faq-item">
+                        <summary>Which Macs does Starcat support?</summary>
+                        <p>Starcat supports macOS 15 and later. The Mac App Store build supports Apple Silicon and Intel Macs.</p>
+                    </details>
+                    <details class="faq-item">
+                        <summary>Where is my library stored?</summary>
+                        <p>Repo cache, tags, notes, and status are stored locally on your Mac. GitHub tokens and AI provider keys use macOS Keychain.</p>
+                    </details>
+                    <details class="faq-item">
+                        <summary>Does Starcat provide an AI account?</summary>
+                        <p>No. Starcat uses a BYOK model: you configure a supported provider or a local Ollama model and remain in control of provider usage.</p>
+                    </details>
+                    <details class="faq-item">
+                        <summary>How is Pro managed?</summary>
+                        <p>Starcat Pro is offered through Apple In-App Purchase. Subscriptions and purchase restoration are managed with your Apple ID.</p>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <section class="final-cta">
+            <div class="final-panel shell" data-reveal>
+                <div>
+                    <h2>Make your Stars useful again.</h2>
+                    <p>Download Starcat for GitHub and turn the repos you saved into a knowledge base you can search, understand, and revisit.</p>
+                </div>
+                <a
+                    class="app-store-badge"
+                    href="https://apps.apple.com/cn/app/starcat-for-github/id6788809803?mt=12"
+                    data-appstore-deeplink="macappstore://itunes.apple.com/app/id6788809803?mt=12"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Download Starcat for GitHub on the Mac App Store"
+                >
+                    <img
+                        src="https://tools.applemediaservices.com/api/badges/download-on-the-mac-app-store/black/en-us?size=250x83"
+                        alt="Download on the Mac App Store"
+                        width="204"
+                        height="54"
+                        loading="lazy"
+                    >
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="shell">
+            <div class="footer-main">
+                <div>
+                    <div class="footer-brand">
+                        <img src="./starcat-logo.png" alt="" width="38" height="38">
+                        <span>Starcat</span>
+                    </div>
+                    <p class="footer-copy">
+                        A native macOS app that turns GitHub Stars into a searchable,
+                        local-first knowledge base.
+                    </p>
+                </div>
+                <div>
+                    <div class="footer-heading">Product</div>
+                    <nav class="footer-links" aria-label="Product links">
+                        <a href="#why">Why Starcat</a>
+                        <a href="#inside">Features</a>
+                        <a href="#faq">FAQ</a>
+                        <a href="https://starcat.mintlify.app" target="_blank" rel="noopener noreferrer">Documentation</a>
+                    </nav>
+                </div>
+                <div>
+                    <div class="footer-heading">Support</div>
+                    <nav class="footer-links" aria-label="Support links">
+                        <a href="./support.html">Support</a>
+                        <a href="./privacy.html">Privacy Policy</a>
+                        <a href="./eula.html">EULA</a>
+                        <a href="mailto:dong4j@gmail.com">Contact</a>
+                    </nav>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>&copy; 2026 Starcat. All rights reserved.</span>
+                <div class="footer-meta">
+                    <span>macOS 15+</span>
+                    <span>Available on the Mac App Store</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <dialog class="image-lightbox" id="image-lightbox" aria-label="Enlarged product screenshot">
+        <button class="image-lightbox-close" type="button" data-lightbox-close aria-label="Close enlarged screenshot">
+            <i data-lucide="x" aria-hidden="true"></i>
+        </button>
+        <img class="image-lightbox-image" id="image-lightbox-image" alt="">
+    </dialog>
+
+    <script>
+        /**
+         * Initializes non-essential motion and interactions.
+         *
+         * The page deliberately renders all content before JavaScript runs. This
+         * avoids a blank first paint and keeps the landing page usable when scripts
+         * or third-party resources fail.
+         */
+        (function initializeLandingPage() {
+            const header = document.getElementById("site-header");
+            const showcase = document.getElementById("inside");
+            const showcaseSticky = document.getElementById("showcase-sticky");
+            const showcaseStage = document.getElementById("showcase-stage");
+            const slides = showcaseStage ? Array.from(showcaseStage.querySelectorAll(".showcase-slide")) : [];
+            const dots = Array.from(document.querySelectorAll("[data-showcase-index]"));
+            const status = document.getElementById("showcase-status");
+            const previousButton = document.querySelector("[data-showcase-previous]");
+            const nextButton = document.querySelector("[data-showcase-next]");
+            const imageLightbox = document.getElementById("image-lightbox");
+            const lightboxImage = document.getElementById("image-lightbox-image");
+            const lightboxCloseButton = document.querySelector("[data-lightbox-close]");
+            const showcaseShots = Array.from(document.querySelectorAll(".showcase-shot"));
+            const compactShowcase = window.matchMedia("(max-width: 980px)");
+            const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+            let activeShowcaseIndex = 0;
+            let headerFramePending = false;
+            let showcaseFramePending = false;
+            let lightboxTrigger = null;
+            let lightboxCloseTimer = 0;
+            let wheelGestureConsumed = false;
+            let wheelGestureStartedAt = Number.NEGATIVE_INFINITY;
+            let lastWheelEventAt = Number.NEGATIVE_INFINITY;
+            let lastWheelMagnitude = 0;
+            let wheelGesturePeakMagnitude = 0;
+            let wheelGestureHasDecayed = false;
+            let wheelGestureDirection = 0;
+
+            const wheelGestureGap = 96;
+            const wheelGestureMinimumLock = 280;
+            const wheelGestureRestartFloor = 6;
+            const wheelGestureRestartRatio = 1.6;
+
+            function finalizeLightboxClose(restoreFocus) {
+                window.clearTimeout(lightboxCloseTimer);
+                imageLightbox?.classList.remove("is-closing");
+                if (imageLightbox?.open) imageLightbox.close();
+                document.documentElement.classList.remove("is-lightbox-open");
+
+                if (restoreFocus && lightboxTrigger?.isConnected) {
+                    lightboxTrigger.focus({ preventScroll: true });
+                }
+                lightboxTrigger = null;
+            }
+
+            /**
+             * Keeps the dialog mounted until its exit animation finishes. Scroll
+             * dismissals intentionally do not restore focus because doing so would
+             * fight the user's current navigation intent.
+             */
+            function closeImageLightbox(options) {
+                if (!imageLightbox?.open || imageLightbox.classList.contains("is-closing")) return;
+                const restoreFocus = options?.restoreFocus !== false;
+
+                if (prefersReducedMotion) {
+                    finalizeLightboxClose(restoreFocus);
+                    return;
+                }
+
+                imageLightbox.classList.add("is-closing");
+                lightboxCloseTimer = window.setTimeout(function finishLightboxClose() {
+                    finalizeLightboxClose(restoreFocus);
+                }, 220);
+            }
+
+            function openImageLightbox(shot) {
+                const source = shot.currentSrc || shot.src;
+                if (!source) return;
+
+                if (!imageLightbox || !lightboxImage || typeof imageLightbox.showModal !== "function") {
+                    window.open(source, "_blank", "noopener,noreferrer");
+                    return;
+                }
+
+                lightboxTrigger = shot;
+                shot.focus({ preventScroll: true });
+                imageLightbox.classList.remove("is-closing");
+                lightboxImage.src = source;
+                lightboxImage.alt = shot.alt;
+                document.documentElement.classList.add("is-lightbox-open");
+                imageLightbox.showModal();
+            }
+
+            /**
+             * Updates the compact sticky-header treatment without performing layout
+             * work on every native scroll event.
+             */
+            function updateHeader() {
+                if (!header || headerFramePending) return;
+                headerFramePending = true;
+                window.requestAnimationFrame(function applyHeaderState() {
+                    header.classList.toggle("is-scrolled", window.scrollY > 16);
+                    headerFramePending = false;
+                });
+            }
+
+            /**
+             * Places the active screenshot on an open canvas while keeping its
+             * immediate neighbors visible at the edges. The neighboring previews
+             * make the horizontal direction legible without drawing a container.
+             */
+            function applyShowcaseIndex(index) {
+                if (!slides.length) return;
+
+                activeShowcaseIndex = Math.max(0, Math.min(Math.round(index), slides.length - 1));
+                const allSlidesVisible = compactShowcase.matches || prefersReducedMotion;
+                slides.forEach(function updateSlide(slide, slideIndex) {
+                    const delta = slideIndex - activeShowcaseIndex;
+                    const distance = Math.abs(delta);
+                    const proximity = distance === 0 ? 1 : 0;
+                    const neighborPreview = distance === 1 ? 0.22 : 0;
+                    const visibility = Math.max(proximity, neighborPreview);
+                    const scale = 0.72 + proximity * 0.28;
+                    const rotation = Math.max(-4, Math.min(4, delta * 2));
+                    const media = slide.querySelector(".showcase-media");
+                    const caption = slide.querySelector(".showcase-caption");
+
+                    slide.style.opacity = allSlidesVisible ? "1" : visibility.toFixed(3);
+                    slide.style.zIndex = String(20 - Math.round(distance * 10));
+                    slide.classList.toggle("is-active", slideIndex === activeShowcaseIndex);
+                    slide.setAttribute("aria-hidden", allSlidesVisible || slideIndex === activeShowcaseIndex ? "false" : "true");
+                    if (media) {
+                        media.style.transform = allSlidesVisible
+                            ? "none"
+                            : "translate3d(" + (delta * 62).toFixed(2) + "%, 0, 0) scale(" + scale.toFixed(4) + ") rotate(" + rotation.toFixed(2) + "deg)";
+                    }
+                    if (caption) {
+                        caption.style.opacity = allSlidesVisible || slideIndex === activeShowcaseIndex ? "1" : "0";
+                        caption.style.transform = allSlidesVisible || slideIndex === activeShowcaseIndex ? "translateY(0)" : "translateY(8px)";
+                    }
+                });
+
+                dots.forEach(function updateDot(dot, dotIndex) {
+                    dot.setAttribute("aria-current", dotIndex === activeShowcaseIndex ? "true" : "false");
+                });
+
+                if (status) {
+                    status.textContent = String(activeShowcaseIndex + 1).padStart(2, "0") + " / " + String(slides.length).padStart(2, "0");
+                }
+
+                if (previousButton) previousButton.disabled = activeShowcaseIndex === 0;
+                if (nextButton) nextButton.disabled = activeShowcaseIndex === slides.length - 1;
+            }
+
+            /**
+             * Synchronizes the selected screenshot when the document position is
+             * changed by buttons, keyboard navigation, resize, or browser history.
+             * The nearest integer index is intentional: screenshots must never
+             * remain blurred in a fractional transition state.
+             */
+            function updateShowcaseFromScroll() {
+                if (!showcase || !slides.length) return;
+                if (compactShowcase.matches || prefersReducedMotion) {
+                    // A viewport can cross the desktop breakpoint without a
+                    // reload. Re-apply accessibility state so every horizontally
+                    // swipeable card remains exposed to assistive technology.
+                    applyShowcaseIndex(activeShowcaseIndex);
+                    return;
+                }
+
+                const sectionRect = showcase.getBoundingClientRect();
+                const travel = Math.max(1, showcase.offsetHeight - window.innerHeight);
+                const progress = Math.max(0, Math.min(1, -sectionRect.top / travel));
+                applyShowcaseIndex(Math.round(progress * (slides.length - 1)));
+            }
+
+            function scheduleShowcaseUpdate() {
+                if (showcaseFramePending) return;
+                showcaseFramePending = true;
+                window.requestAnimationFrame(function updateShowcaseFrame() {
+                    updateShowcaseFromScroll();
+                    showcaseFramePending = false;
+                });
+            }
+
+            /**
+             * Overrides the page-level smooth-scroll rule for one synchronous
+             * showcase jump. The sticky viewport does not visibly move, while the
+             * screenshot layers animate independently to the next exact state.
+             */
+            function scrollWindowImmediately(top) {
+                const root = document.documentElement;
+                const previousInlineBehavior = root.style.scrollBehavior;
+                root.style.scrollBehavior = "auto";
+                window.scrollTo({ top: top, behavior: "auto" });
+                root.style.scrollBehavior = previousInlineBehavior;
+            }
+
+            /**
+             * Moves to an exact product-journey step. Desktop document movement is
+             * immediate because the sticky canvas does not visually move; the
+             * screenshot layers provide the transition. This prevents native
+             * smooth scrolling from reintroducing fractional visual states.
+             */
+            function showScreenshot(index, behavior) {
+                if (!showcase || !slides.length) return;
+                const nextIndex = Math.max(0, Math.min(index, slides.length - 1));
+
+                if (compactShowcase.matches) {
+                    showcaseStage?.scrollTo({
+                        left: slides[nextIndex].offsetLeft,
+                        behavior: behavior || "smooth"
+                    });
+                    return;
+                }
+
+                applyShowcaseIndex(nextIndex);
+                const sectionTop = window.scrollY + showcase.getBoundingClientRect().top;
+                const travel = Math.max(1, showcase.offsetHeight - window.innerHeight);
+                const progress = slides.length > 1 ? nextIndex / (slides.length - 1) : 0;
+                scrollWindowImmediately(sectionTop + travel * progress);
+            }
+
+            /**
+             * Detects a new physical gesture without waiting for macOS momentum to
+             * stop. Browsers do not expose a portable gesture identifier, so a
+             * short event gap, an intentional reversal, or renewed force after
+             * decay are treated as a new input. Inertial decay never extends a
+             * timeout and therefore cannot lock navigation for several seconds.
+             */
+            function isFreshWheelGesture(direction, magnitude, now) {
+                if (!wheelGestureConsumed) return true;
+
+                const gap = now - lastWheelEventAt;
+                const elapsed = now - wheelGestureStartedAt;
+                const restartedAfterPause = gap >= wheelGestureGap;
+                const deliberatelyReversed =
+                    elapsed >= 160 &&
+                    direction !== wheelGestureDirection &&
+                    magnitude >= 3;
+                const restartedWithForce =
+                    elapsed >= wheelGestureMinimumLock &&
+                    wheelGestureHasDecayed &&
+                    magnitude >= wheelGestureRestartFloor &&
+                    magnitude >= Math.max(1, lastWheelMagnitude) * wheelGestureRestartRatio;
+
+                return restartedAfterPause || deliberatelyReversed || restartedWithForce;
+            }
+
+            function rememberWheelSample(magnitude, now) {
+                if (magnitude > wheelGesturePeakMagnitude) {
+                    wheelGesturePeakMagnitude = magnitude;
+                } else if (magnitude <= wheelGesturePeakMagnitude * 0.55) {
+                    wheelGestureHasDecayed = true;
+                }
+
+                lastWheelMagnitude = magnitude;
+                lastWheelEventAt = now;
+            }
+
+            function beginWheelGesture(direction, magnitude, now) {
+                wheelGestureConsumed = true;
+                wheelGestureStartedAt = now;
+                wheelGestureDirection = direction;
+                wheelGesturePeakMagnitude = magnitude;
+                wheelGestureHasDecayed = false;
+                rememberWheelSample(magnitude, now);
+            }
+
+            function isShowcasePinned() {
+                if (!showcase || !showcaseSticky || compactShowcase.matches || prefersReducedMotion) return false;
+                const rect = showcase.getBoundingClientRect();
+                return rect.top <= 1 && rect.bottom >= window.innerHeight - 1;
+            }
+
+            /**
+             * Converts vertical desktop wheel gestures into discrete horizontal
+             * product-journey steps. At the outer boundaries the event is released,
+             * allowing normal page scrolling to resume.
+             */
+            function handleShowcaseWheel(event) {
+                if (imageLightbox?.open) {
+                    const delta =
+                        Math.abs(event.deltaY) >= Math.abs(event.deltaX)
+                            ? event.deltaY
+                            : event.deltaX;
+                    const magnitude = Math.abs(delta);
+                    if (magnitude < 1) return;
+
+                    // The gesture that dismisses the enlarged image must not also
+                    // advance the product journey underneath it.
+                    event.preventDefault();
+                    const now = performance.now();
+                    if (!imageLightbox.classList.contains("is-closing")) {
+                        beginWheelGesture(delta > 0 ? 1 : -1, magnitude, now);
+                        closeImageLightbox({ restoreFocus: false });
+                    } else {
+                        rememberWheelSample(magnitude, now);
+                    }
+                    return;
+                }
+
+                if (!isShowcasePinned()) return;
+                if (Math.abs(event.deltaY) <= Math.abs(event.deltaX) || Math.abs(event.deltaY) < 1) return;
+
+                const direction = event.deltaY > 0 ? 1 : -1;
+                const magnitude = Math.abs(event.deltaY);
+                const now = performance.now();
+
+                if (!isFreshWheelGesture(direction, magnitude, now)) {
+                    event.preventDefault();
+                    rememberWheelSample(magnitude, now);
+                    return;
+                }
+
+                const leavingAtBoundary =
+                    (direction < 0 && activeShowcaseIndex === 0) ||
+                    (direction > 0 && activeShowcaseIndex === slides.length - 1);
+                if (leavingAtBoundary) {
+                    wheelGestureConsumed = false;
+                    return;
+                }
+
+                event.preventDefault();
+                beginWheelGesture(direction, magnitude, now);
+                showScreenshot(activeShowcaseIndex + direction, "auto");
+            }
+
+            window.addEventListener("scroll", function synchronizeScrollEffects() {
+                if (imageLightbox?.open) {
+                    closeImageLightbox({ restoreFocus: false });
+                }
+                updateHeader();
+                scheduleShowcaseUpdate();
+            }, { passive: true });
+            window.addEventListener("resize", scheduleShowcaseUpdate, { passive: true });
+            window.addEventListener("wheel", handleShowcaseWheel, { passive: false });
+
+            previousButton?.addEventListener("click", function showPrevious() {
+                showScreenshot(activeShowcaseIndex - 1);
+            });
+
+            nextButton?.addEventListener("click", function showNext() {
+                showScreenshot(activeShowcaseIndex + 1);
+            });
+
+            dots.forEach(function bindDot(dot) {
+                dot.addEventListener("click", function chooseScreenshot() {
+                    showScreenshot(Number(dot.dataset.showcaseIndex));
+                });
+            });
+
+            showcaseSticky?.addEventListener("keydown", function navigateScreenshots(event) {
+                if (event.key !== "ArrowLeft" && event.key !== "ArrowRight") return;
+                event.preventDefault();
+                showScreenshot(activeShowcaseIndex + (event.key === "ArrowRight" ? 1 : -1));
+            });
+
+            showcaseShots.forEach(function bindScreenshotLightbox(shot) {
+                shot.tabIndex = 0;
+                shot.setAttribute("role", "button");
+                shot.setAttribute("aria-haspopup", "dialog");
+                shot.setAttribute("aria-label", `Enlarge ${shot.alt}`);
+
+                shot.addEventListener("click", function enlargeScreenshot() {
+                    openImageLightbox(shot);
+                });
+
+                shot.addEventListener("keydown", function enlargeScreenshotWithKeyboard(event) {
+                    if (event.key !== "Enter" && event.key !== " ") return;
+                    event.preventDefault();
+                    openImageLightbox(shot);
+                });
+            });
+
+            lightboxCloseButton?.addEventListener("click", function dismissLightbox() {
+                closeImageLightbox();
+            });
+
+            lightboxImage?.addEventListener("click", function dismissEnlargedImage() {
+                closeImageLightbox();
+            });
+
+            imageLightbox?.addEventListener("click", function dismissFromBackdrop(event) {
+                if (event.target === imageLightbox) {
+                    closeImageLightbox();
+                }
+            });
+
+            imageLightbox?.addEventListener("cancel", function animateEscapeDismissal(event) {
+                event.preventDefault();
+                closeImageLightbox();
+            });
+
+            imageLightbox?.addEventListener("touchmove", function dismissFromTouchScroll(event) {
+                event.preventDefault();
+                closeImageLightbox({ restoreFocus: false });
+            }, { passive: false });
+
+            imageLightbox?.addEventListener("keydown", function dismissFromKeyboardScroll(event) {
+                const scrollKeys = ["ArrowUp", "ArrowDown", "PageUp", "PageDown", "Home", "End", " "];
+                if (!scrollKeys.includes(event.key) || event.target === lightboxCloseButton) return;
+                event.preventDefault();
+                closeImageLightbox({ restoreFocus: false });
+            });
+
+            applyShowcaseIndex(0);
+            updateHeader();
+            updateShowcaseFromScroll();
+
+            if (!prefersReducedMotion && "IntersectionObserver" in window) {
+                const revealNodes = Array.from(document.querySelectorAll("[data-reveal]"));
+                const revealObserver = new IntersectionObserver(function revealOnEntry(entries) {
+                    entries.forEach(function reveal(entry) {
+                        if (!entry.isIntersecting) return;
+                        entry.target.classList.add("is-visible");
+                        revealObserver.unobserve(entry.target);
+                    });
+                }, {
+                    threshold: 0.08,
+                    rootMargin: "0px 0px -36px 0px"
+                });
+
+                revealNodes.forEach(function prepareReveal(node) {
+                    node.classList.add("is-reveal-pending");
+                    revealObserver.observe(node);
+                });
+            }
+
+            if (window.lucide) {
+                window.lucide.createIcons();
+            } else {
+                window.addEventListener("load", function renderDeferredIcons() {
+                    window.lucide?.createIcons();
+                }, { once: true });
+            }
+        })();
+
+        /**
+         * Attempts to open the native Mac App Store while preserving a normal web
+         * URL for crawlers, disabled JavaScript, and modified clicks.
+         */
+        (function initializeAppStoreDeepLinks() {
+            document.querySelectorAll("[data-appstore-deeplink]").forEach(function bindBadge(badge) {
+                const webURL = badge.getAttribute("href");
+                const deepLink = badge.getAttribute("data-appstore-deeplink");
+                if (!webURL || !deepLink) return;
+
+                badge.addEventListener("click", function openAppStore(event) {
+                    if (
+                        event.defaultPrevented ||
+                        event.button !== 0 ||
+                        event.metaKey ||
+                        event.ctrlKey ||
+                        event.shiftKey ||
+                        event.altKey
+                    ) {
+                        return;
+                    }
+
+                    event.preventDefault();
+                    let switchedAway = false;
+                    const markSwitched = function markSwitched() { switchedAway = true; };
+
+                    document.addEventListener("visibilitychange", markSwitched, { once: true });
+                    window.addEventListener("blur", markSwitched, { once: true });
+                    window.addEventListener("pagehide", markSwitched, { once: true });
+                    window.location.href = deepLink;
+
+                    window.setTimeout(function fallBackToWebStore() {
+                        document.removeEventListener("visibilitychange", markSwitched);
+                        window.removeEventListener("blur", markSwitched);
+                        window.removeEventListener("pagehide", markSwitched);
+                        if (!switchedAway && !document.hidden) {
+                            window.open(webURL, "_blank", "noopener,noreferrer");
+                        }
+                    }, 1200);
+                });
+            });
+        })();
+    </script>
+</body>
+</html>
