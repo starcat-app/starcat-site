@@ -126,6 +126,31 @@
     <div class="changelog-content">
 <h1>Starcat Changelog</h1>
 <p>All notable changes to Starcat are summarized here for release notes.</p>
+<h2>1.2.0</h2>
+<p>Starcat 1.2.0 focuses on stability, usability, and visual polish—adding an 18-language interface, pinning, share links, shortcuts, and README capabilities, while refining navigation, tags, notes, translation, and knowledge-base flows.</p>
+<h3>New</h3>
+<ul>
+<li>18-language interface: Use Starcat in English, Simplified Chinese, Traditional Chinese, Japanese, Korean, German, French, Spanish, Brazilian Portuguese, Italian, Russian, Dutch, Polish, Ukrainian, Turkish, Vietnamese, Indonesian, or Arabic.</li>
+<li>Repository pinning in Manage: Pin / Unpin, most-recently-pinned ordering, and a card-corner indicator.</li>
+<li>Repository share links: Open Starcat and locate the shared repository.</li>
+<li>Customizable app shortcuts: Search, refresh, open Knowledge RAG workspace and current-repo AI, with global and per-shortcut switches.</li>
+<li>README Mermaid diagrams: Local rendering with responsive sizing in narrow detail panes, and source fallback when rendering fails.</li>
+<li>README segmented and full translation: Segmented bilingual reading by default; full mode replaces visible text while keeping README structure.</li>
+</ul>
+<h3>Improvements</h3>
+<ul>
+<li>Add-tag popover: Clearer colored-icon rows and selection, with a solid window-matched background.</li>
+<li>Pro sidebar username gradient: Better light/dark adaptation, smoother first-letter color, and stronger light-mode contrast.</li>
+<li>Starred and Explore navigation: Clearer three-level hierarchy and filter context.</li>
+<li>README translation speed: Smaller first batch, incremental results, up to four concurrent requests, per-segment caching, and resume for unfinished segments.</li>
+<li>Personal notes: README-based AI generate/refine, visible progress, Markdown edit/preview, draft copy, and clearer save status.</li>
+<li>AI sharing: Reuse existing AI summaries; cancel creation and regenerate share links.</li>
+<li>Knowledge-base chunk management: Shard counts match language/stars sizing on cards; edit and detail views show last-updated time and approximate token counts.</li>
+</ul>
+<h3>Fixes</h3>
+<ul>
+<li>Knowledge Base entry: Fixes occasional no-response, minimized-window restore failure, and opening empty-library setup before index status finishes loading.</li>
+</ul>
 <h2>1.1.0</h2>
 <p>Starcat 1.1.0 turns saved repositories into a local-first, explainable RAG knowledge base, with broad performance, reliability, and macOS interface improvements.</p>
 <h3>New</h3>
