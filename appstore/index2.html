@@ -24,6 +24,8 @@
     <title>Starcat for GitHub — Your Stars, finally useful</title>
     <link rel="icon" type="image/png" href="./starcat-logo.png">
     <link rel="preload" as="image" href="./index2-assets/library.webp">
+    <!-- Start the first poster early without competing with the hero's LCP image. -->
+    <link rel="preload" as="image" href="./index2-assets/video-organize.webp" type="image/webp" fetchpriority="low">
 
     <!-- Lucide is already used by the current App Store landing page. Icons are
          decorative only; the page remains understandable if the CDN is unavailable. -->
@@ -2549,7 +2551,7 @@
                         </div>
                         <div class="video-now-playing" aria-live="polite">
                             <div>
-                                <span class="video-now-playing-label">Now playing</span>
+                                <span class="video-now-playing-label">Selected video</span>
                                 <strong class="video-now-playing-title" data-video-current-title>Organize at a glance</strong>
                             </div>
                             <span class="video-duration" data-video-current-duration>00:30</span>
@@ -3351,7 +3353,8 @@
         /**
          * Reuses one player for all three tours. Changing tabs pauses the current
          * stream before replacing its source, so hidden demos never download in
-         * parallel and the CDN remains the only video origin.
+         * parallel and the CDN remains the only video origin. A tab switch always
+         * returns to the poster; playback requires an explicit user action.
          */
         (function initializeProductVideos() {
             document.querySelectorAll("[data-video-showcase]").forEach(function bindVideoShowcase(root) {
@@ -3369,7 +3372,6 @@
                         return;
                     }
 
-                    const shouldResume = !video.paused;
                     video.pause();
                     tabs.forEach(function updateTab(item) {
                         const isActive = item === tab;
@@ -3385,7 +3387,6 @@
                     currentTitle.textContent = tab.dataset.videoTitle;
                     currentDuration.textContent = tab.dataset.videoDuration;
                     video.load();
-                    if (shouldResume) video.play().catch(function ignoreBlockedAutoplay() {});
                     if (shouldFocus) tab.focus({ preventScroll: true });
                 }
 
@@ -3407,6 +3408,27 @@
                         activate(tabs[nextIndex], true);
                     });
                 });
+
+                // Warm the remaining posters only after critical page work, so tab switches stay instant
+                // without making all three images compete with the hero during the initial render.
+                function preloadInactivePosters() {
+                    tabs.filter(function selectInactivePoster(tab) {
+                        return !tab.classList.contains("is-active");
+                    }).forEach(function prefetchPoster(tab) {
+                        const prefetch = document.createElement("link");
+                        prefetch.rel = "prefetch";
+                        prefetch.as = "image";
+                        prefetch.type = "image/webp";
+                        prefetch.href = tab.dataset.videoPoster;
+                        document.head.appendChild(prefetch);
+                    });
+                }
+
+                if ("requestIdleCallback" in window) {
+                    window.requestIdleCallback(preloadInactivePosters, { timeout: 2000 });
+                } else {
+                    window.setTimeout(preloadInactivePosters, 500);
+                }
             });
         })();
 

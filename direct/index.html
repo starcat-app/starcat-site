@@ -20,6 +20,8 @@
     <meta name="twitter:image" content="https://starcat.ink/sc-banner.webp">
     <title>Starcat — GitHub Star Manager &amp; AI Knowledge Organizer</title>
     <link rel="icon" type="image/png" href="starcat-logo.png">
+    <!-- Start the first poster early without competing with the hero's LCP image. -->
+    <link rel="preload" as="image" href="media/starcat-organize.webp" type="image/webp" fetchpriority="low">
 
     <!-- Umami 访问统计 (starcat.ink) -->
     <script defer src="https://cdn.dong4j.site/source/static/umami.self.js" data-host-url="https://umami.dong4j.site" data-website-id="547c2ed9-e736-4e01-96aa-725fd6e551ed"></script>
@@ -757,7 +759,7 @@
                     </div>
                     <div class="demo-now-playing" aria-live="polite">
                         <div>
-                            <span class="demo-now-playing-label">Now playing</span>
+                            <span class="demo-now-playing-label">Selected video</span>
                             <strong class="demo-now-playing-title" data-video-current-title>Organize at a glance</strong>
                         </div>
                         <span class="demo-duration" data-video-current-duration>00:30</span>
@@ -1541,7 +1543,6 @@
                         return;
                     }
 
-                    const shouldResume = !video.paused;
                     video.pause();
                     tabs.forEach(item => {
                         const isActive = item === tab;
@@ -1556,8 +1557,8 @@
                     panel.setAttribute('aria-labelledby', tab.id);
                     currentTitle.textContent = tab.dataset.videoTitle;
                     currentDuration.textContent = tab.dataset.videoDuration;
+                    // Switching demos must return to the poster. Playback only starts from an explicit user action.
                     video.load();
-                    if (shouldResume) video.play().catch(() => {});
                     if (shouldFocus) tab.focus({ preventScroll: true });
                 };
 
@@ -1575,6 +1576,24 @@
                         activate(tabs[nextIndex], true);
                     });
                 });
+
+                // Warm the remaining posters only after critical page work, so tab switches stay instant
+                // without making three large images compete with the hero during the initial render.
+                const preloadInactivePosters = () => {
+                    tabs.filter(tab => !tab.classList.contains('is-active')).forEach(tab => {
+                        const prefetch = document.createElement('link');
+                        prefetch.rel = 'prefetch';
+                        prefetch.as = 'image';
+                        prefetch.type = 'image/webp';
+                        prefetch.href = tab.dataset.videoPoster;
+                        document.head.appendChild(prefetch);
+                    });
+                };
+                if ('requestIdleCallback' in window) {
+                    window.requestIdleCallback(preloadInactivePosters, { timeout: 2000 });
+                } else {
+                    window.setTimeout(preloadInactivePosters, 500);
+                }
             });
         })();
 

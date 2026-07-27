@@ -20,6 +20,8 @@
     <meta name="twitter:image" content="https://starcat.ink/sc-banner.webp">
     <title>Starcat — GitHub Star 管理与 AI 知识整理工具</title>
     <link rel="icon" type="image/png" href="starcat-logo.png">
+    <!-- 提前加载首张封面，但保持低优先级，避免与首屏 LCP 图片争抢带宽。 -->
+    <link rel="preload" as="image" href="media/starcat-organize.webp" type="image/webp" fetchpriority="low">
 
     <!-- Umami 访问统计 (starcat.ink) -->
     <script defer src="https://cdn.dong4j.site/source/static/umami.self.js" data-host-url="https://umami.dong4j.site" data-website-id="547c2ed9-e736-4e01-96aa-725fd6e551ed"></script>
@@ -2324,7 +2326,7 @@
                     </div>
                     <div class="demo-now-playing" aria-live="polite">
                         <div>
-                            <span class="demo-now-playing-label">正在播放</span>
+                            <span class="demo-now-playing-label">当前视频</span>
                             <strong class="demo-now-playing-title" data-video-current-title>一眼完成整理</strong>
                         </div>
                         <span class="demo-duration" data-video-current-duration>00:30</span>
@@ -3281,7 +3283,6 @@
                         return;
                     }
 
-                    const shouldResume = !video.paused;
                     video.pause();
                     tabs.forEach(item => {
                         const isActive = item === tab;
@@ -3296,8 +3297,8 @@
                     panel.setAttribute('aria-labelledby', tab.id);
                     currentTitle.textContent = tab.dataset.videoTitle;
                     currentDuration.textContent = tab.dataset.videoDuration;
+                    // 切换演示时必须回到封面，只有用户主动操作播放器后才开始播放。
                     video.load();
-                    if (shouldResume) video.play().catch(() => {});
                     if (shouldFocus) tab.focus({ preventScroll: true });
                 };
 
@@ -3315,6 +3316,24 @@
                         activate(tabs[nextIndex], true);
                     });
                 });
+
+                // 关键首屏任务完成后再预热其余封面，确保切换即时，同时避免三张大图
+                // 在初始渲染阶段与 Hero 资源争抢带宽。
+                const preloadInactivePosters = () => {
+                    tabs.filter(tab => !tab.classList.contains('is-active')).forEach(tab => {
+                        const prefetch = document.createElement('link');
+                        prefetch.rel = 'prefetch';
+                        prefetch.as = 'image';
+                        prefetch.type = 'image/webp';
+                        prefetch.href = tab.dataset.videoPoster;
+                        document.head.appendChild(prefetch);
+                    });
+                };
+                if ('requestIdleCallback' in window) {
+                    window.requestIdleCallback(preloadInactivePosters, { timeout: 2000 });
+                } else {
+                    window.setTimeout(preloadInactivePosters, 500);
+                }
             });
         })();
 
