@@ -3,6 +3,15 @@
     <channel>
         <title>Starcat</title>
         <item>
+            <title>1.3.0</title>
+            <pubDate>Fri, 31 Jul 2026 18:42:08 +0800</pubDate>
+            <sparkle:version>202607311827</sparkle:version>
+            <sparkle:shortVersionString>1.3.0</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <enclosure url="https://starcat.ink/downloads/Starcat-1.3.0-arm64.dmg" length="100381353" type="application/octet-stream" sparkle:edSignature="QQ/84QGka39SL/VjcqakIVuDsvFmOVCwb7UvEUeCpnvJ32F6LRakUhtPwkV3vo9xFIAJvUw+cLIY0tWymul7CA==" />
+        </item>
+        <item>
             <title>1.2.0</title>
             <pubDate>Sun, 26 Jul 2026 15:25:05 +0800</pubDate>
             <sparkle:version>202607261516</sparkle:version>
