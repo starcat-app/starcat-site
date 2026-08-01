@@ -80,6 +80,8 @@
         .changelog-content strong { color: var(--color-text); font-weight: 600; }
         .changelog-content a { color: var(--color-primary); }
         .changelog-content a:hover { color: var(--color-primary-hover); }
+        /* Changelog 截图：限制宽度、圆角，避免撑破卡片 */
+        .changelog-content img { display: block; max-width: 100%; height: auto; margin: 12px 0 20px; border-radius: var(--radius-sm); border: 1px solid var(--color-border); }
         .changelog-content hr { border: none; border-top: 1px solid var(--color-border); margin: 40px 0; }
         .changelog-content blockquote { border-left: 3px solid var(--color-border); padding: 8px 16px; margin: 16px 0; color: var(--color-text-tertiary); font-style: italic; background: rgba(148,163,184,0.05); border-radius: 0 var(--radius-sm) var(--radius-sm) 0; }
         .changelog-content blockquote p { color: var(--color-text-tertiary); }
@@ -133,16 +135,16 @@
 <li>我的项目：集中查看个人、组织及外部协作仓库；通过 GitHub App 按授权范围浏览公开、私有和 Internal 项目，并继续使用现有筛选、详情与 Star 趋势。</li>
 <li>我的洞察：从全部收藏或知识库范围查看整理进度、技术分布、项目状态与待处理事项，并可直接下钻到对应仓库列表。</li>
 </ul>
-<p>  !<a href="https://cdn.dong4j.site/source/image/20260730232032_p1AUnCiu.webp" target="_blank" rel="noopener">20260730232032_p1AUnCiu</a></p>
+<p>  <img src="https://cdn.dong4j.site/source/image/20260730232032_p1AUnCiu.webp" alt="20260730232032_p1AUnCiu" loading="lazy"></p>
 <ul>
 <li>仓库洞察：查看 Star 增长、协作活动、提交趋势、贡献者、发布节奏、项目健康度、社区规范与安全信号；切换仓库和刷新时保持内容稳定。</li>
 </ul>
-<p>  !<a href="https://cdn.dong4j.site/source/image/20260730224524_01AnNgnJ.webp" target="_blank" rel="noopener">20260730224524_01AnNgnJ</a></p>
+<p>  <img src="https://cdn.dong4j.site/source/image/20260730224524_01AnNgnJ.webp" alt="20260730224524_01AnNgnJ" loading="lazy"></p>
 <ul>
 <li>仓库洞察上下文：生成后的洞察可复用于 AI 摘要、仓库对话与 RAG 回答，并以可移除的只读 XML 上下文展示，同时准确说明不可用、自定义提示词未注入和回退状态。</li>
 <li>macOS 桌面小组件：提供 Starcat Focus、今日重逢、Release Watch 和收藏趋势，可在桌面查看常用仓库、每日推荐、未读 Release 与近期收藏增长，并点击直达对应内容。</li>
 </ul>
-<p>  !<a href="https://cdn.dong4j.site/source/image/20260730231856_O82ii1o3.webp" target="_blank" rel="noopener">20260730231856_O82ii1o3</a></p>
+<p>  <img src="https://cdn.dong4j.site/source/image/20260730231856_O82ii1o3.webp" alt="20260730231856_O82ii1o3" loading="lazy"></p>
 <ul>
 <li>Alfred Workflow：可直接从 Alfred 搜索 Starcat 本地仓库与 GitHub。<a href="https://github.com/starcat-app/starcat-alfred-workflow" target="_blank" rel="noopener">查看项目</a></li>
 <li>uTools 插件：可直接从 uTools 搜索 Starcat 本地仓库与 GitHub。<a href="https://github.com/starcat-app/starcat-utools-plugin" target="_blank" rel="noopener">查看项目</a></li>

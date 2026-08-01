@@ -143,6 +143,8 @@ HTML_TEMPLATE = """<!DOCTYPE html>
         .changelog-content strong {{ color: var(--color-text); font-weight: 600; }}
         .changelog-content a {{ color: var(--color-primary); }}
         .changelog-content a:hover {{ color: var(--color-primary-hover); }}
+        /* Changelog 截图：限制宽度、圆角，避免撑破卡片 */
+        .changelog-content img {{ display: block; max-width: 100%; height: auto; margin: 12px 0 20px; border-radius: var(--radius-sm); border: 1px solid var(--color-border); }}
         .changelog-content hr {{ border: none; border-top: 1px solid var(--color-border); margin: 40px 0; }}
         .changelog-content blockquote {{ border-left: 3px solid var(--color-border); padding: 8px 16px; margin: 16px 0; color: var(--color-text-tertiary); font-style: italic; background: rgba(148,163,184,0.05); border-radius: 0 var(--radius-sm) var(--radius-sm) 0; }}
         .changelog-content blockquote p {{ color: var(--color-text-tertiary); }}
@@ -324,7 +326,17 @@ def md_to_html(text: str) -> str:
 
 
 def _inline(text: str) -> str:
-    """Handle inline markdown: bold, italic, code, links."""
+    """Handle inline markdown: images, links, bold, italic, code.
+
+    必须先处理图片 `![alt](url)`，再处理链接 `[text](url)`。
+    否则 `!` 会被留下，括号部分被误当成普通链接（线上曾出现 `!截图名` 蓝字）。
+    """
+    # Images ![alt](url) — before links, otherwise ! remains as text
+    text = re.sub(
+        r"!\[([^\]]*)\]\(([^)]+)\)",
+        r'<img src="\2" alt="\1" loading="lazy">',
+        text,
+    )
     # Links [text](url)
     text = re.sub(r"\[([^\]]+)\]\(([^)]+)\)", r'<a href="\2" target="_blank" rel="noopener">\1</a>', text)
     # Bold **text**

@@ -80,6 +80,8 @@
         .changelog-content strong { color: var(--color-text); font-weight: 600; }
         .changelog-content a { color: var(--color-primary); }
         .changelog-content a:hover { color: var(--color-primary-hover); }
+        /* Changelog 截图：限制宽度、圆角，避免撑破卡片 */
+        .changelog-content img { display: block; max-width: 100%; height: auto; margin: 12px 0 20px; border-radius: var(--radius-sm); border: 1px solid var(--color-border); }
         .changelog-content hr { border: none; border-top: 1px solid var(--color-border); margin: 40px 0; }
         .changelog-content blockquote { border-left: 3px solid var(--color-border); padding: 8px 16px; margin: 16px 0; color: var(--color-text-tertiary); font-style: italic; background: rgba(148,163,184,0.05); border-radius: 0 var(--radius-sm) var(--radius-sm) 0; }
         .changelog-content blockquote p { color: var(--color-text-tertiary); }
@@ -133,16 +135,16 @@
 <li>My Projects: Browse personal, organization, and external collaboration repositories; use GitHub App permissions for authorized public, private, and internal projects, with existing filters, details, and Star trends.</li>
 <li>My Insights: Review organization progress, technology distribution, project status, and items needing attention across all saved repositories or your Knowledge Base, then drill down to the matching repository list.</li>
 </ul>
-<p>  !<a href="https://cdn.dong4j.site/source/image/20260730232032_p1AUnCiu.webp" target="_blank" rel="noopener">20260730232032_p1AUnCiu</a></p>
+<p>  <img src="https://cdn.dong4j.site/source/image/20260730232032_p1AUnCiu.webp" alt="20260730232032_p1AUnCiu" loading="lazy"></p>
 <ul>
 <li>Repository Insights: View Star growth, collaboration activity, commit trends, contributors, release cadence, project health, community standards, and security signals, with stable content while switching repositories or refreshing.</li>
 </ul>
-<p>  !<a href="https://cdn.dong4j.site/source/image/20260730224524_01AnNgnJ.webp" target="_blank" rel="noopener">20260730224524_01AnNgnJ</a></p>
+<p>  <img src="https://cdn.dong4j.site/source/image/20260730224524_01AnNgnJ.webp" alt="20260730224524_01AnNgnJ" loading="lazy"></p>
 <ul>
 <li>Repository Insights Context: Reuse generated insights in AI summaries, repository conversations, and RAG answers through a removable read-only XML context, with distinct status for unavailable data, custom prompts that omit insights, and actual fallback.</li>
 <li>macOS desktop widgets: Starcat Focus, Rediscovery, Release Watch, and Star Trend show frequently used repositories, a daily rediscovery, unread releases, and recent starring growth with deep links to the corresponding content.</li>
 </ul>
-<p>  !<a href="https://cdn.dong4j.site/source/image/20260730231856_O82ii1o3.webp" target="_blank" rel="noopener">20260730231856_O82ii1o3</a></p>
+<p>  <img src="https://cdn.dong4j.site/source/image/20260730231856_O82ii1o3.webp" alt="20260730231856_O82ii1o3" loading="lazy"></p>
 <ul>
 <li>Alfred Workflow: Search Starcat local repositories and GitHub directly from Alfred. <a href="https://github.com/starcat-app/starcat-alfred-workflow" target="_blank" rel="noopener">View project</a></li>
 <li>uTools Plugin: Search Starcat local repositories and GitHub directly from uTools. <a href="https://github.com/starcat-app/starcat-utools-plugin" target="_blank" rel="noopener">View project</a></li>
