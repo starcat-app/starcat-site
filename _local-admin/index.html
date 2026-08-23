@@ -681,6 +681,116 @@
       overflow-wrap: anywhere;
     }
 
+    .awesome-ops {
+      display: grid;
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    .awesome-ops-panel {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: var(--surface);
+      padding: 12px;
+    }
+
+    .awesome-ops-title {
+      margin: 0;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 650;
+    }
+
+    .awesome-source-row {
+      display: grid;
+      grid-template-columns: minmax(170px, 1.4fr) minmax(100px, 0.7fr) minmax(130px, 0.8fr) auto;
+      gap: 10px;
+      align-items: center;
+      padding: 9px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 12px;
+    }
+
+    .awesome-source-row:last-child {
+      border-bottom: 0;
+    }
+
+    .awesome-source-meta,
+    .awesome-ops-note {
+      margin: 4px 0 0;
+      color: var(--muted);
+      font-size: 11px;
+      line-height: 1.5;
+      overflow-wrap: anywhere;
+    }
+
+    .awesome-source-actions {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .awesome-editor-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .awesome-editor-grid .full {
+      grid-column: 1 / -1;
+    }
+
+    .awesome-editor-field {
+      display: grid;
+      gap: 6px;
+    }
+
+    .awesome-editor-field label {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .awesome-editor-field input,
+    .awesome-editor-field textarea {
+      width: 100%;
+      min-height: 36px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: var(--surface-soft);
+      color: var(--text);
+      padding: 7px 10px;
+      outline: none;
+    }
+
+    .awesome-editor-field textarea {
+      min-height: 74px;
+      resize: vertical;
+    }
+
+    .awesome-editor-field input:focus,
+    .awesome-editor-field textarea:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px var(--accent-soft);
+    }
+
+    .awesome-editor-check {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .awesome-editor-actions {
+      display: flex;
+      gap: 8px;
+      justify-content: flex-end;
+      flex-wrap: wrap;
+      margin-top: 10px;
+    }
+
     .log {
       margin-top: 18px;
       border: 1px solid var(--border);
@@ -757,8 +867,14 @@
 
       .weekly-source-row,
       .weekly-pin-row,
-      .weekly-search-row {
+      .weekly-search-row,
+      .awesome-source-row,
+      .awesome-editor-grid {
         grid-template-columns: 1fr;
+      }
+
+      .awesome-source-actions {
+        justify-content: flex-start;
       }
 
       .api-send {
@@ -815,7 +931,14 @@
   </main>
 
   <script src="./config.js"></script>
-  <script>
+  <script type="module">
+    import {
+      awesomeErrorMessage,
+      awesomeWritePayload,
+      emptyAwesomeDraft,
+      sourceToAwesomeDraft
+    } from "./awesome-operations.mjs";
+
     /*
      * This panel deliberately stays frontend-only. It reads private endpoints
      * from a local config file and calls existing Starcat admin APIs without
@@ -889,7 +1012,8 @@
           { label: "Discover repos", type: "count", path: "/api/v1/discovery/summary", pick: "data.modes[mode=discover].total", help: "来自 GET /api/v1/discovery/summary 的 data.modes[mode=discover].total；对应 Starcat 客户端发现模式总量。" },
           { label: "Popular repos", type: "count", path: "/api/v1/discovery/summary", pick: "data.modes[mode=popular].total", help: "来自 GET /api/v1/discovery/summary 的 data.modes[mode=popular].total；对应 Starcat 客户端热门模式总量。" },
           { label: "New releases", type: "count", path: "/api/v1/discovery/summary", pick: "data.modes[mode=new_releases].total", help: "来自 GET /api/v1/discovery/summary 的 data.modes[mode=new_releases].total；对应 Starcat 客户端新发布模式总量。" },
-          { label: "Topics", type: "count", path: "/api/v1/discovery/topics", pick: "meta.total", help: "来自 GET /api/v1/discovery/topics 的 meta.total；这是主题定义数量，不是 repo 统计。" }
+          { label: "Topics", type: "count", path: "/api/v1/discovery/topics", pick: "meta.total", help: "来自 GET /api/v1/discovery/topics 的 meta.total；这是主题定义数量，不是 repo 统计。" },
+          { label: "Awesome 来源", type: "count", path: "/api/v1/discovery/awesome/sources", pick: "meta.total", help: "来自公开 Awesome 来源目录，只统计 published 来源。" }
         ],
         actions: [
           { label: "轻同步 discovery", path: "/internal/sync/discovery?mode=incremental", auth: "adminKey", confirm: false },
@@ -1002,6 +1126,10 @@
       discovery: [
         { method: "GET", path: "/api/v1/discovery/summary", description: "Starcat Sidebar 汇总；返回 discover/popular/new_releases 三个 mode 总量。", auth: "apiKey" },
         { method: "GET", path: "/api/v1/discovery/bulk", description: "Starcat Discovery 正式主链路全量快照。", auth: "apiKey" },
+        { method: "GET", path: "/api/v1/discovery/awesome/sources", description: "查询已发布的 Awesome 精选来源目录。", auth: "apiKey" },
+        { method: "GET", path: "/api/v1/discovery/awesome/sources/{source_id}/entries", description: "查询单一已发布 Awesome 来源的 GitHub Repo 快照。", auth: "apiKey", params: [
+          { name: "source_id", in: "path", default: "awesome-mac" }
+        ] },
         { method: "GET", path: "/api/v1/discovery/feed", description: "发现流列表。", auth: "apiKey", params: [
           { name: "page", in: "query", default: "1" },
           { name: "limit", in: "query", default: "10" },
@@ -1047,9 +1175,20 @@
       batch: null,
       status: "等待刷新"
     };
+
+    const awesomeOps = {
+      sources: [],
+      runs: [],
+      selectedSourceID: "",
+      editing: false,
+      draft: emptyAwesomeDraft(),
+      status: "等待刷新",
+      error: ""
+    };
     let weeklyBatchPollTimer = null;
     let weeklyBatchPollID = "";
     let weeklySourceTaskPollTimer = null;
+    let awesomeRunPollTimer = null;
 
     function config() {
       return window.STARCAT_ADMIN_CONFIG || { services: {} };
@@ -1129,7 +1268,7 @@
         body = text;
       }
       if (!response.ok) {
-        throw new Error(`${response.status} ${response.statusText}${text ? `: ${text.slice(0, 160)}` : ""}`);
+        throw new Error(awesomeErrorMessage(response.status, response.statusText, body));
       }
       return body;
     }
@@ -1164,9 +1303,14 @@
         body = text;
       }
       if (!response.ok) {
-        throw new Error(`${response.status} ${response.statusText}${text ? `: ${text.slice(0, 160)}` : ""}`);
+        throw new Error(awesomeErrorMessage(response.status, response.statusText, body));
       }
       return body;
+    }
+
+    // Awesome 写操作只把相对管理路径交给本地代理；Admin key 不进入请求日志或表单状态。
+    async function awesomeAdminJSON(path, options = {}) {
+      return localAdminJSON(`/service-api/discovery${path}`, options);
     }
 
     function defaultFlyApp(key) {
@@ -1315,7 +1459,8 @@
     function renderServiceExtra(key) {
       if (API_ENDPOINTS[key]) {
         const weeklyPanel = key === "weekly" ? renderWeeklyOperations() : "";
-        return `${weeklyPanel}${renderApiConsole(key)}${renderFlyEnvPanel(key)}`;
+        const awesomePanel = key === "discovery" ? renderAwesomeOperations() : "";
+        return `${weeklyPanel}${awesomePanel}${renderApiConsole(key)}${renderFlyEnvPanel(key)}`;
       }
       return "";
     }
@@ -1380,6 +1525,75 @@
           ${searchRows}
           <div class="weekly-ops-note">当前置顶 ${weeklyOps.pins.length} 项；上移/下移只修改草稿，点击“保存顺序”后一次性原子提交。</div>
           ${pinRows || `<p class="weekly-ops-note">暂无置顶项目。</p>`}
+        </section>
+      </div>`;
+    }
+
+    function renderAwesomeOperations() {
+      const sourceRows = awesomeOps.sources.map((source) => {
+        const selected = source.id === awesomeOps.selectedSourceID;
+        const lastRun = source.id === awesomeOps.selectedSourceID ? awesomeOps.runs[0] : null;
+        const lastRunText = lastRun
+          ? `${lastRun.status}${lastRun.error_code ? ` · ${lastRun.error_code}` : ""}`
+          : "未选择查看 run";
+        return `<div class="awesome-source-row">
+          <span><strong>${escapeHTML(source.display_name || source.id)}</strong>
+            <span class="awesome-source-meta">${escapeHTML(source.repo_full_name)} · revision ${escapeHTML(source.revision)}</span>
+          </span>
+          <span><span class="pill">${escapeHTML(source.status)}</span><br>
+            <span class="awesome-source-meta">排序 ${escapeHTML(source.sort_order)}${source.featured ? " · 推荐" : ""}</span>
+          </span>
+          <span>${escapeHTML(source.github_repo_count || 0)} repos<br>
+            <span class="awesome-source-meta">${escapeHTML(source.last_synced_at || "尚未同步")} · ${escapeHTML(lastRunText)}</span>
+          </span>
+          <span class="awesome-source-actions">
+            <button class="button" type="button" data-awesome-action="edit" data-source-id="${escapeHTML(source.id)}">编辑</button>
+            <button class="button" type="button" data-awesome-action="runs" data-source-id="${escapeHTML(source.id)}">任务</button>
+            <button class="button" type="button" data-awesome-action="sync" data-source-id="${escapeHTML(source.id)}">同步</button>
+            <button class="button primary" type="button" data-awesome-action="publish" data-source-id="${escapeHTML(source.id)}" ${source.status === "ready" || source.status === "archived" ? "" : "disabled"}>发布</button>
+            <button class="button danger" type="button" data-awesome-action="archive" data-source-id="${escapeHTML(source.id)}" ${source.status === "published" ? "" : "disabled"}>下架</button>
+          </span>
+        </div>`;
+      }).join("");
+      const draft = awesomeOps.draft;
+      const runs = awesomeOps.runs.length
+        ? `<pre class="json-output">${escapeHTML(JSON.stringify(awesomeOps.runs, null, 2))}</pre>`
+        : `<p class="awesome-ops-note">选择来源并点击“任务”可恢复最近同步状态。</p>`;
+      return `<div class="awesome-ops">
+        <section class="awesome-ops-panel">
+          <div class="api-console-head">
+            <div>
+              <p class="awesome-ops-title">Awesome 来源管理 · ${escapeHTML(awesomeOps.status)}</p>
+              <p class="awesome-ops-note">精选来源来自 Discovery Admin API；排序使用稳定整数，发布和下架前会再次确认。</p>
+            </div>
+            <div class="mock-actions">
+              <button class="button" type="button" data-awesome-action="new">新增来源</button>
+              <button class="button" type="button" data-awesome-action="refresh">刷新来源</button>
+            </div>
+          </div>
+          ${awesomeOps.error ? `<p class="awesome-ops-note" style="color: var(--bad)">${escapeHTML(awesomeOps.error)}</p>` : ""}
+          ${sourceRows || `<p class="awesome-ops-note">暂无来源。点击“新增来源”创建第一条草稿。</p>`}
+        </section>
+        <section class="awesome-ops-panel">
+          <p class="awesome-ops-title">${awesomeOps.editing ? `编辑 ${escapeHTML(draft.id)}` : "新增 Awesome 来源"}</p>
+          <div class="awesome-editor-grid">
+            <div class="awesome-editor-field"><label>ID（kebab-case，发布后不可变）</label><input data-awesome-field="id" value="${escapeHTML(draft.id)}" ${awesomeOps.editing ? "disabled" : ""}></div>
+            <div class="awesome-editor-field"><label>GitHub 仓库</label><input data-awesome-field="repo_full_name" value="${escapeHTML(draft.repo_full_name)}" placeholder="owner/repo"></div>
+            <div class="awesome-editor-field"><label>显示名称</label><input data-awesome-field="display_name" value="${escapeHTML(draft.display_name)}"></div>
+            <div class="awesome-editor-field"><label>图片 URL（HTTPS）</label><input data-awesome-field="image_url" value="${escapeHTML(draft.image_url)}"></div>
+            <div class="awesome-editor-field full"><label>中文介绍</label><textarea data-awesome-field="summary_zh">${escapeHTML(draft.summary_zh)}</textarea></div>
+            <div class="awesome-editor-field full"><label>英文介绍</label><textarea data-awesome-field="summary_en">${escapeHTML(draft.summary_en)}</textarea></div>
+            <div class="awesome-editor-field"><label>排序（整数）</label><input type="number" data-awesome-field="sort_order" value="${escapeHTML(draft.sort_order)}"></div>
+            <label class="awesome-editor-check"><input type="checkbox" data-awesome-field="featured" ${draft.featured ? "checked" : ""}>Starcat 推荐</label>
+          </div>
+          <div class="awesome-editor-actions">
+            <button class="button" type="button" data-awesome-action="reset">重置</button>
+            <button class="button primary" type="button" data-awesome-action="save">${awesomeOps.editing ? "保存编辑" : "创建草稿"}</button>
+          </div>
+        </section>
+        <section class="awesome-ops-panel">
+          <p class="awesome-ops-title">最近同步任务${awesomeOps.selectedSourceID ? ` · ${escapeHTML(awesomeOps.selectedSourceID)}` : ""}</p>
+          ${runs}
         </section>
       </div>`;
     }
@@ -1898,6 +2112,165 @@
       await saveWeeklyPins();
     }
 
+    async function refreshAwesomeOperations(shouldRender = true) {
+      awesomeOps.status = "刷新中";
+      awesomeOps.error = "";
+      if (shouldRender) render();
+      try {
+        const result = await awesomeAdminJSON("/internal/discovery/awesome/sources");
+        awesomeOps.sources = Array.isArray(result.data) ? result.data : [];
+        if (awesomeOps.selectedSourceID && !awesomeOps.sources.some((source) => source.id === awesomeOps.selectedSourceID)) {
+          awesomeOps.selectedSourceID = "";
+          awesomeOps.runs = [];
+        }
+        awesomeOps.status = `已刷新 ${new Date().toLocaleTimeString()}`;
+        if (awesomeOps.selectedSourceID) {
+          await loadAwesomeRuns(awesomeOps.selectedSourceID, false);
+        }
+      } catch (error) {
+        awesomeOps.status = "刷新失败";
+        awesomeOps.error = error.message;
+        log(`Awesome 来源刷新失败: ${error.message}`, "error");
+      }
+      if (shouldRender) render();
+    }
+
+    async function loadAwesomeRuns(sourceID, shouldRender = true) {
+      awesomeOps.selectedSourceID = sourceID;
+      try {
+        const result = await awesomeAdminJSON(`/internal/discovery/awesome/sources/${encodeURIComponent(sourceID)}/sync-runs`);
+        awesomeOps.runs = Array.isArray(result.data) ? result.data : [];
+        awesomeOps.error = "";
+      } catch (error) {
+        awesomeOps.error = error.message;
+        log(`Awesome ${sourceID} 同步任务读取失败: ${error.message}`, "error");
+      }
+      if (shouldRender) render();
+    }
+
+    function beginAwesomeEdit(sourceID) {
+      const source = awesomeOps.sources.find((item) => item.id === sourceID);
+      if (!source) return;
+      awesomeOps.editing = true;
+      awesomeOps.selectedSourceID = sourceID;
+      awesomeOps.draft = sourceToAwesomeDraft(source);
+      awesomeOps.error = "";
+      render();
+    }
+
+    function resetAwesomeEditor() {
+      awesomeOps.editing = false;
+      awesomeOps.draft = emptyAwesomeDraft();
+      awesomeOps.error = "";
+      render();
+    }
+
+    async function saveAwesomeSource() {
+      let payload;
+      try {
+        payload = awesomeWritePayload(awesomeOps.draft, awesomeOps.editing);
+      } catch (error) {
+        awesomeOps.error = error.message;
+        render();
+        return;
+      }
+      if (awesomeOps.editing && !window.confirm(`确认覆盖保存「${payload.display_name}」？`)) return;
+      const path = awesomeOps.editing
+        ? `/internal/discovery/awesome/sources/${encodeURIComponent(payload.id)}`
+        : "/internal/discovery/awesome/sources";
+      try {
+        const wasEditing = awesomeOps.editing;
+        const result = await awesomeAdminJSON(path, {
+          method: awesomeOps.editing ? "PATCH" : "POST",
+          body: JSON.stringify(payload)
+        });
+        const saved = result.data || {};
+        awesomeOps.editing = true;
+        awesomeOps.selectedSourceID = saved.id || payload.id;
+        awesomeOps.draft = sourceToAwesomeDraft(saved);
+        awesomeOps.error = "";
+        log(`Awesome 来源已${wasEditing ? "保存" : "创建"}: ${awesomeOps.selectedSourceID}`);
+        await refreshAwesomeOperations();
+      } catch (error) {
+        awesomeOps.error = error.message;
+        log(`Awesome 来源保存失败: ${error.message}`, "error");
+        render();
+      }
+    }
+
+    async function syncAwesomeSource(sourceID) {
+      awesomeOps.selectedSourceID = sourceID;
+      awesomeOps.status = `正在同步 ${sourceID}`;
+      awesomeOps.error = "";
+      render();
+      try {
+        const result = await awesomeAdminJSON(
+          `/internal/discovery/awesome/sources/${encodeURIComponent(sourceID)}/sync`,
+          { method: "POST" }
+        );
+        const run = result.data || {};
+        log(`Awesome ${sourceID} 同步状态: ${run.status || "unknown"}${run.id ? `，run=${run.id}` : ""}`);
+        await refreshAwesomeOperations(false);
+        await loadAwesomeRuns(sourceID);
+        if (["queued", "running"].includes(run.status) && run.id) {
+          pollAwesomeRun(sourceID, run.id);
+        }
+      } catch (error) {
+        awesomeOps.status = `同步失败 ${sourceID}`;
+        awesomeOps.error = error.message;
+        log(`Awesome ${sourceID} 同步失败: ${error.message}`, "error");
+        await loadAwesomeRuns(sourceID);
+      }
+    }
+
+    function pollAwesomeRun(sourceID, runID) {
+      if (awesomeRunPollTimer) window.clearTimeout(awesomeRunPollTimer);
+      let attempts = 0;
+      const poll = async () => {
+        attempts += 1;
+        await loadAwesomeRuns(sourceID, false);
+        const run = awesomeOps.runs.find((item) => item.id === runID);
+        render();
+        if (run && ["succeeded", "failed"].includes(run.status)) {
+          await refreshAwesomeOperations();
+          return;
+        }
+        if (attempts >= 60) {
+          log(`Awesome run ${runID} 轮询超时，可稍后点击“任务”恢复`, "warn");
+          return;
+        }
+        awesomeRunPollTimer = window.setTimeout(poll, 2000);
+      };
+      poll();
+    }
+
+    async function transitionAwesomeSource(sourceID, action) {
+      const verb = action === "publish" ? "发布" : "下架";
+      if (!window.confirm(`确认${verb} Awesome 来源「${sourceID}」？`)) return;
+      try {
+        await awesomeAdminJSON(
+          `/internal/discovery/awesome/sources/${encodeURIComponent(sourceID)}/${action}`,
+          { method: "POST" }
+        );
+        log(`Awesome 来源已${verb}: ${sourceID}`);
+        await refreshAwesomeOperations();
+      } catch (error) {
+        awesomeOps.error = error.message;
+        log(`Awesome 来源${verb}失败: ${error.message}`, "error");
+        render();
+      }
+    }
+
+    function handleAwesomeAction(action, sourceID) {
+      if (action === "refresh") refreshAwesomeOperations();
+      if (action === "new" || action === "reset") resetAwesomeEditor();
+      if (action === "edit") beginAwesomeEdit(sourceID);
+      if (action === "runs") loadAwesomeRuns(sourceID);
+      if (action === "save") saveAwesomeSource();
+      if (action === "sync") syncAwesomeSource(sourceID);
+      if (action === "publish" || action === "archive") transitionAwesomeSource(sourceID, action);
+    }
+
     function handleWeeklyAction(action, target) {
       if (action === "refresh") refreshWeeklyOperations();
       if (action === "hello-incremental") startHelloGitHubSync("incremental");
@@ -1920,7 +2293,7 @@
       button.disabled = true;
       try {
         await Promise.all(Object.keys(SERVICES).map(refreshService));
-        await refreshWeeklyOperations();
+        await Promise.all([refreshWeeklyOperations(), refreshAwesomeOperations()]);
         document.getElementById("lastRefresh").textContent = new Date().toLocaleTimeString();
       } finally {
         button.disabled = false;
@@ -1946,6 +2319,11 @@
         log(`配置服务: ${serviceNames.length ? serviceNames.join(", ") : "未加载 config.js"}`);
       });
       servicesGrid.addEventListener("click", (event) => {
+        const awesomeAction = event.target.getAttribute("data-awesome-action");
+        if (awesomeAction) {
+          handleAwesomeAction(awesomeAction, event.target.getAttribute("data-source-id") || "");
+          return;
+        }
         const weeklyAction = event.target.getAttribute("data-weekly-action");
         if (weeklyAction) {
           handleWeeklyAction(weeklyAction, event.target);
@@ -2003,6 +2381,10 @@
         }
       });
       servicesGrid.addEventListener("input", (event) => {
+        const awesomeField = event.target.getAttribute("data-awesome-field");
+        if (awesomeField && awesomeField !== "featured") {
+          awesomeOps.draft[awesomeField] = event.target.value;
+        }
         const weeklyInput = event.target.getAttribute("data-weekly-input");
         if (weeklyInput === "from-volume") weeklyOps.fromVolume = event.target.value;
         if (weeklyInput === "to-volume") weeklyOps.toVolume = event.target.value;
@@ -2027,6 +2409,11 @@
         }
       });
       servicesGrid.addEventListener("change", (event) => {
+        const awesomeField = event.target.getAttribute("data-awesome-field");
+        if (awesomeField === "featured") {
+          awesomeOps.draft.featured = event.target.checked;
+          return;
+        }
         const apiConsoleService = event.target.getAttribute("data-api-console-service");
         const apiConsoleField = event.target.getAttribute("data-api-console-field");
         const apiConsoleParam = event.target.getAttribute("data-api-console-param");

@@ -41,6 +41,7 @@ const defaultFlyApps = {
 const mimeTypes = new Map([
   [".html", "text/html; charset=utf-8"],
   [".js", "text/javascript; charset=utf-8"],
+  [".mjs", "text/javascript; charset=utf-8"],
   [".css", "text/css; charset=utf-8"],
   [".json", "application/json; charset=utf-8"],
   [".svg", "image/svg+xml"],
@@ -55,6 +56,10 @@ createServer(async (req, res) => {
     const url = new URL(req.url || "/", `http://${req.headers.host || "127.0.0.1"}`);
     if (url.pathname === "/fly-api" || url.pathname.startsWith("/fly-api/")) {
       await proxyFlyRequest(req, res, url);
+      return;
+    }
+    if (url.pathname.startsWith("/service-api/")) {
+      await proxyServiceRequest(req, res, url);
       return;
     }
     if (url.pathname === "/local-env") {
@@ -158,6 +163,52 @@ async function proxyFlyRequest(req, res, localURL) {
   });
   res.end(body);
   console.log(`${req.method} ${localURL.pathname}${localURL.search} -> ${response.status}`);
+}
+
+async function proxyServiceRequest(req, res, localURL) {
+  const match = localURL.pathname.match(/^\/service-api\/([^/]+)(\/.*)$/);
+  const service = match ? match[1] : "";
+  const upstreamPath = match ? match[2] : "";
+  const allowedMethod = ["GET", "POST", "PATCH"].includes(String(req.method || "GET").toUpperCase());
+  const allowedPath = service === "discovery" && (
+    upstreamPath === "/internal/discovery/awesome/sources" ||
+    upstreamPath.startsWith("/internal/discovery/awesome/sources/")
+  );
+  if (!allowedMethod || !allowedPath) {
+    writeJSON(res, 403, {error: "service proxy route is not allowed"});
+    return;
+  }
+
+  const cfg = await loadConfig();
+  const serviceConfig = (cfg.services || {})[service] || {};
+  if (!serviceConfig.baseURL || !serviceConfig.adminKey) {
+    writeJSON(res, 500, {error: `missing ${service} baseURL or adminKey in config.js`});
+    return;
+  }
+  const targetURL = new URL(upstreamPath, String(serviceConfig.baseURL).replace(/\/+$/, "") + "/");
+  targetURL.search = localURL.search;
+  const body = hasRequestBody(req.method) ? await readRequestBody(req) : undefined;
+  if (body && body.length > 64 * 1024) {
+    writeJSON(res, 413, {error: "request body too large"});
+    return;
+  }
+  const response = await fetch(targetURL, {
+    method: req.method,
+    headers: {
+      Authorization: `Bearer ${serviceConfig.adminKey}`,
+      Accept: "application/json",
+      ...(req.headers["content-type"] ? {"Content-Type": req.headers["content-type"]} : {})
+    },
+    body,
+    redirect: "error"
+  });
+  const responseBody = Buffer.from(await response.arrayBuffer());
+  res.writeHead(response.status, {
+    "Content-Type": response.headers.get("content-type") || "application/json; charset=utf-8",
+    "Cache-Control": "no-store"
+  });
+  res.end(responseBody);
+  console.log(`${req.method} /service-api/${service}${upstreamPath} -> ${response.status}`);
 }
 
 async function readLocalEnv(req, res, localURL) {
