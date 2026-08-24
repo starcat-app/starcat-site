@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="RAG is useful when the answers cite your Stars — not when they invent a confident tour of the public web.">
+    <meta name="author" content="Starcat">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <link rel="canonical" href="https://starcat.ink/blog/asking-your-starred-library/">
+    <link rel="alternate" type="application/atom+xml" title="Starcat Blog" href="https://starcat.ink/blog/feed.xml">
+    <meta property="og:site_name" content="Starcat">
+    <meta property="og:title" content="Asking Questions of Your Starred Library">
+    <meta property="og:description" content="RAG is useful when the answers cite your Stars — not when they invent a confident tour of the public web.">
+    <meta property="og:url" content="https://starcat.ink/blog/asking-your-starred-library/">
+    <meta property="og:image" content="https://starcat.ink/sc-banner.webp">
+    <meta property="og:image:alt" content="Starcat — GitHub Stars manager and AI knowledge base for macOS">
+    <meta property="og:type" content="article">
+    <meta property="article:published_time" content="2026-07-21T00:00:00+08:00">
+    <meta property="article:modified_time" content="2026-07-21T00:00:00+08:00">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Asking Questions of Your Starred Library">
+    <meta name="twitter:description" content="RAG is useful when the answers cite your Stars — not when they invent a confident tour of the public web.">
+    <meta name="twitter:image" content="https://starcat.ink/sc-banner.webp">
+    <title>Asking Questions of Your Starred Library · Starcat</title>
+    <link rel="icon" type="image/png" href="../../starcat-logo.png">
+    <link rel="stylesheet" href="../blog.css">
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","@id":"https://starcat.ink/blog/asking-your-starred-library/#article","headline":"Asking Questions of Your Starred Library","description":"RAG is useful when the answers cite your Stars — not when they invent a confident tour of the public web.","image":["https://starcat.ink/sc-banner.webp"],"datePublished":"2026-07-21T00:00:00+08:00","dateModified":"2026-07-21T00:00:00+08:00","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https://starcat.ink/blog/asking-your-starred-library/"},"author":{"@type":"Organization","name":"Starcat","url":"https://starcat.ink"},"publisher":{"@type":"Organization","name":"Starcat","url":"https://starcat.ink","logo":{"@type":"ImageObject","url":"https://starcat.ink/starcat-logo.png"}}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Starcat","item":"https://starcat.ink/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://starcat.ink/blog/"},{"@type":"ListItem","position":3,"name":"Asking Questions of Your Starred Library","item":"https://starcat.ink/blog/asking-your-starred-library/"}]}]}</script>
+</head>
+<body>
+
+<header class="topbar" role="banner">
+    <div class="topbar-inner">
+        <a class="brand" href="../../index.html">
+            <img src="../../starcat-logo.png" alt="Starcat" class="brand-logo" width="28" height="28">
+            <span>Starcat</span>
+        </a>
+        <nav class="topbar-nav" aria-label="Navigation">
+            <a href="../../index.html">Home</a>
+            <a href="../" class="is-active">Blog</a>
+            <a href="../../changelog.html">Changelog</a>
+            <a href="../../privacy.html">Privacy</a>
+        </nav>
+    </div>
+</header>
+
+<main class="article-main">
+    <article>
+        <a class="article-back" href="../">← Back to Blog</a>
+        <header class="article-header">
+            <h1>Asking Questions of Your Starred Library</h1>
+            <div class="author-row">
+    <img class="author-avatar" src="../../starcat-logo.png" alt="" width="36" height="36">
+    <div class="author-text">
+        <span class="author-name">Starcat</span>
+        <span class="author-meta"><time datetime="2026-07-21">July 21, 2026</time> · 4 min read</span>
+    </div>
+</div>
+        </header>
+        <div class="article-body"><p>Starring repositories is collecting evidence. Asking questions of that collection is how the evidence pays rent.</p>
+<p>That is the job of Starcat&#39;s knowledge-base RAG: retrieve from <em>your</em> indexed Stars, then answer with citations you can open and verify.</p>
+<h2>Not another generic chat window</h2>
+<p>A general-purpose model already knows popular frameworks. It does not know:</p>
+<ul>
+<li>which of <em>your</em> Stars you marked as &quot;using&quot;</li>
+<li>the private note where you wrote &quot;too heavy for our CLI&quot;</li>
+<li>the README chunk you indexed last week for a niche library nobody blogs about</li>
+</ul>
+<p>RAG closes that gap by grounding retrieval in the local knowledge base you built from Stars, notes, and related context.</p>
+<h2>Citations are the product</h2>
+<p>An answer without sources is a vibe. An answer with repository citations is a workflow: click through, skim the README, decide.</p>
+<p>Starcat leans on explainable retrieval — what was searched, what was kept, what was cited — so you can distrust a bad hop without throwing away the whole feature.</p>
+<h2>Start with a real question</h2>
+<p>Good first prompts look like work, not demos:</p>
+<ul>
+<li>&quot;Which starred repos help with local SQLite full-text search on macOS?&quot;</li>
+<li>&quot;What did I save related to OpenSSF / supply-chain scoring?&quot;</li>
+<li>&quot;Summarize options I starred for README rendering.&quot;</li>
+</ul>
+<p>If the library is empty of structure, RAG will feel thin. If you have even a modest set of Stars with readable READMEs indexed, questions start to land.</p>
+<p>The point is not to replace reading. It is to find <em>where</em> to read next.</p>
+</div>
+        <aside class="article-cta" aria-label="Try Starcat">
+            <h2>Put your GitHub Stars to work</h2>
+            <p>Starcat is a native, local-first macOS app for organizing, searching, understanding, and asking questions of your starred repositories.</p>
+            <div class="article-cta-actions">
+                <a class="article-cta-primary" href="../../index.html#download">Download Starcat</a>
+                <a href="https://github.com/starcat-app/Starcat">View the source on GitHub</a>
+            </div>
+        </aside>
+        <nav class="related-posts" aria-label="Related articles">
+            <h2>Continue reading</h2>
+            <ul>
+            <li><a href="../suggestions-not-writes/">AI That Suggests, Never Auto-Writes</a></li>
+            <li><a href="../bring-your-own-keys/">Bring Your Own Keys — AI Without a Black Box Default</a></li>
+            <li><a href="../from-stars-to-knowledge/">From GitHub Stars to a Searchable AI Knowledge Base</a></li>
+            </ul>
+        </nav>
+    </article>
+</main>
+
+<footer class="site-footer" role="contentinfo">
+    <div class="links">
+        <a href="../../index.html">Home</a>
+        <a href="../">Blog</a>
+        <a href="../../changelog.html">Changelog</a>
+        <a href="../../privacy.html">Privacy Policy</a>
+        <a href="https://github.com/starcat-app/Starcat">GitHub</a>
+        <a href="mailto:dong4j@gmail.com">Contact</a>
+    </div>
+    <p class="copyright">Copyright &copy; 2026 Starcat. All rights reserved.</p>
+</footer>
+</body>
+</html>

@@ -3,19 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Starcat Blog — notes on local-first GitHub Stars, AI knowledge bases, and native macOS tooling.">
-    <meta name="robots" content="index, follow">
+    <meta name="description" content="Practical guides to organizing, searching, backing up, and understanding GitHub Stars on macOS.">
+    <meta name="robots" content="index, follow, max-image-preview:large">
     <link rel="canonical" href="https://starcat.ink/blog/">
-    <meta property="og:title" content="Blog · Starcat">
-    <meta property="og:description" content="Thoughts on turning GitHub Stars into a searchable, local-first knowledge base.">
+    <link rel="alternate" type="application/atom+xml" title="Starcat Blog" href="https://starcat.ink/blog/feed.xml">
+    <meta property="og:site_name" content="Starcat">
+    <meta property="og:title" content="GitHub Stars Management Blog · Starcat">
+    <meta property="og:description" content="Practical guides to organizing, searching, backing up, and understanding GitHub Stars on macOS.">
     <meta property="og:url" content="https://starcat.ink/blog/">
+    <meta property="og:image" content="https://starcat.ink/sc-banner.webp">
+    <meta property="og:image:alt" content="Starcat — GitHub Stars manager and AI knowledge base for macOS">
     <meta property="og:type" content="website">
-    <title>Blog · Starcat</title>
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="GitHub Stars Management Blog · Starcat">
+    <meta name="twitter:description" content="Practical guides to organizing, searching, backing up, and understanding GitHub Stars on macOS.">
+    <meta name="twitter:image" content="https://starcat.ink/sc-banner.webp">
+    <title>GitHub Stars Management Blog · Starcat</title>
     <link rel="icon" type="image/png" href="../starcat-logo.png">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="blog.css">
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"Blog","name":"Starcat Blog","url":"https://starcat.ink/blog/","description":"Practical guides to organizing, searching, backing up, and understanding GitHub Stars on macOS.","publisher":{"@type":"Organization","name":"Starcat","url":"https://starcat.ink","logo":{"@type":"ImageObject","url":"https://starcat.ink/starcat-logo.png"}},"blogPost":[{"@type":"BlogPosting","headline":"How to Organize GitHub Stars Without Building Another Backlog","url":"https://starcat.ink/blog/how-to-organize-github-stars/","datePublished":"2026-08-24T00:00:00+08:00","dateModified":"2026-08-24T00:00:00+08:00"},{"@type":"BlogPosting","headline":"Best GitHub Star Managers for macOS in 2026","url":"https://starcat.ink/blog/best-github-star-managers-for-macos/","datePublished":"2026-08-24T00:00:00+08:00","dateModified":"2026-08-24T00:00:00+08:00"},{"@type":"BlogPosting","headline":"How to Search GitHub Stars by README, Tags, Notes, and Meaning","url":"https://starcat.ink/blog/search-github-stars-by-readme-tags-notes/","datePublished":"2026-08-24T00:00:00+08:00","dateModified":"2026-08-24T00:00:00+08:00"},{"@type":"BlogPosting","headline":"How to Export and Back Up Your GitHub Stars","url":"https://starcat.ink/blog/export-and-back-up-github-stars/","datePublished":"2026-08-24T00:00:00+08:00","dateModified":"2026-08-24T00:00:00+08:00"},{"@type":"BlogPosting","headline":"Why GitHub Stars Need a Local-First Knowledge Base","url":"https://starcat.ink/blog/why-local-first/","datePublished":"2026-07-22T00:00:00+08:00","dateModified":"2026-08-24T00:00:00+08:00"},{"@type":"BlogPosting","headline":"Asking Questions of Your Starred Library","url":"https://starcat.ink/blog/asking-your-starred-library/","datePublished":"2026-07-21T00:00:00+08:00","dateModified":"2026-07-21T00:00:00+08:00"},{"@type":"BlogPosting","headline":"AI That Suggests, Never Auto-Writes","url":"https://starcat.ink/blog/suggestions-not-writes/","datePublished":"2026-07-20T00:00:00+08:00","dateModified":"2026-07-20T00:00:00+08:00"},{"@type":"BlogPosting","headline":"Bring Your Own Keys — AI Without a Black Box Default","url":"https://starcat.ink/blog/bring-your-own-keys/","datePublished":"2026-07-19T00:00:00+08:00","dateModified":"2026-07-19T00:00:00+08:00"},{"@type":"BlogPosting","headline":"From GitHub Stars to a Searchable AI Knowledge Base","url":"https://starcat.ink/blog/from-stars-to-knowledge/","datePublished":"2026-07-18T00:00:00+08:00","dateModified":"2026-08-24T00:00:00+08:00"},{"@type":"BlogPosting","headline":"Release Tracking Without Turning Into Noise","url":"https://starcat.ink/blog/release-tracking-without-noise/","datePublished":"2026-07-17T00:00:00+08:00","dateModified":"2026-07-17T00:00:00+08:00"},{"@type":"BlogPosting","headline":"Why Use a Native GitHub Stars Manager on macOS","url":"https://starcat.ink/blog/why-native-macos/","datePublished":"2026-07-15T00:00:00+08:00","dateModified":"2026-08-24T00:00:00+08:00"},{"@type":"BlogPosting","headline":"Stay on GitHub Pages Without Losing Your Library Context","url":"https://starcat.ink/blog/github-companion-workflow/","datePublished":"2026-07-14T00:00:00+08:00","dateModified":"2026-07-14T00:00:00+08:00"},{"@type":"BlogPosting","headline":"A Tag System You Will Still Understand on Monday","url":"https://starcat.ink/blog/tags-that-survive-monday/","datePublished":"2026-07-12T00:00:00+08:00","dateModified":"2026-07-12T00:00:00+08:00"}]}</script>
 </head>
 <body>
 
@@ -36,15 +42,209 @@
 
 <section class="hero">
     <div class="hero-inner">
-        <h1>Blog</h1>
-        <p class="hero-lead">A collection of thoughts, ideas, and stories around Starcat.</p>
+        <h1>Starcat Blog</h1>
+        <p class="hero-lead">Practical guides for turning GitHub Stars into an organized, searchable, local-first knowledge base.</p>
     </div>
 </section>
 
 <main class="blog-main">
-    <div id="post-list-root" aria-live="polite">
-        <p class="status-msg">Loading posts…</p>
+    <ul class="post-list">
+        <li>
+            <a class="post-card" href="how-to-organize-github-stars/">
+                <div class="post-card-body">
+                    <h2>How to Organize GitHub Stars Without Building Another Backlog</h2>
+                    <p class="summary">A practical system for turning hundreds or thousands of GitHub Stars into a library you can search, review, and actually use.</p>
+                </div>
+                <div class="author-row">
+    <img class="author-avatar" src="../starcat-logo.png" alt="" width="36" height="36">
+    <div class="author-text">
+        <span class="author-name">Starcat</span>
+        <span class="author-meta"><time datetime="2026-08-24">August 24, 2026</time> · 6 min read</span>
     </div>
+</div>
+            </a>
+        </li>
+        <li>
+            <a class="post-card" href="best-github-star-managers-for-macos/">
+                <div class="post-card-body">
+                    <h2>Best GitHub Star Managers for macOS in 2026</h2>
+                    <p class="summary">A transparent comparison of native Mac, cross-platform, self-hosted, and terminal tools for organizing GitHub starred repositories.</p>
+                </div>
+                <div class="author-row">
+    <img class="author-avatar" src="../starcat-logo.png" alt="" width="36" height="36">
+    <div class="author-text">
+        <span class="author-name">Starcat</span>
+        <span class="author-meta"><time datetime="2026-08-24">August 24, 2026</time> · 7 min read</span>
+    </div>
+</div>
+            </a>
+        </li>
+        <li>
+            <a class="post-card" href="search-github-stars-by-readme-tags-notes/">
+                <div class="post-card-body">
+                    <h2>How to Search GitHub Stars by README, Tags, Notes, and Meaning</h2>
+                    <p class="summary">Repository names are rarely enough. Learn how full-text, personal metadata, and semantic retrieval solve different GitHub Stars searches.</p>
+                </div>
+                <div class="author-row">
+    <img class="author-avatar" src="../starcat-logo.png" alt="" width="36" height="36">
+    <div class="author-text">
+        <span class="author-name">Starcat</span>
+        <span class="author-meta"><time datetime="2026-08-24">August 24, 2026</time> · 5 min read</span>
+    </div>
+</div>
+            </a>
+        </li>
+        <li>
+            <a class="post-card" href="export-and-back-up-github-stars/">
+                <div class="post-card-body">
+                    <h2>How to Export and Back Up Your GitHub Stars</h2>
+                    <p class="summary">Protect the starred-repository list and the private notes, tags, and status that make it useful with a simple layered backup plan.</p>
+                </div>
+                <div class="author-row">
+    <img class="author-avatar" src="../starcat-logo.png" alt="" width="36" height="36">
+    <div class="author-text">
+        <span class="author-name">Starcat</span>
+        <span class="author-meta"><time datetime="2026-08-24">August 24, 2026</time> · 5 min read</span>
+    </div>
+</div>
+            </a>
+        </li>
+        <li>
+            <a class="post-card" href="why-local-first/">
+                <div class="post-card-body">
+                    <h2>Why GitHub Stars Need a Local-First Knowledge Base</h2>
+                    <p class="summary">Stars are not a feed. They are a personal library — and libraries only work when the data stays with you.</p>
+                </div>
+                <div class="author-row">
+    <img class="author-avatar" src="../starcat-logo.png" alt="" width="36" height="36">
+    <div class="author-text">
+        <span class="author-name">Starcat</span>
+        <span class="author-meta"><time datetime="2026-07-22">July 22, 2026</time> · Updated August 24, 2026 · 7 min read</span>
+    </div>
+</div>
+            </a>
+        </li>
+        <li>
+            <a class="post-card" href="asking-your-starred-library/">
+                <div class="post-card-body">
+                    <h2>Asking Questions of Your Starred Library</h2>
+                    <p class="summary">RAG is useful when the answers cite your Stars — not when they invent a confident tour of the public web.</p>
+                </div>
+                <div class="author-row">
+    <img class="author-avatar" src="../starcat-logo.png" alt="" width="36" height="36">
+    <div class="author-text">
+        <span class="author-name">Starcat</span>
+        <span class="author-meta"><time datetime="2026-07-21">July 21, 2026</time> · 4 min read</span>
+    </div>
+</div>
+            </a>
+        </li>
+        <li>
+            <a class="post-card" href="suggestions-not-writes/">
+                <div class="post-card-body">
+                    <h2>AI That Suggests, Never Auto-Writes</h2>
+                    <p class="summary">Starcat&#39;s AI rule is simple: recommend tags and summaries, but never write into your library without confirmation.</p>
+                </div>
+                <div class="author-row">
+    <img class="author-avatar" src="../starcat-logo.png" alt="" width="36" height="36">
+    <div class="author-text">
+        <span class="author-name">Starcat</span>
+        <span class="author-meta"><time datetime="2026-07-20">July 20, 2026</time> · 4 min read</span>
+    </div>
+</div>
+            </a>
+        </li>
+        <li>
+            <a class="post-card" href="bring-your-own-keys/">
+                <div class="post-card-body">
+                    <h2>Bring Your Own Keys — AI Without a Black Box Default</h2>
+                    <p class="summary">Starcat&#39;s AI path is BYOK-first: your provider, your keys, your rate limits — and your library stays local.</p>
+                </div>
+                <div class="author-row">
+    <img class="author-avatar" src="../starcat-logo.png" alt="" width="36" height="36">
+    <div class="author-text">
+        <span class="author-name">Starcat</span>
+        <span class="author-meta"><time datetime="2026-07-19">July 19, 2026</time> · 4 min read</span>
+    </div>
+</div>
+            </a>
+        </li>
+        <li>
+            <a class="post-card" href="from-stars-to-knowledge/">
+                <div class="post-card-body">
+                    <h2>From GitHub Stars to a Searchable AI Knowledge Base</h2>
+                    <p class="summary">A practical path from flat bookmarks to searchable evidence, private notes, and cited AI answers grounded in repositories you chose.</p>
+                </div>
+                <div class="author-row">
+    <img class="author-avatar" src="../starcat-logo.png" alt="" width="36" height="36">
+    <div class="author-text">
+        <span class="author-name">Starcat</span>
+        <span class="author-meta"><time datetime="2026-07-18">July 18, 2026</time> · Updated August 24, 2026 · 7 min read</span>
+    </div>
+</div>
+            </a>
+        </li>
+        <li>
+            <a class="post-card" href="release-tracking-without-noise/">
+                <div class="post-card-body">
+                    <h2>Release Tracking Without Turning Into Noise</h2>
+                    <p class="summary">Subscribe to the repositories that matter. Ignore the rest. Release alerts should shrink attention, not expand it.</p>
+                </div>
+                <div class="author-row">
+    <img class="author-avatar" src="../starcat-logo.png" alt="" width="36" height="36">
+    <div class="author-text">
+        <span class="author-name">Starcat</span>
+        <span class="author-meta"><time datetime="2026-07-17">July 17, 2026</time> · 3 min read</span>
+    </div>
+</div>
+            </a>
+        </li>
+        <li>
+            <a class="post-card" href="why-native-macos/">
+                <div class="post-card-body">
+                    <h2>Why Use a Native GitHub Stars Manager on macOS</h2>
+                    <p class="summary">Native is not nostalgia. Windowing, keyboard navigation, local storage, Keychain, and background work shape a tool you use every day.</p>
+                </div>
+                <div class="author-row">
+    <img class="author-avatar" src="../starcat-logo.png" alt="" width="36" height="36">
+    <div class="author-text">
+        <span class="author-name">Starcat</span>
+        <span class="author-meta"><time datetime="2026-07-15">July 15, 2026</time> · Updated August 24, 2026 · 6 min read</span>
+    </div>
+</div>
+            </a>
+        </li>
+        <li>
+            <a class="post-card" href="github-companion-workflow/">
+                <div class="post-card-body">
+                    <h2>Stay on GitHub Pages Without Losing Your Library Context</h2>
+                    <p class="summary">The browser Companion keeps notes, tags, and Starcat context next to the repository you are already reading.</p>
+                </div>
+                <div class="author-row">
+    <img class="author-avatar" src="../starcat-logo.png" alt="" width="36" height="36">
+    <div class="author-text">
+        <span class="author-name">Starcat</span>
+        <span class="author-meta"><time datetime="2026-07-14">July 14, 2026</time> · 4 min read</span>
+    </div>
+</div>
+            </a>
+        </li>
+        <li>
+            <a class="post-card" href="tags-that-survive-monday/">
+                <div class="post-card-body">
+                    <h2>A Tag System You Will Still Understand on Monday</h2>
+                    <p class="summary">Fancy taxonomies collapse. A small, selfish vocabulary survives — especially when AI only suggests and you confirm.</p>
+                </div>
+                <div class="author-row">
+    <img class="author-avatar" src="../starcat-logo.png" alt="" width="36" height="36">
+    <div class="author-text">
+        <span class="author-name">Starcat</span>
+        <span class="author-meta"><time datetime="2026-07-12">July 12, 2026</time> · 4 min read</span>
+    </div>
+</div>
+            </a>
+        </li>
+    </ul>
 </main>
 
 <footer class="site-footer" role="contentinfo">
@@ -53,56 +253,10 @@
         <a href="./">Blog</a>
         <a href="../changelog.html">Changelog</a>
         <a href="../privacy.html">Privacy Policy</a>
+        <a href="https://github.com/starcat-app/Starcat">GitHub</a>
         <a href="mailto:dong4j@gmail.com">Contact</a>
     </div>
     <p class="copyright">Copyright &copy; 2026 Starcat. All rights reserved.</p>
 </footer>
-
-<script src="blog.js"></script>
-<script>
-(function () {
-    var root = document.getElementById('post-list-root');
-    var avatarSrc = '../starcat-logo.png';
-
-    function renderList(posts) {
-        if (!posts.length) {
-            root.innerHTML = '<p class="status-msg">No posts yet.</p>';
-            return;
-        }
-        var html = '<ul class="post-list">';
-        posts.forEach(function (post) {
-            var title = StarcatBlog.escapeHtml(post.title || post.slug || '');
-            var summary = StarcatBlog.escapeHtml(post.summary || '');
-            var author = StarcatBlog.escapeHtml(post.author || 'Starcat');
-            var date = StarcatBlog.formatDate(post.date);
-            var minutes = post.minutes ? (Number(post.minutes) + ' min read') : '';
-            var metaBits = [];
-            if (date) metaBits.push(date);
-            if (minutes) metaBits.push(minutes);
-            var metaLine = StarcatBlog.escapeHtml(metaBits.join(' · '));
-
-            html += '<li><a class="post-card" href="post.html?slug=' + encodeURIComponent(post.slug) + '">'
-                + '<div class="post-card-body">'
-                + '<h2>' + title + '</h2>'
-                + (summary ? '<p class="summary">' + summary + '</p>' : '')
-                + '</div>'
-                + '<div class="author-row">'
-                + '<img class="author-avatar" src="' + avatarSrc + '" alt="" width="36" height="36">'
-                + '<div class="author-text">'
-                + '<span class="author-name">' + author + '</span>'
-                + (metaLine ? '<span class="author-meta">' + metaLine + '</span>' : '')
-                + '</div></div></a></li>';
-        });
-        html += '</ul>';
-        root.innerHTML = html;
-    }
-
-    StarcatBlog.loadIndex()
-        .then(renderList)
-        .catch(function (err) {
-            root.innerHTML = '<p class="status-msg error">' + StarcatBlog.escapeHtml(err.message || String(err)) + '</p>';
-        });
-})();
-</script>
 </body>
 </html>

@@ -1,4 +1,8 @@
 User-agent: *
 Allow: /
+Disallow: /blog/posts/
+Disallow: /blog/vendor/
+Disallow: /blog/generate-blog.mjs
+Disallow: /blog/verify-blog.mjs
 
 Sitemap: https://starcat.ink/sitemap.xml

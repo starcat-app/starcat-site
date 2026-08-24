@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Stars are not a feed. They are a personal library — and libraries only work when the data stays with you.">
+    <meta name="author" content="Starcat">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <link rel="canonical" href="https://starcat.ink/blog/why-local-first/">
+    <link rel="alternate" type="application/atom+xml" title="Starcat Blog" href="https://starcat.ink/blog/feed.xml">
+    <meta property="og:site_name" content="Starcat">
+    <meta property="og:title" content="Why GitHub Stars Need a Local-First Knowledge Base">
+    <meta property="og:description" content="Stars are not a feed. They are a personal library — and libraries only work when the data stays with you.">
+    <meta property="og:url" content="https://starcat.ink/blog/why-local-first/">
+    <meta property="og:image" content="https://starcat.ink/sc-banner.webp">
+    <meta property="og:image:alt" content="Starcat — GitHub Stars manager and AI knowledge base for macOS">
+    <meta property="og:type" content="article">
+    <meta property="article:published_time" content="2026-07-22T00:00:00+08:00">
+    <meta property="article:modified_time" content="2026-08-24T00:00:00+08:00">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Why GitHub Stars Need a Local-First Knowledge Base">
+    <meta name="twitter:description" content="Stars are not a feed. They are a personal library — and libraries only work when the data stays with you.">
+    <meta name="twitter:image" content="https://starcat.ink/sc-banner.webp">
+    <title>Why GitHub Stars Need a Local-First Knowledge Base · Starcat</title>
+    <link rel="icon" type="image/png" href="../../starcat-logo.png">
+    <link rel="stylesheet" href="../blog.css">
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","@id":"https://starcat.ink/blog/why-local-first/#article","headline":"Why GitHub Stars Need a Local-First Knowledge Base","description":"Stars are not a feed. They are a personal library — and libraries only work when the data stays with you.","image":["https://starcat.ink/sc-banner.webp"],"datePublished":"2026-07-22T00:00:00+08:00","dateModified":"2026-08-24T00:00:00+08:00","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https://starcat.ink/blog/why-local-first/"},"author":{"@type":"Organization","name":"Starcat","url":"https://starcat.ink"},"publisher":{"@type":"Organization","name":"Starcat","url":"https://starcat.ink","logo":{"@type":"ImageObject","url":"https://starcat.ink/starcat-logo.png"}}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Starcat","item":"https://starcat.ink/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://starcat.ink/blog/"},{"@type":"ListItem","position":3,"name":"Why GitHub Stars Need a Local-First Knowledge Base","item":"https://starcat.ink/blog/why-local-first/"}]}]}</script>
+</head>
+<body>
+
+<header class="topbar" role="banner">
+    <div class="topbar-inner">
+        <a class="brand" href="../../index.html">
+            <img src="../../starcat-logo.png" alt="Starcat" class="brand-logo" width="28" height="28">
+            <span>Starcat</span>
+        </a>
+        <nav class="topbar-nav" aria-label="Navigation">
+            <a href="../../index.html">Home</a>
+            <a href="../" class="is-active">Blog</a>
+            <a href="../../changelog.html">Changelog</a>
+            <a href="../../privacy.html">Privacy</a>
+        </nav>
+    </div>
+</header>
+
+<main class="article-main">
+    <article>
+        <a class="article-back" href="../">← Back to Blog</a>
+        <header class="article-header">
+            <h1>Why GitHub Stars Need a Local-First Knowledge Base</h1>
+            <div class="author-row">
+    <img class="author-avatar" src="../../starcat-logo.png" alt="" width="36" height="36">
+    <div class="author-text">
+        <span class="author-name">Starcat</span>
+        <span class="author-meta"><time datetime="2026-07-22">July 22, 2026</time> · Updated August 24, 2026 · 7 min read</span>
+    </div>
+</div>
+        </header>
+        <div class="article-body"><p>Most developers use GitHub Stars as a low-friction bookmark button. Click once, feel confident the project can be found later, and return to the work at hand.</p>
+<p>Months later, the list is hundreds or thousands of repositories long. You remember saving something about vector search, a SwiftUI layout technique, or a self-hosted release tracker, but the starred page is still ordered by the last time you clicked a button. It was not designed to preserve the reason behind the decision.</p>
+<p>A useful personal library needs structure, recall, and ownership. That is why a GitHub Stars manager benefits from being local-first.</p>
+<h2>Local-first does not mean offline forever</h2>
+<p>GitHub is still the source for public repository metadata. AI providers may still process prompts when you enable them. Release checks require a network connection.</p>
+<p>Local-first describes the application boundary:</p>
+<ul>
+<li>the primary user experience continues to work against local data</li>
+<li>user-authored metadata is stored on the device first</li>
+<li>network services enhance the library rather than owning its only usable copy</li>
+<li>the user can export and recover personal context</li>
+</ul>
+<p>This is different from a web cache that disappears when a session expires, and different from an “offline mode” added to an otherwise server-owned product.</p>
+<h2>Separate rebuildable cache from irreplaceable context</h2>
+<p>Repository data and personal data have different recovery costs.</p>
+<h3>Rebuildable repository cache</h3>
+<p>GitHub can usually provide these fields again:</p>
+<ul>
+<li>owner and repository name</li>
+<li>description and Topics</li>
+<li>language and license metadata</li>
+<li>README content</li>
+<li>releases, star counts, and activity signals</li>
+</ul>
+<p>Caching them locally improves speed and offline reading, but a resync can reconstruct the collection.</p>
+<h3>User-owned library data</h3>
+<p>Only you or the local application knows:</p>
+<ul>
+<li>why you saved a repository</li>
+<li>your private note</li>
+<li>personal tags</li>
+<li>reading or adoption status</li>
+<li>custom collections and rules</li>
+<li>which projects you intentionally added to a knowledge base</li>
+</ul>
+<p>Losing this layer is not a normal cache miss. It removes the decisions that made the collection personal.</p>
+<p>A local-first design stores these categories separately and backs them up differently. Repository cache may be deleted and rebuilt; user data must survive upgrades, failed syncs, and account changes.</p>
+<h2>Local search changes the daily experience</h2>
+<p>When the searchable corpus lives locally, opening the application does not need to start with a multi-page GitHub API walk. A SQLite full-text index can answer known-item searches immediately.</p>
+<p>That enables a tighter loop:</p>
+<ol>
+<li>type a name, phrase, Topic, or note</li>
+<li>see matching repositories and snippets</li>
+<li>refine with language, status, or personal tag</li>
+<li>open the README or private context</li>
+</ol>
+<p>The speed matters because retrieval is usually a small interruption inside another task. If searching a personal library takes long enough to feel like research, people return to a web search engine and the library stops paying for its maintenance cost.</p>
+<p>Local indexing also makes failure understandable. Exact search can keep working when an embedding provider is unavailable or an API rate limit is exhausted.</p>
+<h2>Privacy is about boundaries, not absolute isolation</h2>
+<p>GitHub Stars are public by default, but the conclusions you attach to them may not be.</p>
+<p>A note such as “rejected after security review,” “candidate for client X,” or “replace the current production queue” exposes professional context that does not belong in a public profile. Personal tags can reveal the same information.</p>
+<p>Keeping that metadata in a local database reduces the number of systems that must be trusted. If AI is enabled, the app should make the boundary visible:</p>
+<ul>
+<li>which text is being sent</li>
+<li>which provider receives it</li>
+<li>which model is used</li>
+<li>whether the result is stored</li>
+<li>whether generated output can modify personal data</li>
+</ul>
+<p>BYOK does not make remote model processing local. It gives the user control over the provider relationship and avoids silently pooling the library into an opaque account. Local models such as Ollama can tighten the boundary further when supported.</p>
+<h2>A local knowledge base can still synchronize</h2>
+<p>Local-first is compatible with sync. The design question is which copy remains authoritative and how conflicts are resolved.</p>
+<p>Good sync behavior includes:</p>
+<ul>
+<li>local writes that do not wait for the network</li>
+<li>explicit conflict rules</li>
+<li>tombstones or equivalent handling for deletion</li>
+<li>an export independent of the sync service</li>
+<li>recovery that does not require deleting the local database</li>
+</ul>
+<p>Sync should make a library available on another device. It should not turn the local app into a thin client whose notes disappear when the service is unreachable.</p>
+<h2>Local RAG needs more than a local database</h2>
+<p>Turning saved repositories into a knowledge base adds another data layer: chunks, embeddings, retrieval metadata, and citations.</p>
+<p>A responsible local-first RAG workflow keeps the source and index relationship clear:</p>
+<ul>
+<li>repositories enter the knowledge base intentionally</li>
+<li>chunks record which repository and document they came from</li>
+<li>embedding model changes are versioned so stale vectors can be rebuilt</li>
+<li>exact keyword retrieval remains available</li>
+<li>answers cite evidence that can be opened locally</li>
+</ul>
+<p>The model may run remotely, locally, or through a self-hosted proxy. The personal retrieval corpus and the decision about which repositories belong in it should remain under user control.</p>
+<p><a href="../from-stars-to-knowledge/">From GitHub Stars to a Searchable AI Knowledge Base</a> explains that progression.</p>
+<h2>The practical cost of local-first</h2>
+<p>Local-first is not free.</p>
+<ul>
+<li>Database migrations must preserve years of user data.</li>
+<li>Background sync must merge remote changes without corrupting local writes.</li>
+<li>Search indexes need repair and rebuild paths.</li>
+<li>The application must explain storage usage and deletion.</li>
+<li>Backups and exports need tests, not only buttons.</li>
+</ul>
+<p>A server-owned schema can be updated centrally. A shipped desktop database exists on many machines at different versions. That makes migration discipline part of the product.</p>
+<p>The cost is justified when the data represents a personal library rather than a disposable feed.</p>
+<h2>Questions to ask any Star manager</h2>
+<p>Before importing thousands of repositories, ask:</p>
+<ol>
+<li>Where are notes, tags, and status stored?</li>
+<li>Can the library be searched without a network connection?</li>
+<li>Can user data be exported in a readable format?</li>
+<li>What happens when the cache is cleared?</li>
+<li>Which AI features send content away from the device?</li>
+<li>Can AI suggestions be reviewed before they write?</li>
+<li>Does sync have a documented conflict and deletion model?</li>
+</ol>
+<p>The answers matter more than a “local” badge.</p>
+<h2>How Starcat applies the model</h2>
+<p>Starcat stores the repository library in local SQLite and uses FTS5 for lexical search. Repository cache can be rebuilt; tags, notes, status, and other personal metadata are treated as data that must survive. Knowledge-base ingestion is explicit, so clicking Star does not automatically spend time and model budget indexing every bookmark.</p>
+<p>AI summaries and tags are suggestions, not silent writes. Semantic retrieval and RAG complement exact search, and answers can cite the repository evidence they used. Official builds remain available, while the application and supporting ecosystem are open for inspection and self-hosting.</p>
+<p>To turn this architecture into a daily routine, read <a href="../how-to-organize-github-stars/">How to Organize GitHub Stars Without Building Another Backlog</a>. For backup details, see <a href="../export-and-back-up-github-stars/">How to Export and Back Up Your GitHub Stars</a>.</p>
+</div>
+        <aside class="article-cta" aria-label="Try Starcat">
+            <h2>Put your GitHub Stars to work</h2>
+            <p>Starcat is a native, local-first macOS app for organizing, searching, understanding, and asking questions of your starred repositories.</p>
+            <div class="article-cta-actions">
+                <a class="article-cta-primary" href="../../index.html#download">Download Starcat</a>
+                <a href="https://github.com/starcat-app/Starcat">View the source on GitHub</a>
+            </div>
+        </aside>
+        <nav class="related-posts" aria-label="Related articles">
+            <h2>Continue reading</h2>
+            <ul>
+            <li><a href="../asking-your-starred-library/">Asking Questions of Your Starred Library</a></li>
+            <li><a href="../suggestions-not-writes/">AI That Suggests, Never Auto-Writes</a></li>
+            <li><a href="../bring-your-own-keys/">Bring Your Own Keys — AI Without a Black Box Default</a></li>
+            </ul>
+        </nav>
+    </article>
+</main>
+
+<footer class="site-footer" role="contentinfo">
+    <div class="links">
+        <a href="../../index.html">Home</a>
+        <a href="../">Blog</a>
+        <a href="../../changelog.html">Changelog</a>
+        <a href="../../privacy.html">Privacy Policy</a>
+        <a href="https://github.com/starcat-app/Starcat">GitHub</a>
+        <a href="mailto:dong4j@gmail.com">Contact</a>
+    </div>
+    <p class="copyright">Copyright &copy; 2026 Starcat. All rights reserved.</p>
+</footer>
+</body>
+</html>

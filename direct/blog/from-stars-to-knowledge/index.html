@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A practical path from flat bookmarks to searchable evidence, private notes, and cited AI answers grounded in repositories you chose.">
+    <meta name="author" content="Starcat">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <link rel="canonical" href="https://starcat.ink/blog/from-stars-to-knowledge/">
+    <link rel="alternate" type="application/atom+xml" title="Starcat Blog" href="https://starcat.ink/blog/feed.xml">
+    <meta property="og:site_name" content="Starcat">
+    <meta property="og:title" content="From GitHub Stars to a Searchable AI Knowledge Base">
+    <meta property="og:description" content="A practical path from flat bookmarks to searchable evidence, private notes, and cited AI answers grounded in repositories you chose.">
+    <meta property="og:url" content="https://starcat.ink/blog/from-stars-to-knowledge/">
+    <meta property="og:image" content="https://starcat.ink/sc-banner.webp">
+    <meta property="og:image:alt" content="Starcat — GitHub Stars manager and AI knowledge base for macOS">
+    <meta property="og:type" content="article">
+    <meta property="article:published_time" content="2026-07-18T00:00:00+08:00">
+    <meta property="article:modified_time" content="2026-08-24T00:00:00+08:00">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="From GitHub Stars to a Searchable AI Knowledge Base">
+    <meta name="twitter:description" content="A practical path from flat bookmarks to searchable evidence, private notes, and cited AI answers grounded in repositories you chose.">
+    <meta name="twitter:image" content="https://starcat.ink/sc-banner.webp">
+    <title>From GitHub Stars to a Searchable AI Knowledge Base · Starcat</title>
+    <link rel="icon" type="image/png" href="../../starcat-logo.png">
+    <link rel="stylesheet" href="../blog.css">
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","@id":"https://starcat.ink/blog/from-stars-to-knowledge/#article","headline":"From GitHub Stars to a Searchable AI Knowledge Base","description":"A practical path from flat bookmarks to searchable evidence, private notes, and cited AI answers grounded in repositories you chose.","image":["https://starcat.ink/sc-banner.webp"],"datePublished":"2026-07-18T00:00:00+08:00","dateModified":"2026-08-24T00:00:00+08:00","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https://starcat.ink/blog/from-stars-to-knowledge/"},"author":{"@type":"Organization","name":"Starcat","url":"https://starcat.ink"},"publisher":{"@type":"Organization","name":"Starcat","url":"https://starcat.ink","logo":{"@type":"ImageObject","url":"https://starcat.ink/starcat-logo.png"}}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Starcat","item":"https://starcat.ink/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://starcat.ink/blog/"},{"@type":"ListItem","position":3,"name":"From GitHub Stars to a Searchable AI Knowledge Base","item":"https://starcat.ink/blog/from-stars-to-knowledge/"}]}]}</script>
+</head>
+<body>
+
+<header class="topbar" role="banner">
+    <div class="topbar-inner">
+        <a class="brand" href="../../index.html">
+            <img src="../../starcat-logo.png" alt="Starcat" class="brand-logo" width="28" height="28">
+            <span>Starcat</span>
+        </a>
+        <nav class="topbar-nav" aria-label="Navigation">
+            <a href="../../index.html">Home</a>
+            <a href="../" class="is-active">Blog</a>
+            <a href="../../changelog.html">Changelog</a>
+            <a href="../../privacy.html">Privacy</a>
+        </nav>
+    </div>
+</header>
+
+<main class="article-main">
+    <article>
+        <a class="article-back" href="../">← Back to Blog</a>
+        <header class="article-header">
+            <h1>From GitHub Stars to a Searchable AI Knowledge Base</h1>
+            <div class="author-row">
+    <img class="author-avatar" src="../../starcat-logo.png" alt="" width="36" height="36">
+    <div class="author-text">
+        <span class="author-name">Starcat</span>
+        <span class="author-meta"><time datetime="2026-07-18">July 18, 2026</time> · Updated August 24, 2026 · 7 min read</span>
+    </div>
+</div>
+        </header>
+        <div class="article-body"><p>A starred repository is a promise to your future self: this project may solve a problem, explain an idea, or become part of something you build.</p>
+<p>GitHub preserves the public signal. It does not preserve the reason. Six months later, a list of names and descriptions rarely reconstructs the decision you made while reading the README.</p>
+<p>Turning Stars into a knowledge base does not mean sending every repository to a model. It means building several layers of retrieval, each added only when the previous layer stops being enough.</p>
+<h2>Layer 1: preserve the collection</h2>
+<p>Start with a reliable local representation of the starred list:</p>
+<ul>
+<li>stable repository identity</li>
+<li>owner and name</li>
+<li>canonical URL</li>
+<li>description, language, Topics, and license</li>
+<li>star timestamp when available</li>
+<li>enough sync metadata to update incrementally</li>
+</ul>
+<p>The cache should be rebuildable from GitHub. Its job is to make browsing and exact search fast, not to become the only copy of personal work.</p>
+<p>At this layer, the collection is already better than a web feed because it can be filtered and searched without walking every page of the GitHub API.</p>
+<h2>Layer 2: add personal meaning</h2>
+<p>A knowledge base becomes personal when it records information that upstream cannot provide:</p>
+<ul>
+<li>a short private note</li>
+<li>personal tags</li>
+<li>status such as Reading or Adopted</li>
+<li>a pinned or custom collection</li>
+<li>the reason a project was rejected</li>
+</ul>
+<p>The best note is not a generic summary. It is a decision:</p>
+<blockquote>
+<p>Useful architecture reference, but the runtime dependency is too heavy for our CLI.</p>
+</blockquote>
+<p>That sentence can be searched later and prevents repeated evaluation.</p>
+<p>Personal metadata also deserves stronger durability than the repository cache. It needs export, backup, and database migrations that preserve existing installations.</p>
+<h2>Layer 3: index source documents</h2>
+<p>Names, descriptions, and Topics are compact. They do not contain installation steps, API names, limitations, or architecture details.</p>
+<p>README indexing makes those details searchable. A good pipeline records:</p>
+<ul>
+<li>repository and document identity</li>
+<li>source URL or revision</li>
+<li>chunk boundaries</li>
+<li>content hash</li>
+<li>indexing status and failure reason</li>
+</ul>
+<p>Content hashes allow unchanged chunks to keep their existing index. Failure metadata prevents “not indexed” from looking like “no match.”</p>
+<p>Exact full-text retrieval should remain available because it is fast and explainable. If you remember <code>NSBackgroundActivityScheduler</code>, lexical search is the right tool.</p>
+<h2>Layer 4: add semantic retrieval</h2>
+<p>Embeddings help when the query and the source use different vocabulary. “Tool for durable background jobs” can retrieve a README describing “at-least-once task execution.”</p>
+<p>Semantic search needs explicit operational choices:</p>
+<ul>
+<li>which embedding model produced the vector</li>
+<li>whether the input is README text, summaries, notes, or all three</li>
+<li>how many chunks are retrieved</li>
+<li>which similarity threshold is used</li>
+<li>how vectors are rebuilt when the model changes</li>
+</ul>
+<p>It should not silently replace full-text search. Hybrid retrieval often works better: keyword candidates provide precision, semantic candidates provide recall, and a fusion step combines rankings.</p>
+<p><a href="../search-github-stars-by-readme-tags-notes/">How to Search GitHub Stars by README, Tags, Notes, and Meaning</a> covers when to use each path.</p>
+<h2>Layer 5: synthesize answers with citations</h2>
+<p>RAG adds a model after retrieval. The model receives selected evidence and produces a response grounded in that context.</p>
+<p>For a personal repository library, citations are the key product behavior. They let you answer:</p>
+<ul>
+<li>Which saved libraries support a particular API?</li>
+<li>How do three self-hosted tools differ in deployment?</li>
+<li>Which repository mentioned the migration constraint I remember?</li>
+</ul>
+<p>Every substantive claim should lead back to the repository and evidence chunk. Without citations, the model may blend retrieved text with general knowledge and produce an answer that sounds useful but cannot be audited.</p>
+<p>The workflow should expose:</p>
+<ol>
+<li>the query</li>
+<li>filters or selected repositories</li>
+<li>retrieved evidence</li>
+<li>model/provider used for synthesis</li>
+<li>citations in the final answer</li>
+</ol>
+<h2>Do not index every Star automatically</h2>
+<p>A public Star and a private knowledge-base entry are different commitments.</p>
+<p>You may Star a project because it looks interesting, because a friend built it, or because you want to return once. Automatically downloading, chunking, and embedding every Star creates cost without improving the active library.</p>
+<p>Use explicit ingestion:</p>
+<ul>
+<li>keep all Stars searchable as a collection</li>
+<li>promote selected repositories into the knowledge base</li>
+<li>allow bulk promotion for a deliberate project or topic</li>
+<li>make index deletion and rebuild visible</li>
+</ul>
+<p>This boundary also improves relevance. Answers grounded in a curated set are usually more useful than answers drawn from thousands of barely reviewed bookmarks.</p>
+<h2>Keep AI output separate from personal notes</h2>
+<p>A generated summary can help evaluate a repository. It should not overwrite the sentence you wrote after using the project in production.</p>
+<p>Store different kinds of knowledge distinctly:</p>
+<ul>
+<li>source text from the repository</li>
+<li>generated summary and tags</li>
+<li>personal note and status</li>
+<li>retrieved answer and citations</li>
+</ul>
+<p>That separation supports deletion, re-generation, and trust. If a model changes, generated content can be rebuilt without touching personal context.</p>
+<h2>A practical adoption sequence</h2>
+<p>You do not need every layer on day one.</p>
+<ol>
+<li>Sync the starred list locally.</li>
+<li>Add notes and status to repositories you already use.</li>
+<li>Enable full-text search across metadata and notes.</li>
+<li>Index READMEs only for an active research set.</li>
+<li>Add semantic retrieval when vocabulary mismatch becomes a real problem.</li>
+<li>Add RAG when you need synthesis across several repositories.</li>
+<li>Require citations before treating answers as knowledge.</li>
+</ol>
+<p>Each step should remain useful if the next one is disabled.</p>
+<h2>What Starcat implements</h2>
+<p>Starcat separates Stars from the knowledge base. The full starred collection can be browsed and organized locally, while explicit ingestion controls the default RAG corpus. SQLite and FTS5 provide local storage and lexical retrieval. Notes, tags, summaries, README chunks, and attachments can become knowledge sources; semantic retrieval and RRF improve recall; cited answers open back to the repository and matching evidence.</p>
+<p>The knowledge workspace is read-only by default. It does not silently modify tags, notes, or library membership. AI can suggest, but personal writes remain a user decision.</p>
+<p>For the broader architecture choice, read <a href="../why-local-first/">Why GitHub Stars Need a Local-First Knowledge Base</a>. To build the everyday workflow first, start with <a href="../how-to-organize-github-stars/">How to Organize GitHub Stars</a>.</p>
+</div>
+        <aside class="article-cta" aria-label="Try Starcat">
+            <h2>Put your GitHub Stars to work</h2>
+            <p>Starcat is a native, local-first macOS app for organizing, searching, understanding, and asking questions of your starred repositories.</p>
+            <div class="article-cta-actions">
+                <a class="article-cta-primary" href="../../index.html#download">Download Starcat</a>
+                <a href="https://github.com/starcat-app/Starcat">View the source on GitHub</a>
+            </div>
+        </aside>
+        <nav class="related-posts" aria-label="Related articles">
+            <h2>Continue reading</h2>
+            <ul>
+            <li><a href="../release-tracking-without-noise/">Release Tracking Without Turning Into Noise</a></li>
+            <li><a href="../why-native-macos/">Why Use a Native GitHub Stars Manager on macOS</a></li>
+            <li><a href="../github-companion-workflow/">Stay on GitHub Pages Without Losing Your Library Context</a></li>
+            </ul>
+        </nav>
+    </article>
+</main>
+
+<footer class="site-footer" role="contentinfo">
+    <div class="links">
+        <a href="../../index.html">Home</a>
+        <a href="../">Blog</a>
+        <a href="../../changelog.html">Changelog</a>
+        <a href="../../privacy.html">Privacy Policy</a>
+        <a href="https://github.com/starcat-app/Starcat">GitHub</a>
+        <a href="mailto:dong4j@gmail.com">Contact</a>
+    </div>
+    <p class="copyright">Copyright &copy; 2026 Starcat. All rights reserved.</p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Starcat Blog</title>
+  <link href="https://starcat.ink/blog/"/>
+  <link href="https://starcat.ink/blog/feed.xml" rel="self"/>
+  <id>https://starcat.ink/blog/</id>
+  <updated>2026-08-24T00:00:00+08:00</updated>
+  <subtitle>Practical guides for organizing, searching, backing up, and understanding GitHub Stars.</subtitle>
+  <entry>
+    <title>How to Organize GitHub Stars Without Building Another Backlog</title>
+    <link href="https://starcat.ink/blog/how-to-organize-github-stars/"/>
+    <id>https://starcat.ink/blog/how-to-organize-github-stars/</id>
+    <published>2026-08-24T00:00:00+08:00</published>
+    <updated>2026-08-24T00:00:00+08:00</updated>
+    <author><name>Starcat</name></author>
+    <summary>A practical system for turning hundreds or thousands of GitHub Stars into a library you can search, review, and actually use.</summary>
+  </entry>
+  <entry>
+    <title>Best GitHub Star Managers for macOS in 2026</title>
+    <link href="https://starcat.ink/blog/best-github-star-managers-for-macos/"/>
+    <id>https://starcat.ink/blog/best-github-star-managers-for-macos/</id>
+    <published>2026-08-24T00:00:00+08:00</published>
+    <updated>2026-08-24T00:00:00+08:00</updated>
+    <author><name>Starcat</name></author>
+    <summary>A transparent comparison of native Mac, cross-platform, self-hosted, and terminal tools for organizing GitHub starred repositories.</summary>
+  </entry>
+  <entry>
+    <title>How to Search GitHub Stars by README, Tags, Notes, and Meaning</title>
+    <link href="https://starcat.ink/blog/search-github-stars-by-readme-tags-notes/"/>
+    <id>https://starcat.ink/blog/search-github-stars-by-readme-tags-notes/</id>
+    <published>2026-08-24T00:00:00+08:00</published>
+    <updated>2026-08-24T00:00:00+08:00</updated>
+    <author><name>Starcat</name></author>
+    <summary>Repository names are rarely enough. Learn how full-text, personal metadata, and semantic retrieval solve different GitHub Stars searches.</summary>
+  </entry>
+  <entry>
+    <title>How to Export and Back Up Your GitHub Stars</title>
+    <link href="https://starcat.ink/blog/export-and-back-up-github-stars/"/>
+    <id>https://starcat.ink/blog/export-and-back-up-github-stars/</id>
+    <published>2026-08-24T00:00:00+08:00</published>
+    <updated>2026-08-24T00:00:00+08:00</updated>
+    <author><name>Starcat</name></author>
+    <summary>Protect the starred-repository list and the private notes, tags, and status that make it useful with a simple layered backup plan.</summary>
+  </entry>
+  <entry>
+    <title>Why GitHub Stars Need a Local-First Knowledge Base</title>
+    <link href="https://starcat.ink/blog/why-local-first/"/>
+    <id>https://starcat.ink/blog/why-local-first/</id>
+    <published>2026-07-22T00:00:00+08:00</published>
+    <updated>2026-08-24T00:00:00+08:00</updated>
+    <author><name>Starcat</name></author>
+    <summary>Stars are not a feed. They are a personal library — and libraries only work when the data stays with you.</summary>
+  </entry>
+  <entry>
+    <title>Asking Questions of Your Starred Library</title>
+    <link href="https://starcat.ink/blog/asking-your-starred-library/"/>
+    <id>https://starcat.ink/blog/asking-your-starred-library/</id>
+    <published>2026-07-21T00:00:00+08:00</published>
+    <updated>2026-07-21T00:00:00+08:00</updated>
+    <author><name>Starcat</name></author>
+    <summary>RAG is useful when the answers cite your Stars — not when they invent a confident tour of the public web.</summary>
+  </entry>
+  <entry>
+    <title>AI That Suggests, Never Auto-Writes</title>
+    <link href="https://starcat.ink/blog/suggestions-not-writes/"/>
+    <id>https://starcat.ink/blog/suggestions-not-writes/</id>
+    <published>2026-07-20T00:00:00+08:00</published>
+    <updated>2026-07-20T00:00:00+08:00</updated>
+    <author><name>Starcat</name></author>
+    <summary>Starcat&#39;s AI rule is simple: recommend tags and summaries, but never write into your library without confirmation.</summary>
+  </entry>
+  <entry>
+    <title>Bring Your Own Keys — AI Without a Black Box Default</title>
+    <link href="https://starcat.ink/blog/bring-your-own-keys/"/>
+    <id>https://starcat.ink/blog/bring-your-own-keys/</id>
+    <published>2026-07-19T00:00:00+08:00</published>
+    <updated>2026-07-19T00:00:00+08:00</updated>
+    <author><name>Starcat</name></author>
+    <summary>Starcat&#39;s AI path is BYOK-first: your provider, your keys, your rate limits — and your library stays local.</summary>
+  </entry>
+  <entry>
+    <title>From GitHub Stars to a Searchable AI Knowledge Base</title>
+    <link href="https://starcat.ink/blog/from-stars-to-knowledge/"/>
+    <id>https://starcat.ink/blog/from-stars-to-knowledge/</id>
+    <published>2026-07-18T00:00:00+08:00</published>
+    <updated>2026-08-24T00:00:00+08:00</updated>
+    <author><name>Starcat</name></author>
+    <summary>A practical path from flat bookmarks to searchable evidence, private notes, and cited AI answers grounded in repositories you chose.</summary>
+  </entry>
+  <entry>
+    <title>Release Tracking Without Turning Into Noise</title>
+    <link href="https://starcat.ink/blog/release-tracking-without-noise/"/>
+    <id>https://starcat.ink/blog/release-tracking-without-noise/</id>
+    <published>2026-07-17T00:00:00+08:00</published>
+    <updated>2026-07-17T00:00:00+08:00</updated>
+    <author><name>Starcat</name></author>
+    <summary>Subscribe to the repositories that matter. Ignore the rest. Release alerts should shrink attention, not expand it.</summary>
+  </entry>
+  <entry>
+    <title>Why Use a Native GitHub Stars Manager on macOS</title>
+    <link href="https://starcat.ink/blog/why-native-macos/"/>
+    <id>https://starcat.ink/blog/why-native-macos/</id>
+    <published>2026-07-15T00:00:00+08:00</published>
+    <updated>2026-08-24T00:00:00+08:00</updated>
+    <author><name>Starcat</name></author>
+    <summary>Native is not nostalgia. Windowing, keyboard navigation, local storage, Keychain, and background work shape a tool you use every day.</summary>
+  </entry>
+  <entry>
+    <title>Stay on GitHub Pages Without Losing Your Library Context</title>
+    <link href="https://starcat.ink/blog/github-companion-workflow/"/>
+    <id>https://starcat.ink/blog/github-companion-workflow/</id>
+    <published>2026-07-14T00:00:00+08:00</published>
+    <updated>2026-07-14T00:00:00+08:00</updated>
+    <author><name>Starcat</name></author>
+    <summary>The browser Companion keeps notes, tags, and Starcat context next to the repository you are already reading.</summary>
+  </entry>
+  <entry>
+    <title>A Tag System You Will Still Understand on Monday</title>
+    <link href="https://starcat.ink/blog/tags-that-survive-monday/"/>
+    <id>https://starcat.ink/blog/tags-that-survive-monday/</id>
+    <published>2026-07-12T00:00:00+08:00</published>
+    <updated>2026-07-12T00:00:00+08:00</updated>
+    <author><name>Starcat</name></author>
+    <summary>Fancy taxonomies collapse. A small, selfish vocabulary survives — especially when AI only suggests and you confirm.</summary>
+  </entry>
+</feed>

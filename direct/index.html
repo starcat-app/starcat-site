@@ -3,22 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Starcat — Turn GitHub Stars into a searchable AI knowledge base. macOS native app, local-first, AI-powered.">
-    <meta name="robots" content="index, follow">
+    <meta name="description" content="Starcat is an open-source, native macOS GitHub Stars manager for organizing, searching, and turning starred repositories into a local-first AI knowledge base.">
+    <meta name="robots" content="index, follow, max-image-preview:large">
     <link rel="canonical" href="https://starcat.ink/">
     <link rel="alternate" hreflang="en" href="https://starcat.ink/">
     <link rel="alternate" hreflang="zh-Hans" href="https://starcat.ink/index-zh.html">
     <link rel="alternate" hreflang="x-default" href="https://starcat.ink/">
-    <meta property="og:title" content="Starcat — Native macOS GitHub Stars Manager">
-    <meta property="og:description" content="Turn GitHub Stars into a searchable AI knowledge base. Native macOS 15+ app, local-first, BYOK AI.">
+    <meta property="og:site_name" content="Starcat">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:locale:alternate" content="zh_CN">
+    <meta property="og:title" content="Starcat — GitHub Stars Manager &amp; AI Knowledge Base for macOS">
+    <meta property="og:description" content="Organize, search, and ask questions across your GitHub Stars in a native, local-first macOS app.">
     <meta property="og:url" content="https://starcat.ink/">
     <meta property="og:image" content="https://starcat.ink/sc-banner.webp">
+    <meta property="og:image:width" content="3116">
+    <meta property="og:image:height" content="1872">
+    <meta property="og:image:alt" content="Starcat GitHub Stars manager for macOS">
     <meta property="og:type" content="website">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Starcat — Native macOS GitHub Stars Manager">
-    <meta name="twitter:description" content="Turn GitHub Stars into a searchable AI knowledge base. Native macOS 15+ app, local-first, BYOK AI.">
+    <meta name="twitter:title" content="Starcat — GitHub Stars Manager &amp; AI Knowledge Base for macOS">
+    <meta name="twitter:description" content="Organize, search, and ask questions across your GitHub Stars in a native, local-first macOS app.">
     <meta name="twitter:image" content="https://starcat.ink/sc-banner.webp">
-    <title>Starcat — GitHub Star Manager &amp; AI Knowledge Organizer</title>
+    <meta name="twitter:image:alt" content="Starcat GitHub Stars manager for macOS">
+    <meta name="theme-color" content="#090B10">
+    <title>Starcat — GitHub Stars Manager &amp; AI Knowledge Base for macOS</title>
     <link rel="icon" type="image/png" href="starcat-logo.png">
     <!-- Start the first poster early without competing with the hero's LCP image. -->
     <link rel="preload" as="image" href="media/starcat-organize.webp" type="image/webp" fetchpriority="low">
@@ -31,23 +39,51 @@
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
-        "@type": "SoftwareApplication",
-        "name": "Starcat",
-        "applicationCategory": "DeveloperApplication",
-        "operatingSystem": "macOS 15+",
-        "url": "https://starcat.ink/",
-        "downloadUrl": "https://starcat.ink/",
-        "image": "https://starcat.ink/sc-banner.webp",
-        "description": "Starcat turns GitHub Stars into a searchable, local-first AI knowledge base for macOS.",
-        "offers": {
-            "@type": "Offer",
-            "price": "0",
-            "priceCurrency": "USD"
-        },
-        "author": {
-            "@type": "Organization",
-            "name": "Starcat"
-        }
+        "@graph": [
+            {
+                "@type": "Organization",
+                "@id": "https://starcat.ink/#organization",
+                "name": "Starcat",
+                "url": "https://starcat.ink/",
+                "logo": {
+                    "@type": "ImageObject",
+                    "url": "https://starcat.ink/starcat-logo.png",
+                    "width": 512,
+                    "height": 512
+                },
+                "sameAs": [
+                    "https://github.com/starcat-app",
+                    "https://github.com/starcat-app/Starcat"
+                ]
+            },
+            {
+                "@type": "WebSite",
+                "@id": "https://starcat.ink/#website",
+                "url": "https://starcat.ink/",
+                "name": "Starcat",
+                "description": "Native macOS GitHub Stars manager and local-first AI knowledge base.",
+                "inLanguage": "en",
+                "publisher": { "@id": "https://starcat.ink/#organization" }
+            },
+            {
+                "@type": "SoftwareApplication",
+                "@id": "https://starcat.ink/#software",
+                "name": "Starcat",
+                "softwareVersion": "1.4.0",
+                "applicationCategory": "DeveloperApplication",
+                "operatingSystem": "macOS 15 or newer",
+                "url": "https://starcat.ink/",
+                "downloadUrl": "https://starcat.ink/downloads/Starcat-1.4.0-arm64.dmg",
+                "image": "https://starcat.ink/sc-banner.webp",
+                "description": "Starcat organizes GitHub Stars into a searchable, local-first AI knowledge base for macOS.",
+                "author": { "@id": "https://starcat.ink/#organization" },
+                "offers": {
+                    "@type": "Offer",
+                    "price": "0",
+                    "priceCurrency": "USD"
+                }
+            }
+        ]
     }
     </script>
 

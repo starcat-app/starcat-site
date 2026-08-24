@@ -1,12 +1,41 @@
 {
   "posts": [
     {
+      "slug": "how-to-organize-github-stars",
+      "title": "How to Organize GitHub Stars Without Building Another Backlog",
+      "summary": "A practical system for turning hundreds or thousands of GitHub Stars into a library you can search, review, and actually use.",
+      "date": "2026-08-24",
+      "author": "Starcat"
+    },
+    {
+      "slug": "best-github-star-managers-for-macos",
+      "title": "Best GitHub Star Managers for macOS in 2026",
+      "summary": "A transparent comparison of native Mac, cross-platform, self-hosted, and terminal tools for organizing GitHub starred repositories.",
+      "date": "2026-08-24",
+      "author": "Starcat"
+    },
+    {
+      "slug": "search-github-stars-by-readme-tags-notes",
+      "title": "How to Search GitHub Stars by README, Tags, Notes, and Meaning",
+      "summary": "Repository names are rarely enough. Learn how full-text, personal metadata, and semantic retrieval solve different GitHub Stars searches.",
+      "date": "2026-08-24",
+      "author": "Starcat"
+    },
+    {
+      "slug": "export-and-back-up-github-stars",
+      "title": "How to Export and Back Up Your GitHub Stars",
+      "summary": "Protect the starred-repository list and the private notes, tags, and status that make it useful with a simple layered backup plan.",
+      "date": "2026-08-24",
+      "author": "Starcat"
+    },
+    {
       "slug": "why-local-first",
       "title": "Why GitHub Stars Need a Local-First Knowledge Base",
       "summary": "Stars are not a feed. They are a personal library — and libraries only work when the data stays with you.",
       "date": "2026-07-22",
+      "updated": "2026-08-24",
       "author": "Starcat",
-      "minutes": 5
+      "minutes": 7
     },
     {
       "slug": "asking-your-starred-library",
@@ -34,11 +63,12 @@
     },
     {
       "slug": "from-stars-to-knowledge",
-      "title": "From Flat Bookmarks to a Searchable Knowledge Base",
-      "summary": "A starred repo is a promise to your future self. Tags, notes, and local search are how you keep that promise.",
+      "title": "From GitHub Stars to a Searchable AI Knowledge Base",
+      "summary": "A practical path from flat bookmarks to searchable evidence, private notes, and cited AI answers grounded in repositories you chose.",
       "date": "2026-07-18",
+      "updated": "2026-08-24",
       "author": "Starcat",
-      "minutes": 5
+      "minutes": 7
     },
     {
       "slug": "release-tracking-without-noise",
@@ -50,11 +80,12 @@
     },
     {
       "slug": "why-native-macos",
-      "title": "Why Starcat Is Native macOS — Not Electron",
-      "summary": "Native is not nostalgia. For a tool you live in every day, platform fit is a product feature.",
+      "title": "Why Use a Native GitHub Stars Manager on macOS",
+      "summary": "Native is not nostalgia. Windowing, keyboard navigation, local storage, Keychain, and background work shape a tool you use every day.",
       "date": "2026-07-15",
+      "updated": "2026-08-24",
       "author": "Starcat",
-      "minutes": 4
+      "minutes": 6
     },
     {
       "slug": "github-companion-workflow",

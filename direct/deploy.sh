@@ -51,6 +51,17 @@ if [ ! -f "$NGINX_CONF" ]; then
     exit 1
 fi
 
+# 博客 Markdown 是写作源，生产站只同步生成后的完整 HTML。部署前强制生成，
+# 避免作者更新文章后忘记同步列表、Atom feed 或 sitemap。
+if ! command -v node >/dev/null 2>&1; then
+    echo "错误: 未找到 Node.js，无法生成静态博客。"
+    exit 1
+fi
+
+echo "生成静态博客、Atom feed 与 sitemap..."
+node "$SCRIPT_DIR/blog/generate-blog.mjs"
+node "$SCRIPT_DIR/blog/verify-blog.mjs"
+
 echo "上传生产 Nginx 配置..."
 rsync -avz --progress \
     -e "$RSYNC_SSH" \
@@ -85,6 +96,11 @@ rsync -avz --delete --progress \
     --exclude '__pycache__/' \
     --exclude '*.pyc' \
     --exclude 'starcat.ink.conf' \
+    --exclude 'blog/generate-blog.mjs' \
+    --exclude 'blog/verify-blog.mjs' \
+    --exclude 'blog/README.md' \
+    --exclude 'blog/posts/' \
+    --exclude 'blog/vendor/' \
     --exclude 'downloads/' \
     --exclude 'appcast.xml' \
     "$SCRIPT_DIR/" \

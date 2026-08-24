@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="The browser Companion keeps notes, tags, and Starcat context next to the repository you are already reading.">
+    <meta name="author" content="Starcat">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <link rel="canonical" href="https://starcat.ink/blog/github-companion-workflow/">
+    <link rel="alternate" type="application/atom+xml" title="Starcat Blog" href="https://starcat.ink/blog/feed.xml">
+    <meta property="og:site_name" content="Starcat">
+    <meta property="og:title" content="Stay on GitHub Pages Without Losing Your Library Context">
+    <meta property="og:description" content="The browser Companion keeps notes, tags, and Starcat context next to the repository you are already reading.">
+    <meta property="og:url" content="https://starcat.ink/blog/github-companion-workflow/">
+    <meta property="og:image" content="https://starcat.ink/sc-banner.webp">
+    <meta property="og:image:alt" content="Starcat — GitHub Stars manager and AI knowledge base for macOS">
+    <meta property="og:type" content="article">
+    <meta property="article:published_time" content="2026-07-14T00:00:00+08:00">
+    <meta property="article:modified_time" content="2026-07-14T00:00:00+08:00">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Stay on GitHub Pages Without Losing Your Library Context">
+    <meta name="twitter:description" content="The browser Companion keeps notes, tags, and Starcat context next to the repository you are already reading.">
+    <meta name="twitter:image" content="https://starcat.ink/sc-banner.webp">
+    <title>Stay on GitHub Pages Without Losing Your Library Context · Starcat</title>
+    <link rel="icon" type="image/png" href="../../starcat-logo.png">
+    <link rel="stylesheet" href="../blog.css">
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","@id":"https://starcat.ink/blog/github-companion-workflow/#article","headline":"Stay on GitHub Pages Without Losing Your Library Context","description":"The browser Companion keeps notes, tags, and Starcat context next to the repository you are already reading.","image":["https://starcat.ink/sc-banner.webp"],"datePublished":"2026-07-14T00:00:00+08:00","dateModified":"2026-07-14T00:00:00+08:00","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https://starcat.ink/blog/github-companion-workflow/"},"author":{"@type":"Organization","name":"Starcat","url":"https://starcat.ink"},"publisher":{"@type":"Organization","name":"Starcat","url":"https://starcat.ink","logo":{"@type":"ImageObject","url":"https://starcat.ink/starcat-logo.png"}}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Starcat","item":"https://starcat.ink/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://starcat.ink/blog/"},{"@type":"ListItem","position":3,"name":"Stay on GitHub Pages Without Losing Your Library Context","item":"https://starcat.ink/blog/github-companion-workflow/"}]}]}</script>
+</head>
+<body>
+
+<header class="topbar" role="banner">
+    <div class="topbar-inner">
+        <a class="brand" href="../../index.html">
+            <img src="../../starcat-logo.png" alt="Starcat" class="brand-logo" width="28" height="28">
+            <span>Starcat</span>
+        </a>
+        <nav class="topbar-nav" aria-label="Navigation">
+            <a href="../../index.html">Home</a>
+            <a href="../" class="is-active">Blog</a>
+            <a href="../../changelog.html">Changelog</a>
+            <a href="../../privacy.html">Privacy</a>
+        </nav>
+    </div>
+</header>
+
+<main class="article-main">
+    <article>
+        <a class="article-back" href="../">← Back to Blog</a>
+        <header class="article-header">
+            <h1>Stay on GitHub Pages Without Losing Your Library Context</h1>
+            <div class="author-row">
+    <img class="author-avatar" src="../../starcat-logo.png" alt="" width="36" height="36">
+    <div class="author-text">
+        <span class="author-name">Starcat</span>
+        <span class="author-meta"><time datetime="2026-07-14">July 14, 2026</time> · 4 min read</span>
+    </div>
+</div>
+        </header>
+        <div class="article-body"><p>Most of the time you discover repositories in the browser. Most of the time your personal metadata lives somewhere else.</p>
+<p>That split is how notes get lost. You read a README on github.com, think &quot;I should tag this <code>infra/queue</code>,&quot; and never open the desktop app.</p>
+<h2>Companion as the bridge</h2>
+<p>Starcat&#39;s browser Companion (Chrome / Safari) is meant to sit beside GitHub pages: same repository, local context — notes, tags, health signals, recommendations — without forcing a full context switch for every glance.</p>
+<p>The desktop app remains the library. The Companion is the lane change.</p>
+<h2>What stays local</h2>
+<p>Pairing talks to Starcat on your machine. The point is not to rebuild Starcat inside a content script. The point is to surface <em>your</em> data where your eyes already are.</p>
+<p>If the app is closed or unpaired, the Companion should fail clearly — not invent a second cloud account for convenience.</p>
+<h2>A workflow that sticks</h2>
+<ol>
+<li>Star something interesting on GitHub</li>
+<li>Add one tag or one sentence of notes from the Companion while the reason is fresh</li>
+<li>Later, use Starcat search / RAG when you need to find it again</li>
+</ol>
+<p>The Companion does not replace the three-column Mac app. It reduces the number of times good intentions die in a browser tab.</p>
+</div>
+        <aside class="article-cta" aria-label="Try Starcat">
+            <h2>Put your GitHub Stars to work</h2>
+            <p>Starcat is a native, local-first macOS app for organizing, searching, understanding, and asking questions of your starred repositories.</p>
+            <div class="article-cta-actions">
+                <a class="article-cta-primary" href="../../index.html#download">Download Starcat</a>
+                <a href="https://github.com/starcat-app/Starcat">View the source on GitHub</a>
+            </div>
+        </aside>
+        <nav class="related-posts" aria-label="Related articles">
+            <h2>Continue reading</h2>
+            <ul>
+            <li><a href="../tags-that-survive-monday/">A Tag System You Will Still Understand on Monday</a></li>
+            <li><a href="../how-to-organize-github-stars/">How to Organize GitHub Stars Without Building Another Backlog</a></li>
+            <li><a href="../best-github-star-managers-for-macos/">Best GitHub Star Managers for macOS in 2026</a></li>
+            </ul>
+        </nav>
+    </article>
+</main>
+
+<footer class="site-footer" role="contentinfo">
+    <div class="links">
+        <a href="../../index.html">Home</a>
+        <a href="../">Blog</a>
+        <a href="../../changelog.html">Changelog</a>
+        <a href="../../privacy.html">Privacy Policy</a>
+        <a href="https://github.com/starcat-app/Starcat">GitHub</a>
+        <a href="mailto:dong4j@gmail.com">Contact</a>
+    </div>
+    <p class="copyright">Copyright &copy; 2026 Starcat. All rights reserved.</p>
+</footer>
+</body>
+</html>

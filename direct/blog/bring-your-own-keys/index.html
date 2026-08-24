@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Starcat&#39;s AI path is BYOK-first: your provider, your keys, your rate limits — and your library stays local.">
+    <meta name="author" content="Starcat">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <link rel="canonical" href="https://starcat.ink/blog/bring-your-own-keys/">
+    <link rel="alternate" type="application/atom+xml" title="Starcat Blog" href="https://starcat.ink/blog/feed.xml">
+    <meta property="og:site_name" content="Starcat">
+    <meta property="og:title" content="Bring Your Own Keys — AI Without a Black Box Default">
+    <meta property="og:description" content="Starcat&#39;s AI path is BYOK-first: your provider, your keys, your rate limits — and your library stays local.">
+    <meta property="og:url" content="https://starcat.ink/blog/bring-your-own-keys/">
+    <meta property="og:image" content="https://starcat.ink/sc-banner.webp">
+    <meta property="og:image:alt" content="Starcat — GitHub Stars manager and AI knowledge base for macOS">
+    <meta property="og:type" content="article">
+    <meta property="article:published_time" content="2026-07-19T00:00:00+08:00">
+    <meta property="article:modified_time" content="2026-07-19T00:00:00+08:00">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Bring Your Own Keys — AI Without a Black Box Default">
+    <meta name="twitter:description" content="Starcat&#39;s AI path is BYOK-first: your provider, your keys, your rate limits — and your library stays local.">
+    <meta name="twitter:image" content="https://starcat.ink/sc-banner.webp">
+    <title>Bring Your Own Keys — AI Without a Black Box Default · Starcat</title>
+    <link rel="icon" type="image/png" href="../../starcat-logo.png">
+    <link rel="stylesheet" href="../blog.css">
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","@id":"https://starcat.ink/blog/bring-your-own-keys/#article","headline":"Bring Your Own Keys — AI Without a Black Box Default","description":"Starcat's AI path is BYOK-first: your provider, your keys, your rate limits — and your library stays local.","image":["https://starcat.ink/sc-banner.webp"],"datePublished":"2026-07-19T00:00:00+08:00","dateModified":"2026-07-19T00:00:00+08:00","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https://starcat.ink/blog/bring-your-own-keys/"},"author":{"@type":"Organization","name":"Starcat","url":"https://starcat.ink"},"publisher":{"@type":"Organization","name":"Starcat","url":"https://starcat.ink","logo":{"@type":"ImageObject","url":"https://starcat.ink/starcat-logo.png"}}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Starcat","item":"https://starcat.ink/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://starcat.ink/blog/"},{"@type":"ListItem","position":3,"name":"Bring Your Own Keys — AI Without a Black Box Default","item":"https://starcat.ink/blog/bring-your-own-keys/"}]}]}</script>
+</head>
+<body>
+
+<header class="topbar" role="banner">
+    <div class="topbar-inner">
+        <a class="brand" href="../../index.html">
+            <img src="../../starcat-logo.png" alt="Starcat" class="brand-logo" width="28" height="28">
+            <span>Starcat</span>
+        </a>
+        <nav class="topbar-nav" aria-label="Navigation">
+            <a href="../../index.html">Home</a>
+            <a href="../" class="is-active">Blog</a>
+            <a href="../../changelog.html">Changelog</a>
+            <a href="../../privacy.html">Privacy</a>
+        </nav>
+    </div>
+</header>
+
+<main class="article-main">
+    <article>
+        <a class="article-back" href="../">← Back to Blog</a>
+        <header class="article-header">
+            <h1>Bring Your Own Keys — AI Without a Black Box Default</h1>
+            <div class="author-row">
+    <img class="author-avatar" src="../../starcat-logo.png" alt="" width="36" height="36">
+    <div class="author-text">
+        <span class="author-name">Starcat</span>
+        <span class="author-meta"><time datetime="2026-07-19">July 19, 2026</time> · 4 min read</span>
+    </div>
+</div>
+        </header>
+        <div class="article-body"><p>&quot;Just upload your data for better AI&quot; is a common pitch. For a personal starred library, it is the wrong default.</p>
+<p>Starcat&#39;s AI features are built around <strong>BYOK</strong> — bring your own keys — so models run through <em>your</em> provider settings instead of quietly shipping your notes into someone else&#39;s training-shaped void.</p>
+<h2>What BYOK actually buys you</h2>
+<ol>
+<li><strong>Choice</strong> — pick the provider and model that fit cost, latency, and quality</li>
+<li><strong>Boundary</strong> — keys live in Keychain-backed storage on your Mac; the app does not invent a second identity for your library</li>
+<li><strong>Accountability</strong> — usage and failures are yours to see, not buried in a opaque pooled meter</li>
+</ol>
+<p>Pro unlocks the capability. BYOK keeps the control surface honest.</p>
+<h2>Local library, remote models</h2>
+<p>The split is intentional:</p>
+<ul>
+<li><strong>Local</strong>: Stars cache, tags, notes, status, search indexes, RAG chunks</li>
+<li><strong>Remote (optional)</strong>: inference and embeddings when you ask for them</li>
+</ul>
+<p>That means AI is a tool you switch on for a job, not a cloud that owns the filing cabinet.</p>
+<h2>Practical advice</h2>
+<ul>
+<li>Start with one provider you already trust for other work</li>
+<li>Prefer models you can afford to run on &quot;suggest tags for this repo&quot; without flinching</li>
+<li>Keep the confirmation rule: suggestions are drafts until you accept them</li>
+</ul>
+<p>If a product only works when it holds your API relationship and your corpus, you are renting both. Starcat tries to rent neither by default.</p>
+</div>
+        <aside class="article-cta" aria-label="Try Starcat">
+            <h2>Put your GitHub Stars to work</h2>
+            <p>Starcat is a native, local-first macOS app for organizing, searching, understanding, and asking questions of your starred repositories.</p>
+            <div class="article-cta-actions">
+                <a class="article-cta-primary" href="../../index.html#download">Download Starcat</a>
+                <a href="https://github.com/starcat-app/Starcat">View the source on GitHub</a>
+            </div>
+        </aside>
+        <nav class="related-posts" aria-label="Related articles">
+            <h2>Continue reading</h2>
+            <ul>
+            <li><a href="../from-stars-to-knowledge/">From GitHub Stars to a Searchable AI Knowledge Base</a></li>
+            <li><a href="../release-tracking-without-noise/">Release Tracking Without Turning Into Noise</a></li>
+            <li><a href="../why-native-macos/">Why Use a Native GitHub Stars Manager on macOS</a></li>
+            </ul>
+        </nav>
+    </article>
+</main>
+
+<footer class="site-footer" role="contentinfo">
+    <div class="links">
+        <a href="../../index.html">Home</a>
+        <a href="../">Blog</a>
+        <a href="../../changelog.html">Changelog</a>
+        <a href="../../privacy.html">Privacy Policy</a>
+        <a href="https://github.com/starcat-app/Starcat">GitHub</a>
+        <a href="mailto:dong4j@gmail.com">Contact</a>
+    </div>
+    <p class="copyright">Copyright &copy; 2026 Starcat. All rights reserved.</p>
+</footer>
+</body>
+</html>

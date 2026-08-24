@@ -3,132 +3,112 @@
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://starcat.ink/</loc>
-    <lastmod>2026-07-10</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
+    <lastmod>2026-08-24</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://starcat.ink/"/>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://starcat.ink/index-zh.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://starcat.ink/"/>
   </url>
   <url>
     <loc>https://starcat.ink/index-zh.html</loc>
-    <lastmod>2026-07-10</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
+    <lastmod>2026-08-24</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://starcat.ink/"/>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://starcat.ink/index-zh.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://starcat.ink/"/>
   </url>
   <url>
     <loc>https://starcat.ink/blog/</loc>
-    <lastmod>2026-07-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-08-24</lastmod>
   </url>
   <url>
-    <loc>https://starcat.ink/blog/post.html?slug=why-local-first</loc>
-    <lastmod>2026-07-22</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <loc>https://starcat.ink/blog/how-to-organize-github-stars/</loc>
+    <lastmod>2026-08-24</lastmod>
   </url>
   <url>
-    <loc>https://starcat.ink/blog/post.html?slug=asking-your-starred-library</loc>
+    <loc>https://starcat.ink/blog/best-github-star-managers-for-macos/</loc>
+    <lastmod>2026-08-24</lastmod>
+  </url>
+  <url>
+    <loc>https://starcat.ink/blog/search-github-stars-by-readme-tags-notes/</loc>
+    <lastmod>2026-08-24</lastmod>
+  </url>
+  <url>
+    <loc>https://starcat.ink/blog/export-and-back-up-github-stars/</loc>
+    <lastmod>2026-08-24</lastmod>
+  </url>
+  <url>
+    <loc>https://starcat.ink/blog/why-local-first/</loc>
+    <lastmod>2026-08-24</lastmod>
+  </url>
+  <url>
+    <loc>https://starcat.ink/blog/asking-your-starred-library/</loc>
     <lastmod>2026-07-21</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://starcat.ink/blog/post.html?slug=suggestions-not-writes</loc>
+    <loc>https://starcat.ink/blog/suggestions-not-writes/</loc>
     <lastmod>2026-07-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://starcat.ink/blog/post.html?slug=bring-your-own-keys</loc>
+    <loc>https://starcat.ink/blog/bring-your-own-keys/</loc>
     <lastmod>2026-07-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://starcat.ink/blog/post.html?slug=from-stars-to-knowledge</loc>
-    <lastmod>2026-07-18</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <loc>https://starcat.ink/blog/from-stars-to-knowledge/</loc>
+    <lastmod>2026-08-24</lastmod>
   </url>
   <url>
-    <loc>https://starcat.ink/blog/post.html?slug=release-tracking-without-noise</loc>
+    <loc>https://starcat.ink/blog/release-tracking-without-noise/</loc>
     <lastmod>2026-07-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://starcat.ink/blog/post.html?slug=why-native-macos</loc>
-    <lastmod>2026-07-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <loc>https://starcat.ink/blog/why-native-macos/</loc>
+    <lastmod>2026-08-24</lastmod>
   </url>
   <url>
-    <loc>https://starcat.ink/blog/post.html?slug=github-companion-workflow</loc>
+    <loc>https://starcat.ink/blog/github-companion-workflow/</loc>
     <lastmod>2026-07-14</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://starcat.ink/blog/post.html?slug=tags-that-survive-monday</loc>
+    <loc>https://starcat.ink/blog/tags-that-survive-monday/</loc>
     <lastmod>2026-07-12</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://starcat.ink/changelog.html</loc>
-    <lastmod>2026-07-10</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
+    <lastmod>2026-08-21</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://starcat.ink/changelog.html"/>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://starcat.ink/changelog-zh.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://starcat.ink/changelog.html"/>
   </url>
   <url>
     <loc>https://starcat.ink/changelog-zh.html</loc>
-    <lastmod>2026-07-10</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <lastmod>2026-08-21</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://starcat.ink/changelog.html"/>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://starcat.ink/changelog-zh.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://starcat.ink/changelog.html"/>
   </url>
   <url>
     <loc>https://starcat.ink/privacy.html</loc>
-    <lastmod>2026-07-10</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.3</priority>
+    <lastmod>2026-07-22</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://starcat.ink/privacy.html"/>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://starcat.ink/privacy-zh.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://starcat.ink/privacy.html"/>
   </url>
   <url>
     <loc>https://starcat.ink/privacy-zh.html</loc>
-    <lastmod>2026-07-10</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.3</priority>
+    <lastmod>2026-07-22</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://starcat.ink/privacy.html"/>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://starcat.ink/privacy-zh.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://starcat.ink/privacy.html"/>
   </url>
   <url>
     <loc>https://starcat.ink/eula.html</loc>
-    <lastmod>2026-07-10</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.3</priority>
+    <lastmod>2026-07-22</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://starcat.ink/eula.html"/>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://starcat.ink/eula-zh.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://starcat.ink/eula.html"/>
   </url>
   <url>
     <loc>https://starcat.ink/eula-zh.html</loc>
-    <lastmod>2026-07-10</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.3</priority>
+    <lastmod>2026-07-22</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://starcat.ink/eula.html"/>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://starcat.ink/eula-zh.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://starcat.ink/eula.html"/>

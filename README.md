@@ -60,7 +60,7 @@ brew install --cask starcat
 
 This repository contains the public website source used by Starcat's Direct and Mac App Store distribution channels. It is intentionally separate from the private macOS application repository.
 
-The public site contains product pages, screenshots, release notes, legal documents, a Markdown-powered blog, Sparkle update metadata, and the Apple App Site Association file. Local credentials, Nginx server configuration, downloaded release artifacts, and private environment files are excluded by `.gitignore`.
+The public site contains product pages, screenshots, release notes, legal documents, a statically generated Markdown blog, Sparkle update metadata, and the Apple App Site Association file. Local credentials, Nginx server configuration, downloaded release artifacts, and private environment files are excluded by `.gitignore`.
 
 ## Repository Structure
 
@@ -73,7 +73,14 @@ The public site contains product pages, screenshots, release notes, legal docume
 
 ## Local Preview
 
-Serve each static surface over HTTP so browser `fetch` calls, including blog Markdown loading, work correctly:
+Generate the complete blog HTML, feed, and sitemap before previewing the Direct site:
+
+```bash
+node direct/blog/generate-blog.mjs
+node direct/blog/verify-blog.mjs
+```
+
+Then serve each static surface over HTTP:
 
 ```bash
 python3 -m http.server 8765 --directory direct

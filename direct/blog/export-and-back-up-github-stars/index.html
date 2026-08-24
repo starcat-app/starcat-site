@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Protect the starred-repository list and the private notes, tags, and status that make it useful with a simple layered backup plan.">
+    <meta name="author" content="Starcat">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <link rel="canonical" href="https://starcat.ink/blog/export-and-back-up-github-stars/">
+    <link rel="alternate" type="application/atom+xml" title="Starcat Blog" href="https://starcat.ink/blog/feed.xml">
+    <meta property="og:site_name" content="Starcat">
+    <meta property="og:title" content="How to Export and Back Up Your GitHub Stars">
+    <meta property="og:description" content="Protect the starred-repository list and the private notes, tags, and status that make it useful with a simple layered backup plan.">
+    <meta property="og:url" content="https://starcat.ink/blog/export-and-back-up-github-stars/">
+    <meta property="og:image" content="https://starcat.ink/sc-banner.webp">
+    <meta property="og:image:alt" content="Starcat — GitHub Stars manager and AI knowledge base for macOS">
+    <meta property="og:type" content="article">
+    <meta property="article:published_time" content="2026-08-24T00:00:00+08:00">
+    <meta property="article:modified_time" content="2026-08-24T00:00:00+08:00">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="How to Export and Back Up Your GitHub Stars">
+    <meta name="twitter:description" content="Protect the starred-repository list and the private notes, tags, and status that make it useful with a simple layered backup plan.">
+    <meta name="twitter:image" content="https://starcat.ink/sc-banner.webp">
+    <title>How to Export and Back Up Your GitHub Stars · Starcat</title>
+    <link rel="icon" type="image/png" href="../../starcat-logo.png">
+    <link rel="stylesheet" href="../blog.css">
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","@id":"https://starcat.ink/blog/export-and-back-up-github-stars/#article","headline":"How to Export and Back Up Your GitHub Stars","description":"Protect the starred-repository list and the private notes, tags, and status that make it useful with a simple layered backup plan.","image":["https://starcat.ink/sc-banner.webp"],"datePublished":"2026-08-24T00:00:00+08:00","dateModified":"2026-08-24T00:00:00+08:00","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https://starcat.ink/blog/export-and-back-up-github-stars/"},"author":{"@type":"Organization","name":"Starcat","url":"https://starcat.ink"},"publisher":{"@type":"Organization","name":"Starcat","url":"https://starcat.ink","logo":{"@type":"ImageObject","url":"https://starcat.ink/starcat-logo.png"}}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Starcat","item":"https://starcat.ink/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://starcat.ink/blog/"},{"@type":"ListItem","position":3,"name":"How to Export and Back Up Your GitHub Stars","item":"https://starcat.ink/blog/export-and-back-up-github-stars/"}]}]}</script>
+</head>
+<body>
+
+<header class="topbar" role="banner">
+    <div class="topbar-inner">
+        <a class="brand" href="../../index.html">
+            <img src="../../starcat-logo.png" alt="Starcat" class="brand-logo" width="28" height="28">
+            <span>Starcat</span>
+        </a>
+        <nav class="topbar-nav" aria-label="Navigation">
+            <a href="../../index.html">Home</a>
+            <a href="../" class="is-active">Blog</a>
+            <a href="../../changelog.html">Changelog</a>
+            <a href="../../privacy.html">Privacy</a>
+        </nav>
+    </div>
+</header>
+
+<main class="article-main">
+    <article>
+        <a class="article-back" href="../">← Back to Blog</a>
+        <header class="article-header">
+            <h1>How to Export and Back Up Your GitHub Stars</h1>
+            <div class="author-row">
+    <img class="author-avatar" src="../../starcat-logo.png" alt="" width="36" height="36">
+    <div class="author-text">
+        <span class="author-name">Starcat</span>
+        <span class="author-meta"><time datetime="2026-08-24">August 24, 2026</time> · 5 min read</span>
+    </div>
+</div>
+        </header>
+        <div class="article-body"><p>Your public GitHub Stars are recoverable from GitHub. The context you add in a manager may not be.</p>
+<p>Private notes, personal tags, reading status, custom collections, AI summaries, and indexing settings can represent years of small decisions. Losing that layer leaves you with the original flat list and none of the reasons it became useful.</p>
+<p>A good backup plan separates public repository data from user-owned metadata, exports both in a readable format, and tests recovery before an emergency.</p>
+<h2>Understand the three data layers</h2>
+<h3>Layer 1: the public Star relationship</h3>
+<p>GitHub records that your account starred a repository. You can retrieve the list through the GitHub API and export basic metadata such as:</p>
+<ul>
+<li>owner and repository name</li>
+<li>canonical URL</li>
+<li>description and Topics</li>
+<li>primary language</li>
+<li>star timestamp, when the API/media type provides it</li>
+</ul>
+<p>This is the easiest layer to rebuild, assuming the account remains accessible and the repository still exists.</p>
+<h3>Layer 2: cached repository content</h3>
+<p>A Star manager may cache READMEs, release information, health signals, file trees, or search chunks. Most of this can be downloaded again.</p>
+<p>It is useful to back up when you need offline access or when repositories may disappear, but it should not be confused with irreplaceable personal data. Large caches can make exports slow and difficult to inspect.</p>
+<h3>Layer 3: user-owned context</h3>
+<p>This is the critical layer:</p>
+<ul>
+<li>private notes</li>
+<li>personal tags</li>
+<li>reading or adoption status</li>
+<li>pinned items and custom collections</li>
+<li>release subscriptions</li>
+<li>local summaries you edited</li>
+<li>relationships or organization rules</li>
+</ul>
+<p>GitHub does not know about these fields. If an application stores them only in its internal database, the application must provide a reliable export path.</p>
+<h2>What a useful export should contain</h2>
+<p>Prefer a documented, versioned format. JSON is common because it preserves structure while remaining readable and easy to transform.</p>
+<p>A minimal record might look like this:</p>
+<pre><code class="language-json">{
+  &quot;repository&quot;: &quot;owner/project&quot;,
+  &quot;url&quot;: &quot;https://github.com/owner/project&quot;,
+  &quot;starred_at&quot;: &quot;2026-08-24T08:00:00Z&quot;,
+  &quot;tags&quot;: [&quot;infra/database&quot;, &quot;learn/later&quot;],
+  &quot;status&quot;: &quot;reading&quot;,
+  &quot;note&quot;: &quot;Evaluate migration support before adopting.&quot;
+}
+</code></pre>
+<p>The real schema may contain more fields, but it should have stable repository identity and explicit version metadata. Avoid using a display title as the only key; repositories can have similar names and can be transferred between owners.</p>
+<p>Check whether the export includes:</p>
+<ul>
+<li>deleted or deprecated records</li>
+<li>private notes and custom tags</li>
+<li>timestamps</li>
+<li>release subscriptions</li>
+<li>custom collections or rules</li>
+<li>app-specific generated summaries</li>
+<li>enough schema/version information for future migration</li>
+</ul>
+<p>Credentials and API keys usually should <strong>not</strong> be included in a plain export. Backing up secrets requires a separate encrypted process.</p>
+<h2>Create a layered backup routine</h2>
+<h3>1. Export from the application</h3>
+<p>Run the manager&#39;s supported export command or UI action. Do not copy an open SQLite file unless the application explicitly documents that method; an active database can include write-ahead log state that a naive copy misses.</p>
+<p>Name the file with a date:</p>
+<pre><code class="language-text">github-stars-2026-08-24.json
+</code></pre>
+<h3>2. Store the export outside the application directory</h3>
+<p>An export next to the database is not a backup. Application cleanup, reinstall, or disk failure can remove both.</p>
+<p>Keep copies in at least two places, for example:</p>
+<ul>
+<li>a local encrypted backup disk</li>
+<li>an encrypted cloud folder</li>
+<li>a private, encrypted archive on another machine</li>
+</ul>
+<p>Do not commit private notes or repository access details to a public Git repository.</p>
+<h3>3. Keep a source snapshot only where it matters</h3>
+<p>Downloading every starred repository can consume hundreds of gigabytes and creates a new update problem. Use source snapshots selectively for:</p>
+<ul>
+<li>production dependencies</li>
+<li>repositories likely to disappear</li>
+<li>exact versions used in research or client work</li>
+<li>projects whose README is not enough to reproduce the finding</li>
+</ul>
+<p>For everything else, preserve the canonical GitHub URL and enough metadata to identify the project again.</p>
+<h3>4. Test restoration</h3>
+<p>An untested backup is only a file.</p>
+<p>Use a separate test profile or temporary database and verify:</p>
+<ol>
+<li>the export parses successfully</li>
+<li>repository identities remain correct</li>
+<li>notes and tags return</li>
+<li>status and collections return</li>
+<li>importing twice does not create uncontrolled duplicates</li>
+<li>missing or renamed repositories produce visible warnings</li>
+</ol>
+<p>Test before replacing or uninstalling the original application.</p>
+<h2>Exporting the public Star list directly from GitHub</h2>
+<p>If your manager does not provide an export, the GitHub CLI can preserve the public repository list. The exact pagination and fields depend on the API route and your token permissions, but the core request is conceptually:</p>
+<pre><code class="language-bash">gh api --paginate /user/starred \
+  --header &#39;Accept: application/vnd.github.star+json&#39; \
+  &gt; github-stars.json
+</code></pre>
+<p>Review the resulting JSON before relying on it. API media types and response shapes can evolve, private repositories require appropriate authorization, and this export still does not contain notes or tags created in another app.</p>
+<p>Do not paste personal access tokens into scripts or export files. Let <code>gh</code> use its authenticated credential storage.</p>
+<h2>Plan for repository transfers and deletion</h2>
+<p>Repository identity is messier than <code>owner/name</code> suggests:</p>
+<ul>
+<li>a repository can move to a new owner</li>
+<li>GitHub may redirect an old URL</li>
+<li>a private repository can become inaccessible</li>
+<li>a repository can be deleted and later recreated under the same name</li>
+</ul>
+<p>If the tool records the GitHub repository ID, preserve it. IDs help distinguish a transfer from an unrelated recreation. Exports should also keep the last known URL and name so a human can understand the record without querying GitHub.</p>
+<p>When a repository disappears, keep the personal note and status unless the user deliberately deletes them. “Rejected because the project was archived” is still useful knowledge.</p>
+<h2>Choose a backup schedule based on change rate</h2>
+<p>Most people do not need daily exports. A practical schedule is:</p>
+<ul>
+<li>export monthly for a slowly changing library</li>
+<li>export weekly during a large organization project</li>
+<li>export immediately before migration, bulk AI tagging, or destructive cleanup</li>
+<li>keep several historical versions, not only the latest file</li>
+</ul>
+<p>Storage is cheap; reconstructing years of private context is not.</p>
+<h2>Starcat&#39;s boundary</h2>
+<p>Starcat treats repository cache as rebuildable and personal metadata as user-owned data. Its JSON import/export workflow is intended to move the library without requiring the original database, and it supports compatible migration paths for tools such as OhMyStar and Astral where the available fields can be mapped.</p>
+<p>Export does not replace normal Mac backups, and it does not include Keychain secrets. It gives you a portable, inspectable copy of the library layer that matters most.</p>
+<p>For the organization model behind the fields, read <a href="../how-to-organize-github-stars/">How to Organize GitHub Stars</a>. To compare backup and deployment approaches across products, see <a href="../best-github-star-managers-for-macos/">Best GitHub Star Managers for macOS</a>.</p>
+</div>
+        <aside class="article-cta" aria-label="Try Starcat">
+            <h2>Put your GitHub Stars to work</h2>
+            <p>Starcat is a native, local-first macOS app for organizing, searching, understanding, and asking questions of your starred repositories.</p>
+            <div class="article-cta-actions">
+                <a class="article-cta-primary" href="../../index.html#download">Download Starcat</a>
+                <a href="https://github.com/starcat-app/Starcat">View the source on GitHub</a>
+            </div>
+        </aside>
+        <nav class="related-posts" aria-label="Related articles">
+            <h2>Continue reading</h2>
+            <ul>
+            <li><a href="../why-local-first/">Why GitHub Stars Need a Local-First Knowledge Base</a></li>
+            <li><a href="../asking-your-starred-library/">Asking Questions of Your Starred Library</a></li>
+            <li><a href="../suggestions-not-writes/">AI That Suggests, Never Auto-Writes</a></li>
+            </ul>
+        </nav>
+    </article>
+</main>
+
+<footer class="site-footer" role="contentinfo">
+    <div class="links">
+        <a href="../../index.html">Home</a>
+        <a href="../">Blog</a>
+        <a href="../../changelog.html">Changelog</a>
+        <a href="../../privacy.html">Privacy Policy</a>
+        <a href="https://github.com/starcat-app/Starcat">GitHub</a>
+        <a href="mailto:dong4j@gmail.com">Contact</a>
+    </div>
+    <p class="copyright">Copyright &copy; 2026 Starcat. All rights reserved.</p>
+</footer>
+</body>
+</html>

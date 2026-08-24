@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Repository names are rarely enough. Learn how full-text, personal metadata, and semantic retrieval solve different GitHub Stars searches.">
+    <meta name="author" content="Starcat">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <link rel="canonical" href="https://starcat.ink/blog/search-github-stars-by-readme-tags-notes/">
+    <link rel="alternate" type="application/atom+xml" title="Starcat Blog" href="https://starcat.ink/blog/feed.xml">
+    <meta property="og:site_name" content="Starcat">
+    <meta property="og:title" content="How to Search GitHub Stars by README, Tags, Notes, and Meaning">
+    <meta property="og:description" content="Repository names are rarely enough. Learn how full-text, personal metadata, and semantic retrieval solve different GitHub Stars searches.">
+    <meta property="og:url" content="https://starcat.ink/blog/search-github-stars-by-readme-tags-notes/">
+    <meta property="og:image" content="https://starcat.ink/sc-banner.webp">
+    <meta property="og:image:alt" content="Starcat — GitHub Stars manager and AI knowledge base for macOS">
+    <meta property="og:type" content="article">
+    <meta property="article:published_time" content="2026-08-24T00:00:00+08:00">
+    <meta property="article:modified_time" content="2026-08-24T00:00:00+08:00">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="How to Search GitHub Stars by README, Tags, Notes, and Meaning">
+    <meta name="twitter:description" content="Repository names are rarely enough. Learn how full-text, personal metadata, and semantic retrieval solve different GitHub Stars searches.">
+    <meta name="twitter:image" content="https://starcat.ink/sc-banner.webp">
+    <title>How to Search GitHub Stars by README, Tags, Notes, and Meaning · Starcat</title>
+    <link rel="icon" type="image/png" href="../../starcat-logo.png">
+    <link rel="stylesheet" href="../blog.css">
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","@id":"https://starcat.ink/blog/search-github-stars-by-readme-tags-notes/#article","headline":"How to Search GitHub Stars by README, Tags, Notes, and Meaning","description":"Repository names are rarely enough. Learn how full-text, personal metadata, and semantic retrieval solve different GitHub Stars searches.","image":["https://starcat.ink/sc-banner.webp"],"datePublished":"2026-08-24T00:00:00+08:00","dateModified":"2026-08-24T00:00:00+08:00","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https://starcat.ink/blog/search-github-stars-by-readme-tags-notes/"},"author":{"@type":"Organization","name":"Starcat","url":"https://starcat.ink"},"publisher":{"@type":"Organization","name":"Starcat","url":"https://starcat.ink","logo":{"@type":"ImageObject","url":"https://starcat.ink/starcat-logo.png"}}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Starcat","item":"https://starcat.ink/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://starcat.ink/blog/"},{"@type":"ListItem","position":3,"name":"How to Search GitHub Stars by README, Tags, Notes, and Meaning","item":"https://starcat.ink/blog/search-github-stars-by-readme-tags-notes/"}]}]}</script>
+</head>
+<body>
+
+<header class="topbar" role="banner">
+    <div class="topbar-inner">
+        <a class="brand" href="../../index.html">
+            <img src="../../starcat-logo.png" alt="Starcat" class="brand-logo" width="28" height="28">
+            <span>Starcat</span>
+        </a>
+        <nav class="topbar-nav" aria-label="Navigation">
+            <a href="../../index.html">Home</a>
+            <a href="../" class="is-active">Blog</a>
+            <a href="../../changelog.html">Changelog</a>
+            <a href="../../privacy.html">Privacy</a>
+        </nav>
+    </div>
+</header>
+
+<main class="article-main">
+    <article>
+        <a class="article-back" href="../">← Back to Blog</a>
+        <header class="article-header">
+            <h1>How to Search GitHub Stars by README, Tags, Notes, and Meaning</h1>
+            <div class="author-row">
+    <img class="author-avatar" src="../../starcat-logo.png" alt="" width="36" height="36">
+    <div class="author-text">
+        <span class="author-name">Starcat</span>
+        <span class="author-meta"><time datetime="2026-08-24">August 24, 2026</time> · 5 min read</span>
+    </div>
+</div>
+        </header>
+        <div class="article-body"><p>You remember starring a repository that solved a specific problem. You do not remember the name, owner, or programming language. GitHub&#39;s starred page now contains a few thousand candidates.</p>
+<p>That is not one search problem. It is at least four:</p>
+<ol>
+<li>finding exact words in repository metadata</li>
+<li>searching concepts that appear only in the README</li>
+<li>recovering the private reason you saved something</li>
+<li>describing an idea when you no longer remember the original vocabulary</li>
+</ol>
+<p>A useful GitHub Stars manager should support each case instead of putting every query through the same AI box.</p>
+<h2>Start with exact metadata search</h2>
+<p>Repository name, owner, description, language, and Topics form the cheapest index. They are compact, easy to update, and usually enough for known-item searches.</p>
+<p>Examples:</p>
+<ul>
+<li><code>sqlite swift</code></li>
+<li>owner:<code>pointfreeco</code></li>
+<li>language:<code>Rust</code></li>
+<li>topic:<code>local-first</code></li>
+</ul>
+<p>Exact search should be the first layer because it is deterministic. You can see why a result matched, and it works without an embedding provider or model call.</p>
+<p>Its limitation is equally clear: metadata is written for public discovery, not for your memory. A repository description may say “durable execution engine” while you remember “background job retries.”</p>
+<h2>Index README content for implementation details</h2>
+<p>The README contains the vocabulary that repository cards omit:</p>
+<ul>
+<li>supported databases and platforms</li>
+<li>configuration keys</li>
+<li>API and command names</li>
+<li>architectural terms</li>
+<li>limitations and migration notes</li>
+<li>examples of the problem the project solves</li>
+</ul>
+<p>Full-text README search is especially useful for questions such as:</p>
+<ul>
+<li>“Which starred project mentioned <code>sqlite-vec</code>?”</li>
+<li>“Where did I see an <code>URLProtocol</code> test example?”</li>
+<li>“Which queue supports cron and retries?”</li>
+</ul>
+<p>The index should store enough context to show a relevant snippet. A result that says only “README matched” still forces you to reopen every candidate.</p>
+<p>README indexing also needs failure handling. Repositories can rename the default branch, remove documentation, become private, or disappear. Search should distinguish “not indexed” from “indexed with no match.”</p>
+<h2>Search personal notes for your real intent</h2>
+<p>Public documentation explains what a project is. Your note explains why it matters to you.</p>
+<p>Suppose two repositories both implement feature flags. One note says “works with Cloudflare Workers,” while another says “rejected: requires a hosted control plane.” Those private sentences are often the strongest retrieval evidence in the entire library.</p>
+<p>Good note search should include:</p>
+<ul>
+<li>exact full-text matching</li>
+<li>snippets around the matching phrase</li>
+<li>filters for tags and status</li>
+<li>local storage by default</li>
+<li>export with the rest of the user-owned metadata</li>
+</ul>
+<p>Write notes in your own vocabulary. Do not optimize them for a generic taxonomy. Search works because the words match the problems you will describe later.</p>
+<h2>Use tags and status as filters, not as a substitute for search</h2>
+<p>Tags narrow a result set. They rarely identify the final repository by themselves.</p>
+<p>A query such as “database migration tool” might return 40 Stars. Combining it with <code>language:Swift</code>, <code>status:Adopted</code>, and a personal <code>infra/database</code> tag can reduce that to three.</p>
+<p>This is where structured filters outperform natural language. The result is predictable and debuggable. If the filter returns nothing, you know which constraint to relax.</p>
+<p>Status is useful because relevance changes with intent:</p>
+<ul>
+<li>search <strong>Adopted</strong> when looking for a tool already trusted</li>
+<li>search <strong>Reading</strong> when continuing current research</li>
+<li>include <strong>Deprecated</strong> when trying to remember why an option was rejected</li>
+</ul>
+<p><a href="../how-to-organize-github-stars/">How to Organize GitHub Stars</a> describes a minimal tag and status model.</p>
+<h2>Add semantic search for vocabulary mismatch</h2>
+<p>Semantic search turns text into vectors and retrieves content with similar meaning. It helps when you remember the problem but not the wording.</p>
+<p>For example, the query:</p>
+<blockquote>
+<p>a small local service that retries failed background work</p>
+</blockquote>
+<p>might match READMEs using “durable task queue,” “job orchestration,” or “at-least-once execution.” Exact search sees different words; an embedding model can place them near the same concept.</p>
+<p>Semantic retrieval is not automatically better. It has trade-offs:</p>
+<ul>
+<li>indexing takes time and may cost money</li>
+<li>results depend on the embedding model</li>
+<li>similarity thresholds can hide useful results or admit noise</li>
+<li>model changes can require re-indexing</li>
+<li>a high score does not explain which phrase matched</li>
+</ul>
+<p>Use hybrid retrieval when possible: exact full-text results for precision, semantic candidates for recall, then a documented fusion step. Keep the exact-search path available when embeddings fail.</p>
+<h2>Ask questions only after retrieval works</h2>
+<p>A chat interface is not a replacement for a search index. It is a synthesis layer built on top of retrieval.</p>
+<p>The safe sequence is:</p>
+<ol>
+<li>identify candidate repositories or document chunks</li>
+<li>show which evidence was retrieved</li>
+<li>ask the model to synthesize an answer</li>
+<li>attach citations that open the source evidence</li>
+</ol>
+<p>Without those steps, the model may answer from general web knowledge instead of your saved library. A confident explanation of a popular framework is not proof that the right starred repository was consulted.</p>
+<p>Repository-grounded Q&amp;A is most useful for comparative questions:</p>
+<ul>
+<li>“Which saved Swift networking libraries support async/await?”</li>
+<li>“Compare the deployment assumptions of these self-hosted Star managers.”</li>
+<li>“Which indexed projects mention both local embeddings and MCP?”</li>
+</ul>
+<p>For a deeper explanation, read <a href="../asking-your-starred-library/">Asking Questions of Your Starred Library</a>.</p>
+<h2>A practical search order</h2>
+<p>When trying to recover a forgotten Star, use this order:</p>
+<ol>
+<li>Search exact words across name, owner, description, Topics, notes, and README.</li>
+<li>Add one structured filter such as language, status, or personal tag.</li>
+<li>Remove the filter if the result set is empty.</li>
+<li>Try a semantic query that describes the problem in a complete sentence.</li>
+<li>Inspect the matched snippets before asking AI to compare results.</li>
+<li>Once you find the repository, add the missing note or status so the next search is easier.</li>
+</ol>
+<p>This order is fast because cheap, explainable retrieval handles most searches. AI is reserved for the cases where it adds information rather than ceremony.</p>
+<h2>How Starcat handles the layers</h2>
+<p>Starcat keeps repository metadata and personal context in a local SQLite library. FTS5 covers lexical retrieval across names, descriptions, Topics, and notes. README and knowledge-base content can be chunked for deeper retrieval. Semantic search and repository-grounded RAG are optional layers, and cited answers lead back to the supporting repository or chunk.</p>
+<p>The product boundary matters: Stars remain the broad collection, while only repositories you intentionally ingest become the default knowledge-base context. That avoids spending embedding time and model budget on every bookmark you have ever made.</p>
+<p>You can <a href="../../index.html#download">download Starcat</a>, inspect the <a href="https://github.com/starcat-app/Starcat">open-source implementation</a>, or compare it with other options in <a href="../best-github-star-managers-for-macos/">Best GitHub Star Managers for macOS</a>.</p>
+</div>
+        <aside class="article-cta" aria-label="Try Starcat">
+            <h2>Put your GitHub Stars to work</h2>
+            <p>Starcat is a native, local-first macOS app for organizing, searching, understanding, and asking questions of your starred repositories.</p>
+            <div class="article-cta-actions">
+                <a class="article-cta-primary" href="../../index.html#download">Download Starcat</a>
+                <a href="https://github.com/starcat-app/Starcat">View the source on GitHub</a>
+            </div>
+        </aside>
+        <nav class="related-posts" aria-label="Related articles">
+            <h2>Continue reading</h2>
+            <ul>
+            <li><a href="../export-and-back-up-github-stars/">How to Export and Back Up Your GitHub Stars</a></li>
+            <li><a href="../why-local-first/">Why GitHub Stars Need a Local-First Knowledge Base</a></li>
+            <li><a href="../asking-your-starred-library/">Asking Questions of Your Starred Library</a></li>
+            </ul>
+        </nav>
+    </article>
+</main>
+
+<footer class="site-footer" role="contentinfo">
+    <div class="links">
+        <a href="../../index.html">Home</a>
+        <a href="../">Blog</a>
+        <a href="../../changelog.html">Changelog</a>
+        <a href="../../privacy.html">Privacy Policy</a>
+        <a href="https://github.com/starcat-app/Starcat">GitHub</a>
+        <a href="mailto:dong4j@gmail.com">Contact</a>
+    </div>
+    <p class="copyright">Copyright &copy; 2026 Starcat. All rights reserved.</p>
+</footer>
+</body>
+</html>
