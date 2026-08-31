@@ -61,6 +61,8 @@ CHANGELOG_PAGES = [
     },
 ]
 
+PENDING_VERSION_HEADING = re.compile(r"^##\s+.+-待发布\s*$", re.MULTILINE)
+
 HTML_TEMPLATE = """<!DOCTYPE html>
 <html lang="{lang}">
 <head>
@@ -353,6 +355,15 @@ def _escape(text: str) -> str:
     return text.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
 
 
+def validate_formal_changelog(text: str, source_path: Path) -> None:
+    """拒绝把仍处于待发布状态的版本生成到正式官网。"""
+    match = PENDING_VERSION_HEADING.search(text)
+    if match:
+        raise ValueError(
+            f"{source_path} 仍包含待发布版本标题：{match.group(0)}"
+        )
+
+
 def main():
     for page in CHANGELOG_PAGES:
         source_path = page["source"]
@@ -362,6 +373,7 @@ def main():
             sys.exit(1)
 
         md_text = source_path.read_text(encoding="utf-8")
+        validate_formal_changelog(md_text, source_path)
         html_body = md_to_html(md_text)
         # 每个页面只替换导航和页头文案；正文仍由对应 Markdown 单一来源生成。
         full_html = HTML_TEMPLATE.format(content=html_body, **page)
