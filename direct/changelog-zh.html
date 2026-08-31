@@ -128,6 +128,76 @@
     <div class="changelog-content">
 <h1>Starcat 更新日志</h1>
 <p>这里记录 Starcat 的重要变化，内容用于发布说明。</p>
+<h2>1.5.0-待发布</h2>
+<p>Starcat 1.5.0 围绕发现、整理和回顾 GitHub 仓库进行了全面扩展：新增 Awesome 发现、Spotlight 系统搜索、GitHub Lists 与批量 AI 整理、GitHub 贡献小组件，并继续完善活动会话、README 阅读和仓库洞察体验。</p>
+<h3>新增</h3>
+<ul>
+<li>Agent 多 Runtime：Agent 工作台可在内置 Runtime、Codex App Server 与 DeepSeek Harness 间切换，并复用 Starcat 的仓库上下文、知识检索和业务工具；支持服务商、模型、配置检测、执行轨迹与运行指标。</li>
+</ul>
+<p>  <img src="https://cdn.dong4j.site/source/image/20260829183930_jfAvsBjW.webp" alt="20260829183930_jfAvsBjW" loading="lazy"></p>
+<ul>
+<li>Awesome 发现：通过 Starcat 精选或自定义 Awesome 来源发现项目，按来源和章节浏览、搜索、筛选及批量选择仓库，并查看仓库文件与外部资源。</li>
+</ul>
+<p>  <img src="https://cdn.dong4j.site/source/image/20260829182340_PnJngNwc.webp" alt="20260829182340_PnJngNwc" loading="lazy"></p>
+<ul>
+<li>Awesome 来源管理：可添加公开 GitHub Awesome 仓库作为来源，在后台解析并显示进度；支持手动刷新，网络失败时继续使用本地缓存。</li>
+<li>Spotlight 仓库搜索：通过 macOS Spotlight 搜索已 Star 仓库及本地笔记，并直接打开 Starcat 定位到对应详情；仓库标题旁可一键复制完整名称。</li>
+</ul>
+<p>  <img src="https://cdn.dong4j.site/source/image/20260829182425_jmMVz8Xz.webp" alt="20260829182425_jmMVz8Xz" loading="lazy"></p>
+<ul>
+<li>GitHub Lists 整理：支持仓库加入多个 GitHub List，并使用 AI 生成分组建议；应用前可预览、筛选和调整结果，也可新建分组、删除建议或重新分组。</li>
+</ul>
+<p>  <img src="https://cdn.dong4j.site/source/image/20260829182513_ys1fvp7q.webp" alt="20260829182513_ys1fvp7q" loading="lazy"></p>
+<ul>
+<li>批量 AI 工作台：多选仓库后批量生成摘要、标签和分组建议，通过统一任务队列查看进度并在同一窗口审核；每次任务可选择代码上下文和外部搜索。</li>
+<li>自动 AI 整理：可为 GitHub Lists 配置自动整理范围和调度策略；默认保留人工审核，也可由用户主动开启自动确认。</li>
+<li>GitHub 贡献小组件：新增贡献概览、贡献摘要、年度热力图和贡献雷达图，可查看今日贡献、单日峰值、贡献总数及 Commit、Issue、PR、评审等活动结构。</li>
+<li>GitHub 服务状态：主窗口状态面板接入 GitHub 官方状态，可直接查看当前服务是否正常。</li>
+<li>README 页内搜索：在 README 中按 ⌘F 打开查找条并切换匹配项；列表搜索默认调整为 ⌘⇧F，两组快捷键都可在设置中修改。</li>
+<li>仓库文档与视频：可选择在 Starcat 独立窗口打开同仓 Markdown 文档，并使用原生控件播放支持的 GitHub README 视频。</li>
+</ul>
+<p>  <img src="https://cdn.dong4j.site/source/image/20260829182717_qiV7h8Uy.webp" alt="20260829182717_qiV7h8Uy" loading="lazy"></p>
+<ul>
+<li>洞察安全公告与 Release 附件：查看最新安全公告、风险等级和 GHSA / CVE 信息，也可浏览、复制或下载最新 Release 附件。</li>
+</ul>
+<p>  <img src="https://cdn.dong4j.site/source/image/20260823013144_YdoureTM.png" alt="20260823013144_YdoureTM" loading="lazy"></p>
+<ul>
+<li>活动后台通知：Starcat 运行时无需打开活动页，即可收到 Issue、PR 和 Discussion 更新，并区分关闭、重开与合并等状态变化。</li>
+<li>活动状态与筛选：Issue / PR 显示打开、关闭或已合并状态；Star、Unstar 和 Fork 显示是否已入库，并可按状态组合筛选。</li>
+<li>Issue 会话操作：展示开帖标题、标签和事件流；支持粘贴图片、预览 Markdown、复制链接或正文、引用回复，以及编辑自己的开帖和评论。</li>
+</ul>
+<p>  <img src="https://cdn.dong4j.site/source/image/20260829182919_ACzqn6YW.webp" alt="20260829182919_ACzqn6YW" loading="lazy"></p>
+<ul>
+<li>公开 Star 数据贡献：新增默认关闭的隐私选项，可匿名贡献公开仓库 ID 与可用 Star 时间，用于改进仓库推荐；失败不会影响正常同步。</li>
+<li>分享与开源入口：仓库健康、仓库洞察和收藏统计支持复制分享文案；分享卡与导出内容补充 Starcat 来源，帮助菜单和关于页可直达源码仓库。</li>
+<li>Star 趋势图片分享：仓库洞察中的 Star 趋势卡片可直接复制为图片，导出时保留仓库身份和头像，便于保存或分享。</li>
+<li>自研仓库推荐：Direct 版接入离线训练推荐结果，在现有相似仓库入口展示模型校准后的匹配度，并按模型版本刷新缓存。</li>
+</ul>
+<h3>优化</h3>
+<ul>
+<li>Awesome 浏览体验：来源、章节和仓库列表改为增量加载与稳定分页，完善来源搜索、真实描述、仓库元数据、刷新进度和三栏布局。</li>
+<li>AI 整理体验：未分组入口移至中栏横幅，开始前可创建分组；任务队列展示仓库头像、描述、状态统计和审核结果，并支持放弃或继续未完成会话。</li>
+<li>AI 处理性能：批量摘要、标签和分组任务采用有界并行处理，生成结果按仓库即时展示，大量仓库下的窗口打开、审核和滚动更加流畅。</li>
+<li>长列表加载：活动、探索、Awesome、Release、知识库和 AI 审核等列表统一提前分页加载，快速滚动时不再容易丢失后续数据。</li>
+<li>AI 用量统计：用量面板增加预估费用、计价覆盖率和持久化快照，便于了解不同模型与任务的消耗。</li>
+<li>桌面小组件：重新整理 Focus、仓库回顾、收藏趋势和 Release Watch 的视觉层级与热力图布局；移除内容稀疏的大尺寸规格。</li>
+<li>Issue 本地状态：评论、事件流和未提交草稿按会话缓存，切换帖子或重启 Starcat 后仍可继续；可在设置中分别清理。</li>
+<li>Release 附件下载：下载行实时显示进度，完成后通过 Toast 展示保存位置并可直接打开。</li>
+<li>标签与分组编辑：标签合并改用 Sheet 选择目标，候选顺序和默认选中更可预期，并统一标签与 GitHub List 分组弹窗标题。</li>
+<li>界面细节：快捷键修饰键与主键改为独立键帽，时间线空详情增加选择引导，推荐标签使用更清晰的分行和悬停效果。</li>
+<li>Agent Runtime 诊断：完善 Runtime 自动识别、配置文档、可选能力和失败提示，执行时间线可查看思考摘要、工具调用、错误、产物和费用估算；工作区标题增加 Beta 标识以明确预览状态。</li>
+</ul>
+<h3>修复</h3>
+<ul>
+<li>账户数据隔离：从缓存恢复登录态时先切换到对应账户数据库，避免短暂读取或写入其他账户的数据。</li>
+<li>Release notes 图片：活动时间线中的截图按窗口宽度等比缩放，不再被裁切。</li>
+<li>README 与评论翻译：切换仓库或会话时不再混入上一项翻译；开帖和每条评论都可正确显示对照翻译。</li>
+<li>评论框切换：切换到其他 Issue 时立即停止当前 AI 生成并收回编辑框，不会把草稿带到新帖子。</li>
+<li>活动入库状态：从时间线加入知识库后只更新入库标记，不再关闭当前详情或重置选择。</li>
+<li>Star 数量同步：在管理、探索和活动中 Star 或取消 Star 后，列表与详情的数量立即保持一致。</li>
+<li>仓库社区信号：正确识别目录形式的 GitHub Issue Forms，不再误判为缺失。</li>
+<li>AI 摘要窗口：展开后保持在 README / 洞察切换栏下方，不再遮挡页面导航。</li>
+</ul>
 <h2>1.4.0</h2>
 <p>Starcat 1.4.0 在活动页接入 GitHub 通知：不必打开浏览器，也能处理被 @、评审请求和 Issue / PR 会话，并继续打磨知识库索引与探索体验。</p>
 <p>重要更新：Starcat 在线服务已完成升级，请尽快更新至 1.4.0。旧版本仍可查看已有本地缓存，但在线刷新、推荐、发现、Wiki 和分享等服务将不再可用。</p>

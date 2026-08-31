@@ -128,6 +128,76 @@
     <div class="changelog-content">
 <h1>Starcat Changelog</h1>
 <p>All notable changes to Starcat are summarized here for release notes.</p>
+<h2>1.5.0-待发布</h2>
+<p>Starcat 1.5.0 expands how you discover, organize, and revisit GitHub repositories with Awesome discovery, Spotlight search, GitHub Lists and batch AI organization, GitHub contribution widgets, and richer Activity conversations, README reading, and repository insights.</p>
+<h3>New</h3>
+<ul>
+<li>Agent multi-runtime: Switch the Agent workspace between the built-in runtime, Codex App Server, and DeepSeek Harness while reusing Starcat repository context, knowledge retrieval, and product tools, with provider, model, configuration checks, execution traces, and run metrics.</li>
+</ul>
+<p>  <img src="https://cdn.dong4j.site/source/image/20260829183930_jfAvsBjW.webp" alt="20260829183930_jfAvsBjW" loading="lazy"></p>
+<ul>
+<li>Awesome discovery: Find projects through Starcat Picks or custom Awesome sources, browse by source and section, search, filter, select repositories in bulk, and review repository files and external resources.</li>
+</ul>
+<p>  <img src="https://cdn.dong4j.site/source/image/20260829182340_PnJngNwc.webp" alt="20260829182340_PnJngNwc" loading="lazy"></p>
+<ul>
+<li>Awesome source management: Add public GitHub Awesome repositories as sources, follow background parsing progress, refresh them manually, and keep using local results when the network is unavailable.</li>
+<li>Spotlight repository search: Search starred repositories and local notes from macOS Spotlight, then open Starcat directly at the matching detail. The repository header can also copy the full name.</li>
+</ul>
+<p>  <img src="https://cdn.dong4j.site/source/image/20260829182425_jmMVz8Xz.webp" alt="20260829182425_jmMVz8Xz" loading="lazy"></p>
+<ul>
+<li>GitHub Lists organization: Add repositories to multiple GitHub Lists and generate AI grouping suggestions. Preview, filter, and adjust results before applying them, create groups, discard suggestions, or regroup repositories.</li>
+</ul>
+<p>  <img src="https://cdn.dong4j.site/source/image/20260829182513_ys1fvp7q.webp" alt="20260829182513_ys1fvp7q" loading="lazy"></p>
+<ul>
+<li>Batch AI workspace: Select repositories to generate summaries, tags, and grouping suggestions through one task queue and review them in the same window. Code context and external search can be chosen for each task.</li>
+<li>Automatic AI organization: Configure the GitHub Lists scope and schedule. Human review remains the default, with an optional user-enabled automatic confirmation setting.</li>
+<li>GitHub contribution widgets: Add Contribution Overview, Contribution Summary, yearly heatmap, and contribution radar widgets for today’s activity, best day, totals, commits, issues, pull requests, reviews, and repositories.</li>
+<li>GitHub service status: The main-window status panel now shows the official GitHub service status.</li>
+<li>README in-page search: Press Command-F in a README to open the find bar and step through matches. List search defaults to Shift-Command-F, and both shortcuts can be changed in Settings.</li>
+<li>Repository documents and videos: Open same-repository Markdown documents in a separate Starcat window and play supported GitHub README videos with native controls.</li>
+</ul>
+<p>  <img src="https://cdn.dong4j.site/source/image/20260829182717_qiV7h8Uy.webp" alt="20260829182717_qiV7h8Uy" loading="lazy"></p>
+<ul>
+<li>Security advisories and release assets: Review recent advisories, severity, and GHSA / CVE details in Insights, then browse, copy, or download the latest release attachments.</li>
+</ul>
+<p>  <img src="https://cdn.dong4j.site/source/image/20260823013144_YdoureTM.png" alt="20260823013144_YdoureTM" loading="lazy"></p>
+<ul>
+<li>Background Activity notifications: While Starcat is running, receive Issue, pull request, and Discussion updates without opening Activity, with distinct closed, reopened, and merged state changes.</li>
+<li>Activity status and filters: Issues and pull requests show Open, Closed, or Merged, while Star, Unstar, and Fork events show whether the repository is in your library and support combined status filters.</li>
+<li>Issue conversation actions: See opening titles, labels, and event history; paste images, preview Markdown, copy links or content, quote replies, and edit your own opening posts and comments.</li>
+</ul>
+<p>  <img src="https://cdn.dong4j.site/source/image/20260829182919_ACzqn6YW.webp" alt="20260829182919_ACzqn6YW" loading="lazy"></p>
+<ul>
+<li>Public Star contribution: An optional, off-by-default privacy setting can anonymously contribute public repository IDs and available Star dates to improve recommendations without blocking normal sync.</li>
+<li>Sharing and open-source links: Copy share text from repository health, repository insights, and library statistics. Share cards and exports identify Starcat, while Help and About link to the source repository.</li>
+<li>Star trend image sharing: Copy the Star trend card from Repository Insights as an image, preserving repository identity and avatar for saving or sharing.</li>
+<li>Trained repository recommendations: The Direct edition uses offline-trained results in Similar Repositories, displays model-calibrated match scores, and refreshes caches when the model version changes.</li>
+</ul>
+<h3>Improvements</h3>
+<ul>
+<li>Awesome browsing: Sources, sections, and repositories now load incrementally with stable pagination, improved source search, real descriptions, repository metadata, refresh progress, and a three-column layout.</li>
+<li>AI organization workflow: Ungrouped organization starts from a middle-column banner and can create groups before processing. The task queue shows avatars, descriptions, status totals, and review results, and unfinished sessions can be discarded or continued.</li>
+<li>AI processing performance: Batch summaries, tags, and grouping tasks use bounded parallel processing, publish each repository’s result as it finishes, and keep large review lists and windows responsive.</li>
+<li>Long-list loading: Activity, Explore, Awesome, Releases, Knowledge Base, and AI review lists now prefetch consistently so fast scrolling is less likely to miss the next page.</li>
+<li>AI usage statistics: The usage dashboard adds estimated cost, pricing coverage, and persisted snapshots for comparing model and task consumption.</li>
+<li>Desktop widgets: Focus, Repository Rediscovery, Collection Trend, and Release Watch have clearer hierarchy and heatmap layouts. Sparse large-size variants have been removed.</li>
+<li>Local Issue state: Comments, event history, and unsent drafts are cached per thread and survive thread changes or app restarts; each cache can be cleared in Settings.</li>
+<li>Release asset downloads: See live progress in each download row, then use the completion toast to find or open the saved file.</li>
+<li>Tag and list editing: Choose tag-merge targets in a sheet with predictable ordering and default selection, with consistent headers across tag and GitHub List editors.</li>
+<li>Interface details: Shortcut modifiers and primary keys use separate keycaps, the empty Activity detail guides selection, and suggested tags use clearer rows and hover feedback.</li>
+<li>Agent Runtime diagnostics: Automatic Runtime discovery, configuration documentation, optional capabilities, and failure guidance are clearer, while the execution timeline exposes reasoning summaries, tool calls, errors, artifacts, and cost estimates; a Beta badge makes the workspace preview status explicit.</li>
+</ul>
+<h3>Fixes</h3>
+<ul>
+<li>Account data isolation: Restoring a cached session switches to the matching account database before publishing the signed-in state, avoiding temporary reads or writes against another account.</li>
+<li>Release notes images: Screenshots in the Activity timeline now scale to the window width instead of being clipped.</li>
+<li>README and comment translation: Switching repositories or conversations no longer mixes translation state, and opening posts plus every comment can show the correct side-by-side translation.</li>
+<li>Comment box on thread change: Switching Issues immediately stops AI generation and collapses the composer so drafts do not carry into another thread.</li>
+<li>Activity library state: Adding a repository from the timeline updates only its library badge without closing the current detail or resetting the selection.</li>
+<li>Star count synchronization: After starring or unstarring in Manage, Explore, or Activity, list and detail counts update immediately and remain consistent.</li>
+<li>Repository community signals: Directory-based GitHub Issue Forms are recognized correctly instead of appearing missing.</li>
+<li>AI summary overlay: The expanded panel stays below the README / Insights tabs instead of covering page navigation.</li>
+</ul>
 <h2>1.4.0</h2>
 <p>Starcat 1.4.0 brings GitHub Notifications into Activity so you can handle mentions, review requests, and Issue / PR threads without leaving the app, while continuing to refine knowledge-base indexing and Explore.</p>
 <p>Important update: Starcat's online services have been upgraded. Please update to 1.4.0 as soon as possible. Older versions can still display existing local cache, but online refresh, recommendations, Discovery, Wiki, and sharing will no longer be available.</p>
