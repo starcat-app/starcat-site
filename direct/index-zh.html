@@ -1854,7 +1854,7 @@
             display: flex;
             align-items: center;
             gap: 10px;
-            margin-bottom: 18px;
+            margin-bottom: 14px;
         }
 
         .footer-logo {
@@ -1866,6 +1866,26 @@
         .footer-name {
             font-size: var(--fs-small);
             font-weight: 700;
+        }
+
+        .footer-badges {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 8px;
+            margin: 0 0 16px;
+        }
+
+        .footer-badge {
+            display: inline-block;
+            line-height: 0;
+        }
+
+        .footer-badge img {
+            /* 两枚 badge 比例不同（LaunchBuff 256×80 / PH 250×54），统一高度、宽度跟比例走，避免外框一致但内容大小不一 */
+            height: 44px;
+            width: auto;
+            display: block;
         }
 
         .footer-desc {
@@ -3033,7 +3053,36 @@
                         <img src="starcat-logo.png" alt="Starcat Logo" class="footer-logo" width="40" height="40">
                         <span class="footer-name">Starcat</span>
                     </div>
-                    <p class="footer-desc">把 GitHub Stars 变成可搜索、本地优先的 macOS 知识库。</p>
+                    <div class="footer-badges">
+                        <a
+                            class="footer-badge"
+                            href="https://launchbuff.com/products/starcat-for-github-qpokmc"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            title="Featured on LaunchBuff"
+                        >
+                            <img
+                                src="https://launchbuff.com/badge-featured-dark.svg"
+                                alt="Featured on LaunchBuff"
+                                width="141"
+                                height="44"
+                            >
+                        </a>
+                        <a
+                            class="footer-badge"
+                            href="https://www.producthunt.com/products/starcat-2?embed=true&amp;utm_source=badge-featured&amp;utm_medium=badge&amp;utm_campaign=badge-starcat-for-github"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            title="Featured on Product Hunt"
+                        >
+                            <img
+                                src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1237127&amp;theme=light&amp;t=1788352412007"
+                                alt="Starcat For GitHub - Ask your GitHub Stars — local RAG on native macOS | Product Hunt"
+                                width="204"
+                                height="44"
+                            >
+                        </a>
+                    </div>
                 </div>
                 <div>
                     <div class="footer-heading">Product</div>
