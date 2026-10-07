@@ -1305,6 +1305,216 @@
         }
 
         /* ==================================================================
+         * Public Star History embed. Both themes share one image viewport so
+         * dragging reveals the original SVGs without resizing either chart.
+         * ================================================================== */
+        .history-section { padding: var(--section-space) 0 0; }
+        .history-header { margin-bottom: 40px; }
+        .history-layout {
+            display: grid;
+            grid-template-columns: minmax(0, 1.25fr) minmax(320px, 0.85fr);
+            grid-template-rows: auto auto auto;
+            gap: 12px 28px;
+        }
+        /* Share the image row with the editor: captions stay outside both panels,
+           and expanding the code scrolls inside the editor instead of stretching it. */
+        .history-preview {
+            display: grid;
+            grid-column: 1;
+            grid-row: 1 / span 3;
+            grid-template-rows: subgrid;
+            min-width: 0;
+            margin: 0;
+        }
+        .history-preview-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            font-size: 13px;
+        }
+        .history-preview-bar strong { overflow-wrap: anywhere; }
+        .history-preview-bar span { flex-shrink: 0; color: var(--ink-secondary); }
+        /* The SVG's rx=32 corners are transparent. Fill each theme with its SVG
+           backdrop before clipping, so the shared radius never reveals a white rim. */
+        .history-compare {
+            --history-split: 50%;
+            position: relative;
+            isolation: isolate;
+            overflow: hidden;
+            border: 1px solid var(--line-strong);
+            border-radius: var(--radius-sm);
+            background: #0e131b;
+            box-shadow: var(--shadow-sm);
+        }
+        /* Dragging should only reveal the themes, never frame the whole image.
+           Keep the keyboard focus cue on the handle that actually moves. */
+        .history-compare:has(.history-range:focus-visible) .history-divider span {
+            outline: 3px solid var(--blue);
+            outline-offset: 4px;
+        }
+        .history-compare img { width: 100%; height: auto; pointer-events: none; user-select: none; }
+        .history-compare .history-light {
+            position: absolute;
+            inset: 0;
+            height: 100%;
+            background: #f4f7fb;
+            clip-path: inset(0 calc(100% - var(--history-split)) 0 0);
+        }
+        .history-divider {
+            position: absolute;
+            inset: 0 auto 0 var(--history-split);
+            width: 2px;
+            transform: translateX(-50%);
+            background: var(--blue);
+            pointer-events: none;
+        }
+        .history-divider span {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            display: grid;
+            place-items: center;
+            width: 44px;
+            height: 44px;
+            transform: translate(-50%, -50%);
+            border: 2px solid var(--blue);
+            border-radius: 50%;
+            color: var(--blue-strong);
+            background: #fff;
+            box-shadow: 0 3px 16px rgba(0, 0, 0, 0.16);
+        }
+        .history-divider svg { width: 20px; height: 20px; }
+        /* A native range keeps touch and keyboard interaction accessible. Its
+           thumb width is compensated so 0/100 align with the image edges. */
+        .history-range {
+            position: absolute;
+            inset: 0 auto 0 -22px;
+            width: calc(100% + 44px);
+            height: 100%;
+            margin: 0;
+            opacity: 0;
+            appearance: none;
+            cursor: ew-resize;
+            touch-action: pan-y;
+        }
+        .history-range::-webkit-slider-thumb { appearance: none; width: 44px; height: 44px; }
+        .history-range::-moz-range-thumb { width: 44px; height: 44px; border: 0; }
+        .history-preview figcaption,
+        .history-note { color: var(--ink-secondary); font-size: 13px; line-height: 1.6; }
+        .history-embed {
+            grid-column: 2;
+            grid-row: 2;
+            display: flex;
+            flex-direction: column;
+            contain: size;
+            min-width: 0;
+            min-height: 0;
+            overflow: auto;
+            padding: clamp(24px, 2.5vw, 32px);
+            border: 1px solid var(--line);
+            border-radius: var(--radius-sm);
+            background: var(--panel);
+        }
+        .history-embed h3 { margin: 0 0 10px; font-size: 25px; letter-spacing: -0.035em; }
+        .history-intro { margin: 0 0 28px; color: var(--ink-secondary); font-size: 14px; line-height: 1.6; }
+        .history-form > label,
+        .history-language legend { display: block; margin-bottom: 9px; padding: 0; font-size: 12px; font-weight: 600; }
+        .history-form > input {
+            width: 100%;
+            height: 44px;
+            padding: 10px 13px;
+            border: 1px solid var(--line);
+            border-radius: 9px;
+            color: var(--ink);
+            background: var(--bg);
+            font: inherit;
+            font-size: 14px;
+        }
+        .history-form-row { display: flex; align-items: end; justify-content: space-between; gap: 12px; margin-top: 20px; }
+        .history-language { min-width: 0; margin: 0; padding: 0; border: 0; }
+        .history-segmented { display: flex; padding: 3px; border-radius: 9px; background: var(--bg); }
+        .history-segmented label { position: relative; cursor: pointer; }
+        .history-segmented input { position: absolute; width: 100%; height: 100%; margin: 0; opacity: 0; }
+        .history-segmented span {
+            display: block;
+            min-width: 62px;
+            padding: 7px 12px;
+            border-radius: 6px;
+            color: var(--ink-secondary);
+            font-size: 12px;
+            font-weight: 500;
+            text-align: center;
+        }
+        .history-segmented input:checked + span { color: var(--ink); background: var(--panel); box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1); }
+        .history-segmented input:focus-visible + span { outline: 2px solid var(--blue); outline-offset: 2px; }
+        .history-language:disabled { opacity: 0.6; }
+        .history-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            min-height: 38px;
+            padding: 8px 14px;
+            border: 1px solid var(--line);
+            border-radius: 9px;
+            color: var(--ink-secondary);
+            background: var(--panel);
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 500;
+            transition: background-color 160ms ease, color 160ms ease;
+        }
+        .history-button:hover { color: var(--ink); background: var(--bg); }
+        .history-button svg { width: 15px; height: 15px; flex-shrink: 0; }
+        .history-copy-button { width: 100%; min-height: 44px; margin-top: 18px; color: #fff; background: var(--ink); border-color: var(--ink); font-size: 13px; }
+        .history-copy-button:hover { color: #fff; background: #363638; }
+        .history-button:disabled { cursor: wait; opacity: 0.6; }
+        .history-button.is-copied { color: #fff; background: #237a45; border-color: #237a45; }
+        .history-status { margin: 14px 0 24px; color: var(--ink-secondary); font-size: 12px; line-height: 1.5; }
+        .history-actions { margin-top: auto; padding-top: 20px; }
+        .history-code-details { border-top: 1px solid var(--line); }
+        .history-code-details summary {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            padding-top: 16px;
+            color: var(--ink-secondary);
+            font-size: 12px;
+            cursor: pointer;
+            list-style: none;
+        }
+        .history-code-details summary::-webkit-details-marker { display: none; }
+        .history-code-details summary svg { width: 14px; height: 14px; }
+        .history-code-details[open] summary svg { transform: rotate(180deg); }
+        .history-code {
+            display: block;
+            width: 100%;
+            height: 144px;
+            margin-top: 12px;
+            padding: 12px;
+            resize: none;
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            color: var(--ink);
+            background: var(--bg);
+            font: 11px/1.7 ui-monospace, "SFMono-Regular", Menlo, monospace;
+            white-space: pre;
+        }
+        .history-note { margin: 12px 0 0; font-size: 12px; }
+        .history-note a { color: var(--blue-strong); text-decoration: underline; text-underline-offset: 3px; }
+        @media (max-width: 980px) {
+            .history-layout { grid-template-columns: minmax(0, 1fr); grid-template-rows: auto auto; row-gap: 24px; }
+            .history-preview { grid-column: 1; grid-row: 1; grid-template-rows: auto auto auto; gap: 12px; width: min(100%, 720px); margin-inline: auto; }
+            .history-embed { grid-column: 1; grid-row: 2; contain: none; width: min(100%, 720px); margin-inline: auto; }
+        }
+        @media (max-width: 440px) {
+            .history-embed { padding: 18px; }
+            .history-form-row { flex-wrap: wrap; }
+        }
+
+        /* ==================================================================
          * Outcome cards
          * ================================================================== */
         .outcomes {
@@ -2753,6 +2963,59 @@
             </div>
         </section>
 
+        <section class="history-section" id="star-history" aria-labelledby="history-title">
+            <div class="shell">
+                <header class="history-header" data-reveal>
+                    <p class="eyebrow">Starcat Star History</p>
+                    <h2 class="section-heading" id="history-title">Your repo’s growth.<br>Right in your README.</h2>
+                    <p class="section-copy">Give your public repository a Star History card that follows its growth. Embed it with a few lines of HTML—no API key or JavaScript required.</p>
+                </header>
+                <div class="history-layout" data-reveal>
+                    <figure class="history-preview">
+                        <div class="history-preview-bar">
+                            <strong id="history-preview-repo">starcat-app/Starcat</strong>
+                            <span>Light / Dark</span>
+                        </div>
+                        <div class="history-compare" id="history-compare">
+                            <img id="history-dark" src="https://history.starcat.ink/embed/v1/repos/starcat-app/Starcat/star-history.svg?theme=dark&amp;locale=en" alt="Starcat repository Star History card" width="1200" height="1060" loading="lazy" decoding="async" draggable="false">
+                            <img class="history-light" id="history-light" src="https://history.starcat.ink/embed/v1/repos/starcat-app/Starcat/star-history.svg?theme=light&amp;locale=en" alt="" aria-hidden="true" width="1200" height="1060" loading="lazy" decoding="async" draggable="false">
+                            <div class="history-divider" aria-hidden="true"><span><i data-lucide="move-horizontal"></i></span></div>
+                            <input class="history-range" id="history-range" type="range" min="0" max="100" value="50" aria-label="Compare light and dark card themes" aria-valuetext="50% light, 50% dark" aria-describedby="history-compare-hint">
+                        </div>
+                        <figcaption id="history-compare-hint">Drag the divider to explore both themes. Use the arrow keys when focused.</figcaption>
+                    </figure>
+                    <div class="history-embed">
+                        <h3>Make it yours.</h3>
+                        <p class="history-intro">One embed for your README.<br>Light and dark themes, handled for you.</p>
+                        <form class="history-form" id="history-form">
+                            <label for="history-repo">GitHub repository</label>
+                            <input id="history-repo" name="repository" value="starcat-app/Starcat" placeholder="owner/repository" required maxlength="140" autocomplete="off" autocapitalize="none" spellcheck="false" aria-describedby="history-status">
+                            <div class="history-form-row">
+                                <fieldset class="history-language" id="history-locale">
+                                    <legend>Card language</legend>
+                                    <div class="history-segmented">
+                                        <label><input type="radio" name="locale" value="en" checked><span>English</span></label>
+                                        <label><input type="radio" name="locale" value="zh"><span>中文</span></label>
+                                    </div>
+                                </fieldset>
+                                <button class="history-button" id="history-update" type="submit" disabled><i data-lucide="refresh-cw" aria-hidden="true"></i><span id="history-update-label">Preview</span></button>
+                            </div>
+                        </form>
+                        <p class="history-status" id="history-status" role="status">Public repositories. No API key needed.</p>
+                        <div class="history-actions">
+                            <details class="history-code-details" id="history-code-details">
+                                <summary>View HTML code<i data-lucide="chevron-down" aria-hidden="true"></i></summary>
+                                <textarea class="history-code" id="history-code" aria-label="README HTML embed code" readonly spellcheck="false" wrap="off" aria-describedby="history-code-hint"></textarea>
+                            </details>
+                            <button class="history-button history-copy-button" id="history-copy" type="button" disabled><i data-lucide="copy" aria-hidden="true"></i><span id="history-copy-label">Copy HTML</span></button>
+                            <p class="history-note" id="history-code-hint">Paste directly into your README. <a href="https://github.com/starcat-app/starcat-history-api#embed-star-history-in-a-public-readme" target="_blank" rel="noopener noreferrer">Embed guide ↗</a></p>
+                        </div>
+                        <noscript><p class="history-note">Enable JavaScript to customize and copy the embed, or use the HTML example in the embed guide.</p></noscript>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <section class="outcomes">
             <div class="shell">
                 <header class="outcome-header" data-reveal>
@@ -2913,6 +3176,7 @@
                     <nav class="footer-links" aria-label="Product links">
                         <a href="#why">Why Starcat</a>
                         <a href="#inside">Features</a>
+                        <a href="#star-history">Star History cards</a>
                         <a href="#faq">FAQ</a>
                         <a href="https://starcat.mintlify.app" target="_blank" rel="noopener noreferrer">Documentation</a>
                     </nav>
@@ -3379,6 +3643,137 @@
                     window.lucide?.createIcons();
                 }, { once: true });
             }
+        })();
+
+        /**
+         * Uses the public SVG embed contract from the History API README. Theme
+         * images load together only on submission; failed requests keep the last
+         * working preview and embed paired. No API key or cross-origin fetch is
+         * needed because SVGs are loaded as images, not inserted into the DOM.
+         */
+        (function initializeStarHistory() {
+            const form = document.getElementById("history-form");
+            const repository = document.getElementById("history-repo");
+            const locale = document.getElementById("history-locale");
+            const update = document.getElementById("history-update");
+            const updateLabel = document.getElementById("history-update-label");
+            const status = document.getElementById("history-status");
+            const code = document.getElementById("history-code");
+            const copy = document.getElementById("history-copy");
+            const copyLabel = document.getElementById("history-copy-label");
+            const codeDetails = document.getElementById("history-code-details");
+            const compare = document.getElementById("history-compare");
+            const range = document.getElementById("history-range");
+            const previewName = document.getElementById("history-preview-repo");
+            const light = document.getElementById("history-light");
+            const dark = document.getElementById("history-dark");
+            let copyReset;
+
+            function cardURL(repo, theme, language) {
+                const path = repo.split("/").map(encodeURIComponent).join("/");
+                return `https://history.starcat.ink/embed/v1/repos/${path}/star-history.svg?theme=${theme}&locale=${language}`;
+            }
+
+            // HTML attributes require escaped query separators; image requests do not.
+            function embedHTML(repo, language) {
+                const lightURL = cardURL(repo, "light", language).replaceAll("&", "&amp;");
+                const darkURL = cardURL(repo, "dark", language).replaceAll("&", "&amp;");
+                return `<a href="https://github.com/starcat-app/Starcat" target="_blank" rel="noopener noreferrer">\n  <picture data-starcat-star-history>\n    <source\n      media="(prefers-color-scheme: dark)"\n      srcset="${darkURL}">\n    <img\n      alt="${repo} Star History"\n      src="${lightURL}">\n  </picture>\n</a>`;
+            }
+
+            function resetCopyFeedback() {
+                window.clearTimeout(copyReset);
+                copyLabel.textContent = "Copy HTML";
+                copy.classList.remove("is-copied");
+            }
+
+            function loadCard(url) {
+                return new Promise(function waitForCard(resolve, reject) {
+                    const image = new Image();
+                    const timeout = window.setTimeout(function stopWaiting() {
+                        image.onload = image.onerror = null;
+                        reject(new Error("Card request timed out"));
+                    }, 20000);
+                    image.onload = function cardLoaded() {
+                        window.clearTimeout(timeout);
+                        resolve(image);
+                    };
+                    image.onerror = function cardFailed() {
+                        window.clearTimeout(timeout);
+                        reject(new Error("Card unavailable"));
+                    };
+                    image.src = url;
+                });
+            }
+
+            range.addEventListener("input", function revealTheme() {
+                const value = Number(range.value);
+                compare.style.setProperty("--history-split", `${value}%`);
+                range.setAttribute("aria-valuetext", `${value}% light, ${100 - value}% dark`);
+            });
+            repository.addEventListener("input", function clearRepositoryError() {
+                repository.setCustomValidity("");
+            });
+
+            form.addEventListener("submit", async function updateCard(event) {
+                event.preventDefault();
+                if (update.disabled) return;
+                const repo = repository.value.trim();
+                if (!/^[a-z\d][a-z\d-]{0,38}\/[a-z\d_.-]{1,100}$/i.test(repo) || /\/(\.|\.\.)$/.test(repo)) {
+                    repository.setCustomValidity("Enter a public GitHub repository as owner/repository.");
+                    repository.reportValidity();
+                    return;
+                }
+                const language = locale.querySelector("input:checked").value;
+                update.disabled = repository.disabled = locale.disabled = true;
+                updateLabel.textContent = "Loading…";
+                compare.setAttribute("aria-busy", "true");
+                status.textContent = `Loading ${repo}… First-time requests may take a moment.`;
+                try {
+                    const images = await Promise.all([loadCard(cardURL(repo, "light", language)), loadCard(cardURL(repo, "dark", language))]);
+                    [light, dark].forEach(function showCard(image, index) {
+                        image.width = images[index].naturalWidth;
+                        image.height = images[index].naturalHeight;
+                        image.src = images[index].src;
+                    });
+                    dark.alt = `${repo} Star History card`;
+                    previewName.textContent = repo;
+                    repository.value = repo;
+                    code.value = embedHTML(repo, language);
+                    resetCopyFeedback();
+                    status.textContent = "Preview updated. Ready to copy.";
+                } catch {
+                    status.textContent = "Couldn’t load this card. Check that the repository is public and has enough Star history, then try again. The previous preview and HTML are unchanged.";
+                } finally {
+                    update.disabled = repository.disabled = locale.disabled = false;
+                    updateLabel.textContent = "Preview";
+                    compare.removeAttribute("aria-busy");
+                }
+            });
+
+            copy.addEventListener("click", async function copyEmbed() {
+                resetCopyFeedback();
+                try {
+                    await navigator.clipboard.writeText(code.value);
+                    copyLabel.textContent = "Copied!";
+                    copy.classList.add("is-copied");
+                    copyReset = window.setTimeout(resetCopyFeedback, 1500);
+                } catch {
+                    // Reveal the collapsed source before focusing it for manual copying.
+                    codeDetails.open = true;
+                    code.focus();
+                    code.select();
+                    status.textContent = "Clipboard access is unavailable. The HTML is selected; press ⌘C or Ctrl+C to copy.";
+                }
+            });
+
+            [light, dark].forEach(function watchInitialCard(image) {
+                image.addEventListener("error", function showImageError() {
+                    status.textContent = "The card preview is unavailable. Use Update preview to retry, or copy the HTML to try it in your README.";
+                });
+            });
+            code.value = embedHTML(repository.value, locale.querySelector("input:checked").value);
+            update.disabled = copy.disabled = false;
         })();
 
         /**
