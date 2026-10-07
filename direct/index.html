@@ -424,15 +424,20 @@
          * ================================================================== */
         .download-modal { position: fixed; inset: 0; z-index: var(--z-overlay); display: flex; align-items: center; justify-content: center; padding: 24px; background: rgba(4, 6, 10, 0.74); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); opacity: 0; visibility: hidden; transition: opacity var(--duration-normal) var(--ease-out), visibility var(--duration-normal) var(--ease-out); }
         .download-modal.is-open { opacity: 1; visibility: visible; }
-        .download-modal-dialog { width: min(920px, 100%); max-height: min(760px, calc(100vh - 48px)); overflow: auto; border: 1px solid var(--color-border-hover); border-radius: 24px; background: radial-gradient(circle at 10% 0%, rgba(125, 211, 252, 0.12), transparent 36%), #0D1017; box-shadow: 0 40px 120px rgba(0, 0, 0, 0.58); transform: translateY(12px) scale(0.98); transition: transform var(--duration-normal) var(--ease-out); }
+        .download-modal-dialog { width: min(540px, 100%); max-height: min(760px, calc(100dvh - 48px)); overflow: auto; overflow-x: hidden; border: 1px solid var(--color-border-hover); border-radius: 24px; background: radial-gradient(circle at 10% 0%, rgba(125, 211, 252, 0.12), transparent 36%), #0D1017; box-shadow: 0 40px 120px rgba(0, 0, 0, 0.58); transform: translateY(12px) scale(0.98); transition: transform var(--duration-normal) var(--ease-out), width var(--duration-normal) var(--ease-out); }
+        .download-modal.is-history-open .download-modal-dialog { width: min(920px, 100%); }
         .download-modal.is-open .download-modal-dialog { transform: translateY(0) scale(1); }
+        /* 正文保持收起时的文本宽度以免动画中换行；关闭按钮仍固定在弹窗右上角。 */
         .download-modal-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 18px; padding: 28px 28px 0; }
+        .download-modal-header > div { flex: 1; min-width: 0; max-width: 428px; }
         .download-modal-title { font-size: var(--fs-h2); font-weight: 750; line-height: 1.2; margin-bottom: 8px; }
         .download-modal-desc { color: var(--color-text-secondary); font-size: var(--fs-small); line-height: 1.6; max-width: 600px; }
-        .download-modal-close { display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; border: 1px solid var(--color-border); border-radius: 10px; color: var(--color-text-secondary); background: rgba(255, 255, 255, 0.04); cursor: pointer; transition: border-color var(--duration-fast) var(--ease-out), color var(--duration-fast) var(--ease-out), background var(--duration-fast) var(--ease-out); }
+        .download-modal-close { display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; width: 36px; height: 36px; border: 1px solid var(--color-border); border-radius: 10px; color: var(--color-text-secondary); background: rgba(255, 255, 255, 0.04); cursor: pointer; transition: border-color var(--duration-fast) var(--ease-out), color var(--duration-fast) var(--ease-out), background var(--duration-fast) var(--ease-out); }
         .download-modal-close:hover { border-color: var(--color-border-hover); color: var(--color-text); background: rgba(255, 255, 255, 0.07); }
         .download-modal-close .lucide { width: 18px; height: 18px; }
-        .download-panel { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr); gap: var(--card-gap); align-items: stretch; padding: 28px; }
+        .download-panel { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--card-gap); align-items: stretch; padding: 28px; }
+        /* 482px = 收起宽度 540px - 弹窗边框 2px - 面板内边距 56px，展开时保留左栏宽度。 */
+        .download-modal.has-history-layout .download-panel { grid-template-columns: 482px minmax(280px, 1fr); }
         .download-card, .download-history { background: var(--color-bg-glass); border: 1px solid var(--color-border); border-radius: 20px; padding: 32px; }
         .download-card { display: flex; flex-direction: column; gap: 20px; }
         .download-card-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; }
@@ -447,16 +452,25 @@
         .download-trust-item { display: flex; align-items: center; gap: 8px; padding: 10px 12px; border: 1px solid var(--color-border); border-radius: 12px; color: var(--color-text-secondary); font-size: var(--fs-caption); background: rgba(255, 255, 255, 0.035); }
         .download-trust-item .lucide { width: 14px; height: 14px; color: var(--color-cta); }
         .download-card .btn-primary { justify-content: center; width: 100%; }
-        .download-history-title { font-size: var(--fs-small); font-weight: 700; margin-bottom: 14px; }
-        .download-history-list { display: flex; flex-direction: column; gap: 10px; }
-        .download-history-item { display: grid; grid-template-columns: 1fr auto; gap: 12px; align-items: center; padding: 12px 0; border-top: 1px solid var(--color-border); }
+        .download-history-toggle { align-self: center; padding: 8px 12px; border: 1px solid var(--color-border); border-radius: 10px; background: transparent; color: var(--color-text-secondary); font: inherit; font-size: var(--fs-caption); cursor: pointer; }
+        .download-history-toggle:hover { border-color: var(--color-border-hover); color: var(--color-text); }
+        .download-history-toggle:focus-visible, .download-history-list:focus-visible { outline: 2px solid var(--color-cta); outline-offset: 3px; }
+        /* 历史内容不参与桌面行高计算，由左侧卡片决定高度，版本再多也只在列表内滚动。 */
+        .download-history { display: flex; flex-direction: column; min-height: 0; contain: size; overflow: hidden; opacity: 0; transform: translateX(12px); transition: opacity var(--duration-normal) var(--ease-out), transform var(--duration-normal) var(--ease-out); }
+        .download-modal.is-history-open .download-history { opacity: 1; transform: translateX(0); }
+        .download-history[hidden] { display: none; }
+        .download-history-title { flex-shrink: 0; font-size: var(--fs-small); font-weight: 700; margin-bottom: 14px; }
+        /* macOS 悬浮滚动条不占 gutter；额外内边距确保下载链接永远不会落在滚动条下面。 */
+        .download-history-list { display: flex; flex-direction: column; flex: 1; min-height: 0; gap: 10px; padding-inline-end: 16px; overflow-y: auto; overscroll-behavior: contain; scrollbar-gutter: stable; scrollbar-width: thin; scrollbar-color: var(--color-text-muted) transparent; }
+        .download-history-item { display: grid; grid-template-columns: minmax(0, 1fr) auto; flex-shrink: 0; gap: 12px; align-items: center; padding: 12px 0; border-top: 1px solid var(--color-border); }
         .download-history-item:first-child { border-top: none; padding-top: 0; }
         .download-history-version { font-size: var(--fs-small); font-weight: 700; color: var(--color-text); }
-        .download-history-meta { font-size: var(--fs-caption); color: var(--color-text-muted); margin-top: 2px; }
+        .download-history-meta { font-size: var(--fs-caption); color: var(--color-text-muted); margin-top: 2px; overflow-wrap: anywhere; }
         .download-history-link { font-size: var(--fs-caption); font-weight: 700; color: var(--color-cta); white-space: nowrap; }
         .download-history-empty { color: var(--color-text-muted); font-size: var(--fs-small); line-height: 1.6; }
-        @media (max-width: 900px) { .download-panel { grid-template-columns: 1fr; } .download-trust { grid-template-columns: 1fr; } }
-        @media (max-width: 767px) { .download-modal { align-items: flex-end; padding: 12px; } .download-modal-dialog { max-height: calc(100vh - 24px); border-radius: 18px; } .download-modal-header { padding: 22px 18px 0; } .download-panel { padding: 18px; } .download-card, .download-history { padding: 22px; } }
+        /* 窄屏改为上下排列；历史区仍有独立高度上限，不把长列表交给整个弹窗滚动。 */
+        @media (max-width: 900px) { .download-modal.is-history-open .download-modal-dialog { width: min(540px, 100%); } .download-modal.has-history-layout .download-panel { grid-template-columns: minmax(0, 1fr); } .download-history { contain: none; max-height: min(320px, 50dvh); } .download-trust { grid-template-columns: 1fr; } }
+        @media (max-width: 767px) { .download-modal { align-items: flex-end; padding: 12px; } .download-modal-dialog { max-height: calc(100dvh - 24px); border-radius: 18px; } .download-modal-header { padding: 22px 18px 0; } .download-panel { padding: 18px; } .download-card, .download-history { padding: 22px; } }
 
         /* ==================================================================
          * 9. FAQ + Final CTA
@@ -1362,11 +1376,12 @@
                         <span class="icon-16"><i data-lucide="download"></i></span>
                         Download latest
                     </a>
+                    <button class="download-history-toggle" type="button" aria-expanded="false" aria-controls="download-history" data-download-history-toggle data-show-label="Previous versions" data-hide-label="Hide previous versions">Previous versions</button>
                 </div>
 
-                <div class="download-history">
-                    <div class="download-history-title">Previous versions</div>
-                    <div class="download-history-list" data-download-history>
+                <div class="download-history" id="download-history" hidden inert aria-hidden="true">
+                    <div class="download-history-title" id="download-history-title">Previous versions</div>
+                    <div class="download-history-list" data-download-history tabindex="0" role="region" aria-labelledby="download-history-title">
                         <p class="download-history-empty">No previous versions yet.</p>
                     </div>
                 </div>
@@ -1751,12 +1766,48 @@
 
             const openers = document.querySelectorAll('[data-download-open]');
             const closers = document.querySelectorAll('[data-download-close]');
+            const historyToggle = modal.querySelector('[data-download-history-toggle]');
+            const historyPanel = modal.querySelector('#download-history');
             let restoreScrollY = 0;
             let activeTrigger = null;
+
+            let historyHideTimer;
+            // 退场结束后才移除布局；快速重新展开时取消旧计时器，避免面板被误隐藏。
+            const setHistoryExpanded = (expanded, animate = true) => {
+                window.clearTimeout(historyHideTimer);
+                historyToggle.setAttribute('aria-expanded', String(expanded));
+                historyToggle.textContent = expanded ? historyToggle.dataset.hideLabel : historyToggle.dataset.showLabel;
+                historyPanel.inert = !expanded;
+                historyPanel.setAttribute('aria-hidden', String(!expanded));
+                if (expanded) {
+                    historyPanel.hidden = false;
+                    modal.classList.add('has-history-layout');
+                    // 先落实未展开的起始样式，再触发过渡，避免 display:none 跳过入场动画。
+                    void historyPanel.offsetWidth;
+                    modal.classList.add('is-history-open');
+                } else {
+                    modal.classList.remove('is-history-open');
+                    const hideHistory = () => {
+                        historyPanel.hidden = true;
+                        modal.classList.remove('has-history-layout');
+                    };
+                    if (animate && !historyPanel.hidden) {
+                        // 使用实际 CSS 时长，系统“减少动态效果”也会自然缩短等待。
+                        const duration = parseFloat(window.getComputedStyle(historyPanel).transitionDuration) * 1000;
+                        historyHideTimer = window.setTimeout(hideHistory, duration);
+                    } else {
+                        hideHistory();
+                    }
+                }
+            };
+            historyToggle.addEventListener('click', () => {
+                setHistoryExpanded(historyToggle.getAttribute('aria-expanded') !== 'true');
+            });
 
             const openModal = (trigger) => {
                 restoreScrollY = window.scrollY;
                 activeTrigger = trigger;
+                setHistoryExpanded(false, false);
                 modal.classList.add('is-open');
                 modal.setAttribute('aria-hidden', 'false');
                 modal.querySelector('[data-download-close]')?.focus();
