@@ -1,0 +1,212 @@
+/*
+ * Direct 官网 Star History 卡片：中英文页面共用已验收的对比与等高布局。
+ * 仅使用 history- 前缀，复用官网颜色变量，避免影响下载弹窗与其他区块。
+ * 两层 SVG 的透明圆角分别补齐主题底色，由同一容器裁切，防止拖动时露白。
+ */
+.history-section { color-scheme: dark; }
+.history-header { margin-bottom: 40px; }
+.history-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1.25fr) minmax(320px, 0.85fr);
+    grid-template-rows: auto auto auto;
+    gap: 12px 28px;
+}
+/* Share the image row with the editor: captions stay outside both panels,
+   and expanding the code scrolls inside the editor instead of stretching it. */
+.history-preview {
+    display: grid;
+    grid-column: 1;
+    grid-row: 1 / span 3;
+    grid-template-rows: subgrid;
+    min-width: 0;
+    margin: 0;
+}
+.history-preview-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    font-size: 13px;
+}
+.history-preview-bar strong { overflow-wrap: anywhere; }
+.history-preview-bar span { flex-shrink: 0; color: var(--color-text-secondary); }
+/* The SVG's rx=32 corners are transparent. Fill each theme with its SVG
+   backdrop before clipping, so the shared radius never reveals a white rim. */
+.history-compare {
+    --history-split: 50%;
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    border: 1px solid var(--color-border-hover);
+    border-radius: 12px;
+    background: #0e131b;
+    box-shadow: 0 12px 34px rgba(0, 0, 0, 0.18);
+}
+/* Dragging should only reveal the themes, never frame the whole image.
+   Keep the keyboard focus cue on the handle that actually moves. */
+.history-compare:has(.history-range:focus-visible) .history-divider span {
+    outline: 3px solid var(--color-cta);
+    outline-offset: 4px;
+}
+.history-compare img { display: block; width: 100%; height: auto; pointer-events: none; user-select: none; }
+.history-compare .history-light {
+    position: absolute;
+    inset: 0;
+    height: 100%;
+    background: #f4f7fb;
+    clip-path: inset(0 calc(100% - var(--history-split)) 0 0);
+}
+.history-divider {
+    position: absolute;
+    inset: 0 auto 0 var(--history-split);
+    width: 2px;
+    transform: translateX(-50%);
+    background: var(--color-cta);
+    pointer-events: none;
+}
+.history-divider span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    transform: translate(-50%, -50%);
+    border: 2px solid var(--color-cta);
+    border-radius: 50%;
+    color: #0066cc;
+    background: #fff;
+    box-shadow: 0 3px 16px rgba(0, 0, 0, 0.16);
+}
+.history-divider svg { width: 20px; height: 20px; }
+/* A native range keeps touch and keyboard interaction accessible. Its
+   thumb width is compensated so 0/100 align with the image edges. */
+.history-range {
+    position: absolute;
+    inset: 0 auto 0 -22px;
+    width: calc(100% + 44px);
+    height: 100%;
+    margin: 0;
+    opacity: 0;
+    appearance: none;
+    cursor: ew-resize;
+    touch-action: pan-y;
+}
+.history-range::-webkit-slider-thumb { appearance: none; width: 44px; height: 44px; }
+.history-range::-moz-range-thumb { width: 44px; height: 44px; border: 0; }
+.history-preview figcaption,
+.history-note { color: var(--color-text-secondary); font-size: 13px; line-height: 1.6; }
+.history-embed {
+    grid-column: 2;
+    grid-row: 2;
+    display: flex;
+    flex-direction: column;
+    contain: size;
+    min-width: 0;
+    min-height: 0;
+    overflow: auto;
+    padding: clamp(24px, 2.5vw, 32px);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    background: var(--color-bg-elevated);
+}
+.history-embed h3 { margin: 0 0 10px; font-size: 25px; letter-spacing: -0.035em; }
+.history-intro { margin: 0 0 28px; color: var(--color-text-secondary); font-size: 14px; line-height: 1.6; }
+.history-form > label,
+.history-language legend { display: block; margin-bottom: 9px; padding: 0; font-size: 12px; font-weight: 600; }
+.history-form > input {
+    width: 100%;
+    height: 44px;
+    padding: 10px 13px;
+    border: 1px solid var(--color-border);
+    border-radius: 9px;
+    color: var(--color-text);
+    background: var(--color-bg);
+    font: inherit;
+    font-size: 14px;
+}
+.history-form-row { display: flex; align-items: end; justify-content: space-between; gap: 12px; margin-top: 20px; }
+.history-language { min-width: 0; margin: 0; padding: 0; border: 0; }
+.history-segmented { display: flex; padding: 3px; border-radius: 9px; background: var(--color-bg); }
+.history-segmented label { position: relative; cursor: pointer; }
+.history-segmented input { position: absolute; width: 100%; height: 100%; margin: 0; opacity: 0; }
+.history-segmented span {
+    display: block;
+    min-width: 62px;
+    padding: 7px 12px;
+    border-radius: 6px;
+    color: var(--color-text-secondary);
+    font-size: 12px;
+    font-weight: 500;
+    text-align: center;
+}
+.history-segmented input:checked + span { color: var(--color-text); background: var(--color-bg-elevated); box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1); }
+.history-segmented input:focus-visible + span { outline: 2px solid var(--color-cta); outline-offset: 2px; }
+.history-language:disabled { opacity: 0.6; }
+.history-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 38px;
+    padding: 8px 14px;
+    border: 1px solid var(--color-border);
+    border-radius: 9px;
+    color: var(--color-text-secondary);
+    background: var(--color-bg-elevated);
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1.5;
+    transition: background-color 160ms ease, color 160ms ease;
+}
+.history-button:hover { color: var(--color-text); background: var(--color-bg); }
+.history-button svg { width: 15px; height: 15px; flex-shrink: 0; }
+.history-copy-button { width: 100%; min-height: 44px; margin-top: 18px; color: #071018; background: var(--color-cta); border-color: var(--color-cta); font-size: 13px; }
+.history-copy-button:hover { color: #071018; background: var(--color-cta-hover); }
+.history-button:disabled { cursor: wait; opacity: 0.6; }
+.history-button.is-copied { color: #fff; background: #237a45; border-color: #237a45; }
+.history-status { margin: 14px 0 24px; color: var(--color-text-secondary); font-size: 12px; line-height: 1.5; }
+.history-actions { margin-top: auto; padding-top: 20px; }
+.history-code-details { border-top: 1px solid var(--color-border); }
+.history-code-details summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding-top: 16px;
+    color: var(--color-text-secondary);
+    font-size: 12px;
+    cursor: pointer;
+    list-style: none;
+}
+.history-code-details summary::-webkit-details-marker { display: none; }
+.history-code-details summary svg { width: 14px; height: 14px; }
+.history-code-details[open] summary svg { transform: rotate(180deg); }
+.history-code {
+    display: block;
+    width: 100%;
+    height: 144px;
+    margin-top: 12px;
+    padding: 12px;
+    resize: none;
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    color: var(--color-text);
+    background: var(--color-bg);
+    font: 11px/1.7 ui-monospace, "SFMono-Regular", Menlo, monospace;
+    white-space: pre;
+}
+.history-note { margin: 12px 0 0; font-size: 12px; }
+.history-note a { color: var(--color-cta); text-decoration: underline; text-underline-offset: 3px; }
+@media (max-width: 980px) {
+    .history-layout { grid-template-columns: minmax(0, 1fr); grid-template-rows: auto auto; row-gap: 24px; }
+    .history-preview { grid-column: 1; grid-row: 1; grid-template-rows: auto auto auto; gap: 12px; width: min(100%, 720px); margin-inline: auto; }
+    .history-embed { grid-column: 1; grid-row: 2; contain: none; width: min(100%, 720px); margin-inline: auto; }
+}
+@media (max-width: 440px) {
+    .history-embed { padding: 18px; }
+    .history-form-row { flex-wrap: wrap; }
+}

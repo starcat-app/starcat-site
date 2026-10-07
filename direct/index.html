@@ -648,6 +648,8 @@
             .demo-frame { border-radius: 14px; }
         }
     </style>
+    <link rel="stylesheet" href="./star-history.css">
+    <script defer src="./star-history.js"></script>
 </head>
 <body class="is-loading">
 
@@ -1004,6 +1006,59 @@
                             <img src="sc-AI服务配置.webp" alt="Starcat AI configuration: multi-model BYOK" loading="lazy">
                         </div>
                     </article>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section history-section" id="star-history" aria-labelledby="history-title">
+        <div class="section-inner">
+            <header class="history-header">
+                <p class="section-label">Starcat Star History</p>
+                <h2 class="section-title" id="history-title">Your repo’s growth.<br>Right in your README.</h2>
+                <p class="section-subtitle">Give your public repository a Star History card that follows its growth. Embed it with a few lines of HTML—no API key or JavaScript required.</p>
+            </header>
+            <div class="history-layout">
+                <figure class="history-preview">
+                    <div class="history-preview-bar">
+                        <strong id="history-preview-repo">starcat-app/Starcat</strong>
+                        <span>Light / Dark</span>
+                    </div>
+                    <div class="history-compare" id="history-compare">
+                        <img id="history-dark" src="https://history.starcat.ink/embed/v1/repos/starcat-app/Starcat/star-history.svg?theme=dark&amp;locale=en" alt="Starcat repository Star History card" width="1200" height="1060" loading="lazy" decoding="async" draggable="false">
+                        <img class="history-light" id="history-light" src="https://history.starcat.ink/embed/v1/repos/starcat-app/Starcat/star-history.svg?theme=light&amp;locale=en" alt="" aria-hidden="true" width="1200" height="1060" loading="lazy" decoding="async" draggable="false">
+                        <div class="history-divider" aria-hidden="true"><span><i data-lucide="move-horizontal"></i></span></div>
+                        <input class="history-range" id="history-range" type="range" min="0" max="100" value="50" aria-label="Compare light and dark card themes" aria-valuetext="50% light, 50% dark" aria-describedby="history-compare-hint">
+                    </div>
+                    <figcaption id="history-compare-hint">Drag the divider to explore both themes. Use the arrow keys when focused.</figcaption>
+                </figure>
+                <div class="history-embed">
+                    <h3>Make it yours.</h3>
+                    <p class="history-intro">One embed for your README.<br>Light and dark themes, handled for you.</p>
+                    <form class="history-form" id="history-form">
+                        <label for="history-repo">GitHub repository</label>
+                        <input id="history-repo" name="repository" value="starcat-app/Starcat" placeholder="owner/repository" required maxlength="140" autocomplete="off" autocapitalize="none" spellcheck="false" aria-describedby="history-status">
+                        <div class="history-form-row">
+                            <fieldset class="history-language" id="history-locale">
+                                <legend>Card language</legend>
+                                <div class="history-segmented">
+                                    <label><input type="radio" name="locale" value="en" checked><span>English</span></label>
+                                    <label><input type="radio" name="locale" value="zh"><span>中文</span></label>
+                                </div>
+                            </fieldset>
+                            <button class="history-button" id="history-update" type="submit" disabled><i data-lucide="refresh-cw" aria-hidden="true"></i><span id="history-update-label">Preview</span></button>
+                        </div>
+                    </form>
+                    <p class="history-status" id="history-status" role="status">Public repositories. No API key needed.</p>
+                    <div class="history-actions">
+                        <details class="history-code-details" id="history-code-details">
+                            <summary>View HTML code<i data-lucide="chevron-down" aria-hidden="true"></i></summary>
+                            <textarea class="history-code" id="history-code" aria-label="README HTML embed code" readonly spellcheck="false" wrap="off" aria-describedby="history-code-hint"></textarea>
+                        </details>
+                        <button class="history-button history-copy-button" id="history-copy" type="button" disabled><i data-lucide="copy" aria-hidden="true"></i><span id="history-copy-label">Copy HTML</span></button>
+                        <p class="history-note" id="history-code-hint">Paste directly into your README. <a href="https://github.com/starcat-app/starcat-history-api#embed-star-history-in-a-public-readme" target="_blank" rel="noopener noreferrer">Embed guide ↗</a></p>
+                    </div>
+                    <noscript><p class="history-note">Enable JavaScript to customize and copy the embed, or use the HTML example in the embed guide.</p></noscript>
                 </div>
             </div>
         </div>
@@ -1433,6 +1488,7 @@
                     <div class="footer-heading">Product</div>
                     <div class="footer-list">
                         <a href="#features" class="footer-link">Features</a>
+                        <a href="#star-history" class="footer-link">Star History cards</a>
                         <a href="#tech" class="footer-link">Tech Stack</a>
                         <a href="#pricing" class="footer-link">Pricing</a>
                         <a href="#faq" class="footer-link">FAQ</a>
