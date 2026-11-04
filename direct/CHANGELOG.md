@@ -16,6 +16,7 @@ All notable changes to Starcat are summarized here for release notes.
 - Summary replay: Successful issue summaries are saved locally, so reopening the same issue after relaunch replays the summary and shows when it was generated.
 - Explore & Weekly source filters: Filter explore categories and Weekly by source preference, remembered across restarts.
 - Issues workspace: The detail-page entry now opens a full workspace with a list-detail layout, search, state filters, and paginated scrolling, with precise non-PR counts; the detail side reuses the activity conversation (comment timeline, AI summary, translation), and new-issue creation supports templates, AI drafting, image pasting, and per-repository drafts.
+- Group icon choice: Create repository groups without a color dot by default, remove an existing group's dot while keeping its emoji, and switch back to a color at any time.
 
 ### Improvements
 
