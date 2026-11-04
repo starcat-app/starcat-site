@@ -2,7 +2,7 @@
 
 <!-- starcat-promo:start -->
 <div align="center">
-<a href="https://starcat.ink"><img src="https://raw.githubusercontent.com/starcat-app/starcat-pro/main/banner.webp" width="100%" alt="Starcat" /></a>
+<a href="https://starcat.ink"><img src="https://raw.githubusercontent.com/starcat-app/starcat-site/main/assets/banner.webp" width="100%" alt="Starcat" /></a>
 
 <p><strong>这是 Starcat 的官方开源网站，包含 Direct 与 Mac App Store 落地页、产品博客、更新记录和公开法律页面。</strong></p>
 <p>Starcat 是一款原生 macOS 应用，可以把 GitHub Stars 变成可搜索、可整理、可用 AI 追问的本地知识库，并通过桌面客户端、插件、CLI 与可自部署服务组成完整生态。</p>
@@ -14,13 +14,13 @@
 
 <div align="center">
 <a href="https://starcat.ink"><img src="https://img.shields.io/badge/website-starcat.ink-38BDF8?style=flat&color=blue" alt="website"/></a>
-<a href="https://github.com/starcat-app/starcat-pro"><img src="https://img.shields.io/badge/support-starcat--pro-lightgrey.svg?style=flat&color=blue" alt="support"/></a>
+<a href="https://github.com/starcat-app/Starcat/issues"><img src="https://img.shields.io/github/issues/starcat-app/Starcat?style=flat&color=blue" alt="issues"/></a>
 <a href="https://github.com/starcat-app/homebrew-starcat"><img src="https://img.shields.io/badge/install-homebrew-lightgrey.svg?style=flat&color=blue" alt="homebrew"/></a>
 <a href="https://github.com/starcat-app/starcat-localization"><img src="https://img.shields.io/badge/localization-open-lightgrey.svg?style=flat&color=blue" alt="localization"/></a>
 </div>
 
 <div align="center">
-<img width="900" src="https://raw.githubusercontent.com/starcat-app/starcat-pro/main/main.webp" alt="Starcat main window"/>
+<img width="900" src="https://raw.githubusercontent.com/starcat-app/starcat-site/main/assets/main.webp" alt="Starcat main window"/>
 </div>
 
 **首选 Homebrew 安装：**
@@ -35,7 +35,7 @@ brew install --cask starcat
 
 - 官网与下载: https://starcat.ink
 - Mac App Store: 搜索 Starcat for GitHub
-- 公开支持与发布说明: https://github.com/starcat-app/starcat-pro
+- 公开支持: https://github.com/starcat-app/Starcat/issues · 更新日志: https://starcat.ink/changelog.html
 - Starcat App Homebrew tap: https://github.com/starcat-app/homebrew-starcat
 - CLI / MCP: [starcat-cli](https://github.com/starcat-app/starcat-cli) / [Homebrew tap](https://github.com/starcat-app/homebrew-starcat-cli)
 - AI Agent Skill: https://github.com/starcat-app/starcat-skill
@@ -88,7 +88,7 @@ python3 -m http.server 8767 --directory direct-test
 
 - 公开含义发生变化时，中英文页面必须同步修改。
 - `direct/appcast.xml` 是公开发布元数据，严禁加入签名私钥或发布凭据。
-- `direct/generate-changelog.py` 默认从同级 `starcat-pro` 仓库读取双语公开 Changelog；独立目录布局可通过 `STARCAT_PRO_ROOT` 显式指定。
+- `direct/generate-changelog.py` 与 `appstore/generate-changelog.py` 读取各自目录内的渠道 Changelog 源文件（`direct/CHANGELOG{,-ZH}.md` 与 `appstore/CHANGELOG{,-ZH}.md`）生成更新记录页。
 - 部署脚本依赖维护者本地凭据；Pull Request 不得部署生产或测试环境。
 - Nginx 配置仅保留在本地，不进入本仓库版本控制。
 
@@ -96,7 +96,7 @@ python3 -m http.server 8767 --directory direct-test
 
 欢迎提交范围明确的文案、无障碍、本地化、SEO 元数据、静态资源和页面行为改进。提交 Pull Request 前请阅读 [CONTRIBUTING.md](./CONTRIBUTING.md)，安全问题请按 [SECURITY.md](./SECURITY.md) 的私密渠道报告。
 
-Starcat 应用问题、订阅、下载或产品支持请前往 [starcat-pro](https://github.com/starcat-app/starcat-pro/issues)。
+Starcat 应用问题、订阅、下载或产品支持请前往[主仓库 issue](https://github.com/starcat-app/Starcat/issues)。
 
 ## 许可证
 

@@ -10,7 +10,7 @@ Thank you for helping improve the Starcat website.
 - Correct blog posts, changelog rendering, public legal-page links, or static assets.
 - Make focused improvements that can be reviewed without production credentials.
 
-Product bugs, subscriptions, downloads, and application feature requests belong in [starcat-pro](https://github.com/starcat-app/starcat-pro/issues).
+Product bugs, subscriptions, downloads, and application feature requests belong in the [main repository issue tracker](https://github.com/starcat-app/Starcat/issues).
 
 ## Local Workflow
 
@@ -33,7 +33,7 @@ python3 -m http.server 8765 --directory direct
 - Do not add DMG files or generated download artifacts to Git.
 - Do not run production or test deployment scripts as part of a contribution.
 - Preserve `direct/appcast.xml` and `.well-known/apple-app-site-association` as public runtime contracts.
-- Release-note content comes from the paired public changelogs in [starcat-pro](https://github.com/starcat-app/starcat-pro); do not invent release history here.
+- Release-note content comes from the channel changelogs in this repository (`appstore/CHANGELOG{,-ZH}.md`, `direct/CHANGELOG{,-ZH}.md`); do not invent release history here.
 - Keep the `starcat-promo` markers intact so shared ecosystem branding remains recognizable.
 
 ## Validation

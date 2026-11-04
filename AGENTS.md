@@ -14,13 +14,15 @@
 ## 用途、技术栈与目录
 
 - 站点以静态 HTML/CSS/JavaScript 为主；Direct 博客使用 Markdown 与 Node.js 生成器，
-  Changelog 使用 Python 生成；App Store 站点包含 Cloudflare Pages/Worker 配置。
+  两个渠道的 Changelog 均使用 Python 生成；App Store 站点包含 Cloudflare Pages/Worker 配置。
 - `direct/` 是 `starcat.ink` Direct 正式站，含中英文首页、博客、Changelog、法律页面、
   AASA 与 `appcast.xml`。
 - `direct-test/` 是 Direct 购买和下载流程测试站；`appstore/` 是 App Store 合规站点；
   `_local-admin/` 是待新控制台完全验收后移除的本机旧工具，不再扩展新能力。
-- Changelog 公开内容来自相邻 `starcat-pro` 的双语 Changelog；不要在生成结果中手工
-  制造与来源不一致的版本事实。
+- Changelog 双语源文件随站点同仓维护（2026-11 自主仓库与 `starcat-pro` 迁入，见 Starcat#202）：
+  `direct/CHANGELOG{,-ZH}.md` 为 Direct 渠道，`appstore/CHANGELOG{,-ZH}.md` 为 App Store 渠道；
+  `direct/` 与 `appstore/` 各自的 `generate-changelog.py` 读取同目录源文件生成页面。
+  不要在生成结果中手工制造与来源不一致的版本事实。
 
 ## 多站点语义同步
 
