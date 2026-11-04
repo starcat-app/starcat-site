@@ -21,6 +21,7 @@ Release notes for the Mac App Store edition of Starcat.
 
 - Icon system overhaul: Sidebar, Settings, sort menus, file and release asset types, and notification filters now use the unified Lucide icon set, with a thumbs-up glyph separating the recommended sort from AI.
 - Similar-repository recommendations: Detail-page suggestions now use Starcat's own recommendation model on both distribution channels, without third-party recommendation services.
+- Knowledge Base model selection: Groups available chat models by provider in the workspace menu.
 - Provider connection checks: Check the current configuration in the background when opening model settings or switching providers, reusing results and in-flight requests for 30 seconds; failures preserve your configuration, and manual tests can run immediately.
 - GitHub attachment caching: Saves loaded README images and GIFs locally for faster repeat viewing, with storage included in image-cache statistics and cleanup.
 - README image loading: Shows a theme-aware placeholder while large images and GIFs load, then displays the image when ready to avoid long blank areas.
@@ -44,6 +45,11 @@ Release notes for the Mac App Store edition of Starcat.
 
 ### Fixes
 
+- Standalone README windows: Fixes a crash when opening a README in a separate window.
+- Standalone AI assistant: Restores window dragging.
+- Agent model changes: Refreshes the built-in runtime's model selection after provider configuration changes.
+- Undo Star cleanup: Immediate deletion now clears the entire Unstar history and refreshes related views.
+- Issues workspace stability: Preserves drafts when creating consecutive issues or closing early, ignores stale responses after switching repositories or issues, and continues pagination past pages containing only pull requests.
 - Embedding error guidance: Connection, configuration, authentication, and rate-limit issues no longer offer email feedback; connection failures show numbered recovery steps and open embedding settings directly, while request processing failures retain feedback.
 - Activity timeline: Reduces repeated processing of loaded comments while scrolling the middle column, improving responsiveness with longer notification lists.
 - Unstarred repositories: Repositories no longer reappear in lists because of stale sync results or cached data after you unstar them.

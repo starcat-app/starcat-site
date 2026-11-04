@@ -21,6 +21,7 @@ All notable changes to Starcat are summarized here for release notes.
 
 - Icon system overhaul: Sidebar, Settings, sort menus, file and release asset types, and notification filters now use the unified Lucide icon set, with a thumbs-up glyph separating the recommended sort from AI.
 - Similar-repository recommendations: Detail-page suggestions now use Starcat's own recommendation model on both distribution channels, without third-party recommendation services.
+- Knowledge Base model selection: Groups available chat models by provider in the workspace menu.
 - Provider connection checks: Check the current configuration in the background when opening model settings or switching providers, reusing results and in-flight requests for 30 seconds; failures preserve your configuration, and manual tests can run immediately.
 - README image loading: Shows a theme-aware placeholder while large images and GIFs load, then displays the image when ready to avoid long blank areas.
 - GitHub attachment caching: Saves loaded README images and GIFs locally for faster repeat viewing, with storage included in image-cache statistics and cleanup.
@@ -39,12 +40,17 @@ All notable changes to Starcat are summarized here for release notes.
 - Awesome source manager: The canvas keeps a fixed size, so operations no longer shift the layout.
 - Awesome sort menu: Shares the unified menu styling with other middle-column lists.
 - License card: License badges in repository details and search now share one obligation-colored card listing rights and duties, with the official reference a tap away.
-- Update channel toggle: The Direct update channel becomes a single "include preview updates" switch; existing preferences carry over, and turning it off never downgrades the installed build.
+- Beta updates: Direct prereleases are now called Beta versions, with one "Include Beta updates" switch in Settings; existing preferences carry over, and turning it off never downgrades the installed build.
 - Language support: Removes the Arabic interface language; the other 17 languages remain fully localized.
 - Daily Radar categories: Category names in the sidebar, reader, and settings follow the interface language, with per-category content toggles in Settings.
 
 ### Fixes
 
+- Standalone README windows: Fixes a crash when opening a README in a separate window.
+- Standalone AI assistant: Restores window dragging.
+- Agent model changes: Refreshes the built-in runtime's model selection after provider configuration changes.
+- Undo Star cleanup: Immediate deletion now clears the entire Unstar history and refreshes related views.
+- Issues workspace stability: Preserves drafts when creating consecutive issues or closing early, ignores stale responses after switching repositories or issues, and continues pagination past pages containing only pull requests.
 - Embedding error guidance: Connection, configuration, authentication, and rate-limit issues no longer offer email feedback; connection failures show numbered recovery steps and open embedding settings directly, while request processing failures retain feedback.
 - Activity timeline: Reduces repeated processing of loaded comments while scrolling the middle column, improving responsiveness with longer notification lists.
 - Unstarred repositories: Repositories no longer reappear in lists because of stale sync results or cached data after you unstar them.
@@ -67,6 +73,36 @@ All notable changes to Starcat are summarized here for release notes.
 - Awesome filter bar: The filter bar is realigned to the left-search, right-actions layout.
 - Label events: Fixed duplicated wording such as "added the label … label" in timeline text across 10 languages.
 - Explore preferences: Category and weekly source preferences set before upgrading are now preserved automatically.
+
+## 1.9.3-待发布
+
+Direct 1.9.3 Beta 1 (`v1.9.3-beta.1`), prepared for the next Beta release. The full 2.0.0 release notes remain in the unreleased section.
+
+### New
+
+- Daily Radar: Read current and past reports by topic, with edition calendars, category counts, language-aware reports, distinct local art covers, and links to related repositories.
+- Issues workspace: Browse and search issues in a list-detail workspace, filter by state, and create issues with templates, AI drafting, image attachments, and per-repository drafts.
+- Summary replay: Issue AI summaries continue generating when hidden and are saved locally for replay after relaunch.
+
+### Improvements
+
+- Beta updates: Direct prereleases and Settings now consistently use the Beta name; turn on "Include Beta updates" to receive them, with existing preferences preserved.
+- Similar-repository recommendations: Uses Starcat's own recommendation model throughout the Direct detail page.
+- Icon system: Unifies business icons with Lucide across navigation, Settings, sorting, files, release assets, and notifications.
+- README images: Adds theme-aware loading placeholders and persistent attachment caching for faster repeat viewing.
+- Model settings: Checks provider connections asynchronously, reuses recent checks, and groups Knowledge Base chat models by provider.
+- License card: Explains repository license rights and obligations in one consistent card.
+- Language support: Keeps all 17 supported interface languages complete, including Daily Radar categories and the Beta update switch.
+
+### Fixes
+
+- Standalone windows: Fixes a crash when opening a README separately and restores AI assistant window dragging.
+- Issues workspace: Preserves drafts, avoids stale list or detail responses, keeps generation cancellation available, and continues past pages containing only pull requests.
+- Agent model changes: Refreshes the built-in runtime's model selection after provider configuration changes.
+- Embedding failures: Classifies connection and configuration errors and offers a direct route to the relevant settings.
+- Undo Star cleanup: Immediate deletion clears all Unstar history and refreshes related views.
+- Daily Radar reading: Stabilizes date controls, report tables, safe links, history pagination, and returning between reports and repository details.
+- Explore preferences: Preserves existing category and source choices when upgrading.
 
 ## 1.9.2-待发布
 
