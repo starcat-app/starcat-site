@@ -47,6 +47,10 @@ All notable changes to Starcat are summarized here for release notes.
 
 ### Fixes
 
+- Global search pagination: New queries start on the first page, scope changes preserve loaded results, and failed page loads can be retried without skipping results.
+- Search loading states: GitHub and Web searches show loading indicators until completion, with errors limited to the current search scope.
+- Search library status: Adding or removing a repository from the knowledge base stays reflected in search results after late responses, pagination, or scope changes.
+- Search result opening: Return and pointer clicks use the same opening behavior, including previews for remote repositories.
 - Standalone README windows: Fixes a crash when opening a README in a separate window.
 - Standalone AI assistant: Restores window dragging.
 - Agent model changes: Refreshes the built-in runtime's model selection after provider configuration changes.
