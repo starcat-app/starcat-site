@@ -46,6 +46,7 @@ Release notes for the Mac App Store edition of Starcat.
 
 ### Fixes
 
+- Activity category counts: Restores cached counts when opening Activity and keeps them visible during background refreshes.
 - Commit activity dates: Shows fewer horizontal date labels in Repository Insights as chart width shrinks or text size grows, preventing overlap while preserving full dates on hover.
 - Daily Radar totals: Shows the report count beside All Topics in the sidebar, matching the Daily Radar entry.
 - Global search pagination: New queries start on the first page, scope changes preserve loaded results, and failed page loads can be retried without skipping results.
