@@ -20,6 +20,8 @@ All notable changes to Starcat are summarized here for release notes.
 
 ### Improvements
 
+- Sidebar daily Star count: Shows a green `+N` badge next to the Starred label when repositories were starred today, counting only ones still starred and updating after in-app actions or synchronization.
+
 - Icon system overhaul: Sidebar, Settings, sort menus, file and release asset types, and notification filters now use the unified Lucide icon set, with a thumbs-up glyph separating the recommended sort from AI.
 - Similar-repository recommendations: Detail-page suggestions now use Starcat's own recommendation model on both distribution channels, without third-party recommendation services.
 - Knowledge Base model selection: Groups available chat models by provider in the workspace menu.
