@@ -92,6 +92,10 @@ All notable changes to Starcat are summarized here for release notes.
 
 - Runtime downloads: Download and configure Codex, DeepSeek Harness, and CodebaseMemory from Direct Settings with automatic verification and version checks
 
+### Changed
+
+- Release icon: The sidebar entry and timeline window title now share a wireframe package icon, matching the visual weight of neighboring navigation icons.
+
 ### Fixes
 ## 1.9.3-待发布
 

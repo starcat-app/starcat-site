@@ -92,6 +92,10 @@
 
 - Runtime 下载配置：Direct 设置页可下载并配置 Codex、DeepSeek Harness 与 CodebaseMemory，自动完成校验和版本检测
 
+### 优化
+
+- Release 图标：侧栏入口与时间线窗口标题统一换用线框包裹图标，视觉重量与相邻导航图标一致。
+
 ### 修复
 ## 1.9.3-待发布
 
