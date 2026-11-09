@@ -20,6 +20,8 @@ All notable changes to Starcat are summarized here for release notes.
 
 ### Improvements
 
+- Workspaces and View menu: Sidebar toggles in Agent and RAG workspaces fade smoothly; Local AI Logs moves to View, duplicate Window menu entries are removed, and the RAG Workspace name is consistent.
+
 - Sidebar daily Star count: Shows a green `+N` badge next to the Starred label when repositories were starred today, counting only ones still starred and updating after in-app actions or synchronization.
 
 - Icon system overhaul: Sidebar, Settings, sort menus, file and release asset types, and notification filters now use the unified Lucide icon set, with a thumbs-up glyph separating the recommended sort from AI.
@@ -48,6 +50,8 @@ All notable changes to Starcat are summarized here for release notes.
 - Daily Radar categories: Category names in the sidebar, reader, and settings follow the interface language, with per-category content toggles in Settings.
 
 ### Fixes
+
+- Workspace windows: Repeated panel toggles keep window dimensions and the opposite panel stable in Agent and RAG workspaces, while long content stays within the conversation and inspector areas.
 
 - Following graph: Selecting a node only shows its profile; use Load More to expand additional relationships.
 - README Issues window: Issue details fade when switching, and the comment input area matches the window background.
@@ -94,11 +98,15 @@ All notable changes to Starcat are summarized here for release notes.
 
 ### Improvements
 
+- Workspaces and View menu: Sidebar toggles in Agent and RAG workspaces fade smoothly; Local AI Logs moves to View, duplicate Window menu entries are removed, and the RAG Workspace name is consistent.
+
 - Third-party dependencies: Upgrades database, image, Markdown, analytics, and update components with pinned versions for better stability and compatibility
 
 - Release icon: The sidebar entry and timeline window title now share a wireframe package icon, matching the visual weight of neighboring navigation icons.
 
 ### Fixes
+
+- Workspace windows: Repeated panel toggles keep window dimensions and the opposite panel stable in Agent and RAG workspaces, while long content stays within the conversation and inspector areas.
 
 - Follow Graph: Selecting a node only shows its profile; use Load More to expand relationships, and finished avatars give a light bounce.
 - README Issues window: Issue details fade when switching, and the comment input area matches the window background.

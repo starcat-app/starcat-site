@@ -20,6 +20,8 @@ Release notes for the Mac App Store edition of Starcat.
 
 ### Improvements
 
+- Workspaces and View menu: Sidebar toggles in Agent and RAG workspaces fade smoothly; Local AI Logs moves to View, duplicate Window menu entries are removed, and the RAG Workspace name is consistent.
+
 - Sidebar daily Star count: Shows a green `+N` badge next to the Starred label when repositories were starred today, counting only ones still starred and updating after in-app actions or synchronization.
 
 - Icon system overhaul: Sidebar, Settings, sort menus, file and release asset types, and notification filters now use the unified Lucide icon set, with a thumbs-up glyph separating the recommended sort from AI.
@@ -47,6 +49,8 @@ Release notes for the Mac App Store edition of Starcat.
 - Daily Radar categories: Category names in the sidebar, reader, and settings follow the interface language, with per-category content toggles in Settings.
 
 ### Fixes
+
+- Workspace windows: Repeated panel toggles keep window dimensions and the opposite panel stable in Agent and RAG workspaces, while long content stays within the conversation and inspector areas.
 
 - Following graph: Selecting a node only shows its profile; use Load More to expand additional relationships.
 - README Issues window: Issue details fade when switching, and the comment input area matches the window background.
