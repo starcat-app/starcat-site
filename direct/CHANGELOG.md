@@ -49,6 +49,8 @@ All notable changes to Starcat are summarized here for release notes.
 
 ### Fixes
 
+- Following graph: Selecting a node only shows its profile; use Load More to expand additional relationships.
+- README Issues window: Issue details fade when switching, and the comment input area matches the window background.
 - Activity category counts: Restores cached counts when opening Activity and keeps them visible during background refreshes.
 - Commit activity dates: Shows fewer horizontal date labels in Repository Insights as chart width shrinks or text size grows, preventing overlap while preserving full dates on hover.
 - Daily Radar totals: Shows the report count beside All Topics in the sidebar, matching the Daily Radar entry.
@@ -83,6 +85,13 @@ All notable changes to Starcat are summarized here for release notes.
 - Awesome filter bar: The filter bar is realigned to the left-search, right-actions layout.
 - Label events: Fixed duplicated wording such as "added the label … label" in timeline text across 10 languages.
 - Explore preferences: Category and weekly source preferences set before upgrading are now preserved automatically.
+
+## 1.9.4-待发布
+
+### Fixes
+
+- Following graph: Selecting a node only shows its profile; use Load More to expand additional relationships.
+- README Issues window: Issue details fade when switching, and the comment input area matches the window background.
 
 ## 1.9.3-待发布
 

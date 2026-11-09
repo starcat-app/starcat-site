@@ -48,6 +48,8 @@ Release notes for the Mac App Store edition of Starcat.
 
 ### Fixes
 
+- Following graph: Selecting a node only shows its profile; use Load More to expand additional relationships.
+- README Issues window: Issue details fade when switching, and the comment input area matches the window background.
 - Activity category counts: Restores cached counts when opening Activity and keeps them visible during background refreshes.
 - Commit activity dates: Shows fewer horizontal date labels in Repository Insights as chart width shrinks or text size grows, preventing overlap while preserving full dates on hover.
 - Daily Radar totals: Shows the report count beside All Topics in the sidebar, matching the Daily Radar entry.
