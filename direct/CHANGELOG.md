@@ -88,11 +88,11 @@ All notable changes to Starcat are summarized here for release notes.
 
 ## 1.9.4-待发布
 
+### New
+
+- Runtime downloads: Download and configure Codex, DeepSeek Harness, and CodebaseMemory from Direct Settings with automatic verification and version checks
+
 ### Fixes
-
-- Following graph: Selecting a node only shows its profile; use Load More to expand additional relationships.
-- README Issues window: Issue details fade when switching, and the comment input area matches the window background.
-
 ## 1.9.3-待发布
 
 Direct 1.9.3 Beta (`v1.9.3-beta.1`), prepared for the next Beta release. The full 2.0.0 release notes remain in the unreleased section.
