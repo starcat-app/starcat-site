@@ -90,58 +90,58 @@ All notable changes to Starcat are summarized here for release notes.
 
 ### New
 
-- Runtime downloads: Download and configure Codex, DeepSeek Harness, and CodebaseMemory from Direct Settings with automatic verification and version checks
+- Runtime downloads: Download and configure Codex, DeepSeek Harness, and CodebaseMemory from Direct Settings, with automatic verification, version checks, slim progress bars, and concise errors
 
-### Changed
+### Improvements
+
+- Third-party dependencies: Upgrades database, image, Markdown, analytics, and update components with pinned versions for better stability and compatibility
 
 - Release icon: The sidebar entry and timeline window title now share a wireframe package icon, matching the visual weight of neighboring navigation icons.
 
 ### Fixes
-## 1.9.3-待发布
 
-Direct 1.9.3 Beta (`v1.9.3-beta.1`), prepared for the next Beta release. The full 2.0.0 release notes remain in the unreleased section.
+- Follow Graph: Selecting a node only shows its profile; use Load More to expand relationships, and finished avatars give a light bounce.
+- README Issues window: Issue details fade when switching, and the comment input area matches the window background.
+
+## 1.9.3
 
 ### New
 
-- Daily Radar workspace: Read current and past reports by topic, with edition calendars, category count badges, source branding, and language-aware reports; each report includes a locally generated abstract cover.
-- Weekly AI Highlights: Adds the weekly AI highlights category and MVP workflow, with a local demo entry, fact-check special reports, a client-connected production service with offline caching, and a home-page stack of the latest six weekly reports.
-- Follow Graph: Adds a full-window two-dimensional follow graph with profile-card follow actions, followers and following exploration in both directions, three-level follower loading, path flow effects, and a standalone initialization entry with confirmation.
-- Issues workspace: Upgrades the detail-page entry into a list-detail workspace with search, state filters, and paginated scrolling; new issues support templates, AI drafting, image pasting, and per-repository drafts.
-- Issue summary replay: Successful summaries are saved locally, so reopening the same issue after relaunch replays the summary and shows when it was generated.
-- Explore & Weekly source filters: Filter explore categories and Weekly by source preference, remembered across restarts.
+- Daily Radar workspace: Read current and past reports by topic with edition calendars, category counts, source identities, individual covers, loading placeholders, offline caching, and continuous reading in the app's language.
+  ![alt text](https://cdn.dong4j.site/source/image/20261109195629_uVwabGzs.webp)
+- Weekly AI Highlights: Browse the latest six weekly reports and fact-check specials, with summary playback, on-demand article images, source and repository details, and offline reading.
+  ![alt text](https://cdn.dong4j.site/source/image/20261109195732_Oyf73Bk9.webp)
+- Follow Graph: Explore followers and following in a full-window two-dimensional graph, with three-level follower views, incremental expansion, avatar profile cards, follow actions, complete highlighted paths, loading feedback, and confirmed graph initialization.
+  ![alt text](https://cdn.dong4j.site/source/image/20261109200034_trO6Ii8l.webp)
+- Issues workspace: Search, filter, and page through repository Issues alongside conversations and comments; create Issues with templates, AI drafting, pasted images, and per-repository drafts, with the interface available in 17 languages.
+  ![alt text](https://cdn.dong4j.site/source/image/20261109200120_KFgBJk3x.webp)
+- Issue summary replay: Successful summaries are saved locally, so reopening the same Issue after relaunch replays the summary and shows when it was generated.
+- Explore and Weekly source filters: Filter categories and Weekly by source preference, with existing choices preserved across upgrades and restarts.
+  ![alt text](https://cdn.dong4j.site/source/image/20261109200420_IqnqkWd8.webp)
 - Group icon choice: Create repository groups without a color dot by default, remove an existing group's dot while keeping its emoji, and switch back to a color at any time.
-- Self-hosted similar recommendations: Detail-page suggestions now use Starcat's own recommendation model instead of third-party recommendation services.
 
 ### Improvements
 
-- Icon system: Unifies the sidebar, Weekly, business icon registry, sort menus, and secondary fallback points with Lucide, and switches release subscription icons to milestone.
-- AI & RAG: Checks provider connections asynchronously with short-term reuse, and groups RAG workspace models by provider.
+- Icon system: Uses Lucide icons consistently across the sidebar, Weekly, sort menus, and secondary views, with clearer release subscription icons.
+- AI and RAG: Checks provider connections asynchronously with short-term reuse and groups RAG workspace models by provider.
 - Sidebar daily Star count: Shows a green +N badge next to Starred for repositories starred today, counting only ones still starred.
 - README images: Shows theme-aware placeholders while large images and GIFs load, with local attachment caching for faster repeat viewing.
-- Beta update flow: Direct prereleases and Settings now consistently use the Beta name; turn on "Include Beta updates" to receive them with existing preferences preserved, and the Direct update channel consolidates into a single preview switch.
-- License badges: Repository license badges now use consistent category-colored explanatory capsules.
-- File download window: The toolbar uses the repository owner's avatar with type-specific file icons.
+- Beta updates: Uses the Beta name consistently in Direct releases and Settings; enable “Include Beta updates” to receive them while retaining existing preferences.
+- License badges: Uses category colors and opens explanations of license rights, obligations, and terms.
+- File download window: Uses the repository owner's avatar and type-specific file icons in the toolbar.
 - Insights header layout: Reduces empty space above both columns and keeps card heights aligned with their content.
-- Daily Radar reading: Seamlessly swaps cached content across categories, adds skeleton screens for first load and detail body, and improves report table widths and header semantics.
-- Follow Graph experience: Adds avatar fade-in with uniform node sizes, a fixed initial viewport, a simplified toolbar, compact two-line profile cards, clearer loading and refresh feedback, and better performance through incremental visible-relationship maintenance and native path-count caching.
-- Weekly AI Highlights reading: Loads article images by visibility, plays summaries with a following cursor, and shows summary and repository identity from report metadata.
+- Similar recommendations: Uses Starcat's own recommendation model instead of third-party recommendation services.
 
 ### Fixes
 
-- Global search: Fixes pagination, state handling, and result opening behavior.
-- Standalone windows: Fixes AI assistant window dragging and a crash when opening a README in a separate window.
-- README images: Fixes expired signed attachment links, theme-related image loading failures, and low-contrast placeholders for slow images.
-- AI Agent: Refreshes the built-in Loop model snapshot after provider configuration changes.
+- Global search: Keeps pagination, state handling, and result opening behavior consistent.
+- Standalone windows: Restores AI assistant window dragging and prevents crashes when opening a README in a separate window.
+- README images: Reloads expired signed attachments and correctly displays theme-specific images and slow-image placeholders.
+- AI Agent: Refreshes the built-in Runtime's model selection after provider configuration changes.
 - RAG embedding failures: Classifies embedding errors and offers a direct route to the relevant settings.
-- Issues workspace: Fixes draft loss when closing before restore, repeated new-issue draft saving, skipping pages containing only pull requests, stale-response overwrites, and unavailable generation stop controls.
-- Daily Radar: Fixes cache recovery after offline reopen or refresh failures, calendar layout jitter, stale detail overlays after switching categories, incorrect current/history edition splitting, and accidental multi-page loading on light history scrolling.
-- Follow Graph: Fixes load-more behavior, canvas layout stability, avatar sync and download concurrency, relationship lines blocking deselection, complete paths from the user to a selected account, and the graph entry direction.
-- Weekly AI Highlights: Fixes source preference persistence, explore count initialization and category order, and missing report totals.
-- Update notes: Direct release notes now adapt to dark mode.
-- Home icon-free groups: Fixes click handling and name alignment for icon-free groups.
-- Explore preferences: Preserves existing category and source choices when upgrading.
-- Localization: Completes the missing 17-language Issues workspace strings and fixes duplicated label-event wording across 10 languages.
-- Insights charts: Fixes overlapping date labels on the commit activity axis.
+- Release notes: Adapts Direct release notes to dark mode.
+- Label events: Removes duplicated label wording across 10 languages.
+- Insights charts: Prevents overlapping dates on the commit activity axis.
 
 ## 1.9.2-待发布
 
