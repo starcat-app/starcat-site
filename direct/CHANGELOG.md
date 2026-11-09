@@ -90,7 +90,7 @@ All notable changes to Starcat are summarized here for release notes.
 
 ### New
 
-- Runtime downloads: Download and configure Codex, DeepSeek Harness, and CodebaseMemory from Direct Settings, with automatic verification, version checks, slim progress bars, and concise errors
+- Runtime downloads: Download and configure Codex, DeepSeek Harness, and CodebaseMemory from Direct Settings, with automatic verification, green version badges when updates are available, and confirmation before reinstalling or downgrading. DeepSeek supports mirror downloads with fallback to the official source and percentage progress. Rechecking shows configuration and version feedback beside the button while preserving the displayed version and path to keep the layout stable
 
 ### Improvements
 

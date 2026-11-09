@@ -90,7 +90,7 @@
 
 ### 新增
 
-- Runtime 下载配置：Direct 设置页可下载并配置 Codex、DeepSeek Harness 与 CodebaseMemory，自动完成校验、版本检测，并提供细进度条与简短错误提示
+- Runtime 下载配置：Direct 设置页可下载并配置 Codex、DeepSeek Harness 与 CodebaseMemory，自动校验并检测版本；有更新时显示绿色版本标识，同版本重装或降级前需确认。DeepSeek 支持镜像下载与官方源回退，显示下载百分比；重新检测后在按钮左侧统一反馈配置和版本状态，检测期间保留版本与路径，避免分组跳动
 
 ### 优化
 
