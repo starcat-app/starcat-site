@@ -128,9 +128,11 @@ All notable changes to Starcat are summarized here for release notes.
 - README images: Shows theme-aware placeholders while large images and GIFs load, with local attachment caching for faster repeat viewing.
 - Beta updates: Uses the Beta name consistently in Direct releases and Settings; enable “Include Beta updates” to receive them while retaining existing preferences.
 - License badges: Uses category colors and opens explanations of license rights, obligations, and terms.
+  ![alt text](https://cdn.dong4j.site/source/image/20261109202435_TAhmnsMN.webp)
 - File download window: Uses the repository owner's avatar and type-specific file icons in the toolbar.
 - Insights header layout: Reduces empty space above both columns and keeps card heights aligned with their content.
 - Similar recommendations: Uses Starcat's own recommendation model instead of third-party recommendation services.
+  ![alt text](https://cdn.dong4j.site/source/image/20261109202406_inmxM0PV.webp)
 
 ### Fixes
 
@@ -143,7 +145,7 @@ All notable changes to Starcat are summarized here for release notes.
 - Label events: Removes duplicated label wording across 10 languages.
 - Insights charts: Prevents overlapping dates on the commit activity axis.
 
-## 1.9.2-待发布
+## 1.9.2
 
 ### New
 

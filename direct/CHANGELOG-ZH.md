@@ -128,9 +128,11 @@
 - README 图片：大图和 GIF 加载期间显示随主题变化的占位，附件图片本地缓存，重复打开更快
 - Beta 更新链路：Direct 预发布与设置文案统一使用 Beta 名称，打开“包含 Beta 版更新”即可接收，已有偏好自动保留
 - License 徽章：详情页按许可证类别配色，点击可查看权利、义务与协议说明
+  ![alt text](https://cdn.dong4j.site/source/image/20261109202435_TAhmnsMN.webp)
 - 下载文件窗口：顶栏改用仓库 owner 头像，并按文件类型区分文件图标
 - Insights 顶栏布局：收紧两栏顶部留白，卡片随内容保持协调高度
 - 相似项目推荐：详情页改用 Starcat 自研推荐模型，不再请求第三方推荐服务
+  ![alt text](https://cdn.dong4j.site/source/image/20261109202406_inmxM0PV.webp)
 
 ### 修复
 
