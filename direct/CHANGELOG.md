@@ -59,6 +59,8 @@ All notable changes to Starcat are summarized here for release notes.
 
 ### Fixes
 
+- Follow graph counts: Fixes pagination controls disappearing before the user count finishes loading; refresh and retry when the loaded count differs from the total.
+
 - Workspace windows: Repeated panel toggles keep window dimensions and the opposite panel stable in Agent and RAG workspaces, while long content stays within the conversation and inspector areas.
 
 - Following graph: Selecting a node only shows its profile; use Load More to expand additional relationships, and finished avatars give a light bounce.
@@ -97,6 +99,12 @@ All notable changes to Starcat are summarized here for release notes.
 - Awesome filter bar: The filter bar is realigned to the left-search, right-actions layout.
 - Label events: Fixed duplicated wording such as "added the label … label" in timeline text across 10 languages.
 - Explore preferences: Category and weekly source preferences set before upgrading are now preserved automatically.
+
+## 1.9.5-待发布
+
+### Fixes
+
+- Follow graph counts: Fixes pagination controls disappearing before the user count finishes loading; refresh and retry when the loaded count differs from the total.
 
 ## 1.9.4
 

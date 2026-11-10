@@ -54,6 +54,8 @@ Release notes for the Mac App Store edition of Starcat.
 
 ### Fixes
 
+- Follow graph counts: Fixes pagination controls disappearing before the user count finishes loading; refresh and retry when the loaded count differs from the total.
+
 - Workspace windows: Repeated panel toggles keep window dimensions and the opposite panel stable in Agent and RAG workspaces, while long content stays within the conversation and inspector areas.
 
 - Following graph: Selecting a node only shows its profile; use Load More to expand additional relationships, and finished avatars give a light bounce.
