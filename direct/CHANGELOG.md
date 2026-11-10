@@ -36,6 +36,7 @@ All notable changes to Starcat are summarized here for release notes.
 
 - Icon system overhaul: Sidebar, Settings, sort menus, file and release asset types, and notification filters now use the unified Lucide icon set, with a thumbs-up glyph separating the recommended sort from AI.
 - Similar-repository recommendations: Detail-page suggestions now use Starcat's own recommendation model on both distribution channels, without third-party recommendation services.
+- Recommendation model updates: New candidates are evaluated weekly and published after quality and availability checks; the current model stays in use when checks fail.
 - Knowledge Base model selection: Groups available chat models by provider in the workspace menu.
 - Provider connection checks: Check the current configuration in the background when opening model settings or switching providers, reusing results and in-flight requests for 30 seconds; failures preserve your configuration, and manual tests can run immediately.
 - README image loading: Shows a theme-aware placeholder while large images and GIFs load, then displays the image when ready to avoid long blank areas.
