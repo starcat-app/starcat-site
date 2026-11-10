@@ -6,6 +6,10 @@ Release notes for the Mac App Store edition of Starcat.
 
 ### New
 
+- Repository Skills: Discover single Skills, collections, and Skills embedded in projects, with filtering, previews, and batch selection; export complete directories to a location you authorize, with confirmation for name conflicts.
+
+- Enhanced diagnostics: Add a problem description, module, and occurrence time, record up to 15 minutes of enhanced diagnostics, and export a troubleshooting report; exporting and acknowledging alerts are separate actions, and diagnostic logs stay on your Mac.
+
 - Issue AI summaries: Open a glass panel from the floating button above the input area's divider, drag its top edge to adjust height, and read a streaming Markdown summary; generation continues when hidden or you switch Issues, and reopening restores progress or results.
 - Free source tools: Repository context packing, CodeFlow, and CodebaseMemory code graphs no longer require Pro, with existing repository and runtime limits retained.
 - Linux.do discovery: Browse verified open-source projects promoted on Linux.do, see provenance badges across repository lists, and open original discussions from repository details.
@@ -20,13 +24,15 @@ Release notes for the Mac App Store edition of Starcat.
 
 ### Improvements
 
+- Follow graph expansion: Manual expansion no longer has fixed node, relationship, or request limits; actual GitHub rate limits show the reset time in your local time zone.
+
 - New-feature indicators: Followers, Following, Daily Radar, and Linux.do show a blue dot until first used.
 
 - Third-party dependencies: Upgrades database, image, Markdown, and analytics components with pinned versions for better stability and compatibility.
 
 - Release icon: The sidebar entry and timeline window title now share a wireframe package icon, matching the visual weight of neighboring navigation icons.
 
-- Workspaces and View menu: Sidebar toggles in Agent and RAG workspaces fade smoothly; Local AI Logs moves to View and the RAG Workspace name is consistent. Only duplicate window entries are removed, preserving system commands such as Services, Hide, and Quit.
+- Workspaces and View menu: Sidebar toggles in Agent and RAG workspaces fade smoothly; Local AI Logs moves to View and the RAG Workspace name is consistent. Workspaces, Settings, and other auxiliary windows have fewer duplicate menu entries, preserving system commands such as Services, Hide, and Quit.
 
 - Sidebar daily Star count: Shows a green `+N` badge next to the Starred label when repositories were starred today, counting only ones still starred and updating after in-app actions or synchronization.
 
@@ -41,7 +47,7 @@ Release notes for the Mac App Store edition of Starcat.
 - Insights header layout: Reduces empty space above both columns and keeps card heights aligned with their content.
 - Business icons: Unified icons across the sidebar, Settings, repository details, and the AI/RAG workspaces, with distinct marks for forked origin and fork counts; Insights icons now match the main window, while similar-repository recommendations, embedding models, and CodeFlow are easier to distinguish.
 - Background task overview: Track repository search indexing, model and Laya downloads, chat history migration, My Projects sync, and GitHub notification sync from the status panel, with links back to their pages; pause individual model downloads or stop other tasks where available, while idle cards remain disabled.
-- Dark status cards: Uses a thicker frosted material consistently across overview, usage, Local AI, and diagnostics cards.
+- Status panel polish: Uses a thicker frosted background consistently across dark overview, usage, Local AI, and diagnostics cards, with shorter explanations of Local AI memory and automatic unloading.
 - Background organization entry: After closing repository grouping or tag organization, the middle column keeps showing the current phase and processed counts, with direct access to the task or results.
 - Background organization banner: Uses consistent icon actions in wide and narrow middle columns, keeps status on one line, and shows full action names on hover.
 - AI organization workspaces: Uses more compact windows for repository grouping and tag organization, lets long content scroll within each panel, and restores session options to their values when the window opened.
@@ -57,6 +63,8 @@ Release notes for the Mac App Store edition of Starcat.
 - Daily Radar categories: Category names in the sidebar, reader, and settings follow the interface language, with per-category content toggles in Settings.
 
 ### Fixes
+
+- Diagnostic export: Fixes exports failing after choosing a save location because the sandbox denied access to the temporary directory.
 
 - App version display: The status panel and About page show the actual build version instead of incorrectly displaying 1.0.0.
 

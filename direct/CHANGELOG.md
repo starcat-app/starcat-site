@@ -6,6 +6,10 @@ All notable changes to Starcat are summarized here for release notes.
 
 ### New
 
+- Repository Skills: Discover single Skills, collections, and Skills embedded in projects, with filtering, previews, and batch selection; install complete directories to Codex or Claude Code user-level locations, with confirmation for name conflicts.
+
+- Enhanced diagnostics: Add a problem description, module, and occurrence time, record up to 15 minutes of enhanced diagnostics, and export a troubleshooting report; exporting and acknowledging alerts are separate actions, and diagnostic logs stay on your Mac.
+
 - Runtime downloads: Download and configure Codex, DeepSeek Harness, and CodebaseMemory from Direct Settings, with automatic verification, green version badges when updates are available, and confirmation before reinstalling or downgrading. DeepSeek supports mirror downloads with fallback to the official source and percentage progress. Rechecking shows configuration and version feedback beside the button while preserving the displayed version and path to keep the layout stable. Installation continues after leaving Settings, with progress and stage-appropriate stop controls available in the status panel.
 
 - Issue AI summaries: Open a glass panel from the floating button above the input area's divider, drag its top edge to adjust height, and read a streaming Markdown summary; generation continues when hidden or you switch Issues, and reopening restores progress or results.
@@ -22,13 +26,15 @@ All notable changes to Starcat are summarized here for release notes.
 
 ### Improvements
 
+- Follow graph expansion: Manual expansion no longer has fixed node, relationship, or request limits; actual GitHub rate limits show the reset time in your local time zone.
+
 - New-feature indicators: Followers, Following, Daily Radar, and Linux.do show a blue dot until first used.
 
 - Third-party dependencies: Upgrades database, image, Markdown, and analytics components with pinned versions for better stability and compatibility.
 
 - Release icon: The sidebar entry and timeline window title now share a wireframe package icon, matching the visual weight of neighboring navigation icons.
 
-- Workspaces and View menu: Sidebar toggles in Agent and RAG workspaces fade smoothly; Local AI Logs moves to View and the RAG Workspace name is consistent. Only duplicate window entries are removed, preserving system commands such as Services, Hide, and Quit.
+- Workspaces and View menu: Sidebar toggles in Agent and RAG workspaces fade smoothly; Local AI Logs moves to View and the RAG Workspace name is consistent. Workspaces, Settings, and other auxiliary windows have fewer duplicate menu entries, preserving system commands such as Services, Hide, and Quit.
 
 - DeepSeek execution view: Shows reasoning and tool activity in execution order with streamed answer blocks; completed runs collapse the process and show elapsed time, while tool details remain available in the inspector.
 
@@ -45,7 +51,7 @@ All notable changes to Starcat are summarized here for release notes.
 - Insights header layout: Reduces empty space above both columns and keeps card heights aligned with their content.
 - Business icons: Unified icons across the sidebar, Settings, repository details, and the AI/RAG workspaces, with distinct marks for forked origin and fork counts; Insights icons now match the main window, while similar-repository recommendations, embedding models, and CodeFlow are easier to distinguish.
 - Background task overview: Track repository search indexing, model and Laya downloads, chat history migration, My Projects sync, and GitHub notification sync from the status panel, with links back to their pages; pause individual model downloads or stop other tasks where available, while idle cards remain disabled; Runtime installation and screensaver avatar prefetch progress are also included.
-- Dark status cards: Uses a thicker frosted material consistently across overview, usage, Local AI, and diagnostics cards.
+- Status panel polish: Uses a thicker frosted background consistently across dark overview, usage, Local AI, and diagnostics cards, with shorter explanations of Local AI memory and automatic unloading.
 - Background organization entry: After closing repository grouping or tag organization, the middle column keeps showing the current phase and processed counts, with direct access to the task or results.
 - Background organization banner: Uses consistent icon actions in wide and narrow middle columns, keeps status on one line, and shows full action names on hover.
 - AI organization workspaces: Uses more compact windows for repository grouping and tag organization, lets long content scroll within each panel, and restores session options to their values when the window opened.
@@ -62,6 +68,10 @@ All notable changes to Starcat are summarized here for release notes.
 - Daily Radar categories: Category names in the sidebar, reader, and settings follow the interface language, with per-category content toggles in Settings.
 
 ### Fixes
+
+- Direct startup permissions: Avoids requesting App Store data access again after an import decision or once Direct has data, and fixes repeated container permission prompts on macOS 15.
+
+- Direct activation feedback: Shows a cooldown countdown and blocks duplicate submissions after rate limits, with clear messages for activation failures and failures to save credentials locally.
 
 - App version display: The status panel and About page show the actual build version instead of incorrectly displaying 1.0.0.
 
@@ -108,13 +118,36 @@ All notable changes to Starcat are summarized here for release notes.
 
 ## 1.9.5-待发布
 
+### New
+
+- Repository Skills: Discover single Skills, collections, and Skills embedded in projects, with filtering, previews, and batch selection; install complete directories to Codex or Claude Code user-level locations, with confirmation for name conflicts.
+  ![20261111011236_l9FhLLlj](https://cdn.dong4j.site/source/image/20261111011236_l9FhLLlj.webp)
+
+- Enhanced diagnostics: Add a problem description, module, and occurrence time, record up to 15 minutes of enhanced diagnostics, and export a troubleshooting report; exporting and acknowledging alerts are separate actions, and diagnostic logs stay on your Mac.
+
 ### Improvements
 
 - New-feature indicators: Followers, Following, Daily Radar, and Linux.do show a blue dot until first used.
 
+- Background task overview: Track repository search indexing, model and Laya downloads, chat history migration, My Projects sync, GitHub notification sync, and screensaver avatar prefetch progress in the status panel, with individual model pause controls and links back to their pages.
+
+- Background Runtime installation: Codex, DeepSeek Harness, and CodebaseMemory keep installing after you leave Settings, with progress and stage-appropriate stop controls in the status panel.
+
+- Follow graph expansion: Manual expansion no longer has fixed node, relationship, or request limits; actual GitHub rate limits show the reset time in your local time zone.
+
+- Status panel polish: Dark cards share a thicker frosted background, with shorter explanations of Local AI memory and automatic unloading.
+
+- Auxiliary window menus: Workspaces and Settings have fewer duplicate menu entries while preserving system commands such as Services, Hide, and Quit.
+
 ### Fixes
 
 - Follow graph counts: Fixes pagination controls disappearing before the user count finishes loading; refresh and retry when the loaded count differs from the total.
+
+- Direct startup permissions: Avoids requesting App Store data access again after an import decision or once Direct has data, and fixes repeated container permission prompts on macOS 15.
+
+- Direct activation feedback: Shows a cooldown countdown and blocks duplicate submissions after rate limits, with clear messages for activation failures and failures to save credentials locally.
+
+- App version display: The status panel and About page show the actual build version instead of incorrectly displaying 1.0.0.
 
 ## 1.9.4
 
