@@ -20,6 +20,8 @@ Release notes for the Mac App Store edition of Starcat.
 
 ### Improvements
 
+- New-feature indicators: Followers, Following, Daily Radar, and Linux.do show a blue dot until first used.
+
 - Third-party dependencies: Upgrades database, image, Markdown, and analytics components with pinned versions for better stability and compatibility.
 
 - Release icon: The sidebar entry and timeline window title now share a wireframe package icon, matching the visual weight of neighboring navigation icons.
