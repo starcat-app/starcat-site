@@ -98,7 +98,7 @@ All notable changes to Starcat are summarized here for release notes.
 - Label events: Fixed duplicated wording such as "added the label … label" in timeline text across 10 languages.
 - Explore preferences: Category and weekly source preferences set before upgrading are now preserved automatically.
 
-## 1.9.4-待发布
+## 1.9.4
 
 ### New
 
