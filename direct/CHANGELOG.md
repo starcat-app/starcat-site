@@ -6,6 +6,8 @@ All notable changes to Starcat are summarized here for release notes.
 
 ### New
 
+- Runtime downloads: Download and configure Codex, DeepSeek Harness, and CodebaseMemory from Direct Settings, with automatic verification, green version badges when updates are available, and confirmation before reinstalling or downgrading. DeepSeek supports mirror downloads with fallback to the official source and percentage progress. Rechecking shows configuration and version feedback beside the button while preserving the displayed version and path to keep the layout stable
+
 - Issue AI summaries: Open a glass panel from the floating button above the input area's divider, drag its top edge to adjust height, and read a streaming Markdown summary; generation continues when hidden or you switch Issues, and reopening restores progress or results.
 - Free source tools: Repository context packing, CodeFlow, and CodebaseMemory code graphs no longer require Pro, with existing repository and runtime limits retained.
 - Linux.do discovery: Browse verified open-source projects promoted on Linux.do, see provenance badges across repository lists, and open original discussions from repository details.
@@ -20,7 +22,13 @@ All notable changes to Starcat are summarized here for release notes.
 
 ### Improvements
 
-- Workspaces and View menu: Sidebar toggles in Agent and RAG workspaces fade smoothly; Local AI Logs moves to View, duplicate Window menu entries are removed, and the RAG Workspace name is consistent.
+- Third-party dependencies: Upgrades database, image, Markdown, and analytics components with pinned versions for better stability and compatibility.
+
+- Release icon: The sidebar entry and timeline window title now share a wireframe package icon, matching the visual weight of neighboring navigation icons.
+
+- Workspaces and View menu: Sidebar toggles in Agent and RAG workspaces fade smoothly; Local AI Logs moves to View and the RAG Workspace name is consistent. Only duplicate window entries are removed, preserving system commands such as Services, Hide, and Quit.
+
+- DeepSeek execution view: Shows reasoning and tool activity in execution order with streamed answer blocks; completed runs collapse the process and show elapsed time, while tool details remain available in the inspector.
 
 - Sidebar daily Star count: Shows a green `+N` badge next to the Starred label when repositories were starred today, counting only ones still starred and updating after in-app actions or synchronization.
 
@@ -53,7 +61,7 @@ All notable changes to Starcat are summarized here for release notes.
 
 - Workspace windows: Repeated panel toggles keep window dimensions and the opposite panel stable in Agent and RAG workspaces, while long content stays within the conversation and inspector areas.
 
-- Following graph: Selecting a node only shows its profile; use Load More to expand additional relationships.
+- Following graph: Selecting a node only shows its profile; use Load More to expand additional relationships, and finished avatars give a light bounce.
 - README Issues window: Issue details fade when switching, and the comment input area matches the window background.
 - Activity category counts: Restores cached counts when opening Activity and keeps them visible during background refreshes.
 - Commit activity dates: Shows fewer horizontal date labels in Repository Insights as chart width shrinks or text size grows, preventing overlap while preserving full dates on hover.
@@ -98,7 +106,9 @@ All notable changes to Starcat are summarized here for release notes.
 
 ### Improvements
 
-- Workspaces and View menu: Sidebar toggles in Agent and RAG workspaces fade smoothly; Local AI Logs moves to View, duplicate Window menu entries are removed, and the RAG Workspace name is consistent.
+- Workspaces and View menu: Sidebar toggles in Agent and RAG workspaces fade smoothly; Local AI Logs moves to View and the RAG Workspace name is consistent. Only duplicate window entries are removed, preserving system commands such as Services, Hide, and Quit.
+
+- DeepSeek execution view: Shows reasoning and tool activity in execution order with streamed answer blocks; completed runs collapse the process and show elapsed time, while tool details remain available in the inspector.
 
 - Third-party dependencies: Upgrades database, image, Markdown, analytics, and update components with pinned versions for better stability and compatibility
 

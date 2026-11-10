@@ -20,7 +20,11 @@ Release notes for the Mac App Store edition of Starcat.
 
 ### Improvements
 
-- Workspaces and View menu: Sidebar toggles in Agent and RAG workspaces fade smoothly; Local AI Logs moves to View, duplicate Window menu entries are removed, and the RAG Workspace name is consistent.
+- Third-party dependencies: Upgrades database, image, Markdown, and analytics components with pinned versions for better stability and compatibility.
+
+- Release icon: The sidebar entry and timeline window title now share a wireframe package icon, matching the visual weight of neighboring navigation icons.
+
+- Workspaces and View menu: Sidebar toggles in Agent and RAG workspaces fade smoothly; Local AI Logs moves to View and the RAG Workspace name is consistent. Only duplicate window entries are removed, preserving system commands such as Services, Hide, and Quit.
 
 - Sidebar daily Star count: Shows a green `+N` badge next to the Starred label when repositories were starred today, counting only ones still starred and updating after in-app actions or synchronization.
 
@@ -52,7 +56,7 @@ Release notes for the Mac App Store edition of Starcat.
 
 - Workspace windows: Repeated panel toggles keep window dimensions and the opposite panel stable in Agent and RAG workspaces, while long content stays within the conversation and inspector areas.
 
-- Following graph: Selecting a node only shows its profile; use Load More to expand additional relationships.
+- Following graph: Selecting a node only shows its profile; use Load More to expand additional relationships, and finished avatars give a light bounce.
 - README Issues window: Issue details fade when switching, and the comment input area matches the window background.
 - Activity category counts: Restores cached counts when opening Activity and keeps them visible during background refreshes.
 - Commit activity dates: Shows fewer horizontal date labels in Repository Insights as chart width shrinks or text size grows, preventing overlap while preserving full dates on hover.
