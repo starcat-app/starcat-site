@@ -39,7 +39,8 @@ Release notes for the Mac App Store edition of Starcat.
 - Settings redesign: Reorganizes configuration groups and navigation, unifies page headers, separators, and action layouts, removes repetitive descriptions, and brings account, privacy, and Pro benefits into a clearer structure.
 - Insights header layout: Reduces empty space above both columns and keeps card heights aligned with their content.
 - Business icons: Unified icons across the sidebar, Settings, repository details, and the AI/RAG workspaces, with distinct marks for forked origin and fork counts; Insights icons now match the main window, while similar-repository recommendations, embedding models, and CodeFlow are easier to distinguish.
-- Background task overview: Expand the status panel's task list to see each task's state and available workspace links or stop controls; idle cards are disabled and no longer open tag organization.
+- Background task overview: Track repository search indexing, model and Laya downloads, chat history migration, My Projects sync, and GitHub notification sync from the status panel, with links back to their pages; pause individual model downloads or stop other tasks where available, while idle cards remain disabled.
+- Dark status cards: Uses a thicker frosted material consistently across overview, usage, Local AI, and diagnostics cards.
 - Background organization entry: After closing repository grouping or tag organization, the middle column keeps showing the current phase and processed counts, with direct access to the task or results.
 - Background organization banner: Uses consistent icon actions in wide and narrow middle columns, keeps status on one line, and shows full action names on hover.
 - AI organization workspaces: Uses more compact windows for repository grouping and tag organization, lets long content scroll within each panel, and restores session options to their values when the window opened.
@@ -55,6 +56,8 @@ Release notes for the Mac App Store edition of Starcat.
 - Daily Radar categories: Category names in the sidebar, reader, and settings follow the interface language, with per-category content toggles in Settings.
 
 ### Fixes
+
+- App version display: The status panel and About page show the actual build version instead of incorrectly displaying 1.0.0.
 
 - Follow graph counts: Fixes pagination controls disappearing before the user count finishes loading; refresh and retry when the loaded count differs from the total.
 

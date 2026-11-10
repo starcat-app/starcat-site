@@ -6,7 +6,7 @@ All notable changes to Starcat are summarized here for release notes.
 
 ### New
 
-- Runtime downloads: Download and configure Codex, DeepSeek Harness, and CodebaseMemory from Direct Settings, with automatic verification, green version badges when updates are available, and confirmation before reinstalling or downgrading. DeepSeek supports mirror downloads with fallback to the official source and percentage progress. Rechecking shows configuration and version feedback beside the button while preserving the displayed version and path to keep the layout stable
+- Runtime downloads: Download and configure Codex, DeepSeek Harness, and CodebaseMemory from Direct Settings, with automatic verification, green version badges when updates are available, and confirmation before reinstalling or downgrading. DeepSeek supports mirror downloads with fallback to the official source and percentage progress. Rechecking shows configuration and version feedback beside the button while preserving the displayed version and path to keep the layout stable. Installation continues after leaving Settings, with progress and stage-appropriate stop controls available in the status panel.
 
 - Issue AI summaries: Open a glass panel from the floating button above the input area's divider, drag its top edge to adjust height, and read a streaming Markdown summary; generation continues when hidden or you switch Issues, and reopening restores progress or results.
 - Free source tools: Repository context packing, CodeFlow, and CodebaseMemory code graphs no longer require Pro, with existing repository and runtime limits retained.
@@ -43,7 +43,8 @@ All notable changes to Starcat are summarized here for release notes.
 - Settings redesign: Reorganizes configuration groups and navigation, unifies page headers, separators, and action layouts, removes repetitive descriptions, and brings account, privacy, and Pro benefits into a clearer structure. The Direct edition also streamlines screensaver, license, and update-channel controls.
 - Insights header layout: Reduces empty space above both columns and keeps card heights aligned with their content.
 - Business icons: Unified icons across the sidebar, Settings, repository details, and the AI/RAG workspaces, with distinct marks for forked origin and fork counts; Insights icons now match the main window, while similar-repository recommendations, embedding models, and CodeFlow are easier to distinguish.
-- Background task overview: Expand the status panel's task list to see each task's state and available workspace links or stop controls; idle cards are disabled and no longer open tag organization.
+- Background task overview: Track repository search indexing, model and Laya downloads, chat history migration, My Projects sync, and GitHub notification sync from the status panel, with links back to their pages; pause individual model downloads or stop other tasks where available, while idle cards remain disabled; Runtime installation and screensaver avatar prefetch progress are also included.
+- Dark status cards: Uses a thicker frosted material consistently across overview, usage, Local AI, and diagnostics cards.
 - Background organization entry: After closing repository grouping or tag organization, the middle column keeps showing the current phase and processed counts, with direct access to the task or results.
 - Background organization banner: Uses consistent icon actions in wide and narrow middle columns, keeps status on one line, and shows full action names on hover.
 - AI organization workspaces: Uses more compact windows for repository grouping and tag organization, lets long content scroll within each panel, and restores session options to their values when the window opened.
@@ -60,6 +61,8 @@ All notable changes to Starcat are summarized here for release notes.
 - Daily Radar categories: Category names in the sidebar, reader, and settings follow the interface language, with per-category content toggles in Settings.
 
 ### Fixes
+
+- App version display: The status panel and About page show the actual build version instead of incorrectly displaying 1.0.0.
 
 - Follow graph counts: Fixes pagination controls disappearing before the user count finishes loading; refresh and retry when the loaded count differs from the total.
 
