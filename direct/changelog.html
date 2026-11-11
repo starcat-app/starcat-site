@@ -128,6 +128,163 @@
     <div class="changelog-content">
 <h1>Starcat Changelog</h1>
 <p>All notable changes to Starcat are summarized here for release notes.</p>
+<h2>1.9.5 Beta 1</h2>
+<h3>New</h3>
+<ul>
+<li>Repository Skills: Discover single Skills, collections, and Skills embedded in projects, with filtering, previews, and batch selection; install complete directories to Codex or Claude Code user-level locations, with confirmation for name conflicts.</li>
+</ul>
+<p>  <img src="https://cdn.dong4j.site/source/image/20261111011236_l9FhLLlj.webp" alt="20261111011236_l9FhLLlj" loading="lazy"></p>
+<ul>
+<li>Enhanced diagnostics: Add a problem description, module, and occurrence time, record up to 15 minutes of enhanced diagnostics, and export a troubleshooting report; exporting and acknowledging alerts are separate actions, and diagnostic logs stay on your Mac.</li>
+</ul>
+<h3>Improvements</h3>
+<ul>
+<li>New-feature indicators: Followers, Following, Daily Radar, and Linux.do show a blue dot until first used.</li>
+</ul>
+<ul>
+<li>Background task overview: Track repository search indexing, model and Laya downloads, chat history migration, My Projects sync, GitHub notification sync, and screensaver avatar prefetch progress in the status panel, with individual model pause controls and links back to their pages.</li>
+</ul>
+<ul>
+<li>Background Runtime installation: Codex, DeepSeek Harness, and CodebaseMemory keep installing after you leave Settings, with progress and stage-appropriate stop controls in the status panel.</li>
+</ul>
+<ul>
+<li>Follow graph expansion: Manual expansion no longer has fixed node, relationship, or request limits; actual GitHub rate limits show the reset time in your local time zone.</li>
+</ul>
+<ul>
+<li>Status panel polish: Dark cards share a thicker frosted background, with shorter explanations of Local AI memory and automatic unloading.</li>
+</ul>
+<ul>
+<li>Auxiliary window menus: Workspaces and Settings have fewer duplicate menu entries while preserving system commands such as Services, Hide, and Quit.</li>
+</ul>
+<h3>Fixes</h3>
+<ul>
+<li>Follow graph counts: Fixes pagination controls disappearing before the user count finishes loading; refresh and retry when the loaded count differs from the total.</li>
+</ul>
+<ul>
+<li>Direct startup permissions: Avoids requesting App Store data access again after an import decision or once Direct has data, and fixes repeated container permission prompts on macOS 15.</li>
+</ul>
+<ul>
+<li>Direct activation feedback: Shows a cooldown countdown and blocks duplicate submissions after rate limits, with clear messages for activation failures and failures to save credentials locally.</li>
+</ul>
+<ul>
+<li>App version display: The status panel and About page show the actual build version instead of incorrectly displaying 1.0.0.</li>
+</ul>
+<h2>1.9.4</h2>
+<h3>New</h3>
+<ul>
+<li>Runtime downloads: Download and configure Codex, DeepSeek Harness, and CodebaseMemory from Direct Settings, with automatic verification, green version badges when updates are available, and confirmation before reinstalling or downgrading. DeepSeek supports mirror downloads with fallback to the official source and percentage progress. Rechecking shows configuration and version feedback beside the button while preserving the displayed version and path to keep the layout stable</li>
+</ul>
+<h3>Improvements</h3>
+<ul>
+<li>Workspaces and View menu: Sidebar toggles in Agent and RAG workspaces fade smoothly; Local AI Logs moves to View and the RAG Workspace name is consistent. Only duplicate window entries are removed, preserving system commands such as Services, Hide, and Quit.</li>
+</ul>
+<ul>
+<li>DeepSeek execution view: Shows reasoning and tool activity in execution order with streamed answer blocks; completed runs collapse the process and show elapsed time, while tool details remain available in the inspector.</li>
+</ul>
+<ul>
+<li>Third-party dependencies: Upgrades database, image, Markdown, analytics, and update components with pinned versions for better stability and compatibility</li>
+</ul>
+<ul>
+<li>Release icon: The sidebar entry and timeline window title now share a wireframe package icon, matching the visual weight of neighboring navigation icons.</li>
+</ul>
+<h3>Fixes</h3>
+<ul>
+<li>Workspace windows: Repeated panel toggles keep window dimensions and the opposite panel stable in Agent and RAG workspaces, while long content stays within the conversation and inspector areas.</li>
+</ul>
+<ul>
+<li>Follow Graph: Selecting a node only shows its profile; use Load More to expand relationships, and finished avatars give a light bounce.</li>
+<li>README Issues window: Issue details fade when switching, and the comment input area matches the window background.</li>
+</ul>
+<h2>1.9.3</h2>
+<h3>New</h3>
+<ul>
+<li>Daily Radar workspace: Read current and past reports by topic with edition calendars, category counts, source identities, individual covers, loading placeholders, offline caching, and continuous reading in the app's language.</li>
+</ul>
+<p>  <img src="https://cdn.dong4j.site/source/image/20261109195629_uVwabGzs.webp" alt="alt text" loading="lazy"></p>
+<ul>
+<li>Weekly AI Highlights: Browse the latest six weekly reports and fact-check specials, with summary playback, on-demand article images, source and repository details, and offline reading.</li>
+</ul>
+<p>  <img src="https://cdn.dong4j.site/source/image/20261109195732_Oyf73Bk9.webp" alt="alt text" loading="lazy"></p>
+<ul>
+<li>Follow Graph: Explore followers and following in a full-window two-dimensional graph, with three-level follower views, incremental expansion, avatar profile cards, follow actions, complete highlighted paths, loading feedback, and confirmed graph initialization.</li>
+</ul>
+<p>  <img src="https://cdn.dong4j.site/source/image/20261109200034_trO6Ii8l.webp" alt="alt text" loading="lazy"></p>
+<ul>
+<li>Issues workspace: Search, filter, and page through repository Issues alongside conversations and comments; create Issues with templates, AI drafting, pasted images, and per-repository drafts, with the interface available in 17 languages.</li>
+</ul>
+<p>  <img src="https://cdn.dong4j.site/source/image/20261109200120_KFgBJk3x.webp" alt="alt text" loading="lazy"></p>
+<ul>
+<li>Issue summary replay: Successful summaries are saved locally, so reopening the same Issue after relaunch replays the summary and shows when it was generated.</li>
+<li>Explore and Weekly source filters: Filter categories and Weekly by source preference, with existing choices preserved across upgrades and restarts.</li>
+</ul>
+<p>  <img src="https://cdn.dong4j.site/source/image/20261109200420_IqnqkWd8.webp" alt="alt text" loading="lazy"></p>
+<ul>
+<li>Group icon choice: Create repository groups without a color dot by default, remove an existing group's dot while keeping its emoji, and switch back to a color at any time.</li>
+</ul>
+<h3>Improvements</h3>
+<ul>
+<li>Icon system: Uses Lucide icons consistently across the sidebar, Weekly, sort menus, and secondary views, with clearer release subscription icons.</li>
+<li>AI and RAG: Checks provider connections asynchronously with short-term reuse and groups RAG workspace models by provider.</li>
+<li>Sidebar daily Star count: Shows a green +N badge next to Starred for repositories starred today, counting only ones still starred.</li>
+<li>README images: Shows theme-aware placeholders while large images and GIFs load, with local attachment caching for faster repeat viewing.</li>
+<li>Beta updates: Uses the Beta name consistently in Direct releases and Settings; enable “Include Beta updates” to receive them while retaining existing preferences.</li>
+<li>License badges: Uses category colors and opens explanations of license rights, obligations, and terms.</li>
+</ul>
+<p>  <img src="https://cdn.dong4j.site/source/image/20261109202435_TAhmnsMN.webp" alt="alt text" loading="lazy"></p>
+<ul>
+<li>File download window: Uses the repository owner's avatar and type-specific file icons in the toolbar.</li>
+<li>Insights header layout: Reduces empty space above both columns and keeps card heights aligned with their content.</li>
+<li>Similar recommendations: Uses Starcat's own recommendation model instead of third-party recommendation services.</li>
+</ul>
+<p>  <img src="https://cdn.dong4j.site/source/image/20261109202406_inmxM0PV.webp" alt="alt text" loading="lazy"></p>
+<h3>Fixes</h3>
+<ul>
+<li>Global search: Keeps pagination, state handling, and result opening behavior consistent.</li>
+<li>Standalone windows: Restores AI assistant window dragging and prevents crashes when opening a README in a separate window.</li>
+<li>README images: Reloads expired signed attachments and correctly displays theme-specific images and slow-image placeholders.</li>
+<li>AI Agent: Refreshes the built-in Runtime's model selection after provider configuration changes.</li>
+<li>RAG embedding failures: Classifies embedding errors and offers a direct route to the relevant settings.</li>
+<li>Release notes: Adapts Direct release notes to dark mode.</li>
+<li>Label events: Removes duplicated label wording across 10 languages.</li>
+<li>Insights charts: Prevents overlapping dates on the commit activity axis.</li>
+</ul>
+<h2>1.9.2</h2>
+<h3>New</h3>
+<ul>
+<li>Issue AI summaries: Open a glass panel from the floating button above the input area's divider, drag its top edge to adjust height, and read a streaming Markdown summary; generation continues when hidden or you switch Issues, and reopening restores progress or results.</li>
+<li>Free source tools: Repository context packing, CodeFlow, and CodebaseMemory code graphs no longer require Pro, with existing repository and runtime limits retained.</li>
+<li>Summary replay: Successful issue summaries are saved locally, so reopening the same issue after relaunch replays the summary and shows when it was generated.</li>
+<li>Explore & Weekly source filters: Filter explore categories and Weekly by source preference, remembered across restarts.</li>
+</ul>
+<h3>Improvements</h3>
+<ul>
+<li>Settings redesign: Reorganizes configuration groups and navigation, unifies page headers, separators, and action layouts, removes repetitive descriptions, and brings account, privacy, and Pro benefits into a clearer structure. The Direct edition also streamlines screensaver, license, and update-channel controls.</li>
+<li>Insights header layout: Reduces empty space above both columns and keeps card heights aligned with their content.</li>
+<li>AI organization workspaces: Uses more compact windows for repository grouping and tag organization, lets long content scroll within each panel, and restores session options to their values when the window opened.</li>
+<li>Background organization banner: Uses consistent icon actions in wide and narrow middle columns, keeps status on one line, and shows full action names on hover.</li>
+<li>Summary panel polish: The launcher button highlights existing summaries in blue, the panel closes with Esc, and body scrolling no longer collides with the scrollbar.</li>
+<li>GitHub attachment caching: Saves loaded README images and GIFs locally for faster repeat viewing, with storage included in image-cache statistics and cleanup.</li>
+<li>README image loading: Shows a theme-aware placeholder while large images and GIFs load, then displays the image when ready to avoid long blank areas.</li>
+<li>File download window: The toolbar uses the repository owner's avatar with type-specific file icons.</li>
+<li>Awesome source manager: The canvas keeps a fixed size, so operations no longer shift the layout.</li>
+<li>Awesome sort menu: Shares the unified menu styling with other middle-column lists.</li>
+</ul>
+<h3>Fixes</h3>
+<ul>
+<li>Activity timeline: Reduces repeated processing of loaded comments while scrolling the middle column, improving responsiveness with longer notification lists.</li>
+<li>Unstarred repositories: Repositories no longer reappear in lists because of stale sync results or cached data after you unstar them.</li>
+<li>Unstar confirmation: The single-card dialog uses a narrower width to avoid excessive empty space.</li>
+<li>Self-hosted service connections: Saves addresses and keys only after a successful manual test; automatic checks only verify connections, and failures preserve the saved configuration.</li>
+<li>External index connections: Saves Meilisearch and Qdrant connection drafts only after successful tests, preserving the saved connection if key storage fails.</li>
+<li>External search credentials: After you edit a key or leave Settings, stale test results no longer overwrite saved credentials or enablement.</li>
+<li>Knowledge Base indexing failures: Ends the building state and pauses automatic retries for the same embedding configuration after a failed request, keeping text search available until a manual retry or configuration change.</li>
+<li>Stopping Knowledge Base indexing: Ignores late embedding responses after stopping and releases in-progress chunks so indexing can resume later.</li>
+<li>Update window readability: Release notes now follow the system appearance, keeping headings, body text, links, code, and separators readable in dark mode.</li>
+<li>README images: Fixes missing images and GIFs in some light/dark theme picture sources.</li>
+<li>README attachment images: Fixes images disappearing after temporary links expire, with existing cached pages repaired automatically.</li>
+<li>AI reply panel: The AI reply panel no longer leaves a gap between its bottom edge and the status bar.</li>
+<li>Awesome filter bar: The filter bar is realigned to the left-search, right-actions layout.</li>
+</ul>
 <h2>1.9.1</h2>
 <h3>New</h3>
 <ul>

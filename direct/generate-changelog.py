@@ -2,9 +2,10 @@
 """
 将同目录下的 CHANGELOG.md 与 CHANGELOG-ZH.md（Direct 渠道更新日志）转换为官网更新日志页。
 暗色主题，与落地页风格一致；生成逻辑集中在脚本里，避免中英文页面样式漂移。
-用法: python3 generate-changelog.py
+用法: python3 generate-changelog.py [--source-root 已固定的发布说明目录]
 """
 
+import argparse
 import re
 import sys
 from pathlib import Path
@@ -360,8 +361,13 @@ def validate_formal_changelog(text: str, source_path: Path) -> None:
 
 
 def main():
+    """Beta 官网复用当次发布快照，避免将未来版本工作稿公开。"""
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--source-root", type=Path, default=SCRIPT_DIR,
+                        help="读取双语发布说明的目录；Beta 使用构建时固定的快照")
+    args = parser.parse_args()
     for page in CHANGELOG_PAGES:
-        source_path = page["source"]
+        source_path = args.source_root / page["source"].name
         target_path = page["target"]
         if not source_path.exists():
             print(f"Error: {source_path} not found", file=sys.stderr)

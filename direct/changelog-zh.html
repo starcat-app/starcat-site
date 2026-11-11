@@ -128,6 +128,102 @@
     <div class="changelog-content">
 <h1>Starcat 更新日志</h1>
 <p>这里记录 Starcat 的重要变化，内容用于发布说明。</p>
+<h2>1.9.5 Beta 1</h2>
+<h3>新增</h3>
+<ul>
+<li>仓库 Skill：识别单项、集合及项目内嵌 Skill，支持筛选、预览与批量选择，并将完整目录安装到 Codex 或 Claude Code 用户级目录；同名冲突需确认</li>
+</ul>
+<p>  <img src="https://cdn.dong4j.site/source/image/20261111011236_l9FhLLlj.webp" alt="20261111011236_l9FhLLlj" loading="lazy"></p>
+<ul>
+<li>增强诊断：可填写问题描述、模块与发生时间，开启最长 15 分钟的增强记录并导出故障报告；导出与确认提醒独立操作，诊断日志保留在本机</li>
+</ul>
+<h3>优化</h3>
+<ul>
+<li>新功能标识：关注者、正在关注、每日热点与 Linux.do 入口首次显示蓝色圆点，点击后不再提示。</li>
+<li>后台任务总览：在状态面板查看仓库搜索索引、模型与 Laya 下载、对话历史迁移、我的项目及 GitHub 通知同步和屏保头像预取进度，可暂停单个模型下载并返回对应页面</li>
+<li>Runtime 后台安装：离开设置后继续安装 Codex、DeepSeek Harness 与 CodebaseMemory，可在状态面板查看进度并按当前阶段停止安装</li>
+<li>关注图谱展开：手动展开不再受固定节点、关系或请求数上限限制，遇到 GitHub 实际限流时显示本地恢复时间</li>
+<li>状态面板体验：深色卡片统一使用加厚磨砂背景，本地 AI 内存与自动卸载说明更精简</li>
+<li>辅助窗口菜单：整理工作台与设置窗口的菜单入口，减少重复项，并保留服务、隐藏和退出等系统命令</li>
+</ul>
+<h3>修复</h3>
+<ul>
+<li>关注图谱人数：修复卡片人数尚未加载完成时分页按钮提前消失的问题，加载人数与总数不一致时可刷新重试。</li>
+<li>Direct 启动授权：避免已处理商店数据导入或已有数据时再次请求访问权限，并修复 macOS 15 重复弹出容器授权的问题</li>
+<li>Direct 激活提示：限流时显示冷却倒计时并阻止重复提交，明确提示激活失败与本机凭据保存失败</li>
+<li>应用版本显示：状态面板与关于页显示实际构建版本，避免错误显示为 1.0.0</li>
+</ul>
+<h2>1.9.4</h2>
+<h3>新增</h3>
+<ul>
+<li>Runtime 下载配置：Direct 设置页可下载并配置 Codex、DeepSeek Harness 与 CodebaseMemory，自动校验并检测版本；有更新时显示绿色版本标识，同版本重装或降级前需确认。DeepSeek 支持镜像下载与官方源回退，显示下载百分比；重新检测后在按钮左侧统一反馈配置和版本状态，检测期间保留版本与路径，避免分组跳动</li>
+</ul>
+<h3>优化</h3>
+<ul>
+<li>工作台与显示菜单：Agent 与 RAG 工作台的侧栏展开、收起增加淡入淡出过渡；本地 AI 日志移入显示菜单，统一 RAG 工作台名称；仅移除窗口菜单的重复入口，保留服务、隐藏与退出等系统菜单</li>
+<li>DeepSeek 执行过程：按执行顺序展示思考与工具活动，回答分块流式输出；完成后自动收起过程并显示耗时，工具详情可在检查器中查看</li>
+<li>第三方依赖：升级数据库、图片加载、Markdown、分析与更新组件，依赖版本固定，提升稳定性与兼容性</li>
+<li>Release 图标：侧栏入口与时间线窗口标题统一换用线框包裹图标，视觉重量与相邻导航图标一致。</li>
+</ul>
+<h3>修复</h3>
+<ul>
+<li>工作台窗口：Agent 与 RAG 工作台反复展开、收起两侧面板时，窗口尺寸与对侧面板保持稳定，长内容不再挤出正文和引用区域</li>
+<li>关注关系图谱：点击节点只选中用户并显示资料卡，更多关系由“加载更多”按钮手动展开；头像加载完成时带轻量回弹反馈</li>
+<li>README Issues 窗口：切换 Issue 详情时增加淡入淡出，评论输入区背景与窗口保持一致</li>
+</ul>
+<h2>1.9.3</h2>
+<h3>新增</h3>
+<ul>
+<li>每日热点阅读工作区：按主题浏览当期与往期报告，支持期次日历、分类计数与来源标识；提供独立封面、加载占位、离线缓存和连续阅读，报告语言跟随应用语言</li>
+</ul>
+<p>  <img src="https://cdn.dong4j.site/source/image/20261109195629_uVwabGzs.webp" alt="alt text" loading="lazy"></p>
+<ul>
+<li>每周 AI 大事：浏览最近六期周报与核查专刊，支持摘要播放、按需加载文章图片、查看来源与仓库信息，以及离线阅读</li>
+</ul>
+<p>  <img src="https://cdn.dong4j.site/source/image/20261109195732_Oyf73Bk9.webp" alt="alt text" loading="lazy"></p>
+<ul>
+<li>关注关系图谱：以全窗口二维图谱探索关注者与正在关注关系，支持三层关注者展示、分批展开、头像资料卡、关注操作与完整路径高亮；可查看加载反馈并确认初始化当前图谱</li>
+</ul>
+<p>  <img src="https://cdn.dong4j.site/source/image/20261109200034_trO6Ii8l.webp" alt="alt text" loading="lazy"></p>
+<ul>
+<li>Issues 工作台：在仓库详情中搜索、筛选和分页浏览 Issues，右侧查看会话并评论；新建 Issue 支持模板、AI 撰写、图片粘贴和按仓库保存草稿，界面覆盖 17 种语言</li>
+</ul>
+<p>  <img src="https://cdn.dong4j.site/source/image/20261109200120_KFgBJk3x.webp" alt="alt text" loading="lazy"></p>
+<ul>
+<li>Issue 总结缓存回放：成功的 Issue 总结保存到本机，重启后打开同一 Issue 直接回放，面板显示上次总结时间</li>
+<li>探索与周刊来源筛选：按来源偏好筛选探索分类与周刊，已有选择在升级及重启后保留</li>
+</ul>
+<p>  <img src="https://cdn.dong4j.site/source/image/20261109200420_IqnqkWd8.webp" alt="alt text" loading="lazy"></p>
+<ul>
+<li>仓库分组无图标模式：新建仓库分组默认不显示颜色圆点，已有分组可移除圆点并保留 Emoji，之后也能重新选择颜色</li>
+</ul>
+<h3>优化</h3>
+<ul>
+<li>图标体系：侧栏主导航、热点周刊、排序菜单及次级界面统一使用 Lucide 图标，订阅发布图标更易辨识</li>
+<li>AI / RAG 体验：异步检测服务商连接并复用短期结果，RAG 工作台模型菜单按服务商配置分组展示</li>
+<li>侧栏今日星标数：今天星标过的项目在 Starred 标签旁显示绿色 +N 徽标，只统计仍保留的星标</li>
+<li>README 图片：大图和 GIF 加载期间显示随主题变化的占位，附件图片本地缓存，重复打开更快</li>
+<li>Beta 更新链路：Direct 预发布与设置文案统一使用 Beta 名称，打开“包含 Beta 版更新”即可接收，已有偏好自动保留</li>
+<li>License 徽章：详情页按许可证类别配色，点击可查看权利、义务与协议说明</li>
+</ul>
+<p>  <img src="https://cdn.dong4j.site/source/image/20261109202435_TAhmnsMN.webp" alt="alt text" loading="lazy"></p>
+<ul>
+<li>下载文件窗口：顶栏改用仓库 owner 头像，并按文件类型区分文件图标</li>
+<li>Insights 顶栏布局：收紧两栏顶部留白，卡片随内容保持协调高度</li>
+<li>相似项目推荐：详情页改用 Starcat 自研推荐模型，不再请求第三方推荐服务</li>
+</ul>
+<p>  <img src="https://cdn.dong4j.site/source/image/20261109202406_inmxM0PV.webp" alt="alt text" loading="lazy"></p>
+<h3>修复</h3>
+<ul>
+<li>全局搜索：分页、状态与结果打开行为保持一致</li>
+<li>独立窗口：AI 助手窗口可正常拖动，独立 README 窗口不再因打开内容而崩溃</li>
+<li>README 图片：过期签名附件可重新加载，明暗主题图片及慢图占位正确显示</li>
+<li>AI Agent：服务商配置变化后及时刷新内置 Runtime 的模型选择</li>
+<li>RAG 向量化失败：分类展示向量化故障，并提供直达对应设置的入口</li>
+<li>发布说明：Direct 更新说明适配暗色主题</li>
+<li>标签事件文案：消除 10 种语言中的重复标签用词</li>
+<li>洞察图表：提交活动横轴日期不再重叠</li>
+</ul>
 <h2>1.9.1</h2>
 <h3>新增</h3>
 <ul>
