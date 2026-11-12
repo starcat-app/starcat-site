@@ -109,12 +109,19 @@ All notable changes to Starcat are summarized here for release notes.
 - Knowledge Base indexing failures: Ends the building state and pauses automatic retries for the same embedding configuration after a failed request, keeping text search available until a manual retry or configuration change.
 - Stopping Knowledge Base indexing: Ignores late embedding responses after stopping and releases in-progress chunks so indexing can resume later.
 - Update window readability: Release notes now follow the system appearance, keeping headings, body text, links, code, and separators readable in dark mode.
+- Update window language: Framework controls use Sparkle's native translations, and release notes choose Chinese or English by app language; reopen the window after changing the language.
 - README images: Fixes missing images and GIFs in some light/dark theme picture sources.
 - README attachment images: Fixes images disappearing after temporary links expire, with existing cached pages repaired automatically.
 - AI reply panel: The AI reply panel no longer leaves a gap between its bottom edge and the status bar.
 - Awesome filter bar: The filter bar is realigned to the left-search, right-actions layout.
 - Label events: Fixed duplicated wording such as "added the label … label" in timeline text across 10 languages.
 - Explore preferences: Category and weekly source preferences set before upgrading are now preserved automatically.
+
+## 1.9.6-待发布
+
+### Fixes
+
+- Update window language: Framework controls use Sparkle's native translations, and release notes choose Chinese or English by app language; reopen the window after changing the language.
 
 ## 1.9.5
 
