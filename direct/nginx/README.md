@@ -8,8 +8,10 @@
 `$sharing_fly_upstream`，并统一转发页面、WebP 和 PNG。`Host`、TLS SNI 和
 `X-SC-Svc: sharing` 必须同时保留；否则聚合服务无法识别匿名浏览器的目标服务。
 
-实际部署需另行授权。部署时先在目标机器执行 `nginx -t`，再重载；本任务不上传
-私有配置、不执行部署脚本。验收时确认 `/d/{id}` 返回日报 HTML 而非官网首页，
+2026-11-13 已按授权完成生产 `/d/` 转发并通过报告页面、WebP 与 PNG 冒烟；
+专项 worktree 清理前，已将新增该路由的本机私有配置保留到主工作区。
+后续部署仍需单独授权，并先在目标机器执行 `nginx -t` 再重载。
+验收时确认 `/d/{id}` 返回日报 HTML 而非官网首页，
 两张资产的 `Content-Type` 分别为 `image/webp` 与 `image/png`，且 OG 指向绝对 PNG URL。
 
 后端一年 immutable 缓存是方案指定行为。撤销会阻止后续回源请求，但不能主动
