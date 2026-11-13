@@ -1,0 +1,18 @@
+# 在既有 starcat.ink HTTPS server 内 include 本片段。
+# $sharing_fly_upstream 与 resolver 沿用公开仓库分享的配置，不在这里保存私有站点配置。
+# 不增加边缘缓存；后端按不可变快照返回 Cache-Control，撤销后后续回源返回 410。
+location ^~ /d/ {
+    proxy_pass https://$sharing_fly_upstream;
+    proxy_ssl_server_name on;
+    proxy_ssl_name starcat-api.fly.dev;
+    proxy_ssl_session_reuse off;
+    proxy_set_header Host starcat-api.fly.dev;
+    proxy_set_header X-SC-Svc sharing;
+    proxy_set_header X-Forwarded-Host $host;
+    proxy_set_header X-Forwarded-Proto $scheme;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_connect_timeout 15s;
+    proxy_read_timeout 30s;
+    proxy_next_upstream error timeout;
+    proxy_next_upstream_tries 2;
+}
