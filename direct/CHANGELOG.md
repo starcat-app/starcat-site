@@ -23,6 +23,10 @@ All notable changes to Starcat are summarized here for release notes.
 - Explore & Weekly source filters: Filter explore categories and Weekly by source preference, remembered across restarts.
 - Issues workspace: The detail-page entry now opens a full workspace with a list-detail layout, search, state filters, and paginated scrolling, with precise non-PR counts; the detail side reuses the activity conversation (comment timeline, AI summary, translation), and new-issue creation supports templates, AI drafting, image pasting, and per-repository drafts.
 - Group icon choice: Create repository groups without a color dot by default, remove an existing group's dot while keeping its emoji, and switch back to a color at any time.
+- Smart Find: Describe a purpose, characteristic, or fuzzy clue in natural language to find GitHub repositories you have not starred, with multi-source retrieval, repository verification, relevance reranking, match reasons and evidence, the full execution trace, and progressive results with follow-up searches inside a 15-second budget.
+- Result source filters: Filter search results by keyword, semantic, GitHub, web, or Smart Find, with independent counts per source, cross-source deduplication, and the current source plus a continue-loading entry preserved when a filter has no matches.
+- Search content filtering: Hides results that should not be shown according to built-in rules, consistently across regular search, Smart Find, and cached results, with filtering details available in the panel.
+- Repository Skill reader: Expand SKILL.md previews to full width for reading and restore them without losing your place.
 
 ### Improvements
 
@@ -40,7 +44,7 @@ All notable changes to Starcat are summarized here for release notes.
 
 - Sidebar daily Star count: Shows a green `+N` badge next to the Starred label when repositories were starred today, counting only ones still starred and updating after in-app actions or synchronization.
 
-- Icon system overhaul: Sidebar, Settings, sort menus, file and release asset types, and notification filters now use the unified Lucide icon set, with a thumbs-up glyph separating the recommended sort from AI.
+- Icon system overhaul: Sidebar, Settings, repository details, Insights, AI/RAG workspaces, sort menus, file and release asset types, and notification filters share the unified Lucide set, with distinct marks for fork origin and counts, recommendations, embedding models, and CodeFlow.
 - Similar-repository recommendations: Detail-page suggestions now use Starcat's own recommendation model on both distribution channels, without third-party recommendation services.
 - Recommendation model updates: New candidates are evaluated weekly and published after quality and availability checks; the current model stays in use when checks fail.
 - Knowledge Base model selection: Groups available chat models by provider in the workspace menu.
@@ -49,7 +53,6 @@ All notable changes to Starcat are summarized here for release notes.
 - GitHub attachment caching: Saves loaded README images and GIFs locally for faster repeat viewing, with storage included in image-cache statistics and cleanup.
 - Settings redesign: Reorganizes configuration groups and navigation, unifies page headers, separators, and action layouts, removes repetitive descriptions, and brings account, privacy, and Pro benefits into a clearer structure. The Direct edition also streamlines screensaver, license, and update-channel controls.
 - Insights header layout: Reduces empty space above both columns and keeps card heights aligned with their content.
-- Business icons: Unified icons across the sidebar, Settings, repository details, and the AI/RAG workspaces, with distinct marks for forked origin and fork counts; Insights icons now match the main window, while similar-repository recommendations, embedding models, and CodeFlow are easier to distinguish.
 - Background task overview: Track repository search indexing, model and Laya downloads, chat history migration, My Projects sync, and GitHub notification sync from the status panel, with links back to their pages; pause individual model downloads or stop other tasks where available, while idle cards remain disabled; Runtime installation and screensaver avatar prefetch progress are also included.
 - Status panel polish: Uses a thicker frosted background consistently across dark overview, usage, Local AI, and diagnostics cards, with shorter explanations of Local AI memory and automatic unloading.
 - Background organization entry: After closing repository grouping or tag organization, the middle column keeps showing the current phase and processed counts, with direct access to the task or results.
@@ -66,6 +69,13 @@ All notable changes to Starcat are summarized here for release notes.
 - Beta updates: Direct prereleases are now called Beta versions, with one "Include Beta updates" switch in Settings; existing preferences carry over, and turning it off never downgrades the installed build.
 - Language support: Removes the Arabic interface language; the other 17 languages remain fully localized.
 - Daily Radar categories: Category names in the sidebar, reader, and settings follow the interface language, with per-category content toggles in Settings.
+- Global search indexing: Semantic search no longer waits for index maintenance, reducing search latency.
+- Search index status: The status label now says Index instead of Vector, with a clearer icon.
+- Repository Skill performance: Scanning and document parsing for large collections no longer block the interface, keeping scrolling and detail switching responsive.
+- Repository Skill interface: Compact tabs, icon-only layouts in narrow panes, scan progress in the window toolbar, scan diagnostics in a popover, and clearer capsule icons and count animations.
+- Account menu: Fewer duplicate entries, with Refresh Profile kept and the last refresh shown as relative time.
+- Daily Radar visuals: More cover styles, cover-derived accent colors in history rows, motion on weekly topic entries and reader headers, clearer badges and metadata, and related project badges.
+- Daily Radar reading: Article images no longer respond to context menus or dragging, so they do not interrupt reading.
 
 ### Fixes
 
@@ -116,12 +126,41 @@ All notable changes to Starcat are summarized here for release notes.
 - Awesome filter bar: The filter bar is realigned to the left-search, right-actions layout.
 - Label events: Fixed duplicated wording such as "added the label … label" in timeline text across 10 languages.
 - Explore preferences: Category and weekly source preferences set before upgrading are now preserved automatically.
+- Profile refresh: Fixes manual refreshes still showing cached profile data.
+- Insights navigation titles: Fixes navigation titles falling back to the system language.
+- Error recovery contact: Fixes the recovery contact not being shown in error messages.
+- Search Star feedback: Fixes missing loading feedback for Star actions in global search.
+- Daily Radar body: Fixes duplicated headings in report bodies.
+- Daily Radar badges: Fixes weekly topic timeline dates overlapping badges.
 
 ## 1.9.6-待发布
+
+### New
+
+- Smart Find: Describe a purpose, characteristic, or fuzzy clue in natural language to find GitHub repositories you have not starred, with multi-source retrieval, repository verification, relevance reranking, match reasons and evidence, the full execution trace, and progressive results with follow-up searches inside a 15-second budget.
+- Result source filters: Filter search results by keyword, semantic, GitHub, web, or Smart Find, with independent counts per source, cross-source deduplication, and the current source plus a continue-loading entry preserved when a filter has no matches.
+- Search content filtering: Hides results that should not be shown according to built-in rules, consistently across regular search, Smart Find, and cached results, with filtering details available in the panel.
+- Repository Skill reader: Expand SKILL.md previews to full width for reading and restore them without losing your place.
+
+### Improvements
+
+- Global search indexing: Semantic search no longer waits for index maintenance, reducing search latency.
+- Search index status: The status label now says Index instead of Vector, with a clearer icon.
+- Repository Skill performance: Scanning and document parsing for large collections no longer block the interface, keeping scrolling and detail switching responsive.
+- Repository Skill interface: Compact tabs, icon-only layouts in narrow panes, scan progress in the window toolbar, scan diagnostics in a popover, and clearer capsule icons and count animations.
+- Account menu: Fewer duplicate entries, with Refresh Profile kept and the last refresh shown as relative time.
+- Daily Radar visuals: More cover styles, cover-derived accent colors in history rows, motion on weekly topic entries and reader headers, clearer badges and metadata, and related project badges.
+- Daily Radar reading: Article images no longer respond to context menus or dragging, so they do not interrupt reading.
 
 ### Fixes
 
 - Update window language: Framework controls use Sparkle's native translations, and release notes choose Chinese or English by app language; reopen the window after changing the language.
+- Profile refresh: Fixes manual refreshes still showing cached profile data.
+- Insights navigation titles: Fixes navigation titles falling back to the system language.
+- Error recovery contact: Fixes the recovery contact not being shown in error messages.
+- Search Star feedback: Fixes missing loading feedback for Star actions in global search.
+- Daily Radar body: Fixes duplicated headings in report bodies.
+- Daily Radar badges: Fixes weekly topic timeline dates overlapping badges.
 
 ## 1.9.5
 
