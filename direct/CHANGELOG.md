@@ -6,15 +6,12 @@ All notable changes to Starcat are summarized here for release notes.
 
 ### New
 
-- Profile language mix: The sidebar profile card shows a language distribution bar, with language names and percentages on hover.
+- Profile language mix: The sidebar shows a language distribution bar with names and percentages on hover, sharing its statistics with profile share cards; saved results appear at launch, are reused for seven days, and refresh in the background after expiry.
 - Contribution lawn styles: Click the sidebar contribution lawn to cycle through animation styles and Off; your choice is saved and stays in sync with Settings.
-- Public organizations: The sidebar profile shows public organization avatars, moves extra organizations into a More menu, and shows names and descriptions on hover.
+- Public organizations: The sidebar shows clear, small circular organization avatars sized to match nearby icons, with extra organizations in a More menu and names and descriptions on hover.
 - Repository Skills: Discover single Skills, collections, and Skills embedded in projects, with filtering, previews, and batch selection; install complete directories to Codex or Claude Code user-level locations, with confirmation for name conflicts.
-
 - Enhanced diagnostics: Add a problem description, module, and occurrence time, record up to 15 minutes of enhanced diagnostics, and export a troubleshooting report; exporting and acknowledging alerts are separate actions, and diagnostic logs stay on your Mac.
-
 - Runtime downloads: Download and configure Codex, DeepSeek Harness, and CodebaseMemory from Direct Settings, with automatic verification, green version badges when updates are available, and confirmation before reinstalling or downgrading. DeepSeek supports mirror downloads with fallback to the official source and percentage progress. Rechecking shows configuration and version feedback beside the button while preserving the displayed version and path to keep the layout stable. Installation continues after leaving Settings, with progress and stage-appropriate stop controls available in the status panel.
-
 - Issue AI summaries: Open a glass panel from the floating button above the input area's divider, drag its top edge to adjust height, and read a streaming Markdown summary; generation continues when hidden or you switch Issues, and reopening restores progress or results.
 - Free source tools: Repository context packing, CodeFlow, and CodebaseMemory code graphs no longer require Pro, with existing repository and runtime limits retained.
 - Linux.do discovery: Browse verified open-source projects promoted on Linux.do, see provenance badges across repository lists, and open original discussions from repository details.
@@ -22,7 +19,7 @@ All notable changes to Starcat are summarized here for release notes.
 - Repository license filters: Select multiple licenses in the main window and combine them with other filters, with consistent pagination, project counts, and cached results.
 - Unstar data cleanup: Before unstarring, see which notes, tags, AI content, and analysis caches will be deleted; repositories in your library can optionally be removed from the knowledge base, with a clear warning that deletion cannot be undone.
 - Daily Radar: A new reading workspace for daily reports, browsable by topic categories with edition calendar navigation, per-category badges, and source branding; reports follow the app language. Each report gets a locally generated abstract cover, unique per edition; loading and category switches show skeleton placeholders, with seamless swaps when cached.
-- Daily Radar report sharing: Create a public link to a complete report with its cover, then copy, open, or share it through the system share menu.
+- Daily Radar report sharing: Create a public link to a complete report and cover, with the title and summary over the preview; copy and browser actions sit beside the link, and system sharing sits alongside the privacy notice.
 - Summary replay: Successful issue summaries are saved locally, so reopening the same issue after relaunch replays the summary and shows when it was generated.
 - Explore & Weekly source filters: Filter explore categories and Weekly by source preference, remembered across restarts.
 - Issues workspace: The detail-page entry now opens a full workspace with a list-detail layout, search, state filters, and paginated scrolling, with precise non-PR counts; the detail side reuses the activity conversation (comment timeline, AI summary, translation), and new-issue creation supports templates, AI drafting, image pasting, and per-repository drafts.
@@ -37,20 +34,14 @@ All notable changes to Starcat are summarized here for release notes.
 - Global filter layout: Status, star, library, availability, and Skill filters use compact single-row segments; language multi-select uses wrapping chips inside a bounded scrolling area.
 - Skills detail transitions: Switching Skills briefly fades in the detail content and file tree, while respecting Reduce Motion.
 - Detail badges: Linux.do gains its brand icon, Issues moves between Linux.do and Skills, and all three share a capsule height, hover feedback, and animated count changes.
+- Linux.do list badges: Repository cards show the Linux.do logo in a capsule sized to match nearby badges, with colors that adapt to light and dark themes.
 - Follow graph expansion: Manual expansion no longer has fixed node, relationship, or request limits; actual GitHub rate limits show the reset time in your local time zone.
-
 - New-feature indicators: Followers, Following, Daily Radar, and Linux.do show a blue dot until first used.
-
 - Third-party dependencies: Upgrades database, image, Markdown, and analytics components with pinned versions for better stability and compatibility.
-
 - Release icon: The sidebar entry and timeline window title now share a wireframe package icon, matching the visual weight of neighboring navigation icons.
-
 - Workspaces and View menu: Sidebar toggles in Agent and RAG workspaces fade smoothly; Local AI Logs moves to View and the RAG Workspace name is consistent. Workspaces, Settings, and other auxiliary windows have fewer duplicate menu entries, preserving system commands such as Services, Hide, and Quit.
-
 - DeepSeek execution view: Shows reasoning and tool activity in execution order with streamed answer blocks; completed runs collapse the process and show elapsed time, while tool details remain available in the inspector.
-
 - Sidebar daily Star count: Shows a green `+N` badge next to the Starred label when repositories were starred today, counting only ones still starred and updating after in-app actions or synchronization.
-
 - Icon system overhaul: Sidebar, Settings, repository details, Insights, AI/RAG workspaces, sort menus, file and release asset types, and notification filters share the unified Lucide set, with distinct marks for fork origin and counts, recommendations, embedding models, and CodeFlow.
 - Similar-repository recommendations: Detail-page suggestions now use Starcat's own recommendation model on both distribution channels, without third-party recommendation services.
 - Recommendation model updates: New candidates are evaluated weekly and published after quality and availability checks; the current model stays in use when checks fail.
@@ -87,15 +78,10 @@ All notable changes to Starcat are summarized here for release notes.
 ### Fixes
 
 - Direct startup permissions: Avoids requesting App Store data access again after an import decision or once Direct has data, and fixes repeated container permission prompts on macOS 15.
-
 - Direct activation feedback: Shows a cooldown countdown and blocks duplicate submissions after rate limits, with clear messages for activation failures and failures to save credentials locally.
-
 - App version display: The status panel and About page show the actual build version instead of incorrectly displaying 1.0.0.
-
 - Follow graph counts: Fixes pagination controls disappearing before the user count finishes loading; refresh and retry when the loaded count differs from the total.
-
 - Workspace windows: Repeated panel toggles keep window dimensions and the opposite panel stable in Agent and RAG workspaces, while long content stays within the conversation and inspector areas.
-
 - Following graph: Selecting a node only shows its profile; use Load More to expand additional relationships, and finished avatars give a light bounce.
 - README Issues window: Issue details fade when switching, and the comment input area matches the window background.
 - Activity category counts: Restores cached counts when opening Activity and keeps them visible during background refreshes.
@@ -144,6 +130,10 @@ All notable changes to Starcat are summarized here for release notes.
 
 ### New
 
+- Profile language mix: The sidebar shows a language distribution bar with names and percentages on hover, sharing its statistics with profile share cards; saved results appear at launch, are reused for seven days, and refresh in the background after expiry.
+- Contribution lawn styles: Click the sidebar contribution lawn to cycle through animation styles and Off; your choice is saved and stays in sync with Settings.
+- Public organizations: The sidebar shows clear, small circular organization avatars sized to match nearby icons, with extra organizations in a More menu and names and descriptions on hover.
+- Daily Radar report sharing: Create a public link to a complete report and cover, with the title and summary over the preview; copy and browser actions sit beside the link, and system sharing sits alongside the privacy notice.
 - Smart Find: Describe a purpose, characteristic, or fuzzy clue in natural language to find GitHub repositories you have not starred, with multi-source retrieval, repository verification, relevance reranking, match reasons and evidence, the full execution trace, and progressive results with follow-up searches inside a 15-second budget.
 - Result source filters: Filter search results by keyword, semantic, GitHub, web, or Smart Find, with independent counts per source, cross-source deduplication, and the current source plus a continue-loading entry preserved when a filter has no matches.
 - Search content filtering: Hides results that should not be shown according to built-in rules, consistently across regular search, Smart Find, and cached results, with filtering details available in the panel.
@@ -151,10 +141,13 @@ All notable changes to Starcat are summarized here for release notes.
 
 ### Improvements
 
+- Global filter layout: Status, star, library, availability, and Skill filters use compact single-row segments; language multi-select uses wrapping chips inside a bounded scrolling area.
+- Detail badges: Linux.do gains its brand icon, Issues moves between Linux.do and Skills, and all three share a capsule height, hover feedback, and animated count changes.
+- Linux.do list badges: Repository cards show the Linux.do logo in a capsule sized to match nearby badges, with colors that adapt to light and dark themes.
 - Global search indexing: Semantic search no longer waits for index maintenance, reducing search latency.
 - Search index status: The status label now says Index instead of Vector, with a clearer icon.
 - Repository Skill performance: Scanning and document parsing for large collections no longer block the interface, keeping scrolling and detail switching responsive.
-- Repository Skill interface: Compact tabs, icon-only layouts in narrow panes, scan progress in the window toolbar, scan diagnostics in a popover, and clearer capsule icons and count animations.
+- Repository Skill interface: Compact tabs, icon-only layouts in narrow panes, scan progress in the window toolbar, scan diagnostics in a popover, and clearer capsule icons and count animations; switching Skills briefly fades in the document and file tree while respecting Reduce Motion.
 - Account menu: Fewer duplicate entries, with Refresh Profile kept and the last refresh shown as relative time.
 - Daily Radar visuals: More cover styles, cover-derived accent colors in history rows, motion on weekly topic entries and reader headers, clearer badges and metadata, and related project badges.
 - Daily Radar reading: Article images no longer respond to context menus or dragging, so they do not interrupt reading.
