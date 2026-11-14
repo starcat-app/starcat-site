@@ -6,6 +6,9 @@ Release notes for the Mac App Store edition of Starcat.
 
 ### New
 
+- Profile language mix: The sidebar profile card shows a language distribution bar, with language names and percentages on hover.
+- Contribution lawn styles: Click the sidebar contribution lawn to cycle through animation styles and Off; your choice is saved and stays in sync with Settings.
+- Public organizations: The sidebar profile shows public organization avatars, moves extra organizations into a More menu, and shows names and descriptions on hover.
 - Repository Skills: Discover single Skills, collections, and Skills embedded in projects, with filtering, previews, and batch selection; export complete directories to a location you authorize, with confirmation for name conflicts.
 
 - Enhanced diagnostics: Add a problem description, module, and occurrence time, record up to 15 minutes of enhanced diagnostics, and export a troubleshooting report; exporting and acknowledging alerts are separate actions, and diagnostic logs stay on your Mac.
@@ -29,6 +32,9 @@ Release notes for the Mac App Store edition of Starcat.
 
 ### Improvements
 
+- Global filter layout: Status, star, library, availability, and Skill filters use compact single-row segments; language multi-select uses wrapping chips inside a bounded scrolling area.
+- Skills detail transitions: Switching Skills briefly fades in the detail content and file tree, while respecting Reduce Motion.
+- Detail badges: Linux.do gains its brand icon, Issues moves between Linux.do and Skills, and all three share a capsule height, hover feedback, and animated count changes.
 - Follow graph expansion: Manual expansion no longer has fixed node, relationship, or request limits; actual GitHub rate limits show the reset time in your local time zone.
 
 - New-feature indicators: Followers, Following, Daily Radar, and Linux.do show a blue dot until first used.
