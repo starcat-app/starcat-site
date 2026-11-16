@@ -43,6 +43,7 @@ All notable changes to Starcat are summarized here for release notes.
 ### Improvements
 
 - Global filter layout: Status, star, library, availability, and Skill filters use compact single-row segments; language multi-select uses wrapping chips inside a bounded scrolling area.
+- Weekly filter layout: Theme-aware colored chips for sources and star thresholds, single-row controls with icon fallback for long labels, and filter counts inside the panel keep filtering compact and the toolbar stable.
 - Detail badges: Linux.do gains its brand icon, Issues moves between Linux.do and Skills, and all three share a capsule height, hover feedback, and animated count changes.
 - Linux.do branding: The sidebar and repository lists use the official mark, with capsules sized consistently with nearby badges and adapted to light and dark themes.
 - New-feature indicators: Followers, Following, Daily Radar, and Linux.do show a blue dot until first used.
@@ -161,6 +162,7 @@ All notable changes to Starcat are summarized here for release notes.
 ### Improvements
 
 - Global filter layout: Status, star, library, availability, and Skill filters use compact single-row segments; language multi-select uses wrapping chips inside a bounded scrolling area.
+- Weekly filter layout: Theme-aware colored chips for sources and star thresholds, single-row controls with icon fallback for long labels, and filter counts inside the panel keep filtering compact and the toolbar stable.
 - Detail badges: Linux.do gains its brand icon, Issues moves between Linux.do and Skills, and all three share a capsule height, hover feedback, and animated count changes.
 - Linux.do branding: The sidebar and repository lists use the official mark, with capsules sized consistently with nearby badges and adapted to light and dark themes.
 - Global search indexing: Semantic search no longer waits for index maintenance, reducing search latency.
