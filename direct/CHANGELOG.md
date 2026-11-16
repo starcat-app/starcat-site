@@ -6,6 +6,7 @@ All notable changes to Starcat are summarized here for release notes.
 
 ### New
 
+- Awesome AI catalogs: Choose four actively maintained catalogs covering agent skills, agent engineering, open-source AI, and AI security tools.
 - Profile language mix: The sidebar shows a language distribution bar with names and percentages on hover, sharing its statistics with profile share cards; saved results appear at launch, are reused for seven days, and refresh in the background after expiry.
 - Contribution lawn styles: Click the sidebar lawn to cycle through effects and Off, with a light transition and a saved choice that stays in sync with Settings.
 - Public organizations: The sidebar shows clear, small circular organization avatars sized to match nearby icons, with extra organizations in a More menu and names and descriptions on hover.
@@ -88,6 +89,7 @@ All notable changes to Starcat are summarized here for release notes.
 
 ### Fixes
 
+- Awesome repository coverage: Projects linked through source-code icons in catalogs such as awesome-mac are now included, so refreshing reveals previously missing repositories.
 - Direct startup permissions: Avoids requesting App Store data access again after an import decision or once Direct has data, and fixes repeated container permission prompts on macOS 15.
 - Direct activation feedback: Shows a cooldown countdown and blocks duplicate submissions after rate limits, with clear messages for activation failures and failures to save credentials locally.
 - App version display: The status panel and About page show the actual build version instead of incorrectly displaying 1.0.0.
@@ -140,6 +142,7 @@ All notable changes to Starcat are summarized here for release notes.
 
 ### New
 
+- Awesome AI catalogs: Choose four actively maintained catalogs covering agent skills, agent engineering, open-source AI, and AI security tools.
 - Profile language mix: The sidebar shows a language distribution bar with names and percentages on hover, sharing its statistics with profile share cards; saved results appear at launch, are reused for seven days, and refresh in the background after expiry.
 - Contribution lawn styles: Click the sidebar lawn to cycle through effects and Off, with a light transition and a saved choice that stays in sync with Settings.
 - Public organizations: The sidebar shows clear, small circular organization avatars sized to match nearby icons, with extra organizations in a More menu and names and descriptions on hover.
@@ -178,6 +181,7 @@ All notable changes to Starcat are summarized here for release notes.
 
 ### Fixes
 
+- Awesome repository coverage: Projects linked through source-code icons in catalogs such as awesome-mac are now included, so refreshing reveals previously missing repositories.
 - Update window language: Framework controls use Sparkle's native translations, and release notes choose Chinese or English by app language; reopen the window after changing the language.
 - Profile refresh: Fixes manual refreshes still showing cached profile data.
 - Insights navigation titles: Fixes navigation titles falling back to the system language.

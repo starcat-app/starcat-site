@@ -6,6 +6,7 @@ Release notes for the Mac App Store edition of Starcat.
 
 ### New
 
+- Awesome AI catalogs: Choose four actively maintained catalogs covering agent skills, agent engineering, open-source AI, and AI security tools.
 - Profile language mix: The sidebar shows a language distribution bar with names and percentages on hover, sharing its statistics with profile share cards; saved results appear at launch, are reused for seven days, and refresh in the background after expiry.
 - Contribution lawn styles: Click the sidebar lawn to cycle through effects and Off, with a light transition and a saved choice that stays in sync with Settings.
 - Public organizations: The sidebar shows clear, small circular organization avatars sized to match nearby icons, with extra organizations in a More menu and names and descriptions on hover.
@@ -83,6 +84,7 @@ Release notes for the Mac App Store edition of Starcat.
 
 ### Fixes
 
+- Awesome repository coverage: Projects linked through source-code icons in catalogs such as awesome-mac are now included, so refreshing reveals previously missing repositories.
 - Diagnostic export: Fixes exports failing after choosing a save location because the sandbox denied access to the temporary directory.
 - App version display: The status panel and About page show the actual build version instead of incorrectly displaying 1.0.0.
 - Workspace windows: Repeated panel toggles keep window dimensions and the opposite panel stable in Agent and RAG workspaces, while long content stays within the conversation and inspector areas.
