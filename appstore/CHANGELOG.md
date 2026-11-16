@@ -7,10 +7,10 @@ Release notes for the Mac App Store edition of Starcat.
 ### New
 
 - Profile language mix: The sidebar shows a language distribution bar with names and percentages on hover, sharing its statistics with profile share cards; saved results appear at launch, are reused for seven days, and refresh in the background after expiry.
-- Contribution lawn styles: Click the sidebar contribution lawn to cycle through animation styles and Off; your choice is saved and stays in sync with Settings.
+- Contribution lawn styles: Click the sidebar lawn to cycle through effects and Off, with a light transition and a saved choice that stays in sync with Settings.
 - Public organizations: The sidebar shows clear, small circular organization avatars sized to match nearby icons, with extra organizations in a More menu and names and descriptions on hover.
 - Repository Skills: Discover single Skills, collections, and Skills embedded in projects, with filtering, previews, and batch selection; export complete directories to a location you authorize, with confirmation for name conflicts.
-- Enhanced diagnostics: Add a problem description, module, and occurrence time, record up to 15 minutes of enhanced diagnostics, and export a troubleshooting report; exporting and acknowledging alerts are separate actions, and diagnostic logs stay on your Mac.
+- Enhanced diagnostics: Add a problem description, module, and occurrence time, record up to 15 minutes of enhanced diagnostics, and export a troubleshooting report; only serious failures that prevent normal use are recorded, with concise issue summaries and responsive history cleanup. Exporting and acknowledging alerts remain separate actions, and diagnostic logs stay on your Mac.
 - Issue AI summaries: Open a glass panel from the floating button above the input area's divider, drag its top edge to adjust height, and read a streaming Markdown summary; generation continues when hidden or you switch Issues, and reopening restores progress or results.
 - Free source tools: Repository context packing, CodeFlow, and CodebaseMemory code graphs no longer require Pro, with existing repository and runtime limits retained.
 - Linux.do discovery: Browse verified open-source projects promoted on Linux.do, see provenance badges across repository lists, and open original discussions from repository details.
@@ -19,22 +19,29 @@ Release notes for the Mac App Store edition of Starcat.
 - Unstar data cleanup: Before unstarring, see which notes, tags, AI content, and analysis caches will be deleted; repositories in your library can optionally be removed from the knowledge base, with a clear warning that deletion cannot be undone.
 - Daily Radar: A new reading workspace for daily reports, browsable by topic categories with edition calendar navigation, per-category badges, and source branding; reports follow the app language. Each report gets a locally generated abstract cover, unique per edition; loading and category switches show skeleton placeholders, with seamless swaps when cached.
 - Daily Radar report sharing: Create a public link to a complete report and cover, with the title and summary over the preview; copy and browser actions sit beside the link, and system sharing sits alongside the privacy notice.
+- Weekly AI Highlights: Browse the latest six weekly reports and fact-check specials, with summary playback, on-demand article images, source and repository details, and offline reading.
+- Follow Graph: Explore followers and following in a full-window two-dimensional graph, with three-level follower views, profile cards, follow actions, and complete highlighted paths; node selection stays separate from manual expansion, without fixed node, relationship, or request limits. Loading and avatar feedback, local rate-limit reset times, and refresh when counts differ make progress clear.
 - Summary replay: Successful issue summaries are saved locally, so reopening the same issue after relaunch replays the summary and shows when it was generated.
 - Explore & Weekly source filters: Filter explore categories and Weekly by source preference, remembered across restarts.
-- Issues workspace: The detail-page entry now opens a full workspace with a list-detail layout, search, state filters, and paginated scrolling, with precise non-PR counts; the detail side reuses the activity conversation (comment timeline, AI summary, translation), and new-issue creation supports templates, AI drafting, image pasting, and per-repository drafts.
+- Issues workspace: Search, filter, and paginate a list-detail workspace with accurate non-PR counts and pagination past PR-only pages; details support comments, AI summaries, and translation, stay aligned after filtering, and ignore stale responses. Create issues with templates, AI drafting, image pasting, and per-repository drafts that survive consecutive submissions or early closing; details fade between Issues, and the comment input matches the window background.
 - Group icon choice: Create repository groups without a color dot by default, remove an existing group's dot while keeping its emoji, and switch back to a color at any time.
 - Smart Find: Describe a purpose, characteristic, or fuzzy clue in natural language to find GitHub repositories you have not starred, with multi-source retrieval, repository verification, relevance reranking, match reasons and evidence, the full execution trace, and progressive results with follow-up searches inside a 15-second budget.
 - Result source filters: Filter search results by keyword, semantic, GitHub, web, or Smart Find, with independent counts per source, cross-source deduplication, and the current source plus a continue-loading entry preserved when a filter has no matches.
 - Search content filtering: Hides results that should not be shown according to built-in rules, consistently across regular search, Smart Find, and cached results, with filtering details available in the panel.
-- Repository Skill reader: Expand SKILL.md previews to full width for reading and restore them without losing your place.
+- Repository Skill reading and translation: Expand SKILL.md to full width and restore the layout without losing your place; translate its content with language and service selection, original-text switching, and cached translations, while export always uses original files.
+- Daily recommendations: Discover personalized cards based on public Stars with actual source evidence; Pro can generate and cache recommendation reasons, with new batches, preparation progress, cancellation, and optional automatic display.
+- Recommendation history: Browse projects by their first recommendation date, with search, pagination, and feedback filters; Not Interested feedback is retained and cleared when you successfully star the project.
+- Browser pairing: Connect by confirming a six-digit code without entering a Key; each browser has independent authorization that you can review, rename, or revoke, while manual Key connections remain available.
+- CLI and MCP operations: AI agents can access repository, notification, Release, knowledge-base, and model workflows, including long-running task progress and results; reading is enabled by default, while writing requires explicit enablement in Settings.
+- GitHub account details: View achievements, organizations, and sponsorships in both directions from the account entry, with organization pagination and clear notices for permission-limited information.
+- Markdown file previews: Read repository files in a rendered Markdown view, switch to source, expand the reader within the window, and collapse file information.
+- Saved-note indicators: Repository lists show a badge for saved notes, making annotated projects easier to identify.
 
 ### Improvements
 
 - Global filter layout: Status, star, library, availability, and Skill filters use compact single-row segments; language multi-select uses wrapping chips inside a bounded scrolling area.
-- Skills detail transitions: Switching Skills briefly fades in the detail content and file tree, while respecting Reduce Motion.
 - Detail badges: Linux.do gains its brand icon, Issues moves between Linux.do and Skills, and all three share a capsule height, hover feedback, and animated count changes.
-- Linux.do list badges: Repository cards show the Linux.do logo in a capsule sized to match nearby badges, with colors that adapt to light and dark themes.
-- Follow graph expansion: Manual expansion no longer has fixed node, relationship, or request limits; actual GitHub rate limits show the reset time in your local time zone.
+- Linux.do branding: The sidebar and repository lists use the official mark, with capsules sized consistently with nearby badges and adapted to light and dark themes.
 - New-feature indicators: Followers, Following, Daily Radar, and Linux.do show a blue dot until first used.
 - Third-party dependencies: Upgrades database, image, Markdown, and analytics components with pinned versions for better stability and compatibility.
 - Release icon: The sidebar entry and timeline window title now share a wireframe package icon, matching the visual weight of neighboring navigation icons.
@@ -58,7 +65,6 @@ Release notes for the Mac App Store edition of Starcat.
 - License filter chips: Match sidebar tags with wrapping, content-sized height, and bounded scrolling; colors distinguish license obligation types, with full names and category notes on hover.
 - Narrow middle column: Hides auxiliary text such as the last sync time when space runs out, keeping search, filter, and refresh controls visible while the full text remains available on hover.
 - Summary panel polish: The launcher button highlights existing summaries in blue, the panel closes with Esc, and body scrolling no longer collides with the scrollbar.
-- File download window: The toolbar uses the repository owner's avatar with type-specific file icons.
 - Awesome source manager: The canvas keeps a fixed size, so operations no longer shift the layout.
 - Awesome sort menu: Shares the unified menu styling with other middle-column lists.
 - License card: License badges in repository details and search now share one obligation-colored card listing rights and duties, with the official reference a tap away.
@@ -67,19 +73,18 @@ Release notes for the Mac App Store edition of Starcat.
 - Global search indexing: Semantic search no longer waits for index maintenance, reducing search latency.
 - Search index status: The status label now says Index instead of Vector, with a clearer icon.
 - Repository Skill performance: Scanning and document parsing for large collections no longer block the interface, keeping scrolling and detail switching responsive.
-- Repository Skill interface: Compact tabs, icon-only layouts in narrow panes, scan progress in the window toolbar, scan diagnostics in a popover, and clearer capsule icons and count animations.
-- Account menu: Fewer duplicate entries, with Refresh Profile kept and the last refresh shown as relative time.
-- Daily Radar visuals: More cover styles, cover-derived accent colors in history rows, motion on weekly topic entries and reader headers, clearer badges and metadata, and related project badges.
+- Repository Skill interface: Compact tabs and narrow-pane icons, clearer scan progress, diagnostics popovers, status bars, capsule icons, and count animations, with stable document and file-tree transitions that respect Reduce Motion.
+- Account menu: Removes duplicate entries and places profile refresh beside its relative timestamp in a more compact account panel.
+- Daily Radar visuals: More cover styles and hover zoom, cover-derived history colors, motion on topic entries and reader headers, and clearer metadata and project badges.
 - Daily Radar reading: Article images no longer respond to context menus or dragging, so they do not interrupt reading.
+- Repository workspaces: Issues, repository Skills, and file downloads share consistent repository headers and window layouts for more predictable reading and actions; the download window retains the repository owner's avatar and type-specific file icons.
+- List and detail transitions: Applicable lists share alternating rows, full-row hover and selection feedback, while details use loading skeletons and smooth transitions that respect Reduce Motion.
 
 ### Fixes
 
 - Diagnostic export: Fixes exports failing after choosing a save location because the sandbox denied access to the temporary directory.
 - App version display: The status panel and About page show the actual build version instead of incorrectly displaying 1.0.0.
-- Follow graph counts: Fixes pagination controls disappearing before the user count finishes loading; refresh and retry when the loaded count differs from the total.
 - Workspace windows: Repeated panel toggles keep window dimensions and the opposite panel stable in Agent and RAG workspaces, while long content stays within the conversation and inspector areas.
-- Following graph: Selecting a node only shows its profile; use Load More to expand additional relationships, and finished avatars give a light bounce.
-- README Issues window: Issue details fade when switching, and the comment input area matches the window background.
 - Activity category counts: Restores cached counts when opening Activity and keeps them visible during background refreshes.
 - Commit activity dates: Shows fewer horizontal date labels in Repository Insights as chart width shrinks or text size grows, preventing overlap while preserving full dates on hover.
 - Daily Radar totals: Shows the report count beside All Topics in the sidebar, matching the Daily Radar entry.
@@ -91,7 +96,6 @@ Release notes for the Mac App Store edition of Starcat.
 - Standalone AI assistant: Restores window dragging.
 - Agent model changes: Refreshes the built-in runtime's model selection after provider configuration changes.
 - Undo Star cleanup: Immediate deletion now clears the entire Unstar history and refreshes related views.
-- Issues workspace stability: Preserves drafts when creating consecutive issues or closing early, ignores stale responses after switching repositories or issues, and continues pagination past pages containing only pull requests.
 - Embedding error guidance: Connection, configuration, authentication, and rate-limit issues no longer offer email feedback; connection failures show numbered recovery steps and open embedding settings directly, while request processing failures retain feedback.
 - Activity timeline: Reduces repeated processing of loaded comments while scrolling the middle column, improving responsiveness with longer notification lists.
 - Unstarred repositories: Repositories no longer reappear in lists because of stale sync results or cached data after you unstar them.
@@ -120,6 +124,9 @@ Release notes for the Mac App Store edition of Starcat.
 - Search Star feedback: Fixes missing loading feedback for Star actions in global search.
 - Daily Radar body: Fixes duplicated headings in report bodies.
 - Daily Radar badges: Fixes weekly topic timeline dates overlapping badges.
+- OpenSSF scores: Checks, radar charts, and known findings follow the app language, with concise messages when data cannot be read.
+- Global search window: Preserves the system window outline and correctly adapts between windowed and full-screen states.
+- Explore details: Late Star responses no longer overwrite the current details after switching repositories.
 
 ## 1.9.0
 
