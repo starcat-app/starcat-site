@@ -67,11 +67,10 @@
                 "@type": "SoftwareApplication",
                 "@id": "https://starcat.ink/#software",
                 "name": "Starcat",
-                "softwareVersion": "1.5.0",
                 "applicationCategory": "DeveloperApplication",
                 "operatingSystem": "macOS 15 或更高版本",
                 "url": "https://starcat.ink/index-zh.html",
-                "downloadUrl": "https://starcat.ink/downloads/Starcat-1.5.0-arm64.dmg",
+                "downloadUrl": "https://github.com/starcat-app/Starcat/releases/latest",
                 "image": "https://starcat.ink/sc-banner.webp",
                 "description": "Starcat 将 GitHub Stars 整理为可搜索、本地优先的 macOS AI 知识库。",
                 "author": { "@id": "https://starcat.ink/#organization" },
@@ -1574,6 +1573,11 @@
             gap: 20px;
         }
 
+        /* 开发版沿用左栏高度，历史版本仍在右栏独立滚动。 */
+        .download-development { display: flex; flex-direction: column; gap: 12px; padding-top: 20px; border-top: 1px solid var(--color-border); }
+        .download-development .download-version { font-size: var(--fs-h3); }
+        .download-development .btn-secondary { justify-content: center; width: 100%; }
+
         .download-card-header {
             display: flex;
             align-items: flex-start;
@@ -2277,7 +2281,7 @@
             <a href="./privacy-zh.html" class="nav-link">隐私</a>
             <a href="./changelog-zh.html" class="nav-link">更新记录</a>
             <a href="./index.html" class="nav-link" title="Switch to English">🇺🇸</a>
-            <a href="/downloads/Starcat-1.5.0-arm64.dmg" class="nav-cta" role="button" data-download-open>下载</a>
+            <a href="https://github.com/starcat-app/Starcat/releases/latest" class="nav-cta" role="button" data-download-open>下载</a>
         </div>
     </nav>
 
@@ -2307,7 +2311,7 @@
                 每一个收藏的 GitHub 仓库——本地优先，AI 驱动。
             </p>
             <div class="hero-actions">
-                <a href="/downloads/Starcat-1.5.0-arm64.dmg" class="btn-primary" role="button" data-download-open>
+                <a href="https://github.com/starcat-app/Starcat/releases/latest" class="btn-primary" role="button" data-download-open>
                     <span class="icon-18"><i data-lucide="download"></i></span>
                     下载 Starcat
                 </a>
@@ -2900,7 +2904,7 @@
                         <li><i data-lucide="check"></i> HTML / Markdown 导出</li>
                     </ul>
                     <div class="pricing-action">
-                        <a href="/downloads/Starcat-1.5.0-arm64.dmg" class="btn-secondary" role="button" data-download-open>
+                        <a href="https://github.com/starcat-app/Starcat/releases/latest" class="btn-secondary" role="button" data-download-open>
                             <span class="icon-16"><i data-lucide="download"></i></span>
                             免费下载
                         </a>
@@ -3113,7 +3117,7 @@
                     <div class="final-cta-title">准备把 Stars 变成真正可用的知识库？</div>
                     <p class="final-cta-desc">下载 macOS Direct 版本，从整理、搜索和阅读你的 GitHub Stars 开始。</p>
                 </div>
-                <a href="/downloads/Starcat-1.5.0-arm64.dmg" class="btn-primary" role="button" data-download-open>
+                <a href="https://github.com/starcat-app/Starcat/releases/latest" class="btn-primary" role="button" data-download-open>
                     <span class="icon-16"><i data-lucide="download"></i></span>
                     下载 Starcat
                 </a>
@@ -3130,7 +3134,7 @@
                 <div>
                     <div class="section-label">Download</div>
                     <h2 class="download-modal-title" id="download-modal-title">下载 Starcat for macOS</h2>
-                    <p class="download-modal-desc">默认下载最新 Direct 版本，也可以按需选择历史版本。</p>
+                    <p class="download-modal-desc">选择最新正式版或开发版，也可以按需下载历史版本。</p>
                 </div>
                 <button class="download-modal-close" type="button" aria-label="关闭下载弹窗" data-download-close>
                     <i data-lucide="x"></i>
@@ -3140,8 +3144,9 @@
                 <div class="download-card">
                     <div class="download-card-header">
                         <div>
-                            <div class="download-eyebrow">Latest version</div>
-                            <div class="download-version" data-download-version>Starcat 1.5.0</div>
+                            <div class="download-eyebrow">最新正式版</div>
+                            <!-- feed 不可用时仍可前往 GitHub 最新正式版，不显示过时版本。 -->
+                            <div class="download-version" data-download-version>Starcat · 正式版</div>
                         </div>
                         <div class="download-status">
                             <span class="icon-14"><i data-lucide="sparkles"></i></span>
@@ -3151,8 +3156,8 @@
                     <div class="download-meta">
                         <span><i data-lucide="monitor"></i> macOS 15+</span>
                         <span><i data-lucide="cpu"></i> Apple Silicon</span>
-                        <span><i data-lucide="git-commit"></i> Build <span data-download-build>202607051928</span></span>
-                        <span><i data-lucide="hard-drive-download"></i> <span data-download-size>88.6 MB</span></span>
+                        <span><i data-lucide="git-commit"></i> Build <span data-download-build>—</span></span>
+                        <span><i data-lucide="hard-drive-download"></i> <span data-download-size>—</span></span>
                     </div>
                     <p class="download-note" data-download-note>
                         这是 macOS Direct 版本，内置 Sparkle 更新能力；后续 Direct 版本可以在应用内更新。
@@ -3162,10 +3167,17 @@
                         <div class="download-trust-item"><i data-lucide="cpu"></i> Apple Silicon</div>
                         <div class="download-trust-item"><i data-lucide="sparkles"></i> Sparkle</div>
                     </div>
-                    <a href="/downloads/Starcat-1.5.0-arm64.dmg" class="btn-primary" role="button" data-download-link>
+                    <a href="https://github.com/starcat-app/Starcat/releases/latest" class="btn-primary" role="button" data-download-link>
                         <span class="icon-16"><i data-lucide="download"></i></span>
-                        下载最新版
+                        下载正式版 DMG
                     </a>
+                    <section class="download-development" aria-labelledby="download-development-title">
+                        <div class="download-eyebrow" id="download-development-title">最新开发版 · Beta / Dev</div>
+                        <div class="download-version" data-download-development-version>前往 GitHub 查看开发版</div>
+                        <p class="download-note" data-download-development-meta>正在加载开发版信息…</p>
+                        <p class="download-note">提前体验新功能；开发版可能存在问题，请按需选择。</p>
+                        <a class="btn-secondary" href="https://github.com/starcat-app/Starcat/releases" data-download-development-link>查看 GitHub Releases</a>
+                    </section>
                     <button class="download-history-toggle" type="button" aria-expanded="false" aria-controls="download-history" data-download-history-toggle data-show-label="历史版本" data-hide-label="收起历史版本">历史版本</button>
                 </div>
 
@@ -3229,7 +3241,7 @@
                         <a href="#tech" class="footer-link">技术栈</a>
                         <a href="#pricing" class="footer-link">价格</a>
                         <a href="#faq" class="footer-link">FAQ</a>
-                        <a href="/downloads/Starcat-1.5.0-arm64.dmg" class="footer-link" data-download-open>下载</a>
+                        <a href="https://github.com/starcat-app/Starcat/releases/latest" class="footer-link" data-download-open>下载</a>
                     </div>
                 </div>
                 <div>
@@ -3809,82 +3821,6 @@
         })();
 
         // ================================================================
-        // 7. 下载信息：从 Sparkle appcast 获取最新版和历史版本
-        // ================================================================
-        (function() {
-            const fallback = {
-                version: '1.8.0',
-                build: '202609230107',
-                url: '/downloads/Starcat-1.8.0-arm64.dmg',
-                size: 115083310,
-                pubDate: ''
-            };
-
-            const sparkleNS = 'http://www.andymatuschak.org/xml-namespaces/sparkle';
-            const textFrom = (item, localName) => {
-                const namespaced = item.getElementsByTagNameNS(sparkleNS, localName)[0];
-                const prefixed = item.getElementsByTagName(`sparkle:${localName}`)[0];
-                return (namespaced || prefixed)?.textContent?.trim() || '';
-            };
-            const formatSize = (bytes) => {
-                if (!bytes) return '未知大小';
-                const mb = Number(bytes) / (1024 * 1024);
-                return `${mb.toFixed(1)} MB`;
-            };
-            const formatDate = (value) => {
-                if (!value) return '';
-                const date = new Date(value);
-                if (Number.isNaN(date.getTime())) return '';
-                return date.toLocaleDateString('zh-CN', { year: 'numeric', month: 'short', day: 'numeric' });
-            };
-            const parseItem = (item) => {
-                const enclosure = item.getElementsByTagName('enclosure')[0];
-                const version = textFrom(item, 'shortVersionString') || item.getElementsByTagName('title')[0]?.textContent?.trim() || fallback.version;
-                return {
-                    version,
-                    build: textFrom(item, 'version') || fallback.build,
-                    url: enclosure?.getAttribute('url') || fallback.url,
-                    size: Number(enclosure?.getAttribute('length') || fallback.size),
-                    pubDate: item.getElementsByTagName('pubDate')[0]?.textContent?.trim() || ''
-                };
-            };
-            const render = (releases) => {
-                const latest = releases[0] || fallback;
-                document.querySelectorAll('[data-download-link]').forEach(link => link.href = latest.url);
-                document.querySelectorAll('[data-download-open]').forEach(link => link.href = latest.url);
-                document.querySelectorAll('[data-download-version]').forEach(el => el.textContent = `Starcat ${latest.version}`);
-                document.querySelectorAll('[data-download-build]').forEach(el => el.textContent = latest.build);
-                document.querySelectorAll('[data-download-size]').forEach(el => el.textContent = formatSize(latest.size));
-
-                const history = document.querySelector('[data-download-history]');
-                if (!history) return;
-                const previous = releases.slice(1);
-                if (!previous.length) {
-                    history.innerHTML = '<p class="download-history-empty">暂无历史版本。</p>';
-                    return;
-                }
-                history.innerHTML = previous.map(item => `
-                    <div class="download-history-item">
-                        <div>
-                            <div class="download-history-version">Starcat ${item.version}</div>
-                            <div class="download-history-meta">Build ${item.build}${formatDate(item.pubDate) ? ` · ${formatDate(item.pubDate)}` : ''} · ${formatSize(item.size)}</div>
-                        </div>
-                        <a class="download-history-link" href="${item.url}">下载 DMG</a>
-                    </div>
-                `).join('');
-            };
-
-            fetch('/appcast.xml', { cache: 'no-store' })
-                .then(response => response.ok ? response.text() : Promise.reject(new Error('appcast unavailable')))
-                .then(xml => {
-                    const doc = new DOMParser().parseFromString(xml, 'application/xml');
-                    const items = Array.from(doc.getElementsByTagName('item')).map(parseItem);
-                    render(items.length ? items : [fallback]);
-                })
-                .catch(() => render([fallback]));
-        })();
-
-        // ================================================================
         // 8. 初始化 Lucide 图标
         // ================================================================
         (function() {
@@ -3893,6 +3829,7 @@
             }
         })();
     </script>
+    <script type="module" src="/downloads.js"></script>
 
 </body>
 </html>
