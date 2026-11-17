@@ -9,6 +9,9 @@ All notable changes to Starcat are summarized here for release notes.
 - Awesome AI catalogs: Choose four actively maintained catalogs covering agent skills, agent engineering, open-source AI, and AI security tools.
 - Profile language mix: The sidebar shows a language distribution bar with names and percentages on hover, sharing its statistics with profile share cards; saved results appear at launch, are reused for seven days, and refresh in the background after expiry.
 - Contribution lawn styles: Click the sidebar lawn to cycle through effects and Off, with a light transition and a saved choice that stays in sync with Settings.
+
+  ![20261118030356_NpdNjvvb](https://cdn.dong4j.site/source/image/20261118030356_NpdNjvvb.webp)
+
 - Public organizations: The sidebar shows clear, small circular organization avatars sized to match nearby icons, with extra organizations in a More menu and names and descriptions on hover.
 - Repository Skills: Discover single Skills, collections, and Skills embedded in projects, with filtering, previews, and batch selection; detect local agents and install or safely uninstall complete directories through agent chips, protecting conflicts and local changes.
 - Enhanced diagnostics: Add a problem description, module, and occurrence time, record up to 15 minutes of enhanced diagnostics, and export a troubleshooting report; only serious failures that prevent normal use are recorded, with concise issue summaries and responsive history cleanup. Exporting and acknowledging alerts remain separate actions, and diagnostic logs stay on your Mac.
@@ -21,6 +24,9 @@ All notable changes to Starcat are summarized here for release notes.
 - Unstar data cleanup: Before unstarring, see which notes, tags, AI content, and analysis caches will be deleted; repositories in your library can optionally be removed from the knowledge base, with a clear warning that deletion cannot be undone.
 - Daily Radar: A new reading workspace for daily reports, browsable by topic categories with edition calendar navigation, per-category badges, and source branding; reports follow the app language. Each report gets a locally generated abstract cover, unique per edition; loading and category switches show skeleton placeholders, with seamless swaps when cached.
 - Daily Radar report sharing: Create a public link to a complete report and cover, with the title and summary over the preview; copy and browser actions sit beside the link, and system sharing sits alongside the privacy notice.
+
+  ![20261118030628_up6kgpH0](https://cdn.dong4j.site/source/image/20261118030628_up6kgpH0.webp)
+
 - Weekly AI Highlights: Browse the latest six weekly reports and fact-check specials, with summary playback, on-demand article images, source and repository details, and offline reading.
 - Follow Graph: Explore followers and following in a full-window two-dimensional graph, with three-level follower views, profile cards, follow actions, and complete highlighted paths; node selection stays separate from manual expansion, without fixed node, relationship, or request limits. Loading and avatar feedback, local rate-limit reset times, and refresh when counts differ make progress clear.
 - Summary replay: Successful issue summaries are saved locally, so reopening the same issue after relaunch replays the summary and shows when it was generated.
@@ -28,14 +34,32 @@ All notable changes to Starcat are summarized here for release notes.
 - Issues workspace: Search, filter, and paginate a list-detail workspace with accurate non-PR counts and pagination past PR-only pages; details support comments, AI summaries, and translation, stay aligned after filtering, and ignore stale responses. Create issues with templates, AI drafting, image pasting, and per-repository drafts that survive consecutive submissions or early closing; details fade between Issues, and the comment input matches the window background.
 - Group icon choice: Create repository groups without a color dot by default, remove an existing group's dot while keeping its emoji, and switch back to a color at any time.
 - Smart Find: Describe a purpose, characteristic, or fuzzy clue in natural language to find GitHub repositories you have not starred, with multi-source retrieval, repository verification, relevance reranking, match reasons and evidence, the full execution trace, and progressive results with follow-up searches inside a 15-second budget.
+
+  ![Starcat 2026-11-18 03.13.22](https://cdn.dong4j.site/source/image/20261118031321_iJ3oJm0s.webp)
+
 - Result source filters: Filter search results by keyword, semantic, GitHub, web, or Smart Find, with independent counts per source, cross-source deduplication, and the current source plus a continue-loading entry preserved when a filter has no matches.
 - Search content filtering: Hides results that should not be shown according to built-in rules, consistently across regular search, Smart Find, and cached results, with filtering details available in the panel.
 - Repository Skill reading and translation: Expand SKILL.md to full width and restore the layout without losing your place; translate its content with language and service selection, original-text switching, and cached translations, while installation always uses original files.
+
+  ![20261117204850_c3Oragn0](https://cdn.dong4j.site/source/image/20261117204850_c3Oragn0.webp)
+
 - Daily recommendations: Discover personalized cards based on public Stars with actual source evidence; Pro can generate and cache recommendation reasons, with new batches, preparation progress, cancellation, and optional automatic display.
+
+  ![20261118031554_UOoX90r3](https://cdn.dong4j.site/source/image/20261118031554_UOoX90r3.webp)
+
 - Recommendation history: Browse projects by their first recommendation date, with search, pagination, and feedback filters; Not Interested feedback is retained and cleared when you successfully star the project.
+
+  ![20261118031739_nuC69K4T](https://cdn.dong4j.site/source/image/20261118031739_nuC69K4T.webp)
+
 - Browser pairing: Connect by confirming a six-digit code without entering a Key; each browser has independent authorization that you can review, rename, or revoke, while manual Key connections remain available.
+
+  ![20261118032115_sePJ7yIq](https://cdn.dong4j.site/source/image/20261118032115_sePJ7yIq.webp)
+
 - CLI and MCP operations: AI agents can access repository, notification, Release, knowledge-base, and model workflows, including long-running task progress and results; reading is enabled by default, while writing requires explicit enablement in Settings.
 - GitHub account details: View achievements, organizations, and sponsorships in both directions from the account entry, with organization pagination and clear notices for permission-limited information.
+
+  ![20261118030509_9Tm9nFWf](https://cdn.dong4j.site/source/image/20261118030509_9Tm9nFWf.webp)
+
 - Markdown file previews: Read repository files in a rendered Markdown view, switch to source, expand the reader within the window, and collapse file information.
 - Saved-note indicators: Repository lists show a badge for saved notes, making annotated projects easier to identify.
 - Skill management workspace: Browse local Skills in a dedicated three-column window, with directory scanning, change monitoring, local and GitHub imports, and read-only document and file previews.
@@ -145,17 +169,41 @@ All notable changes to Starcat are summarized here for release notes.
 - Awesome AI catalogs: Choose four actively maintained catalogs covering agent skills, agent engineering, open-source AI, and AI security tools.
 - Profile language mix: The sidebar shows a language distribution bar with names and percentages on hover, sharing its statistics with profile share cards; saved results appear at launch, are reused for seven days, and refresh in the background after expiry.
 - Contribution lawn styles: Click the sidebar lawn to cycle through effects and Off, with a light transition and a saved choice that stays in sync with Settings.
+
+  ![20261118030356_NpdNjvvb](https://cdn.dong4j.site/source/image/20261118030356_NpdNjvvb.webp)
+
 - Public organizations: The sidebar shows clear, small circular organization avatars sized to match nearby icons, with extra organizations in a More menu and names and descriptions on hover.
 - Daily Radar report sharing: Create a public link to a complete report and cover, with the title and summary over the preview; copy and browser actions sit beside the link, and system sharing sits alongside the privacy notice.
+
+  ![20261118030628_up6kgpH0](https://cdn.dong4j.site/source/image/20261118030628_up6kgpH0.webp)
+
 - Smart Find: Describe a purpose, characteristic, or fuzzy clue in natural language to find GitHub repositories you have not starred, with multi-source retrieval, repository verification, relevance reranking, match reasons and evidence, the full execution trace, and progressive results with follow-up searches inside a 15-second budget.
+
+  ![Starcat 2026-11-18 03.13.22](https://cdn.dong4j.site/source/image/20261118031321_iJ3oJm0s.webp)
+
 - Result source filters: Filter search results by keyword, semantic, GitHub, web, or Smart Find, with independent counts per source, cross-source deduplication, and the current source plus a continue-loading entry preserved when a filter has no matches.
 - Search content filtering: Hides results that should not be shown according to built-in rules, consistently across regular search, Smart Find, and cached results, with filtering details available in the panel.
 - Repository Skill reading and translation: Expand SKILL.md to full width and restore the layout without losing your place; translate its content with language and service selection, original-text switching, and cached translations, while installation always uses original files.
+
+  ![20261117204850_c3Oragn0](https://cdn.dong4j.site/source/image/20261117204850_c3Oragn0.webp)
+
 - Daily recommendations: Discover personalized cards based on public Stars with actual source evidence; Pro can generate and cache recommendation reasons, with new batches, preparation progress, cancellation, and optional automatic display.
+
+  ![20261118031554_UOoX90r3](https://cdn.dong4j.site/source/image/20261118031554_UOoX90r3.webp)
+
 - Recommendation history: Browse projects by their first recommendation date, with search, pagination, and feedback filters; Not Interested feedback is retained and cleared when you successfully star the project.
+
+  ![20261118031739_nuC69K4T](https://cdn.dong4j.site/source/image/20261118031739_nuC69K4T.webp)
+
 - Browser pairing: Connect by confirming a six-digit code without entering a Key; each browser has independent authorization that you can review, rename, or revoke, while manual Key connections remain available.
+
+  ![20261118032115_sePJ7yIq](https://cdn.dong4j.site/source/image/20261118032115_sePJ7yIq.webp)
+
 - CLI and MCP operations: AI agents can access repository, notification, Release, knowledge-base, and model workflows, including long-running task progress and results; reading is enabled by default, while writing requires explicit enablement in Settings.
 - GitHub account details: View achievements, organizations, and sponsorships in both directions from the account entry, with organization pagination and clear notices for permission-limited information.
+
+  ![20261118030509_9Tm9nFWf](https://cdn.dong4j.site/source/image/20261118030509_9Tm9nFWf.webp)
+
 - Markdown file previews: Read repository files in a rendered Markdown view, switch to source, expand the reader within the window, and collapse file information.
 - Saved-note indicators: Repository lists show a badge for saved notes, making annotated projects easier to identify.
 - Agent installation controls: Detect local agents and install or safely uninstall Skills through agent chips, with batch destination selection and protection for conflicts and local changes.
