@@ -423,6 +423,7 @@ function sitemapUrl(location, lastmod, alternates = []) {
 async function renderSitemap(posts) {
     const bilingualPages = [
         { en: '/', zh: '/index-zh.html', enFile: 'index.html', zhFile: 'index-zh.html' },
+        { en: '/support/', zh: '/support/zh.html', enFile: 'support/index.html', zhFile: 'support/zh.html' },
         { en: '/changelog.html', zh: '/changelog-zh.html', enFile: 'changelog.html', zhFile: 'changelog-zh.html' },
         { en: '/privacy.html', zh: '/privacy-zh.html', enFile: 'privacy.html', zhFile: 'privacy-zh.html' },
         { en: '/eula.html', zh: '/eula-zh.html', enFile: 'eula.html', zhFile: 'eula-zh.html' }
