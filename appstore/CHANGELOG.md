@@ -8,7 +8,7 @@ Release notes for the Mac App Store edition of Starcat.
 
 - Awesome AI catalogs: Choose four actively maintained catalogs covering agent skills, agent engineering, open-source AI, and AI security tools.
 - Profile language mix: The sidebar shows a language distribution bar with names and percentages on hover, sharing its statistics with profile share cards; saved results appear at launch, are reused for seven days, and refresh in the background after expiry.
-- Contribution lawn styles: Click the sidebar lawn to cycle through effects and Off, with a light transition and a saved choice that stays in sync with Settings.
+- Contribution lawn styles: Click the sidebar lawn to cycle through effects and Off, with a light transition and a saved choice that stays in sync with Settings. Supports the full year and the last 30, 60 or 90 days, with daily hover details showing the date, weekday and contribution count.
 
   ![20261118030356_NpdNjvvb](https://cdn.dong4j.site/source/image/20261118030356_NpdNjvvb.webp)
 
@@ -22,7 +22,7 @@ Release notes for the Mac App Store edition of Starcat.
 - Repository license filters: Select multiple licenses in the main window and combine them with other filters, with consistent pagination, project counts, and cached results.
 - Unstar data cleanup: Before unstarring, see which notes, tags, AI content, and analysis caches will be deleted; repositories in your library can optionally be removed from the knowledge base, with a clear warning that deletion cannot be undone.
 - Daily Radar: A new reading workspace for daily reports, browsable by topic categories with edition calendar navigation, per-category badges, and source branding; reports follow the app language. Each report gets a locally generated abstract cover, unique per edition; loading and category switches show skeleton placeholders, with seamless swaps when cached.
-- Daily Radar report sharing: Create a public link to a complete report and cover, with the title and summary over the preview; copy and browser actions sit beside the link, and system sharing sits alongside the privacy notice.
+- Daily Radar report sharing: Create a public link to a complete report and cover, with the title and summary over the preview; copy and browser actions sit beside the link, and system sharing sits alongside the privacy notice. Restores existing share links and shared indicators after restarting so they can be reused.
 
   ![20261118030628_up6kgpH0](https://cdn.dong4j.site/source/image/20261118030628_up6kgpH0.webp)
 
@@ -38,8 +38,8 @@ Release notes for the Mac App Store edition of Starcat.
 
 - Result source filters: Filter search results by keyword, semantic, GitHub, web, or Smart Find, with independent counts per source, cross-source deduplication, and the current source plus a continue-loading entry preserved when a filter has no matches.
 - Search content filtering: Hides results that should not be shown according to built-in rules, consistently across regular search, Smart Find, and cached results, with filtering details available in the panel.
-- Repository Skill reading and translation: Expand SKILL.md to full width and restore the layout without losing your place; translate its content with language and service selection, original-text switching, and cached translations, while export always uses original files.
-- Daily recommendations: Discover personalized cards based on public Stars with actual source evidence; Pro can generate and cache recommendation reasons, with new batches, preparation progress, cancellation, and optional automatic display.
+- Repository Skill reading and translation: Expand SKILL.md to full width and restore the layout without losing your place; translate its content with language and service selection, original-text switching, and cached translations. Files open in a bottom reading pane, with individual file saving and complete Skill-directory downloads; layout changes preserve the preview session and reading position. Export always uses original files.
+- Daily Picks: Discover personalized cards based on public Stars with actual source evidence; Pro can generate and cache recommendation reasons, with new batches, preparation progress, cancellation, and optional automatic display. Shows repository and source avatars, clickable source links and deduplicated evidence, with recommendation reasons tailored to the available evidence.
 
   ![20261118031554_UOoX90r3](https://cdn.dong4j.site/source/image/20261118031554_UOoX90r3.webp)
 
@@ -51,13 +51,15 @@ Release notes for the Mac App Store edition of Starcat.
 
   ![20261118032115_sePJ7yIq](https://cdn.dong4j.site/source/image/20261118032115_sePJ7yIq.webp)
 
-- CLI and MCP operations: AI agents can access repository, notification, Release, knowledge-base, and model workflows, including long-running task progress and results; reading is enabled by default, while writing requires explicit enablement in Settings.
+- CLI and MCP operations: AI agents can access repository, notification, Release, knowledge-base, and model workflows, including activity timeline queries and long-running task progress and results; reading is enabled by default, while writing requires explicit enablement in Settings.
 - GitHub account details: View achievements, organizations, and sponsorships in both directions from the account entry, with organization pagination and clear notices for permission-limited information.
 
   ![20261118030509_9Tm9nFWf](https://cdn.dong4j.site/source/image/20261118030509_9Tm9nFWf.webp)
 
-- Markdown file previews: Read repository files in a rendered Markdown view, switch to source, expand the reader within the window, and collapse file information.
-- Saved-note indicators: Repository lists show a badge for saved notes, making annotated projects easier to identify.
+- Markdown file previews: Read repository files in a rendered Markdown view, switch to source, expand the reader within the window, and collapse file information. Adds content translation and compact controls; links to Markdown files in the same repository open in a new window by default while preserving existing opening preferences.
+- Saved-note indicators: Repository lists show a blue note icon and a badge for saved notes, making annotated projects easier to identify.
+- README image viewer: Open content images in a full-window viewer with image navigation, zoom, fit-to-window and original-size controls, plus keyboard, wheel, pinch and drag gestures; closing restores your reading position.
+- Combined activity filters: Combine multiple activity filters, select several options within a group, and keep the list, counts and detail navigation consistent.
 
 ### Improvements
 
@@ -95,13 +97,16 @@ Release notes for the Mac App Store edition of Starcat.
 - Daily Radar categories: Category names in the sidebar, reader, and settings follow the interface language, with per-category content toggles in Settings.
 - Global search indexing: Semantic search no longer waits for index maintenance, reducing search latency.
 - Search index status: The status label now says Index instead of Vector, with a clearer icon.
-- Repository Skill performance: Scanning and document parsing for large collections no longer block the interface, keeping scrolling and detail switching responsive.
-- Repository Skill interface: Compact tabs and narrow-pane icons, clearer scan progress, diagnostics popovers, status bars, capsule icons, and count animations, with stable document and file-tree transitions that respect Reduce Motion.
+- Repository Skill performance: Scanning and document parsing for large collections no longer block the interface; content loads on demand and file-tree requests are reused to reduce repeated waits, keeping scrolling and detail switching responsive.
+- Repository Skill interface: Compact tabs and narrow-pane icons, clearer scan progress, diagnostics popovers, status bars, capsule icons, and count animations, with stable document and file-tree transitions that respect Reduce Motion; invalid Skills retain their previews and scan diagnostics.
 - Account menu: Removes duplicate entries and places profile refresh beside its relative timestamp in a more compact account panel.
-- Daily Radar visuals: More cover styles and hover zoom, cover-derived history colors, motion on topic entries and reader headers, and clearer metadata and project badges.
+- Daily Radar visuals: More cover styles and hover zoom, cover-derived history colors, motion on topic entries and reader headers, and clearer metadata and project badges. Weekly cards support carousel browsing with individual lighting effects.
 - Daily Radar reading: Article images no longer respond to context menus or dragging, so they do not interrupt reading.
 - Repository workspaces: Issues, repository Skills, and file downloads share consistent repository headers and window layouts for more predictable reading and actions; the download window retains the repository owner's avatar and type-specific file icons.
 - List and detail transitions: Applicable lists share alternating rows, full-row hover and selection feedback, while details use loading skeletons and smooth transitions that respect Reduce Motion.
+- Explore performance: Restore cached catalogs at launch, retain loaded pages when switching categories, reduce repeated searches and filtering, and show available details while the remaining metadata loads.
+- Activity and notification presentation: Notification filters use consistent colored chips and compact segments, while personal repository actions show the target repository avatar for clearer event and source identification.
+- General preferences: Clearer descriptions explain detail-opening behavior, activity events and reset actions, with tooltips for longer text and Daily Picks settings grouped under detail behavior.
 
 ### Fixes
 
@@ -151,6 +156,12 @@ Release notes for the Mac App Store edition of Starcat.
 - OpenSSF scores: Checks, radar charts, and known findings follow the app language, with concise messages when data cannot be read.
 - Global search window: Preserves the system window outline and correctly adapts between windowed and full-screen states.
 - Explore details: Late Star responses no longer overwrite the current details after switching repositories.
+- README text loading: Cached text becomes readable as soon as it is ready, without waiting for external images or videos, reducing blank loading time.
+- AI share link recovery: Existing share links and shared indicators are restored after restarting, avoiding duplicate link creation.
+- Undo Star history: Initial loading shows skeleton placeholders, refresh or sort failures preserve the existing list, and background refreshes no longer replay entrance animations.
+- Weekly report display: Prevents the bottom of report content from being clipped so the ending remains fully readable.
+- Repository detail language: Statistics labels and dates consistently follow the app language, avoiding mixed-language presentation.
+- Daily Radar loading: Sidebar count refreshes and failures no longer interfere with report loading states or error messages.
 
 ## 1.9.0
 
