@@ -38,8 +38,8 @@ Release notes for the Mac App Store edition of Starcat.
 
 - Result source filters: Filter search results by keyword, semantic, GitHub, web, or Smart Find, with independent counts per source, cross-source deduplication, and the current source plus a continue-loading entry preserved when a filter has no matches.
 - Search content filtering: Hides results that should not be shown according to built-in rules, consistently across regular search, Smart Find, and cached results, with filtering details available in the panel.
-- Repository Skill reading and translation: Expand SKILL.md to full width and restore the layout without losing your place; translate its content with language and service selection, original-text switching, and cached translations. Files open in a bottom reading pane, with individual file saving and complete Skill-directory downloads; layout changes preserve the preview session and reading position. Export always uses original files.
-- Daily Picks: Discover personalized cards based on public Stars with actual source evidence; Pro can generate and cache recommendation reasons, with new batches, preparation progress, cancellation, and optional automatic display. Shows repository and source avatars, clickable source links and deduplicated evidence, with recommendation reasons tailored to the available evidence.
+- Repository Skill reading and translation: Read SKILL.md at full width, choose a translation language and service, or switch back to the original. Translations are cached. Save individual files or download the full Skill directory from the bottom reading pane. Layout changes preserve your place. Copy an AI installation prompt from the rendered view or the original SKILL.md from the source view. Export always uses original files.
+- Daily Picks: Get personalized cards based on public Stars, with clickable sources and deduplicated evidence. Repository and source avatars are prepared before the cards appear. Click a repository to open it in your default browser. Request a new batch, track or cancel preparation, and choose whether cards appear automatically. Pro can generate and cache reasons tailored to the evidence.
 
   ![20261118031554_UOoX90r3](https://cdn.dong4j.site/source/image/20261118031554_UOoX90r3.webp)
 
@@ -47,19 +47,20 @@ Release notes for the Mac App Store edition of Starcat.
 
   ![20261118031739_nuC69K4T](https://cdn.dong4j.site/source/image/20261118031739_nuC69K4T.webp)
 
-- Browser pairing: Connect by confirming a six-digit code without entering a Key; each browser has independent authorization that you can review, rename, or revoke, while manual Key connections remain available.
+- Browser pairing: Confirm a six-digit code to connect without entering a Key. Review, rename, or revoke each browser’s authorization separately and see its version when provided. Manual Key connections remain available.
 
   ![20261118032115_sePJ7yIq](https://cdn.dong4j.site/source/image/20261118032115_sePJ7yIq.webp)
 
-- CLI and MCP operations: AI agents can access repository, notification, Release, knowledge-base, and model workflows, including activity timeline queries and long-running task progress and results; reading is enabled by default, while writing requires explicit enablement in Settings.
+- CLI and MCP operations: AI agents can work with repositories, notifications, releases, knowledge bases, and models, and query the activity timeline and long-running task progress and results. Reading is enabled by default. Enable writing in Settings. The public CLI and MCP contract moves to v3, so update the CLI and app together.
 - GitHub account details: View achievements, organizations, and sponsorships in both directions from the account entry, with organization pagination and clear notices for permission-limited information.
 
   ![20261118030509_9Tm9nFWf](https://cdn.dong4j.site/source/image/20261118030509_9Tm9nFWf.webp)
 
-- Markdown file previews: Read repository files in a rendered Markdown view, switch to source, expand the reader within the window, and collapse file information. Adds content translation and compact controls; links to Markdown files in the same repository open in a new window by default while preserving existing opening preferences.
+- Markdown file previews: Read rendered Markdown, switch to source, expand the reader within the window, or collapse file information. The compact toolbar includes translation. Links to Markdown files in the same repository can open in your browser, a new window, or the current detail pane. A new window is the default. Existing preferences are preserved.
 - Saved-note indicators: Repository lists show a blue note icon and a badge for saved notes, making annotated projects easier to identify.
-- README image viewer: Open content images in a full-window viewer with image navigation, zoom, fit-to-window and original-size controls, plus keyboard, wheel, pinch and drag gestures; closing restores your reading position.
+- README image viewer: Browse content images in a full-window viewer with zoom, fit-to-window and original-size controls, plus keyboard, wheel, pinch and drag gestures. The viewer reuses cached images and restores your reading position when closed. Badges remain in the README and are skipped in the viewer.
 - Combined activity filters: Combine multiple activity filters, select several options within a group, and keep the list, counts and detail navigation consistent.
+- Menu bar status panel: Left-click the Starcat menu bar icon to see sync, background tasks, and diagnostics. Right-click for the shortcut menu.
 
 ### Improvements
 
@@ -90,7 +91,7 @@ Release notes for the Mac App Store edition of Starcat.
 - License filter chips: Match sidebar tags with wrapping, content-sized height, and bounded scrolling; colors distinguish license obligation types, with full names and category notes on hover.
 - Narrow middle column: Hides auxiliary text such as the last sync time when space runs out, keeping search, filter, and refresh controls visible while the full text remains available on hover.
 - Summary panel polish: The launcher button highlights existing summaries in blue, the panel closes with Esc, and body scrolling no longer collides with the scrollbar.
-- Awesome source manager: The canvas keeps a fixed size, so operations no longer shift the layout.
+- Awesome source manager: Open Sources from the list toolbar, just to the left of Refresh. Source cards are more compact, with the recommendation badge at the bottom. The panel keeps a fixed size as you work.
 - Awesome sort menu: Shares the unified menu styling with other middle-column lists.
 - License card: License badges in repository details and search now share one obligation-colored card listing rights and duties, with the official reference a tap away.
 - Language support: Removes the Arabic interface language; the other 17 languages remain fully localized.
@@ -98,7 +99,7 @@ Release notes for the Mac App Store edition of Starcat.
 - Global search indexing: Semantic search no longer waits for index maintenance, reducing search latency.
 - Search index status: The status label now says Index instead of Vector, with a clearer icon.
 - Repository Skill performance: Scanning and document parsing for large collections no longer block the interface; content loads on demand and file-tree requests are reused to reduce repeated waits, keeping scrolling and detail switching responsive.
-- Repository Skill interface: Compact tabs and narrow-pane icons, clearer scan progress, diagnostics popovers, status bars, capsule icons, and count animations, with stable document and file-tree transitions that respect Reduce Motion; invalid Skills retain their previews and scan diagnostics.
+- Repository Skill interface: Name abbreviations on icons make Skills easier to tell apart. Click anywhere on a row to open its preview, with a separate checkbox for selection. Compact tabs and icons fit narrow panes. The scan progress, diagnostics popovers, status bars, capsule icons, and count animations are easier to read. Document and file-tree transitions respect Reduce Motion, and invalid Skills retain their previews and scan diagnostics.
 - Account menu: Removes duplicate entries and places profile refresh beside its relative timestamp in a more compact account panel.
 - Daily Radar visuals: More cover styles and hover zoom, cover-derived history colors, motion on topic entries and reader headers, and clearer metadata and project badges. Weekly cards support carousel browsing with individual lighting effects.
 - Daily Radar reading: Article images no longer respond to context menus or dragging, so they do not interrupt reading.
@@ -106,6 +107,7 @@ Release notes for the Mac App Store edition of Starcat.
 - List and detail transitions: Applicable lists share alternating rows, full-row hover and selection feedback, while details use loading skeletons and smooth transitions that respect Reduce Motion.
 - Explore performance: Restore cached catalogs at launch, retain loaded pages when switching categories, reduce repeated searches and filtering, and show available details while the remaining metadata loads.
 - Activity and notification presentation: Notification filters use consistent colored chips and compact segments, while personal repository actions show the target repository avatar for clearer event and source identification.
+- External Star alerts: Clicking the alert to sync immediately scrolls All Repositories to the top.
 - General preferences: Clearer descriptions explain detail-opening behavior, activity events and reset actions, with tooltips for longer text and Daily Picks settings grouped under detail behavior.
 
 ### Fixes
@@ -127,6 +129,7 @@ Release notes for the Mac App Store edition of Starcat.
 - Undo Star cleanup: Immediate deletion now clears the entire Unstar history and refreshes related views.
 - Embedding error guidance: Connection, configuration, authentication, and rate-limit issues no longer offer email feedback; connection failures show numbered recovery steps and open embedding settings directly, while request processing failures retain feedback.
 - Activity timeline: Reduces repeated processing of loaded comments while scrolling the middle column, improving responsiveness with longer notification lists.
+- Notification loading: Cached notifications fade in right away. Without a cache, a skeleton appears first, then the list, an empty state, or a permission prompt when loading finishes.
 - Unstarred repositories: Repositories no longer reappear in lists because of stale sync results or cached data after you unstar them.
 - Unstar confirmation: The single-card dialog uses a narrower width to avoid excessive empty space.
 - Stars sync: Prevents background grouping work from keeping refresh active; pending organization authorization writes are retried only after a manual refresh.
