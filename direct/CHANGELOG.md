@@ -177,7 +177,7 @@ All notable changes to Starcat are summarized here for release notes.
 - Daily Radar loading: Sidebar count refreshes and failures no longer interfere with report loading states or error messages.
 - License validation: Accepts fractional-second timestamps from the licensing service, preventing valid licenses from failing validation because of date parsing.
 
-## 1.9.6-待发布
+## 1.9.6
 
 ### New
 

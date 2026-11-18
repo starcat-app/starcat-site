@@ -128,7 +128,102 @@
     <div class="changelog-content">
 <h1>Starcat Changelog</h1>
 <p>All notable changes to Starcat are summarized here for release notes.</p>
-<h2>1.9.5 Beta 1</h2>
+<h2>1.9.6 Beta 1</h2>
+<h3>New</h3>
+<ul>
+<li>Awesome AI catalogs: Choose four actively maintained catalogs covering agent skills, agent engineering, open-source AI, and AI security tools.</li>
+<li>Profile language mix: The sidebar shows a language distribution bar with names and percentages on hover, sharing statistics with profile share cards.</li>
+<li>Contribution lawn styles: Click the sidebar lawn to cycle through effects or off, across the full year and the last 30, 60 or 90 days, with daily hover details.</li>
+</ul>
+<p>  <img src="https://cdn.dong4j.site/source/image/20261118030356_NpdNjvvb.webp" alt="20261118030356_NpdNjvvb" loading="lazy"></p>
+<ul>
+<li>Public organizations: The sidebar shows circular organization avatars, with extra organizations in a More menu and names and descriptions on hover.</li>
+<li>Daily Radar report sharing: Create a public link to a report and cover, with copy and system sharing built in; existing links are restored after restarting and reused across users.</li>
+</ul>
+<p>  <img src="https://cdn.dong4j.site/source/image/20261118030628_up6kgpH0.webp" alt="20261118030628_up6kgpH0" loading="lazy"></p>
+<ul>
+<li>Smart Find: Describe what you need in natural language to find GitHub repositories you have not starred, with match reasons and evidence, progressive results, and follow-up searches.</li>
+</ul>
+<p>  <img src="https://cdn.dong4j.site/source/image/20261118031321_iJ3oJm0s.webp" alt="Starcat 2026-11-18 03.13.22" loading="lazy"></p>
+<ul>
+<li>Result source filters: Filter search results by keyword, semantic, GitHub, web, or Smart Find, with independent counts per source and cross-source deduplication.</li>
+<li>Search content filtering: Hides inappropriate results by built-in rules, consistently across regular search, Smart Find, and cached results.</li>
+<li>Repository Skill reading and translation: Read SKILL.md at full width with translation, save individual files, or download the full directory; copy an AI installation prompt from the rendered view. Installation always uses original files.</li>
+</ul>
+<p>  <img src="https://cdn.dong4j.site/source/image/20261117204850_c3Oragn0.webp" alt="20261117204850_c3Oragn0" loading="lazy"></p>
+<ul>
+<li>Daily Picks: Personalized cards based on public Stars, with clickable sources and evidence; request new batches and control automatic display, with Pro-generated reasons.</li>
+</ul>
+<p>  <img src="https://cdn.dong4j.site/source/image/20261118031554_UOoX90r3.webp" alt="20261118031554_UOoX90r3" loading="lazy"></p>
+<ul>
+<li>Recommendation history: Browse projects by their first recommendation date, with search and feedback filters; Not Interested feedback clears once you star the project.</li>
+</ul>
+<p>  <img src="https://cdn.dong4j.site/source/image/20261118031739_nuC69K4T.webp" alt="20261118031739_nuC69K4T" loading="lazy"></p>
+<ul>
+<li>Browser pairing: Confirm a six-digit code to connect without entering a Key; each browser has its own authorization you can review or revoke.</li>
+</ul>
+<p>  <img src="https://cdn.dong4j.site/source/image/20261118032115_sePJ7yIq.webp" alt="20261118032115_sePJ7yIq" loading="lazy"></p>
+<ul>
+<li>CLI and MCP operations: AI agents can work with repositories, notifications, releases, knowledge bases, and models; reading is on by default and writing is opt-in. The contract moves to v3, so update the CLI and app together.</li>
+<li>GitHub account details: View achievements, organizations, and sponsorships in both directions, with clear notices for permission-limited information.</li>
+</ul>
+<p>  <img src="https://cdn.dong4j.site/source/image/20261118030509_9Tm9nFWf.webp" alt="20261118030509_9Tm9nFWf" loading="lazy"></p>
+<ul>
+<li>Markdown file previews: Read rendered Markdown, switch to source, expand the reader, or translate from the toolbar; same-repo links open in a new window by default, preserving existing preferences.</li>
+<li>Saved-note indicators: Repository lists show a note icon and badge for saved notes.</li>
+<li>Agent installation controls: Install or safely uninstall Skills through agent chips, with batch selection and protection for conflicts and local changes.</li>
+<li>Skill management workspace (Beta): Manage local Skills in a dedicated three-column window, with scanning, imports, and read-only previews.</li>
+<li>Skill updates and maintenance: Batch-check updates and review differences, with retries, version rollback, and safe uninstall.</li>
+<li>README image viewer: Click content images to browse them in a full-window viewer with zoom and fit controls; your reading position is restored when closed.</li>
+<li>Combined activity filters: Combine multiple activity filters, select several options within a group, and keep the list, counts and detail navigation consistent.</li>
+<li>Menu bar status panel: Left-click the Starcat menu bar icon to see sync, background tasks, and diagnostics. Right-click for the shortcut menu.</li>
+</ul>
+<h3>Improvements</h3>
+<ul>
+<li>Global filter layout: Filters use compact single-row segments, with language multi-select chips that wrap and scroll.</li>
+<li>Weekly filter layout: Colored chips for sources and thresholds, with filter counts moved into the panel to keep the toolbar stable.</li>
+<li>Detail badges: Linux.do gains its brand icon, and all three entries share consistent capsule heights and hover feedback.</li>
+<li>Linux.do branding: The sidebar and repository lists use the official mark, adapted to light and dark themes.</li>
+<li>Global search indexing: Semantic search no longer waits for index maintenance, reducing search latency.</li>
+<li>Search index status: The status label now says Index instead of Vector, with a clearer icon.</li>
+<li>Repository Skill performance: Scanning and parsing for large collections no longer block the interface, keeping scrolling and detail switching responsive.</li>
+<li>Repository Skill interface: Click anywhere on a row to open its preview, with compact tabs and clearer statuses; invalid Skills retain previews and scan diagnostics.</li>
+<li>Account menu: Removes duplicate entries and places profile refresh beside its relative timestamp in a more compact account panel.</li>
+<li>Daily Radar visuals: More cover styles and motion, cover-derived history colors, and carousel browsing for weekly cards.</li>
+<li>Daily Radar reading: Article images no longer respond to context menus or dragging, so they do not interrupt reading.</li>
+<li>Repository workspaces: Issues, repository Skills, and file downloads share consistent repository headers and window layouts for more predictable reading and actions.</li>
+<li>List and detail transitions: Lists share alternating rows and hover feedback; details use loading skeletons and smooth transitions.</li>
+<li>Diagnostics panel: Records serious failures with concise summaries; clearing large histories stays responsive.</li>
+<li>Explore performance: Cached catalogs restore at launch, loaded pages survive category switches, and details appear before remaining metadata loads.</li>
+<li>Awesome source manager: Sources open from the list toolbar, with more compact cards.</li>
+<li>Activity and notification presentation: Filters use consistent colored chips, and personal repository actions show the target repository avatar.</li>
+<li>External Star alerts: Clicking the alert to sync immediately scrolls All Repositories to the top.</li>
+<li>General preferences: Clearer descriptions with tooltips for key preferences, and Daily Picks settings grouped under detail behavior.</li>
+</ul>
+<h3>Fixes</h3>
+<ul>
+<li>Notification loading: Cached notifications fade in right away; otherwise a skeleton appears before the final result.</li>
+<li>Awesome repository coverage: Projects linked through source-code icons in catalogs such as awesome-mac are now included, so refreshing reveals previously missing repositories.</li>
+<li>Update window language: Framework controls use Sparkle's native translations; reopen the window after changing the language.</li>
+<li>Profile refresh: Fixes manual refreshes still showing cached profile data.</li>
+<li>Insights navigation titles: Fixes navigation titles falling back to the system language.</li>
+<li>Error recovery contact: Fixes the recovery contact not being shown in error messages.</li>
+<li>Search Star feedback: Fixes missing loading feedback for Star actions in global search.</li>
+<li>Daily Radar body: Fixes duplicated headings in report bodies.</li>
+<li>Daily Radar badges: Fixes weekly topic timeline dates overlapping badges.</li>
+<li>OpenSSF scores: Checks, radar charts, and known findings follow the app language, with concise messages when data cannot be read.</li>
+<li>Global search window: Preserves the system window outline and correctly adapts between windowed and full-screen states.</li>
+<li>Explore details: Late Star responses no longer overwrite the current details after switching repositories.</li>
+<li>Issues detail selection: Details stay aligned with the visible list after switching or filtering.</li>
+<li>README text loading: Cached text becomes readable as soon as it is ready, without waiting for external images or videos, reducing blank loading time.</li>
+<li>AI share link recovery: Existing share links and shared indicators are restored after restarting, avoiding duplicate link creation.</li>
+<li>Undo Star history: Initial loading shows skeleton placeholders, refresh or sort failures preserve the existing list, and background refreshes no longer replay entrance animations.</li>
+<li>Weekly report display: Prevents the bottom of report content from being clipped so the ending remains fully readable.</li>
+<li>Repository detail language: Statistics labels and dates consistently follow the app language, avoiding mixed-language presentation.</li>
+<li>Daily Radar loading: Sidebar count refreshes and failures no longer interfere with report loading states or error messages.</li>
+<li>License validation: Accepts fractional-second timestamps from the licensing service, preventing valid licenses from failing validation because of date parsing.</li>
+</ul>
+<h2>1.9.5</h2>
 <h3>New</h3>
 <ul>
 <li>Repository Skills: Discover single Skills, collections, and Skills embedded in projects, with filtering, previews, and batch selection; install complete directories to Codex or Claude Code user-level locations, with confirmation for name conflicts.</li>
