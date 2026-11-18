@@ -7,115 +7,115 @@ Release notes for the Mac App Store edition of Starcat.
 ### New
 
 - Awesome AI catalogs: Choose four actively maintained catalogs covering agent skills, agent engineering, open-source AI, and AI security tools.
-- Profile language mix: The sidebar shows a language distribution bar with names and percentages on hover, sharing its statistics with profile share cards; saved results appear at launch, are reused for seven days, and refresh in the background after expiry.
-- Contribution lawn styles: Click the sidebar lawn to cycle through effects and Off, with a light transition and a saved choice that stays in sync with Settings. Supports the full year and the last 30, 60 or 90 days, with daily hover details showing the date, weekday and contribution count.
+- Profile language mix: The sidebar shows a language distribution bar with names and percentages on hover, sharing statistics with profile share cards.
+- Contribution lawn styles: Click the sidebar lawn to cycle through effects or off, across the full year and the last 30, 60 or 90 days, with daily hover details.
 
   ![20261118030356_NpdNjvvb](https://cdn.dong4j.site/source/image/20261118030356_NpdNjvvb.webp)
 
-- Public organizations: The sidebar shows clear, small circular organization avatars sized to match nearby icons, with extra organizations in a More menu and names and descriptions on hover.
-- Repository Skills: Discover single Skills, collections, and Skills embedded in projects, with filtering, previews, and batch selection; export complete directories to a location you authorize, with confirmation for name conflicts.
-- Enhanced diagnostics: Add a problem description, module, and occurrence time, record up to 15 minutes of enhanced diagnostics, and export a troubleshooting report; only serious failures that prevent normal use are recorded, with concise issue summaries and responsive history cleanup. Exporting and acknowledging alerts remain separate actions, and diagnostic logs stay on your Mac.
-- Issue AI summaries: Open a glass panel from the floating button above the input area's divider, drag its top edge to adjust height, and read a streaming Markdown summary; generation continues when hidden or you switch Issues, and reopening restores progress or results.
+- Public organizations: The sidebar shows circular organization avatars, with extra organizations in a More menu and names and descriptions on hover.
+- Repository Skills: Discover single Skills, collections, and embedded Skills, with filtering and batch selection; export complete directories to a location you authorize.
+- Enhanced diagnostics: Add a description and record up to 15 minutes of enhanced diagnostics, then export a troubleshooting report; diagnostic logs stay on your Mac.
+- Issue AI summaries: Open the summary panel in an issue to read a streaming Markdown summary; generation continues when hidden or you switch Issues, and reopening restores progress or results.
 - Free source tools: Repository context packing, CodeFlow, and CodebaseMemory code graphs no longer require Pro, with existing repository and runtime limits retained.
 - Linux.do discovery: Browse verified open-source projects promoted on Linux.do, see provenance badges across repository lists, and open original discussions from repository details.
-- Quick search across lists: Expand the middle-column search field to quickly find repositories and activity items across Manage, Explore, Trending, Weekly, Awesome, Linux.do, notifications, and Undo Star.
+- Quick search across lists: Expand the middle-column search field to find repositories and activity across Manage, Explore, notifications, and more.
 - Repository license filters: Select multiple licenses in the main window and combine them with other filters, with consistent pagination, project counts, and cached results.
-- Unstar data cleanup: Before unstarring, see which notes, tags, AI content, and analysis caches will be deleted; repositories in your library can optionally be removed from the knowledge base, with a clear warning that deletion cannot be undone.
-- Daily Radar: A new reading workspace for daily reports, browsable by topic categories with edition calendar navigation, per-category badges, and source branding; reports follow the app language. Each report gets a locally generated abstract cover, unique per edition; loading and category switches show skeleton placeholders, with seamless swaps when cached.
-- Daily Radar report sharing: Create a public link to a complete report and cover, with the title and summary over the preview; copy and browser actions sit beside the link, and system sharing sits alongside the privacy notice. Restores existing share links and shared indicators after restarting so they can be reused.
+- Unstar data cleanup: Before unstarring, see which notes and tags will be deleted; library repositories can optionally leave the knowledge base, with a clear warning.
+- Daily Radar: A new reading workspace for daily reports by topic categories, with edition calendar navigation and per-category badges; each report gets a locally generated abstract cover, and loading shows skeleton placeholders.
+- Daily Radar report sharing: Create a public link to a report and cover, with copy and system sharing built in; existing links are restored after restarting and reused across users.
 
   ![20261118030628_up6kgpH0](https://cdn.dong4j.site/source/image/20261118030628_up6kgpH0.webp)
 
 - Weekly AI Highlights: Browse the latest six weekly reports and fact-check specials, with summary playback, on-demand article images, source and repository details, and offline reading.
-- Follow Graph: Explore followers and following in a full-window two-dimensional graph, with three-level follower views, profile cards, follow actions, and complete highlighted paths; node selection stays separate from manual expansion, without fixed node, relationship, or request limits. Loading and avatar feedback, local rate-limit reset times, and refresh when counts differ make progress clear.
+- Follow Graph: Explore followers and following in a full-window graph, with profile cards, follow actions, and highlighted paths; expansion has no count limits, and rate limits show a local reset time.
 - Summary replay: Successful issue summaries are saved locally, so reopening the same issue after relaunch replays the summary and shows when it was generated.
 - Explore & Weekly source filters: Filter explore categories and Weekly by source preference, remembered across restarts.
-- Issues workspace: Search, filter, and paginate a list-detail workspace with accurate non-PR counts and pagination past PR-only pages; details support comments, AI summaries, and translation, stay aligned after filtering, and ignore stale responses. Create issues with templates, AI drafting, image pasting, and per-repository drafts that survive consecutive submissions or early closing; details fade between Issues, and the comment input matches the window background.
+- Issues workspace: A list-detail workspace with search, filtering, and pagination; create issues with templates, AI drafting, and per-repository drafts, with details sharing comments, AI summaries, and translation.
 - Group icon choice: Create repository groups without a color dot by default, remove an existing group's dot while keeping its emoji, and switch back to a color at any time.
-- Smart Find: Describe a purpose, characteristic, or fuzzy clue in natural language to find GitHub repositories you have not starred, with multi-source retrieval, repository verification, relevance reranking, match reasons and evidence, the full execution trace, and progressive results with follow-up searches inside a 15-second budget.
+- Smart Find: Describe what you need in natural language to find GitHub repositories you have not starred, with match reasons and evidence, progressive results, and follow-up searches.
 
   ![Starcat 2026-11-18 03.13.22](https://cdn.dong4j.site/source/image/20261118031321_iJ3oJm0s.webp)
 
-- Result source filters: Filter search results by keyword, semantic, GitHub, web, or Smart Find, with independent counts per source, cross-source deduplication, and the current source plus a continue-loading entry preserved when a filter has no matches.
-- Search content filtering: Hides results that should not be shown according to built-in rules, consistently across regular search, Smart Find, and cached results, with filtering details available in the panel.
-- Repository Skill reading and translation: Read SKILL.md at full width, choose a translation language and service, or switch back to the original. Translations are cached. Save individual files or download the full Skill directory from the bottom reading pane. Layout changes preserve your place. Copy an AI installation prompt from the rendered view or the original SKILL.md from the source view. Export always uses original files.
-- Daily Picks: Get personalized cards based on public Stars, with clickable sources and deduplicated evidence. Repository and source avatars are prepared before the cards appear. Click a repository to open it in your default browser. Request a new batch, track or cancel preparation, and choose whether cards appear automatically. Pro can generate and cache reasons tailored to the evidence.
+- Result source filters: Filter search results by keyword, semantic, GitHub, web, or Smart Find, with independent counts per source and cross-source deduplication.
+- Search content filtering: Hides inappropriate results by built-in rules, consistently across regular search, Smart Find, and cached results.
+- Repository Skill reading and translation: Read SKILL.md at full width with translation, save individual files, or download the full directory; copy an AI installation prompt from the rendered view. Export always uses original files.
+- Daily Picks: Personalized cards based on public Stars, with clickable sources and evidence; request new batches and control automatic display, with Pro-generated reasons.
 
   ![20261118031554_UOoX90r3](https://cdn.dong4j.site/source/image/20261118031554_UOoX90r3.webp)
 
-- Recommendation history: Browse projects by their first recommendation date, with search, pagination, and feedback filters; Not Interested feedback is retained and cleared when you successfully star the project.
+- Recommendation history: Browse projects by their first recommendation date, with search and feedback filters; Not Interested feedback clears once you star the project.
 
   ![20261118031739_nuC69K4T](https://cdn.dong4j.site/source/image/20261118031739_nuC69K4T.webp)
 
-- Browser pairing: Confirm a six-digit code to connect without entering a Key. Review, rename, or revoke each browser’s authorization separately and see its version when provided. Manual Key connections remain available.
+- Browser pairing: Confirm a six-digit code to connect without entering a Key; each browser has its own authorization you can review or revoke.
 
   ![20261118032115_sePJ7yIq](https://cdn.dong4j.site/source/image/20261118032115_sePJ7yIq.webp)
 
-- CLI and MCP operations: AI agents can work with repositories, notifications, releases, knowledge bases, and models, and query the activity timeline and long-running task progress and results. Reading is enabled by default. Enable writing in Settings. The public CLI and MCP contract moves to v3, so update the CLI and app together.
-- GitHub account details: View achievements, organizations, and sponsorships in both directions from the account entry, with organization pagination and clear notices for permission-limited information.
+- CLI and MCP operations: AI agents can work with repositories, notifications, releases, knowledge bases, and models; reading is on by default and writing is opt-in. The contract moves to v3, so update the CLI and app together.
+- GitHub account details: View achievements, organizations, and sponsorships in both directions, with clear notices for permission-limited information.
 
   ![20261118030509_9Tm9nFWf](https://cdn.dong4j.site/source/image/20261118030509_9Tm9nFWf.webp)
 
-- Markdown file previews: Read rendered Markdown, switch to source, expand the reader within the window, or collapse file information. The compact toolbar includes translation. Links to Markdown files in the same repository can open in your browser, a new window, or the current detail pane. A new window is the default. Existing preferences are preserved.
-- Saved-note indicators: Repository lists show a blue note icon and a badge for saved notes, making annotated projects easier to identify.
-- README image viewer: Browse content images in a full-window viewer with zoom, fit-to-window and original-size controls, plus keyboard, wheel, pinch and drag gestures. The viewer reuses cached images and restores your reading position when closed. Badges remain in the README and are skipped in the viewer.
+- Markdown file previews: Read rendered Markdown, switch to source, expand the reader, or translate from the toolbar; same-repo links open in a new window by default, preserving existing preferences.
+- Saved-note indicators: Repository lists show a note icon and badge for saved notes.
+- README image viewer: Click content images to browse them in a full-window viewer with zoom and fit controls; your reading position is restored when closed.
 - Combined activity filters: Combine multiple activity filters, select several options within a group, and keep the list, counts and detail navigation consistent.
 - Menu bar status panel: Left-click the Starcat menu bar icon to see sync, background tasks, and diagnostics. Right-click for the shortcut menu.
 
 ### Improvements
 
-- Global filter layout: Status, star, library, availability, and Skill filters use compact single-row segments; language multi-select uses wrapping chips inside a bounded scrolling area.
-- Weekly filter layout: Theme-aware colored chips for sources and star thresholds, single-row controls with icon fallback for long labels, and filter counts inside the panel keep filtering compact and the toolbar stable.
-- Detail badges: Linux.do gains its brand icon, Issues moves between Linux.do and Skills, and all three share a capsule height, hover feedback, and animated count changes.
-- Linux.do branding: The sidebar and repository lists use the official mark, with capsules sized consistently with nearby badges and adapted to light and dark themes.
+- Global filter layout: Filters use compact single-row segments, with language multi-select chips that wrap and scroll.
+- Weekly filter layout: Colored chips for sources and thresholds, with filter counts moved into the panel to keep the toolbar stable.
+- Detail badges: Linux.do gains its brand icon, and all three entries share consistent capsule heights and hover feedback.
+- Linux.do branding: The sidebar and repository lists use the official mark, adapted to light and dark themes.
 - New-feature indicators: Followers, Following, Daily Radar, and Linux.do show a blue dot until first used.
 - Third-party dependencies: Upgrades database, image, Markdown, and analytics components with pinned versions for better stability and compatibility.
 - Release icon: The sidebar entry and timeline window title now share a wireframe package icon, matching the visual weight of neighboring navigation icons.
-- Workspaces and View menu: Sidebar toggles in Agent and RAG workspaces fade smoothly; Local AI Logs moves to View and the RAG Workspace name is consistent. Workspaces, Settings, and other auxiliary windows have fewer duplicate menu entries, preserving system commands such as Services, Hide, and Quit.
+- Workspaces and View menu: Smoother sidebar transitions, Local AI Logs moved to View, and fewer duplicate menu entries.
 - Sidebar daily Star count: Shows a green `+N` badge next to the Starred label when repositories were starred today, counting only ones still starred and updating after in-app actions or synchronization.
-- Icon system overhaul: Sidebar, Settings, repository details, Insights, AI/RAG workspaces, sort menus, file and release asset types, and notification filters share the unified Lucide set, with distinct marks for fork origin and counts, recommendations, embedding models, and CodeFlow.
+- Icon system overhaul: Sidebar, Settings, repository details, and workspaces share the unified Lucide set, with distinct marks for fork origin, recommendations, and more.
 - Similar-repository recommendations: Detail-page suggestions now use Starcat's own recommendation model on both distribution channels, without third-party recommendation services.
 - Recommendation model updates: New candidates are evaluated weekly and published after quality and availability checks; the current model stays in use when checks fail.
 - Knowledge Base model selection: Groups available chat models by provider in the workspace menu.
-- Provider connection checks: Check the current configuration in the background when opening model settings or switching providers, reusing results and in-flight requests for 30 seconds; failures preserve your configuration, and manual tests can run immediately.
+- Provider connection checks: Configurations are checked in the background when opening model settings; failures preserve your settings, and manual tests run immediately.
 - GitHub attachment caching: Saves loaded README images and GIFs locally for faster repeat viewing, with storage included in image-cache statistics and cleanup.
 - README image loading: Shows a theme-aware placeholder while large images and GIFs load, then displays the image when ready to avoid long blank areas.
-- Settings redesign: Reorganizes configuration groups and navigation, unifies page headers, separators, and action layouts, removes repetitive descriptions, and brings account, privacy, and Pro benefits into a clearer structure.
+- Settings redesign: Reorganizes configuration groups and navigation, unifies layouts, and brings account, privacy, and Pro benefits into a clearer structure.
 - Insights header layout: Reduces empty space above both columns and keeps card heights aligned with their content.
-- Background task overview: Track repository search indexing, model and Laya downloads, chat history migration, My Projects sync, and GitHub notification sync from the status panel, with links back to their pages; pause individual model downloads or stop other tasks where available, while idle cards remain disabled.
+- Background task overview: Track indexing, downloads, and sync tasks from the status panel, with links back to their pages and pause or stop controls where available..
 - Status panel polish: Uses a thicker frosted background consistently across dark overview, usage, Local AI, and diagnostics cards, with shorter explanations of Local AI memory and automatic unloading.
 - Background organization entry: After closing repository grouping or tag organization, the middle column keeps showing the current phase and processed counts, with direct access to the task or results.
 - Background organization banner: Uses consistent icon actions in wide and narrow middle columns, keeps status on one line, and shows full action names on hover.
 - AI organization workspaces: Uses more compact windows for repository grouping and tag organization, lets long content scroll within each panel, and restores session options to their values when the window opened.
 - Localized organization status: Task states and actions cover all 17 interface languages, stay on one line in narrow columns, and show their full text on hover.
-- License filter chips: Match sidebar tags with wrapping, content-sized height, and bounded scrolling; colors distinguish license obligation types, with full names and category notes on hover.
+- License filter chips: Match sidebar tags and color by obligation type, with full names on hover.
 - Narrow middle column: Hides auxiliary text such as the last sync time when space runs out, keeping search, filter, and refresh controls visible while the full text remains available on hover.
 - Summary panel polish: The launcher button highlights existing summaries in blue, the panel closes with Esc, and body scrolling no longer collides with the scrollbar.
-- Awesome source manager: Open Sources from the list toolbar, just to the left of Refresh. Source cards are more compact, with the recommendation badge at the bottom. The panel keeps a fixed size as you work.
+- Awesome source manager: Sources open from the list toolbar, with more compact cards. The panel keeps a fixed size as you work.
 - Awesome sort menu: Shares the unified menu styling with other middle-column lists.
 - License card: License badges in repository details and search now share one obligation-colored card listing rights and duties, with the official reference a tap away.
 - Language support: Removes the Arabic interface language; the other 17 languages remain fully localized.
 - Daily Radar categories: Category names in the sidebar, reader, and settings follow the interface language, with per-category content toggles in Settings.
 - Global search indexing: Semantic search no longer waits for index maintenance, reducing search latency.
 - Search index status: The status label now says Index instead of Vector, with a clearer icon.
-- Repository Skill performance: Scanning and document parsing for large collections no longer block the interface; content loads on demand and file-tree requests are reused to reduce repeated waits, keeping scrolling and detail switching responsive.
-- Repository Skill interface: Name abbreviations on icons make Skills easier to tell apart. Click anywhere on a row to open its preview, with a separate checkbox for selection. Compact tabs and icons fit narrow panes. The scan progress, diagnostics popovers, status bars, capsule icons, and count animations are easier to read. Document and file-tree transitions respect Reduce Motion, and invalid Skills retain their previews and scan diagnostics.
+- Repository Skill performance: Scanning and parsing for large collections no longer block the interface, keeping scrolling and detail switching responsive.
+- Repository Skill interface: Click anywhere on a row to open its preview, with compact tabs and clearer statuses; invalid Skills retain previews and scan diagnostics.
 - Account menu: Removes duplicate entries and places profile refresh beside its relative timestamp in a more compact account panel.
-- Daily Radar visuals: More cover styles and hover zoom, cover-derived history colors, motion on topic entries and reader headers, and clearer metadata and project badges. Weekly cards support carousel browsing with individual lighting effects.
+- Daily Radar visuals: More cover styles and motion, cover-derived history colors, and carousel browsing for weekly cards.
 - Daily Radar reading: Article images no longer respond to context menus or dragging, so they do not interrupt reading.
 - Repository workspaces: Issues, repository Skills, and file downloads share consistent repository headers and window layouts for more predictable reading and actions; the download window retains the repository owner's avatar and type-specific file icons.
-- List and detail transitions: Applicable lists share alternating rows, full-row hover and selection feedback, while details use loading skeletons and smooth transitions that respect Reduce Motion.
-- Explore performance: Restore cached catalogs at launch, retain loaded pages when switching categories, reduce repeated searches and filtering, and show available details while the remaining metadata loads.
-- Activity and notification presentation: Notification filters use consistent colored chips and compact segments, while personal repository actions show the target repository avatar for clearer event and source identification.
+- List and detail transitions: Lists share alternating rows and hover feedback; details use loading skeletons and smooth transitions.
+- Explore performance: Cached catalogs restore at launch, loaded pages survive category switches, and details appear before remaining metadata loads.
+- Activity and notification presentation: Filters use consistent colored chips, and personal repository actions show the target repository avatar.
 - External Star alerts: Clicking the alert to sync immediately scrolls All Repositories to the top.
-- General preferences: Clearer descriptions explain detail-opening behavior, activity events and reset actions, with tooltips for longer text and Daily Picks settings grouped under detail behavior.
+- General preferences: Clearer descriptions with tooltips for key preferences, and Daily Picks settings grouped under detail behavior.
 
 ### Fixes
 
 - Awesome repository coverage: Projects linked through source-code icons in catalogs such as awesome-mac are now included, so refreshing reveals previously missing repositories.
 - Diagnostic export: Fixes exports failing after choosing a save location because the sandbox denied access to the temporary directory.
 - App version display: The status panel and About page show the actual build version instead of incorrectly displaying 1.0.0.
-- Workspace windows: Repeated panel toggles keep window dimensions and the opposite panel stable in Agent and RAG workspaces, while long content stays within the conversation and inspector areas.
+- Workspace windows: Repeated panel toggles keep window dimensions stable, and long content stays within its panels.
 - Activity category counts: Restores cached counts when opening Activity and keeps them visible during background refreshes.
 - Commit activity dates: Shows fewer horizontal date labels in Repository Insights as chart width shrinks or text size grows, preventing overlap while preserving full dates on hover.
 - Daily Radar totals: Shows the report count beside All Topics in the sidebar, matching the Daily Radar entry.
@@ -127,9 +127,9 @@ Release notes for the Mac App Store edition of Starcat.
 - Standalone AI assistant: Restores window dragging.
 - Agent model changes: Refreshes the built-in runtime's model selection after provider configuration changes.
 - Undo Star cleanup: Immediate deletion now clears the entire Unstar history and refreshes related views.
-- Embedding error guidance: Connection, configuration, authentication, and rate-limit issues no longer offer email feedback; connection failures show numbered recovery steps and open embedding settings directly, while request processing failures retain feedback.
+- Embedding error guidance: Connection and configuration issues show numbered recovery steps and open embedding settings directly, without email feedback.
 - Activity timeline: Reduces repeated processing of loaded comments while scrolling the middle column, improving responsiveness with longer notification lists.
-- Notification loading: Cached notifications fade in right away. Without a cache, a skeleton appears first, then the list, an empty state, or a permission prompt when loading finishes.
+- Notification loading: Cached notifications fade in right away; otherwise a skeleton appears before the final result.
 - Unstarred repositories: Repositories no longer reappear in lists because of stale sync results or cached data after you unstar them.
 - Unstar confirmation: The single-card dialog uses a narrower width to avoid excessive empty space.
 - Stars sync: Prevents background grouping work from keeping refresh active; pending organization authorization writes are retried only after a manual refresh.
