@@ -166,6 +166,12 @@ Release notes for the Mac App Store edition of Starcat.
 - Repository detail language: Statistics labels and dates consistently follow the app language, avoiding mixed-language presentation.
 - Daily Radar loading: Sidebar count refreshes and failures no longer interfere with report loading states or error messages.
 
+## 1.9.7-待发布
+
+### Fixes
+
+- Local repository chat: A larger context window, removal of duplicate README content, and automatic trimming of long repository material and chat history make input length errors less likely.
+
 ## 1.9.0
 
 ### New

@@ -177,6 +177,12 @@ All notable changes to Starcat are summarized here for release notes.
 - Daily Radar loading: Sidebar count refreshes and failures no longer interfere with report loading states or error messages.
 - License validation: Accepts fractional-second timestamps from the licensing service, preventing valid licenses from failing validation because of date parsing.
 
+## 1.9.7-待发布
+
+### Fixes
+
+- Local repository chat: A larger context window, removal of duplicate README content, and automatic trimming of long repository material and chat history make input length errors less likely.
+
 ## 1.9.6
 
 ### New
