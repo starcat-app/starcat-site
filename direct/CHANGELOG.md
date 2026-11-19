@@ -70,7 +70,7 @@ All notable changes to Starcat are summarized here for release notes.
 
 ### Improvements
 
-- Release browser: Search by repository or version, filter by unread status, and read the full release notes alongside the list. The window matches the size of the AI tag organizer.
+- Release browser: The two-pane window matches the size of the repository Skills window. Search by repository or version, filter for unread releases, and read release notes at your preferred interface text size.
 - Release downloads: Filter files by name, platform, and processor architecture. Installers for your Mac appear first. Track download progress, retry a failed download, or reveal a saved file in Finder.
 - Global filter layout: Filters use compact single-row segments, with language multi-select chips that wrap and scroll.
 - Weekly filter layout: Colored chips for sources and thresholds, with filter counts moved into the panel to keep the toolbar stable.
@@ -183,7 +183,7 @@ All notable changes to Starcat are summarized here for release notes.
 
 ### Improvements
 
-- Release browser: Search by repository or version, filter by unread status, and read the full release notes alongside the list. The window matches the size of the AI tag organizer.
+- Release browser: The two-pane window matches the size of the repository Skills window. Search by repository or version, filter for unread releases, and read release notes at your preferred interface text size.
 - Release downloads: Filter files by name, platform, and processor architecture. Installers for your Mac appear first. Track download progress, retry a failed download, or reveal a saved file in Finder.
 
 ### Fixes
