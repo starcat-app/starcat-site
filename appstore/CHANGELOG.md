@@ -64,6 +64,7 @@ Release notes for the Mac App Store edition of Starcat.
 
 ### Improvements
 
+- File download preview: Automatically opens the root README for the app language, falling back to README.md; when no README is available, prompts you to select a file to preview or download.
 - Release browser: The two-pane window matches the size of the repository Skills window. Search by repository or version, filter for unread releases, and read release notes at your preferred interface text size.
 - Release downloads: Filter files by name, platform, and processor architecture. Installers for your Mac appear first. Track download progress, retry a failed download, or reveal a saved file in Finder.
 - Global filter layout: Filters use compact single-row segments, with language multi-select chips that wrap and scroll.
@@ -172,6 +173,7 @@ Release notes for the Mac App Store edition of Starcat.
 
 ### Improvements
 
+- File download preview: Automatically opens the root README for the app language, falling back to README.md; when no README is available, prompts you to select a file to preview or download.
 - Release browser: The two-pane window matches the size of the repository Skills window. Search by repository or version, filter for unread releases, and read release notes at your preferred interface text size.
 - Release downloads: Filter files by name, platform, and processor architecture. Installers for your Mac appear first. Track download progress, retry a failed download, or reveal a saved file in Finder.
 
