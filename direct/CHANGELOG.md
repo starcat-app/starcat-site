@@ -70,6 +70,8 @@ All notable changes to Starcat are summarized here for release notes.
 
 ### Improvements
 
+- Release browser: Search by repository or version, filter by unread status, and read the full release notes alongside the list. The window matches the size of the AI tag organizer.
+- Release downloads: Filter files by name, platform, and processor architecture. Installers for your Mac appear first. Track download progress, retry a failed download, or reveal a saved file in Finder.
 - Global filter layout: Filters use compact single-row segments, with language multi-select chips that wrap and scroll.
 - Weekly filter layout: Colored chips for sources and thresholds, with filter counts moved into the panel to keep the toolbar stable.
 - Detail badges: Linux.do gains its brand icon, and all three entries share consistent capsule heights and hover feedback.
@@ -178,6 +180,11 @@ All notable changes to Starcat are summarized here for release notes.
 - License validation: Accepts fractional-second timestamps from the licensing service, preventing valid licenses from failing validation because of date parsing.
 
 ## 1.9.7-待发布
+
+### Improvements
+
+- Release browser: Search by repository or version, filter by unread status, and read the full release notes alongside the list. The window matches the size of the AI tag organizer.
+- Release downloads: Filter files by name, platform, and processor architecture. Installers for your Mac appear first. Track download progress, retry a failed download, or reveal a saved file in Finder.
 
 ### Fixes
 
