@@ -14,7 +14,7 @@ Release notes for the Mac App Store edition of Starcat.
 
 - Public organizations: The sidebar shows circular organization avatars, with extra organizations in a More menu and names and descriptions on hover.
 - Repository Skills: Discover single Skills, collections, and embedded Skills, with filtering and batch selection; export complete directories to a location you authorize.
-- Enhanced diagnostics: Add a description and record up to 15 minutes of enhanced diagnostics, then export a troubleshooting report; diagnostic logs stay on your Mac.
+- Diagnostic reports: Add a description, feature category, and occurrence time in a dedicated window, review available evidence, and export the report locally.
 - Issue AI summaries: Open the summary panel in an issue to read a streaming Markdown summary; generation continues when hidden or you switch Issues, and reopening restores progress or results.
 - Free source tools: Repository context packing, CodeFlow, and CodebaseMemory code graphs no longer require Pro, with existing repository and runtime limits retained.
 - Linux.do discovery: Browse verified open-source projects promoted on Linux.do, see provenance badges across repository lists, and open original discussions from repository details.
@@ -61,13 +61,18 @@ Release notes for the Mac App Store edition of Starcat.
 - README image viewer: Click content images to browse them in a full-window viewer with zoom and fit controls; your reading position is restored when closed.
 - Combined activity filters: Combine multiple activity filters, select several options within a group, and keep the list, counts and detail navigation consistent.
 - Menu bar status panel: Left-click the Starcat menu bar icon to see sync, background tasks, and diagnostics. Right-click for the shortcut menu.
+- Tag relationship graph: Explore connections between tags and starred repositories, with search, neighbor highlighting, detail cards, and incremental loading.
+- Personal knowledge profile: Explore recent interests and accumulated knowledge in Insights, compare adjacent periods by topic, tag, or language, and inspect the underlying repositories.
 
 ### Improvements
 
 - Daily Radar scrolling: Smoother scrolling through cards, past reports, and articles, with images still loaded on demand.
 - File download preview: Automatically opens the root README for the app language, falling back to README.md; when no README is available, prompts you to select a file to preview or download.
-- Release browser: The two-pane window matches the size of the repository Skills window. Search by repository or version, filter for unread releases, and read release notes at your preferred interface text size.
-- Release downloads: Filter files by name, platform, and processor architecture. Installers for your Mac appear first. Track download progress, retry a failed download, or reveal a saved file in Finder.
+- Release browser: Browse releases in a two-pane window matching the repository Skills workspace, search by repository or version, and read notes with the familiar README reader.
+- Release downloads: Filter files by name, platform, and processor architecture, with matching Mac installers shown first; track or stop downloads, retry failures, and reveal saved files in Finder.
+- Reading and input text: Markdown, previews, content editors, and placeholders consistently follow text-size preferences across the app.
+- Notes and AI panels: Edit and preview notes or review AI drafts in a detail overlay, expand the reader, or open a separate window with consistent panel layouts.
+- Repository watch settings: Clearer subscription options and feedback, reauthorization guidance when permissions are missing, and refreshed counts after successful changes.
 - Global filter layout: Filters use compact single-row segments, with language multi-select chips that wrap and scroll.
 - Weekly filter layout: Colored chips for sources and thresholds, with filter counts moved into the panel to keep the toolbar stable.
 - Detail badges: Linux.do gains its brand icon, and all three entries share consistent capsule heights and hover feedback.
@@ -107,7 +112,7 @@ Release notes for the Mac App Store edition of Starcat.
 - Account menu: Removes duplicate entries and places profile refresh beside its relative timestamp in a more compact account panel.
 - Daily Radar visuals: More cover styles and motion, cover-derived history colors, and carousel browsing for weekly cards.
 - Daily Radar reading: Article images no longer respond to context menus or dragging, so they do not interrupt reading.
-- Repository workspaces: Issues, repository Skills, and file downloads share consistent repository headers and window layouts for more predictable reading and actions; the download window retains the repository owner's avatar and type-specific file icons.
+- Repository workspaces: Issues, repository Skills, and file downloads share consistent headers, search, and actions, with keyboard search focus and improved Escape behavior; the download window retains the repository owner's avatar and type-specific file icons.
 - List and detail transitions: Lists share alternating rows and hover feedback; details use loading skeletons and smooth transitions.
 - Explore performance: Cached catalogs restore at launch, loaded pages survive category switches, and details appear before remaining metadata loads.
 - Activity and notification presentation: Filters use consistent colored chips, and personal repository actions show the target repository avatar.
@@ -116,6 +121,11 @@ Release notes for the Mac App Store edition of Starcat.
 
 ### Fixes
 
+- Local repository chat: A larger context window, removal of duplicate README content, and automatic trimming of long repository material and chat history make input length errors less likely.
+- Repository watcher counts: Details across categories fetch and cache missing subscriber counts instead of showing unknown values as zero.
+- Note edit timestamps: Update only when note content changes; reading, status changes, and adding a repository to the knowledge base no longer count as edits.
+- File link copying: Copy the complete GitHub file-page URL from the preview for opening or sharing.
+- Tag readability: Clearer repository tags and Issue labels in light and dark themes, including pale labels and selected rows.
 - Awesome repository coverage: Projects linked through source-code icons in catalogs such as awesome-mac are now included, so refreshing reveals previously missing repositories.
 - Diagnostic export: Fixes exports failing after choosing a save location because the sandbox denied access to the temporary directory.
 - App version display: The status panel and About page show the actual build version instead of incorrectly displaying 1.0.0.
@@ -172,15 +182,30 @@ Release notes for the Mac App Store edition of Starcat.
 
 ## 1.9.7-待发布
 
+### New
+
+- Tag relationship graph: Explore connections between tags and starred repositories, with search, neighbor highlighting, detail cards, and incremental loading.
+- Personal knowledge profile: Explore recent interests and accumulated knowledge in Insights, compare adjacent periods by topic, tag, or language, and inspect the underlying repositories.
+
 ### Improvements
 
 - File download preview: Automatically opens the root README for the app language, falling back to README.md; when no README is available, prompts you to select a file to preview or download.
-- Release browser: The two-pane window matches the size of the repository Skills window. Search by repository or version, filter for unread releases, and read release notes at your preferred interface text size.
-- Release downloads: Filter files by name, platform, and processor architecture. Installers for your Mac appear first. Track download progress, retry a failed download, or reveal a saved file in Finder.
+- Release browser: Browse releases in a two-pane window matching the repository Skills workspace, search by repository or version, and read notes with the familiar README reader.
+- Release downloads: Filter files by name, platform, and processor architecture, with matching Mac installers shown first; track or stop downloads, retry failures, and reveal saved files in Finder.
+- Reading and input text: Markdown, previews, content editors, and placeholders consistently follow text-size preferences across the app.
+- Notes and AI panels: Edit and preview notes or review AI drafts in a detail overlay, expand the reader, or open a separate window with consistent panel layouts.
+- Diagnostic reports: Add a description, feature category, and occurrence time in a dedicated window, review available evidence, and export the report locally.
+- Daily Radar scrolling: Smoother scrolling through cards, past reports, and articles, with images still loaded on demand.
+- Repository workspace controls: Consistent search and header actions across Issues, Skills, and file downloads, with keyboard search focus and improved Escape behavior.
+- Repository watch settings: Clearer subscription options and feedback, reauthorization guidance when permissions are missing, and refreshed counts after successful changes.
 
 ### Fixes
 
 - Local repository chat: A larger context window, removal of duplicate README content, and automatic trimming of long repository material and chat history make input length errors less likely.
+- Repository watcher counts: Details across categories fetch and cache missing subscriber counts instead of showing unknown values as zero.
+- Note edit timestamps: Update only when note content changes; reading, status changes, and adding a repository to the knowledge base no longer count as edits.
+- File link copying: Copy the complete GitHub file-page URL from the preview for opening or sharing.
+- Tag readability: Clearer repository tags and Issue labels in light and dark themes, including pale labels and selected rows.
 
 ## 1.9.0
 
